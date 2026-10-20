@@ -1,0 +1,44 @@
+{
+ "dataset": "ml1m",
+ "model": "markov",
+ "spec": "recforge/templates/model_template.py:MarkovChain",
+ "code_hash": "ac9f0daa46",
+ "seed": 1,
+ "config": {
+  "smoothing": 1.0
+ },
+ "config_hash": "4f1ac3953f",
+ "protocol": "loo-2",
+ "data_stats": {
+  "users": 6040,
+  "items": 3706,
+  "interactions": 1000209,
+  "avg_len": 165.6,
+  "median_len": 96,
+  "density": 0.04468
+ },
+ "val": {
+  "hr@10": 0.22533112582781456,
+  "ndcg@10": 0.13435341654172603,
+  "hr@20": 0.294205298013245,
+  "ndcg@20": 0.15176934267856973,
+  "mrr@100": 0.11633076638670374
+ },
+ "test": {
+  "hr@10": 0.21456953642384105,
+  "ndcg@10": 0.12597434977346672,
+  "hr@20": 0.2857615894039735,
+  "ndcg@20": 0.14375561864938793,
+  "mrr@100": 0.10834723143197948
+ },
+ "fit": {
+  "transitions": 508447,
+  "val_ndcg@10": 0.13435341654172603
+ },
+ "seconds": 4.7,
+ "device": "cpu",
+ "commit": "f4299ac",
+ "torch": "2.9.1+cu128",
+ "python": "3.12.7",
+ "created": "2026-10-19T21:40:21-0700"
+}
