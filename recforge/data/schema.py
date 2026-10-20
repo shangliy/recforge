@@ -1,4 +1,4 @@
-"""The one data shape every model sees.
+"""The one data shape every model sees (as a train view; see SeqData.train_view).
 
 A dataset is a list of per-user item sequences in chronological order. Item ids
 run from 1 to n_items; 0 is padding. Each sequence has no repeated items, so a
@@ -28,16 +28,23 @@ class SeqData:
     seqs: List[np.ndarray]
     item_meta: Dict[str, list] = field(default_factory=dict)  # each list has n_items + 1 entries, index 0 unused
     info: Dict = field(default_factory=dict)
+    # A train view holds seq[:-2] only: it is what model code receives, so no target is reachable from it.
+    is_train_view: bool = False
 
     @property
     def n_users(self) -> int:
         return len(self.seqs)
 
     def train_seqs(self) -> List[np.ndarray]:
-        return [s[:-2] for s in self.seqs]
+        return list(self.seqs) if self.is_train_view else [s[:-2] for s in self.seqs]
+
+    def train_view(self) -> "SeqData":
+        return SeqData(self.name, self.n_items, self.train_seqs(), self.item_meta, self.info, is_train_view=True)
 
     def split(self, which: str) -> Tuple[List[np.ndarray], np.ndarray]:
         """(histories, targets) for 'val' or 'test'."""
+        if self.is_train_view:
+            raise PermissionError("a train view has no validation or test targets")
         if which == "val":
             return [s[:-2] for s in self.seqs], np.array([s[-2] for s in self.seqs], dtype=np.int64)
         if which == "test":
@@ -57,14 +64,16 @@ class SeqData:
         lens = np.array([len(s) for s in self.seqs], dtype=np.int64)
         np.savez_compressed(path, items=np.concatenate(self.seqs), lens=lens)
         path.with_suffix(".json").write_text(json.dumps(
-            {"name": self.name, "n_items": self.n_items, "item_meta": self.item_meta, "info": self.info}))
+            {"name": self.name, "n_items": self.n_items, "item_meta": self.item_meta, "info": self.info,
+             "is_train_view": self.is_train_view}))
 
     @classmethod
     def load(cls, path: Path) -> "SeqData":
         z = np.load(path)
         meta = json.loads(path.with_suffix(".json").read_text())
         seqs = np.split(z["items"], np.cumsum(z["lens"])[:-1])
-        return cls(meta["name"], meta["n_items"], seqs, meta["item_meta"], meta["info"])
+        return cls(meta["name"], meta["n_items"], seqs, meta["item_meta"], meta["info"],
+                   meta.get("is_train_view", False))
 
 
 def build(name: str, user_items: Dict[object, List[object]], item_meta_raw: Dict[str, Dict[object, object]],

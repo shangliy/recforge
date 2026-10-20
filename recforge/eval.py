@@ -1,53 +1,59 @@
-"""Full-ranking evaluation: every item is a candidate, no sampled negatives.
+"""Evaluation in two halves, so model code never holds a target.
 
-Items already in the user's history are removed from the ranking. Ties are
-broken pessimistically (an item scored equal to the target counts as ranked
-above it), so a model that outputs constants cannot score well by luck.
+Model side (runs next to the model): `rank_lists` turns the model's full-catalogue
+scores into a ranked top-K list per user, after removing padding and the user's
+history items. Every item is a candidate; there are no sampled negatives.
+
+Judge side (holds the targets): `metrics_from_lists` finds each target in its
+list. A target outside the top K counts as a miss. Ties are whatever order the
+model's list commits to.
 """
 from __future__ import annotations
 
-from typing import Dict, Sequence
+from typing import Dict, List, Sequence
 
 import numpy as np
 import torch
 
-from .data.schema import SeqData
-
 KS = (10, 20)
+LIST_LEN = 100
 
 
-def target_ranks(scores: torch.Tensor, targets: torch.Tensor) -> torch.Tensor:
-    """0-based rank of each target among all candidates. scores: (B, V), targets: (B,)."""
-    t = scores.gather(1, targets[:, None])
-    greater = (scores > t).sum(1)
-    ties = (scores == t).sum(1) - 1
-    return greater + ties
+@torch.no_grad()
+def rank_lists(model, users: np.ndarray, histories: List[np.ndarray], n_items: int,
+               k: int = LIST_LEN, batch_size: int = 512) -> np.ndarray:
+    """(len(users), k) int32 item ids, best first; 0 fills slots when fewer than k candidates remain."""
+    k = min(k, n_items)
+    out = np.zeros((len(users), k), dtype=np.int32)
+    for lo in range(0, len(users), batch_size):
+        u = users[lo:lo + batch_size]
+        hist = histories[lo:lo + batch_size]
+        scores = torch.as_tensor(model.score(u, hist), dtype=torch.float32).cpu().clone()
+        if scores.shape != (len(u), n_items + 1):
+            raise ValueError(f"score() returned shape {tuple(scores.shape)}, expected {(len(u), n_items + 1)}")
+        scores[:, 0] = -torch.inf
+        rows = np.repeat(np.arange(len(u)), [len(h) for h in hist])
+        if len(rows):
+            scores[rows, np.concatenate(hist)] = -torch.inf
+        vals, idx = scores.topk(k, dim=1)
+        idx[torch.isinf(vals) & (vals < 0)] = 0
+        out[lo:lo + len(u)] = idx.numpy()
+    return out
 
 
-def metrics_from_ranks(ranks: np.ndarray, ks: Sequence[int] = KS) -> Dict[str, float]:
+def target_ranks(lists: np.ndarray, targets: np.ndarray) -> np.ndarray:
+    """0-based position of each target in its list; len(list) when absent."""
+    hit = lists == targets[:, None]
+    return np.where(hit.any(1), hit.argmax(1), lists.shape[1])
+
+
+def metrics_from_lists(lists: np.ndarray, targets: np.ndarray, ks: Sequence[int] = KS) -> Dict[str, float]:
+    ranks = target_ranks(lists, targets)
     out = {}
     for k in ks:
         hit = ranks < k
         out[f"hr@{k}"] = float(hit.mean())
         out[f"ndcg@{k}"] = float(np.where(hit, 1.0 / np.log2(ranks + 2.0), 0.0).mean())
-    out["mrr"] = float((1.0 / (ranks + 1.0)).mean())
+    found = ranks < lists.shape[1]
+    out[f"mrr@{lists.shape[1]}"] = float(np.where(found, 1.0 / (ranks + 1.0), 0.0).mean())
     return out
-
-
-@torch.no_grad()
-def evaluate(model, data: SeqData, split: str, batch_size: int = 512, max_users: int | None = None,
-             ks: Sequence[int] = KS) -> Dict[str, float]:
-    histories, targets = data.split(split)
-    users = np.arange(data.n_users)
-    if max_users is not None and max_users < data.n_users:
-        users = np.random.default_rng(0).choice(data.n_users, max_users, replace=False)
-    ranks = []
-    for lo in range(0, len(users), batch_size):
-        u = users[lo:lo + batch_size]
-        hist = [histories[i] for i in u]
-        scores = torch.as_tensor(model.score(u, hist), dtype=torch.float32).cpu().clone()
-        scores[:, 0] = -torch.inf
-        rows = np.repeat(np.arange(len(u)), [len(h) for h in hist])
-        scores[rows, np.concatenate(hist)] = -torch.inf
-        ranks.append(target_ranks(scores, torch.as_tensor(targets[u])).numpy())
-    return metrics_from_ranks(np.concatenate(ranks), ks)

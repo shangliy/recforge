@@ -2,4 +2,4 @@
 
 # Bump when the split, filtering or metric definitions change; results from
 # different protocol versions are never compared on the same leaderboard row.
-PROTOCOL_VERSION = "loo-1"
+PROTOCOL_VERSION = "loo-2"

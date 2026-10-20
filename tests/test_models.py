@@ -1,9 +1,9 @@
-"""Every model trains through the runner on the synthetic dataset, whose answer is known (next = last + 1)."""
+"""Every built-in model trains through the runner on the synthetic dataset, whose answer is known (next = last + 1)."""
 import json
 
 import pytest
 
-from recforge.board import collect, leaderboard
+from recforge.board import aggregate, collect, to_markdown
 from recforge.run import run_one
 
 FAST = {
@@ -35,5 +35,5 @@ def test_record_is_reused_and_board_renders(records):
     runs, recs = records
     again = run_one("synthetic", "sasrec", FAST["sasrec"], seed=1, runs_dir=runs)
     assert again == json.loads(json.dumps(recs["sasrec"]))
-    table = leaderboard(collect(runs))
+    table = to_markdown(aggregate(collect(runs)))
     assert "| sasrec |" in table and table.index("| sasrec |") < table.index("| pop |")

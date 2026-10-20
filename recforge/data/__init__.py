@@ -8,9 +8,10 @@ from typing import Callable, Dict
 from .. import PROTOCOL_VERSION
 from .schema import SeqData
 
-ROOT = Path(__file__).resolve().parents[2]
-RAW_DIR = Path(os.environ.get("RECFORGE_RAW", ROOT / "data" / "raw"))
-CACHE_DIR = ROOT / "data" / "cache"
+ROOT = Path(__file__).resolve().parents[2]  # the code checkout, used for the git commit in records
+HOME = Path(os.environ.get("RECFORGE_HOME", ROOT))  # workspace: data/, runs/, sessions/
+RAW_DIR = Path(os.environ.get("RECFORGE_RAW", HOME / "data" / "raw"))
+CACHE_DIR = HOME / "data" / "cache"
 
 
 def _ml1m() -> SeqData:
