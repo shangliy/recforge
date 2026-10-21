@@ -30,12 +30,15 @@ from .models import describe
 RUNS_DIR = HOME / "runs"
 
 
-def resolve_config(spec: str, overrides: Optional[Dict] = None) -> Dict:
+def resolve_config(spec: str, overrides: Optional[Dict] = None, preset: Optional[str] = None) -> Dict:
+    """DEFAULTS, then the named preset, then explicit overrides."""
     cls, _ = describe(spec)
+    if preset is not None and preset not in cls.PRESETS:
+        raise KeyError(f"{cls.name} has no preset {preset!r}; known: {sorted(cls.PRESETS)}")
     unknown = set(overrides or {}) - set(cls.DEFAULTS)
     if unknown:
         raise KeyError(f"{cls.name} has no config keys {sorted(unknown)}; known: {sorted(cls.DEFAULTS)}")
-    return {**cls.DEFAULTS, **(overrides or {})}
+    return {**cls.DEFAULTS, **(cls.PRESETS.get(preset) or {}), **(overrides or {})}
 
 
 def config_hash(dataset: str, model: str, code: str, cfg: Dict) -> str:
@@ -65,12 +68,12 @@ def record_path(runs_dir: Path, dataset: str, model: str, h: str, seed: int) -> 
 
 def run_one(dataset: str, spec: str, overrides: Optional[Dict] = None, seed: int = 1, device: str = "cpu",
             runs_dir: Optional[Path] = None, force: bool = False, val_users: Optional[int] = None,
-            sealed: bool = False) -> Dict:
+            sealed: bool = False, preset: Optional[str] = None) -> Dict:
     from .worker import train_and_rank
 
     runs_dir = RUNS_DIR if runs_dir is None else runs_dir
     cls, code = describe(spec)
-    cfg = resolve_config(spec, overrides)
+    cfg = resolve_config(spec, overrides, preset)
     h = config_hash(dataset, cls.name, code, cfg)
     path = record_path(runs_dir, dataset, cls.name, h, seed)
     if path.exists() and not force:
@@ -85,7 +88,7 @@ def run_one(dataset: str, spec: str, overrides: Optional[Dict] = None, seed: int
     test = metrics_from_lists(test_lists, test_t)
     record = {
         "dataset": dataset, "model": cls.name, "spec": spec, "code_hash": code, "seed": seed,
-        "config": cfg, "config_hash": h, "protocol": PROTOCOL_VERSION, "data_stats": data.stats(),
+        "preset": preset, "config": cfg, "config_hash": h, "protocol": PROTOCOL_VERSION, "data_stats": data.stats(),
         "val": metrics_from_lists(val_lists, val_t), "test": None if sealed else test, "fit": fit_info,
         "seconds": round(seconds, 1),
         "device": device if device == "cpu" else torch.cuda.get_device_name(torch.device(device)),

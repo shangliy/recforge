@@ -5,6 +5,7 @@
     recforge bench --model my_model.py:MyModel --suite smoke
     recforge new my_model.py                            copy the model template
     recforge run ml1m sasrec --seeds 1,2,3 --set dim=128
+    recforge run ml1m hstu --preset hstu-repo --device cuda
     recforge board [--split val]
     recforge data ml1m
 
@@ -39,6 +40,7 @@ def _parse_set(items):
 def _common(p, device=True):
     p.add_argument("--json", action="store_true", help="print one JSON document")
     if device:
+        p.add_argument("--preset", default=None, help="named config bundle of the model, e.g. hstu-repo")
         p.add_argument("--device", default="cpu", help="cpu, cuda or cuda:N")
         p.add_argument("--val-users", type=int, default=None, help="subsample users for early-stopping checks")
 
@@ -129,7 +131,7 @@ def _dispatch(p, a, log) -> int:
               "\n".join(f"{k:9} {v['datasets']} seeds {v['seeds']}  {v['about']}" for k, v in SUITES.items()))
     elif a.cmd == "bench":
         from .bench import run_suite
-        res = run_suite(a.model, a.suite, a.device, _parse_set(a.set), a.baselines, a.val_users, log)
+        res = run_suite(a.model, a.suite, a.device, _parse_set(a.set), a.baselines, a.val_users, log, a.preset)
         _emit(a, res, to_markdown(res["leaderboard"]))
     elif a.cmd == "new":
         dst = Path(a.path)
@@ -140,12 +142,13 @@ def _dispatch(p, a, log) -> int:
     elif a.cmd == "run":
         from .run import run_one
         overrides, specs = _parse_set(a.set), a.models.split(",")
-        if overrides and len(specs) > 1:
-            p.error("--set applies to one model; run models separately to override their configs")
+        if (overrides or a.preset) and len(specs) > 1:
+            p.error("--set and --preset apply to one model; run models separately to configure them")
         recs = []
         for spec in specs:
             for seed in (int(s) for s in a.seeds.split(",")):
-                rec = run_one(a.dataset, spec, overrides, seed, a.device, force=a.force, val_users=a.val_users)
+                rec = run_one(a.dataset, spec, overrides, seed, a.device, force=a.force, val_users=a.val_users,
+                              preset=a.preset)
                 recs.append(rec)
                 log(f"{a.dataset} {rec['model']} s{seed} [{rec['config_hash']}]  test ndcg@10="
                     f"{rec['test']['ndcg@10']:.4f} hr@10={rec['test']['hr@10']:.4f}  {rec['seconds']:.0f}s")
@@ -165,7 +168,7 @@ def _dispatch(p, a, log) -> int:
             s = evolve.create(a.name, a.dataset, a.max_trials, a.max_minutes, a.seed)
             _emit(a, s, f"session {a.name}: {a.dataset}, budget {s['budget']}")
         elif a.action == "trial":
-            r = evolve.trial(a.name, a.model, _parse_set(a.set), a.device, a.val_users, a.note)
+            r = evolve.trial(a.name, a.model, _parse_set(a.set), a.device, a.val_users, a.note, a.preset)
             v = r["trial"]["val"]
             _emit(a, r, f"trial {r['trial']['id']} [{r['trial']['config_hash']}] val ndcg@10={v['ndcg@10']:.4f} "
                         f"hr@10={v['hr@10']:.4f}; used {r['used']} of {r['budget']}")

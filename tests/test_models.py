@@ -11,9 +11,10 @@ FAST = {
     "itemknn": {},
     "bpr": {"epochs": 30, "batch_size": 512, "lr": 1e-2},
     "sasrec": {"epochs": 15, "max_len": 20, "dim": 32, "dropout": 0.1},
+    "hstu": {"epochs": 15, "max_len": 20, "dim": 32, "dqk": 32, "dv": 32, "dropout": 0.1, "n_neg": 32},
 }
 # Random guessing over 200 items gives HR@10 of about 0.05.
-FLOOR = {"pop": 0.0, "itemknn": 0.5, "bpr": 0.08, "sasrec": 0.8}
+FLOOR = {"pop": 0.0, "itemknn": 0.5, "bpr": 0.08, "sasrec": 0.8, "hstu": 0.8}
 
 
 @pytest.fixture(scope="module")

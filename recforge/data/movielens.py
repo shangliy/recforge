@@ -28,8 +28,9 @@ def build_ml1m(raw: Path) -> SeqData:
     m = rd("movies.dat", ["item", "title", "genres"]).set_index("item")
     # Stable sort keeps file order for equal timestamps, which are common in ML-1M.
     r = r.sort_values(["user", "ts"], kind="stable")
-    user_items = r.groupby("user", sort=False)["item"].apply(list).to_dict()
+    g = r.groupby("user", sort=False)
+    user_items, user_times = g["item"].apply(list).to_dict(), g["ts"].apply(list).to_dict()
     return build("ml1m", user_items,
                  {"title": m.title.to_dict(), "genres": m.genres.to_dict()},
                  {"source": URL, "feedback": "all ratings as implicit interactions",
-                  "order": "timestamp, file order for ties"})
+                  "order": "timestamp, file order for ties"}, user_times=user_times)

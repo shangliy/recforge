@@ -10,7 +10,8 @@ model's list commits to.
 """
 from __future__ import annotations
 
-from typing import Dict, List, Sequence
+import inspect
+from typing import Dict, List, Optional, Sequence
 
 import numpy as np
 import torch
@@ -21,14 +22,22 @@ LIST_LEN = 100
 
 @torch.no_grad()
 def rank_lists(model, users: np.ndarray, histories: List[np.ndarray], n_items: int,
-               k: int = LIST_LEN, batch_size: int = 512) -> np.ndarray:
-    """(len(users), k) int32 item ids, best first; 0 fills slots when fewer than k candidates remain."""
+               times: Optional[List[np.ndarray]] = None, k: int = LIST_LEN, batch_size: int = 512) -> np.ndarray:
+    """(len(users), k) int32 item ids, best first; 0 fills slots when fewer than k candidates remain.
+
+    A model whose score() takes a `times` argument also gets the history timestamps.
+    """
     k = min(k, n_items)
+    wants_times = "times" in inspect.signature(model.score).parameters
     out = np.zeros((len(users), k), dtype=np.int32)
     for lo in range(0, len(users), batch_size):
         u = users[lo:lo + batch_size]
         hist = histories[lo:lo + batch_size]
-        scores = torch.as_tensor(model.score(u, hist), dtype=torch.float32).cpu().clone()
+        if wants_times:
+            raw = model.score(u, hist, times=None if times is None else times[lo:lo + batch_size])
+        else:
+            raw = model.score(u, hist)
+        scores = torch.as_tensor(raw, dtype=torch.float32).cpu().clone()
         if scores.shape != (len(u), n_items + 1):
             raise ValueError(f"score() returned shape {tuple(scores.shape)}, expected {(len(u), n_items + 1)}")
         scores[:, 0] = -torch.inf

@@ -3,7 +3,7 @@
 The child receives only the train view (seq[:-2] per user). During fit, each
 val_fn() call sends the model's ranked lists for the validation histories and
 gets back NDCG@10. After fit, the parent sends the test histories (which end
-with the validation item) and receives the final lists.
+with the validation item) and their timestamps, and receives the final lists.
 
 This stops model code from reading targets through the API. It does not stop
 code that opens the raw data files itself; for untrusted agents, run recforge
@@ -35,13 +35,14 @@ def _child(conn, spec: str, cfg: Dict, seed: int, device: str, view_path: str, v
             np.sort(np.random.default_rng(0).choice(data.n_users, val_users, replace=False))
 
         def val_fn() -> float:
-            conn.send(("val", check, rank_lists(model, check, [data.seqs[i] for i in check], data.n_items)))
+            conn.send(("val", check, rank_lists(model, check, [data.seqs[i] for i in check], data.n_items,
+                                                [data.times[i] for i in check])))
             return conn.recv()
 
         info = model.fit(data, val_fn)
-        conn.send(("fit_done", info, rank_lists(model, users, data.seqs, data.n_items)))
-        test_hist = conn.recv()
-        conn.send(("test", rank_lists(model, users, test_hist, data.n_items)))
+        conn.send(("fit_done", info, rank_lists(model, users, data.seqs, data.n_items, data.times)))
+        test_hist, test_times = conn.recv()
+        conn.send(("test", rank_lists(model, users, test_hist, data.n_items, test_times)))
     except BaseException:
         conn.send(("error", traceback.format_exc()))
     finally:
@@ -52,7 +53,7 @@ def train_and_rank(spec: str, cfg: Dict, seed: int, device: str, data: SeqData,
                    val_users: Optional[int] = None) -> Tuple[Dict, np.ndarray, np.ndarray]:
     """(fit info, val lists, test lists) for every user, in user order."""
     _, val_t = data.split("val")
-    test_h, _ = data.split("test")
+    test_h, _, test_times = data.split_with_times("test")
     ctx = mp.get_context("spawn")
     parent, child = ctx.Pipe()
     with tempfile.TemporaryDirectory() as tmp:
@@ -71,7 +72,7 @@ def train_and_rank(spec: str, cfg: Dict, seed: int, device: str, data: SeqData,
                     parent.send(metrics_from_lists(msg[2], val_t[msg[1]])["ndcg@10"])
                 elif msg[0] == "fit_done":
                     info, val_lists = msg[1], msg[2]
-                    parent.send(test_h)
+                    parent.send((test_h, test_times))
                 elif msg[0] == "test":
                     test_lists = msg[1]
                     break

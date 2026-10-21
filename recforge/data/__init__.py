@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]  # the code checkout, used for the gi
 HOME = Path(os.environ.get("RECFORGE_HOME", ROOT))  # workspace: data/, runs/, sessions/
 RAW_DIR = Path(os.environ.get("RECFORGE_RAW", HOME / "data" / "raw"))
 CACHE_DIR = HOME / "data" / "cache"
+DATA_VERSION = "d2"  # cache layout: d2 adds timestamps
 
 
 def _ml1m() -> SeqData:
@@ -33,7 +34,7 @@ def load(name: str) -> SeqData:
         return make_synthetic()
     if name not in BUILDERS:
         raise KeyError(f"unknown dataset {name!r}; known: {sorted(BUILDERS)} or 'synthetic'")
-    path = CACHE_DIR / f"{name}.{PROTOCOL_VERSION}.npz"
+    path = CACHE_DIR / f"{name}.{PROTOCOL_VERSION}.{DATA_VERSION}.npz"
     if path.exists():
         return SeqData.load(path)
     data = BUILDERS[name]()

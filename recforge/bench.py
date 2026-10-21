@@ -11,11 +11,12 @@ SUITES: Dict[str, Dict] = {
     "ml1m": {"datasets": ["ml1m"], "seeds": [1, 2, 3], "about": "MovieLens-1M, 3 seeds"},
     "standard": {"datasets": ["ml1m", "mind"], "seeds": [1, 2, 3], "about": "movies and news, 3 seeds each"},
 }
-BASELINES = ["pop", "itemknn", "bpr", "sasrec"]
+BASELINES = ["pop", "itemknn", "bpr", "sasrec", "hstu"]
 
 
 def run_suite(spec: str, suite: str, device: str = "cpu", overrides: Optional[Dict] = None,
-              with_baselines: bool = False, val_users: Optional[int] = None, log=print) -> Dict:
+              with_baselines: bool = False, val_users: Optional[int] = None, log=print,
+              preset: Optional[str] = None) -> Dict:
     if suite not in SUITES:
         raise KeyError(f"unknown suite {suite!r}; known: {sorted(SUITES)}")
     s = SUITES[suite]
@@ -24,7 +25,9 @@ def run_suite(spec: str, suite: str, device: str = "cpu", overrides: Optional[Di
     for sp in specs:
         for ds in s["datasets"]:
             for seed in s["seeds"]:
-                rec = run_one(ds, sp, overrides if sp == spec else None, seed, device, val_users=val_users)
+                mine = sp == spec
+                rec = run_one(ds, sp, overrides if mine else None, seed, device, val_users=val_users,
+                              preset=preset if mine else None)
                 log(f"{ds} {rec['model']} s{seed} [{rec['config_hash']}] test ndcg@10={rec['test']['ndcg@10']:.4f}")
         model_names.append(rec["model"])
     table = aggregate(collect(), "test", s["datasets"])

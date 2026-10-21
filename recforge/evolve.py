@@ -50,14 +50,14 @@ def create(name: str, dataset: str, max_trials: int = 20, max_minutes: float = 1
 
 
 def trial(name: str, spec: str, overrides: Optional[Dict] = None, device: str = "cpu",
-          val_users: Optional[int] = None, note: str = "") -> Dict:
+          val_users: Optional[int] = None, note: str = "", preset: Optional[str] = None) -> Dict:
     s = load(name)
     if s["final"] is not None:
         raise PermissionError(f"session {name!r} is finalized")
     if s["used"]["trials"] >= s["budget"]["trials"] or s["used"]["minutes"] >= s["budget"]["minutes"]:
         raise PermissionError(f"session {name!r} budget spent: {s['used']} of {s['budget']}")
     rec = run_one(s["dataset"], spec, overrides, s["seed"], device, runs_dir=SESSIONS_DIR / name / "records",
-                  val_users=val_users, sealed=True)
+                  val_users=val_users, sealed=True, preset=preset)
     t = {"id": len(s["trials"]) + 1, "model": rec["model"], "spec": spec, "config": rec["config"],
          "config_hash": rec["config_hash"], "code_hash": rec["code_hash"], "val": rec["val"],
          "minutes": round(rec["seconds"] / 60, 2), "note": note}

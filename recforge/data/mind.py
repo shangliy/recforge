@@ -2,7 +2,8 @@
 
 A user's sequence is the click history listed on their first impression (clicked
 before the logging window; its order is kept but it has no timestamps), followed
-by the items they clicked in impressions, in time order. Train and dev logs are
+by the items they clicked in impressions, in time order. History items carry
+the first impression's timestamp. Train and dev logs are
 concatenated; the leave-one-out split then applies like any other dataset.
 """
 from __future__ import annotations
@@ -37,15 +38,19 @@ def build_mind(raw: Path) -> SeqData:
     b["ts"] = pd.to_datetime(b.time, format="%m/%d/%Y %I:%M:%S %p")
     b = b.sort_values(["user", "ts"], kind="stable")
 
-    user_items = {}
+    b["sec"] = (b.ts - pd.Timestamp("1970-01-01")) // pd.Timedelta("1s")
+    user_items, user_times = {}, {}
     for user, g in b.groupby("user", sort=False):
         first_hist = g.history.iloc[0]
         items = first_hist.split() if isinstance(first_hist, str) else []
-        for imp in g.impressions:
-            items.extend(tok[:-2] for tok in imp.split() if tok.endswith("-1"))
-        user_items[user] = items
+        times = [int(g.sec.iloc[0])] * len(items)
+        for imp, sec in zip(g.impressions, g.sec):
+            clicked = [tok[:-2] for tok in imp.split() if tok.endswith("-1")]
+            items.extend(clicked)
+            times.extend([int(sec)] * len(clicked))
+        user_items[user], user_times[user] = items, times
     return build("mind", user_items,
                  {"title": news.title.to_dict(), "category": news.category.to_dict(),
                   "subcategory": news.subcategory.to_dict()},
                  {"source": BASE, "feedback": "clicks",
-                  "order": "pre-window history (untimed) then impression clicks by time"})
+                  "order": "pre-window history (untimed) then impression clicks by time"}, user_times=user_times)

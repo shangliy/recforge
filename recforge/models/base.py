@@ -25,6 +25,7 @@ ValFn = Callable[[], float]
 class Recommender:
     name = "base"
     DEFAULTS: Dict = {}
+    PRESETS: Dict[str, Dict] = {}  # named config bundles, e.g. a paper's published setup
 
     def __init__(self, cfg: Dict, seed: int, device: str):
         self.cfg, self.seed, self.device = cfg, seed, device

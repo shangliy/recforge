@@ -17,9 +17,10 @@ from typing import Dict, Tuple, Type
 from .base import Recommender
 from .bpr import BPR
 from .classic import ItemKNN, Pop
+from .hstu import HSTU
 from .sasrec import SASRec
 
-MODELS: Dict[str, Type[Recommender]] = {m.name: m for m in (Pop, ItemKNN, BPR, SASRec)}
+MODELS: Dict[str, Type[Recommender]] = {m.name: m for m in (Pop, ItemKNN, BPR, SASRec, HSTU)}
 
 
 def _from_file(spec: str) -> Type[Recommender]:
@@ -49,7 +50,10 @@ def get(spec: str) -> Type[Recommender]:
 
 
 def describe(spec: str) -> Tuple[Type[Recommender], str]:
-    """(class, short hash of the file that defines it)."""
+    """(class, short hash of its source). Built-ins hash every file in this package, since they share code."""
     cls = get(spec)
-    src = Path(inspect.getsourcefile(cls)).read_bytes()
-    return cls, hashlib.sha1(src).hexdigest()[:10]
+    files = sorted(Path(__file__).parent.glob("*.py")) if spec in MODELS else [Path(inspect.getsourcefile(cls))]
+    h = hashlib.sha1()
+    for f in files:
+        h.update(f.read_bytes())
+    return cls, h.hexdigest()[:10]
