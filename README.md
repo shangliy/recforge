@@ -25,9 +25,10 @@ Workspace: `RECFORGE_HOME` (default: the checkout) holds `data/`, `runs/` and `s
 
 ## Built-in models and datasets
 
-| models | `pop`, `itemknn`, `bpr`, `sasrec` (TIGER, HSTU, OneRec-style next) |
+| models | `pop`, `itemknn`, `bpr`, `sasrec`, `hstu` (generative, Meta), `tiger` (semantic IDs + T5, Google); OneRec-style next |
 |---|---|
-| datasets | `ml1m` (MovieLens-1M), `mind` (MIND-small news clicks), `synthetic` (tests) |
+| datasets | `ml1m` (MovieLens-1M), `beauty` / `sports` / `toys` (Amazon 2014 5-core), `mind` (MIND-small news), `synthetic` (tests) |
+| presets | `--preset hstu-repo` (SASRec, HSTU), `--preset hstu-repo-large` (HSTU): the published configs |
 | suites | `smoke` (synthetic), `ml1m` (3 seeds), `standard` (ml1m + mind, 3 seeds) |
 
 Every run writes `runs/<dataset>/<model>/<config-hash>-s<seed>.json` with the model's source hash, config,

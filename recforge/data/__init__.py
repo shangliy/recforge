@@ -25,7 +25,15 @@ def _mind() -> SeqData:
     return build_mind(RAW_DIR / "mind")
 
 
-BUILDERS: Dict[str, Callable[[], SeqData]] = {"ml1m": _ml1m, "mind": _mind}
+def _amazon(name: str) -> Callable[[], SeqData]:
+    def build() -> SeqData:
+        from .amazon import build_amazon
+        return build_amazon(RAW_DIR / "amazon2014", name)
+    return build
+
+
+BUILDERS: Dict[str, Callable[[], SeqData]] = {"ml1m": _ml1m, "mind": _mind,
+                                              **{n: _amazon(n) for n in ("beauty", "sports", "toys")}}
 
 
 def load(name: str) -> SeqData:

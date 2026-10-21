@@ -60,3 +60,53 @@ def test_per_position_logit_paths_agree():
     h, emb = torch.randn(7, 5, generator=g), torch.randn(30, 5, generator=g)
     neg = torch.randint(1, 30, (7, 11), generator=g)
     assert torch.allclose(per_position_logits(h, emb, neg, True), per_position_logits(h, emb, neg, False), atol=1e-5)
+
+
+TINY_TIGER = {"text_encoder": "random", "rq_hidden": [64, 32], "rq_latent": 16, "rq_levels": 2, "rq_codebook": 16,
+              "rq_epochs": 30, "rq_batch": 256, "d_model": 64, "d_kv": 32, "d_ff": 128, "heads": 2, "layers": 2,
+              "user_buckets": 50, "max_items": 5, "steps": 1500, "batch_size": 64, "lr": 0.01, "warmup_steps": 200,
+              "eval_every": 500, "patience": 3, "beam": 20}
+
+
+def test_tiger_semantic_ids_are_unique_and_index_round_trips():
+    from recforge.models.tiger import TIGER, PrefixIndex, semantic_ids
+    emb = np.random.default_rng(0).standard_normal((200, 768)).astype(np.float32)
+    codes, stats = semantic_ids(emb, {**TIGER.DEFAULTS, **TINY_TIGER}, seed=1, device="cpu")
+    assert codes.shape == (201, 3) and len({tuple(r) for r in codes[1:]}) == 200
+    sizes = [16, 16, int(codes[:, -1].max()) + 1]
+    idx = PrefixIndex(codes, sizes, "cpu")
+    key = torch.zeros(200, dtype=torch.long)
+    for t, k in enumerate(sizes):
+        assert idx.allowed(t, key)[torch.arange(200), torch.as_tensor(codes[1:, t])].all()
+        key = key * k + torch.as_tensor(codes[1:, t])
+    assert idx.items(key).tolist() == list(range(1, 201))
+
+
+def test_tiger_learns_the_synthetic_rule(workspace):
+    rec = run_one("synthetic", "tiger", TINY_TIGER)
+    assert rec["fit"]["max_collisions"] >= 1 and rec["test"]["hr@10"] > 0.6, rec["test"]
+
+
+def test_tiger_beam_scores_equal_exact_sequence_log_probs():
+    """With a beam wider than the catalogue, constrained beam search must return every item with its exact log p."""
+    from transformers import T5Config, T5ForConditionalGeneration
+    from recforge.models.tiger import TIGER, PrefixIndex, semantic_ids
+    cfg = {**TIGER.DEFAULTS, **TINY_TIGER, "beam": 64}
+    emb = np.random.default_rng(0).standard_normal((40, 768)).astype(np.float32)
+    codes, _ = semantic_ids(emb, cfg, seed=1, device="cpu")
+    m = TIGER(cfg, seed=1, device="cpu")
+    m._layout(codes)
+    m.index = PrefixIndex(codes, m.sizes, "cpu")
+    torch.manual_seed(0)
+    m.net = T5ForConditionalGeneration(T5Config(vocab_size=m.vocab, d_model=32, d_kv=8, d_ff=64, num_layers=1,
+                                                num_decoder_layers=1, num_heads=2, feed_forward_proj="relu",
+                                                pad_token_id=0, eos_token_id=1, decoder_start_token_id=0)).eval()
+    users, hist = np.array([3]), [np.array([5, 9, 2])]
+    got = m.score(users, hist)[0]
+    ids, mask = m._encode_inputs(users, hist)
+    with torch.no_grad():
+        labels = m.tokens[1:]
+        logits = m.net(input_ids=ids.repeat(40, 1), attention_mask=mask.repeat(40, 1), labels=labels).logits
+        exact = torch.log_softmax(logits, -1).gather(2, labels[:, :, None]).squeeze(-1).sum(1)
+    assert torch.isfinite(got[1:]).all()
+    assert torch.allclose(got[1:], exact, atol=1e-4)

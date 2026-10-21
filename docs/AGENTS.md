@@ -15,8 +15,9 @@ A method is one Python file with a class that subclasses `recforge.models.base.R
 |---|---|
 | `name` | unique string; becomes the leaderboard row name |
 | `DEFAULTS` | dict of every setting; `--set key=value` overrides, unknown keys are rejected |
+| `PRESETS` | optional named bundles of settings (e.g. a paper's config); `--preset NAME` applies one before `--set` |
 | `fit(data, val_fn) -> dict` | `data` is a train view: `data.train_seqs()` (per-user item ids in time order, 1..`data.n_items`, 0 = pad), `data.item_meta` (e.g. `title`), `data.n_users`. `val_fn()` returns validation NDCG@10 of the model as it is now. Leave the model in its best-validation state. Return anything worth logging. |
-| `score(users, histories)` | `(len(users), n_items + 1)` array or tensor, higher is better. `users` index the train view; `histories[i]` is that user's items so far. History items and padding are removed for you. |
+| `score(users, histories)` | `(len(users), n_items + 1)` array or tensor, higher is better. `users` index the train view; `histories[i]` is that user's items so far. History items and padding are removed for you. Declare a third parameter `times` to also get the history timestamps (`data.train_times()` holds them during fit). |
 | `self.cfg`, `self.seed`, `self.device` | resolved config, seed, `cpu` / `cuda:N` |
 
 The source file's hash is part of every result key, so an edited file is always a new result.

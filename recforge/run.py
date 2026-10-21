@@ -79,6 +79,7 @@ def run_one(dataset: str, spec: str, overrides: Optional[Dict] = None, seed: int
     if path.exists() and not force:
         return json.loads(path.read_text())
 
+    commit = _git_commit()  # before training, so it names the code that ran
     data = load(dataset)
     t0 = time.time()
     fit_info, val_lists, test_lists = train_and_rank(spec, cfg, seed, device, data, val_users)
@@ -92,7 +93,7 @@ def run_one(dataset: str, spec: str, overrides: Optional[Dict] = None, seed: int
         "val": metrics_from_lists(val_lists, val_t), "test": None if sealed else test, "fit": fit_info,
         "seconds": round(seconds, 1),
         "device": device if device == "cpu" else torch.cuda.get_device_name(torch.device(device)),
-        "commit": _git_commit(), "torch": torch.__version__, "python": platform.python_version(),
+        "commit": commit, "torch": torch.__version__, "python": platform.python_version(),
         "created": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
     }
     path.parent.mkdir(parents=True, exist_ok=True)

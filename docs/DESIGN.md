@@ -48,7 +48,7 @@ log-probability and every other item -inf, so ranking metrics stay defined over 
 | milestone | models |
 |---|---|
 | M0 (done) | Pop, ItemKNN, BPR-MF, SASRec |
-| M1 | TIGER (RQ-VAE semantic IDs on item text + seq2seq), HSTU, OneRec-style decoder with preference alignment, BERT4Rec |
+| M1 (in progress) | HSTU and TIGER implemented; OneRec-style decoder with preference alignment, BERT4Rec next |
 | later | LLM zero-shot reranker over item_meta, semantic-ID variants (the 2026 reproducibility questions) |
 
 Each M1 model must first reproduce its paper's ML-1M or Amazon number under its own protocol, then be run under

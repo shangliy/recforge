@@ -19,8 +19,9 @@ from .bpr import BPR
 from .classic import ItemKNN, Pop
 from .hstu import HSTU
 from .sasrec import SASRec
+from .tiger import TIGER
 
-MODELS: Dict[str, Type[Recommender]] = {m.name: m for m in (Pop, ItemKNN, BPR, SASRec, HSTU)}
+MODELS: Dict[str, Type[Recommender]] = {m.name: m for m in (Pop, ItemKNN, BPR, SASRec, HSTU, TIGER)}
 
 
 def _from_file(spec: str) -> Type[Recommender]:
