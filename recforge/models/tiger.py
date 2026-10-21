@@ -268,7 +268,7 @@ class TIGER(Recommender):
         return info
 
     @torch.no_grad()
-    def score(self, users, histories, batch: int = 128):
+    def score(self, users, histories, batch: int = 32):
         from transformers.modeling_outputs import BaseModelOutput
         self.net.eval()
         n_items = len(self.tokens) - 1
@@ -284,7 +284,7 @@ class TIGER(Recommender):
                 w = dec.shape[1]
                 logits = self.net(encoder_outputs=BaseModelOutput(last_hidden_state=enc.repeat_interleave(w, 0)),
                                   attention_mask=mask.repeat_interleave(w, 0),
-                                  decoder_input_ids=dec.reshape(b * w, -1)).logits[:, -1]
+                                  decoder_input_ids=dec.reshape(b * w, -1), use_cache=False).logits[:, -1]
                 off = int(self.level_off[t])
                 logp = F.log_softmax(logits, -1)[:, off:off + k]
                 logp = logp.masked_fill(~self.index.allowed(t, keys.reshape(-1)), -torch.inf).view(b, w, k)

@@ -12,6 +12,7 @@ inside a container that mounts only the train view (see docs/AGENTS.md).
 from __future__ import annotations
 
 import multiprocessing as mp
+import os
 import tempfile
 import traceback
 from pathlib import Path
@@ -28,6 +29,11 @@ def _child(conn, spec: str, cfg: Dict, seed: int, device: str, view_path: str, v
         from .models import get
         from .run import set_seed
         set_seed(seed)
+        frac = os.environ.get("RECFORGE_GPU_FRAC")
+        if frac and device.startswith("cuda"):
+            import torch
+            # Hard cap for shared GPUs: past it this process gets an OOM error instead of starving others.
+            torch.cuda.set_per_process_memory_fraction(float(frac), torch.device(device))
         data = SeqData.load(Path(view_path))
         model = get(spec)(cfg, seed, device)
         users = np.arange(data.n_users)

@@ -50,6 +50,11 @@ Rules enforced by recforge, not by the prompt:
 
 Write the reasoning for each trial in `--note`; it is kept in the session file and is the evolve trail.
 
+## Shared GPUs
+
+`RECFORGE_GPU_FRAC=0.25` caps the model process at that fraction of GPU memory. Past the cap the run fails
+with an out-of-memory error instead of taking memory from other jobs on the same card.
+
 ## Protocol (`loo-2`)
 
 Leave-one-out per user (last item test, second-to-last validation). Full catalogue ranking: the model's top 100
