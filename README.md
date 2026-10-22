@@ -28,7 +28,7 @@ Workspace: `RECFORGE_HOME` (default: the checkout) holds `data/`, `runs/` and `s
 
 | models | `pop`, `itemknn`, `bpr`, `sasrec`, `hstu` (generative, Meta), `tiger` (semantic IDs + T5, Google); OneRec-style next |
 |---|---|
-| datasets | `ml1m` (MovieLens-1M), `beauty` / `sports` / `toys` (Amazon 2014 5-core), `mind` (MIND-small news), `synthetic` (tests) |
+| datasets | `ml1m` (MovieLens-1M), `beauty` / `sports` / `toys` (Amazon 2014 5-core), `mind` (MIND-small news), `kuai-video` / `kuai-video-50k` / `kuai-goods` (Kuaishou OpenOneRec, gated on Hugging Face), `synthetic` (tests) |
 | presets | `--preset hstu-repo` (SASRec, HSTU), `--preset hstu-repo-large` (HSTU): the published configs |
 | suites | `smoke` (synthetic), `ml1m` (3 seeds), `standard` (ml1m + mind, 3 seeds) |
 

@@ -32,8 +32,16 @@ def _amazon(name: str) -> Callable[[], SeqData]:
     return build
 
 
+def _kuai(name: str) -> Callable[[], SeqData]:
+    def build() -> SeqData:
+        from .openonerec import build_openonerec
+        return build_openonerec(RAW_DIR / "openonerec", name)
+    return build
+
+
 BUILDERS: Dict[str, Callable[[], SeqData]] = {"ml1m": _ml1m, "mind": _mind,
-                                              **{n: _amazon(n) for n in ("beauty", "sports", "toys")}}
+                                              **{n: _amazon(n) for n in ("beauty", "sports", "toys")},
+                                              **{n: _kuai(n) for n in ("kuai-video", "kuai-video-50k", "kuai-goods")}}
 
 
 def load(name: str) -> SeqData:
