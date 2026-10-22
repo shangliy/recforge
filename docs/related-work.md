@@ -19,9 +19,15 @@ can understate the paper. Corrections are welcome as pull requests.
 
 | system | year | evolves | feedback | evaluation hygiene | paper | code |
 |---|---|---|---|---|---|---|
-| Self-EvolveRec | 2026 | model code (seeds NCF, NGCF, SASRec, MoRec), plus a co-evolving diagnosis tool | validation NDCG/HR, LLM user-simulator critiques, diagnosis tool | test held out; ranks against 99 sampled negatives; step cap only | [2602.12612](https://arxiv.org/abs/2602.12612) P | [Sein-Kim/self_evolverec](https://github.com/Sein-Kim/self_evolverec) C, none |
+| Self-EvolveRec (KAIST, Microsoft) | 2026 | model code (seeds NCF, NGCF, SASRec, MoRec), plus a co-evolving diagnosis tool | validation NDCG/HR, LLM user-simulator critiques, diagnosis tool | test held out; ranks against 99 sampled negatives; step cap only | [2602.12612](https://arxiv.org/abs/2602.12612) P | [Sein-Kim/self_evolverec](https://github.com/Sein-Kim/self_evolverec) C, none |
 | RecHarness (Kuaishou, Georgia Tech) | 2026 | architecture, objective and training code; a bandit picks the edit direction | validation HR@10 only | test scored once; 43,200 GPU-second budget; backbones include HSTU; ranks against 99 sampled negatives | [2607.29241](https://arxiv.org/abs/2607.29241) P | [6lyc/RecHarness](https://github.com/6lyc/RecHarness) C, MIT |
-| VirtualMLE | 2026 | hyperparameters and training config of SASRec and HSTU; memory reused across datasets | per-trial outcomes | not discussed in the abstract | [2606.03221](https://arxiv.org/abs/2606.03221) P | [cst20/VirtualMLE-is-all-you-need-to-Recommend](https://github.com/cst20/VirtualMLE-is-all-you-need-to-Recommend) ?, not confirmed official, none |
+| VirtualMLE (Tsinghua, BUPT) | 2026 | hyperparameters and training config of SASRec and HSTU; memory reused across datasets | per-trial outcomes | not discussed in the abstract | [2606.03221](https://arxiv.org/abs/2606.03221) P | [cst20/VirtualMLE-is-all-you-need-to-Recommend](https://github.com/cst20/VirtualMLE-is-all-you-need-to-Recommend) C (linked from the abstract), none |
+
+| EvoSkillRec (CityU HK, Kuaishou, XJTU) | 2026 | architectures as typed "skill genomes" plus LLM-written modules promoted into a skill library | validation AUC | test used for reporting only; single evolution runs; only 1 of 5 validation-Pareto candidates kept its gains on test | [2609.34552](https://arxiv.org/abs/2609.34552) P | [Xiaopengli1/EvoSkill-Rec](https://github.com/Xiaopengli1/EvoSkill-Rec) (from the paper; license not checked) |
+| RankEvolve (Meta) | 2026 | HSTU configs and code, Claude Code and Codex reviewing each other; ExecML-HSTU benchmark | full-test NDCG@10 leaderboard | full-catalogue ranking, but selects on test; documents three leakage incidents found in agent edits | [2609.39551](https://arxiv.org/abs/2609.39551) P | promised |
+| Population Evolution (Meta) | 2026 | model and training code; several searches share evidence; RMD-Bench | source fitness, promotion to larger scale | full-catalogue ranking; transfer failures reported; baselines calibrated on the test split (disclosed) | [2610.05950](https://arxiv.org/abs/2610.05950) P | promised |
+| AgentLTV | 2026 | lifetime-value pipeline programs (MCTS then island evolution) | Pareto multi-metric score | split not stated | [2602.21634](https://arxiv.org/abs/2602.21634) P | [wuchaowei123/AgentLTV](https://github.com/wuchaowei123/AgentLTV) C, none |
+| AutoRecLab (Siegen, Göttingen) | 2026 | recommender experiment code from a natural-language description (automates experiments, does not evolve a model) | LLM-judged requirement coverage | n/a | [2609.21863](https://arxiv.org/abs/2609.21863) P | [ISG-Siegen/AutoRecLab](https://github.com/ISG-Siegen/AutoRecLab) C, MIT |
 
 ### Industrial, no code released
 
@@ -29,17 +35,26 @@ can understate the paper. Corrections are welcome as pull requests.
 |---|---|---|---|---|---|
 | Self-Evolving Recommendation System | Google / YouTube | 2026 (RecSys) | code and config diffs of a production ranker: optimizer, architecture, reward logic | offline validation loss, then online A/B | [2602.10226](https://arxiv.org/abs/2602.10226) P |
 | EvoRec | Alibaba | 2026 | model code; skills distilled from experiment memory | offline Recall/NDCG; online A/B; HSTU, TIGER and Cobra used as baselines | [2606.28368](https://arxiv.org/abs/2606.28368) P |
-| NOVA | affiliation not confirmed | 2026 | architecture code of an ads ranker | validity checks, a fixed offline evaluation budget, A/B | [2606.27243](https://arxiv.org/abs/2606.27243) P |
-| AgentX | affiliation not confirmed | 2026 | production code; the agents themselves | online A/B with guardrails | [2606.26859](https://arxiv.org/abs/2606.26859) P |
-| AgentX-Model | affiliation not confirmed | 2026 | model code in research lineages | offline AUC, calibration, A/B | [2609.30001](https://arxiv.org/abs/2609.30001) P |
-| Auto-RecSys | affiliation not confirmed | 2026 | research ideas and execution playbooks | experiment outcomes | [2609.10922](https://arxiv.org/abs/2609.10922) P |
+| NOVA | Tencent | 2026 | architecture code of an ads ranker | validity checks, a fixed offline evaluation budget, A/B | [2606.27243](https://arxiv.org/abs/2606.27243) P |
+| AgentX | deployed at Kuaishou (no affiliation line) | 2026 | production code; the agents themselves | online A/B with guardrails | [2606.26859](https://arxiv.org/abs/2606.26859) P |
+| AgentX-Model | deployed at Kuaishou | 2026 | model code in research lineages | offline AUC, calibration, A/B | [2609.30001](https://arxiv.org/abs/2609.30001) P |
+| Auto-RecSys | Meta | 2026 | research ideas and execution playbooks | experiment outcomes | [2609.10922](https://arxiv.org/abs/2609.10922) P |
 | AutoLR | NetEase | 2026 | code patches and configs under a limited trial budget | offline results, then a launch-review gate | [2609.04871](https://arxiv.org/abs/2609.04871) P |
-| CORAL | affiliation not confirmed | 2026 (RecSys OARS workshop) | retrieval, ranking and serving configuration | live A/B | [2609.02730](https://arxiv.org/abs/2609.02730) P |
-| AgenticRecTune | affiliation not confirmed | 2026 | multi-stage pipeline configuration; a skill hub | online A/B | [2604.26969](https://arxiv.org/abs/2604.26969) P |
-| Sortify | affiliation not confirmed | 2026 | ranking fusion weights | online GMV / revenue | [2603.27765](https://arxiv.org/abs/2603.27765) P |
-| GEARS | affiliation not confirmed | 2026 | ranking policy parameters | experiment results; checks against overfitting short-term signals | [2602.18640](https://arxiv.org/abs/2602.18640) P |
-| AI Co-Scientist for search ranking | online travel platform | 2026 | ranking architecture and training code, human in the loop | offline metrics; single-run statistics flagged as a limitation | [2603.22376](https://arxiv.org/abs/2603.22376) P |
+| CORAL | Meta | 2026 (RecSys OARS workshop) | retrieval, ranking and serving configuration | live A/B | [2609.02730](https://arxiv.org/abs/2609.02730) P |
+| AgenticRecTune | Google | 2026 | multi-stage pipeline configuration; a skill hub | online A/B | [2604.26969](https://arxiv.org/abs/2604.26969) P |
+| Sortify | Shopee | 2026 | ranking fusion weights | online GMV / revenue | [2603.27765](https://arxiv.org/abs/2603.27765) P |
+| GEARS | Meta | 2026 | ranking policy parameters | experiment results; checks against overfitting short-term signals | [2602.18640](https://arxiv.org/abs/2602.18640) P |
+| AI Co-Scientist for search ranking | Trip.com, UCLA | 2026 | ranking architecture and training code, human in the loop | offline metrics; single-run statistics flagged as a limitation | [2603.22376](https://arxiv.org/abs/2603.22376) P |
 | AgenticRS-Architecture | overlaps with EvoRec authors | 2026 | models, features and resources (design paper) | not specified | [2603.26085](https://arxiv.org/abs/2603.26085) P |
+| RecEvolve | Google | 2026 | code and config of a production two-tower retrieval model | offline metrics, then A/B; its agent inflated in-batch metrics by shrinking the batch size, caught by a human | [2609.01622](https://arxiv.org/abs/2609.01622) P |
+| Astar | Alibaba (Lazada), Zhejiang U. | 2026 | an 8B model trained on commit history proposes evolution directions | training-loss outcomes, learned reward model; 5-day A/B | [2608.27287](https://arxiv.org/abs/2608.27287) P |
+| A-MLE | Meta | 2026 | config and architecture code of ads-ranking models, human checkpoints | significance vs a rolling baseline | [2609.08248](https://arxiv.org/abs/2609.08248) P |
+| SR-Agent | Kuaishou | 2026 | post-ranking strategy configuration through four bounded actions | bad-case retest, replay, one-month A/B | [2607.17719](https://arxiv.org/abs/2607.17719) P |
+| From Trajectories to Evidence | Kuaishou | 2026 | paper-derived module adaptations to a production ranker; auditable records | per-round AUC; reports that 22 of 30 trajectories end below an earlier best | [2608.05235](https://arxiv.org/abs/2608.05235) P |
+| RecSys Factory | Tencent | 2026 | Claude-Code-based platform bounded to typed decision points (operations more than evolution) | human approval cards | [2608.11241](https://arxiv.org/abs/2608.11241) P |
+| AURA | Walt Disney Company | 2026 | log-driven diagnosis and code proposals (stops at pull requests) | LLM-judged rubric | [2609.16625](https://arxiv.org/abs/2609.16625) P |
+| Spotify conversational agent | Spotify | 2026 | prompts and logic of a conversational recommender, edited by a coding agent | LLM judge on synthetic conversations, then A/B | [2609.30297](https://arxiv.org/abs/2609.30297) P |
+| Rethinking Recommendation Paradigms | Alibaba (EvoRec authors) | 2026 | blueprint for self-evolving agentic modules | layered rewards | [2603.26100](https://arxiv.org/abs/2603.26100) P |
 | Ranking Engineer Agent (REA) | Meta | 2026 | ads ranking code and configs | experiment metrics; GPU cost approved up front | [engineering blog](https://engineering.fb.com/2026/03/17/developer-tools/ranking-engineer-agent-rea-autonomous-ai-system-accelerating-meta-ads-ranking-innovation/) |
 | Planning in constrained agent topology | affiliation not confirmed | 2026 | feature-engineering code | downstream metrics, human input | [2601.10820](https://arxiv.org/abs/2601.10820) P |
 | LLMs as feature engineers | affiliation not confirmed | 2026 | LLM-extracted features for CTR models | offline information gain; small gains reported honestly | [2609.21894](https://arxiv.org/abs/2609.21894) P |
@@ -50,7 +65,27 @@ can understate the paper. Corrections are welcome as pull requests.
 |---|---|---|
 | EvoRank (learning to rank, not recommendation) | Its held-out transfer audit found that most of the first campaign's gains were fitness noise. This is the clearest evidence that evolution loops overfit their selection data. The authors say code will be released; none was found. | [2609.22196](https://arxiv.org/abs/2609.22196) P |
 | From AutoRecSys to AutoRecLab (Beel et al.) | A position paper calling for autonomous recsys research labs, with shared benchmarks and provenance | [2510.18104](https://arxiv.org/abs/2510.18104) P |
+| RankEvolve for lexical retrieval (SIGIR '26 short) | LLM evolution of BM25/QL ranking programs; evaluated on 16 held-out datasets | [2602.16932](https://arxiv.org/abs/2602.16932) P, code [fangchenli/ranking-evolved](https://github.com/fangchenli/ranking-evolved) |
 | WPP AlphaEvolve case study | Reports up to 7% on a recommendation score. A blog post; only search snippets were read | [blog](https://cms.research.wpp.com/?p=577) ? |
+
+### Components of generative recommenders
+
+| work | evolves | feedback | paper | code |
+|---|---|---|---|---|
+| Evolving Semantic Indexes for Generative Retrieval (Santa Clara U., Coupang) | semantic-ID construction, collisions, decoding, training objective | 1M-parameter proxy decoder; proxy-target agreement holds for indexes (ρ = 0.90) but inverts when the objective changes | [2610.28568](https://arxiv.org/abs/2610.28568) P | none found |
+| AgenticTagger | hierarchical item-descriptor vocabulary used as tokens | annotator LLMs | [2602.05945](https://arxiv.org/abs/2602.05945) P | none found |
+| Self-improving item tokenization | the recommender reassigns its own item tokens | its training signal | [2412.17171](https://arxiv.org/abs/2412.17171) P | none found |
+| Feedback-grounded policy discovery (Kuaishou) | natural-language policies distilled into a semantic-ID generator | similarity reward on training data; 7-day A/B | [2607.27789](https://arxiv.org/abs/2607.27789) P | none found |
+
+### LLM feature engineering and data rules
+
+| work | evolves | paper |
+|---|---|---|
+| Agent0 | multi-value features discovered from text | [2507.18993](https://arxiv.org/abs/2507.18993) P |
+| PromptPack | batched LLM annotation of ad creatives for CTR features | [2607.20528](https://arxiv.org/abs/2607.20528) P |
+| MoFA | LLM feature selection and interaction discovery | [2603.24979](https://arxiv.org/abs/2603.24979) P |
+| RuleAgent | denoising rules over training-loss patterns | [2503.23374](https://arxiv.org/abs/2503.23374) P |
+| LATTEArena | benchmark of LLM tabular feature engineering (not recsys) | [2606.09004](https://arxiv.org/abs/2606.09004) P |
 
 ## 2. Classic AutoML and NAS for recommenders (background)
 
@@ -108,6 +143,17 @@ baselines. They are candidate evolvers to run against recforge sessions.
 | OneRec (Kuaishou) | weights, by iterative DPO on its own beam samples | [2502.18965](https://arxiv.org/abs/2502.18965), [2506.13695](https://arxiv.org/abs/2506.13695) P | [Kuaishou-OneRec/OpenOneRec](https://github.com/Kuaishou-OneRec/OpenOneRec) C, none; coverage of the DPO loop not checked |
 | SPRec | weights, by self-play SFT + DPO | [2412.09243](https://arxiv.org/abs/2412.09243) P | [RegionCh/SPRec](https://github.com/RegionCh/SPRec) C, none |
 | Rec-R1 | LLM weights, by RL against a recommender's metric | [2503.24289](https://arxiv.org/abs/2503.24289) P | [linjc16/Rec-R1](https://github.com/linjc16/Rec-R1) C, Apache-2.0 |
+| SAGER | per-user natural-language policy skills | [2604.14972](https://arxiv.org/abs/2604.14972) P | no official code |
+| RecNet | preference-propagation modules optimised with textual gradients | [2601.21609](https://arxiv.org/abs/2601.21609) P | none found |
+| AtomRec | atomic, linked user and item memories | [2609.04882](https://arxiv.org/abs/2609.04882) P | none found |
+| AMEM4Rec / STEAM / MARS | cross-user, community and belief-state memories | [2602.08837](https://arxiv.org/abs/2602.08837), [2601.16872](https://arxiv.org/abs/2601.16872), [2605.14401](https://arxiv.org/abs/2605.14401) P | none found |
+| MemRec | collaborative memory graph | [2601.08816](https://arxiv.org/abs/2601.08816) P | [rutgerswiselab/MemRec](https://github.com/rutgerswiselab/MemRec) C, none |
+| AgentCF++ | dual-layer cross-domain memory | [2502.13843](https://arxiv.org/abs/2502.13843) P | [jhliu0807/AgentCF-plus](https://github.com/jhliu0807/AgentCF-plus) C, none |
+| AFL | recommender and user agents refine each other | [2410.20027](https://arxiv.org/abs/2410.20027) P | [Lanyu0303/AFL](https://github.com/Lanyu0303/AFL) C, MIT |
+| CoARS | co-evolving recommender and user agents by RL | [2604.10029](https://arxiv.org/abs/2604.10029) P | none found |
+| RSIR / DA-RSIR / state retention | recursive self-training on filtered synthetic sequences | [2602.15659](https://arxiv.org/abs/2602.15659), [2610.04302](https://arxiv.org/abs/2610.04302), [2610.07105](https://arxiv.org/abs/2610.07105) P | [USTC-StarTeam/RSIR](https://github.com/USTC-StarTeam/RSIR) C, none; [Jinfeng-Xu/RecRSI](https://github.com/Jinfeng-Xu/RecRSI) C, MIT |
+| LION | self-evolving memory layer for generative recommenders | [2609.15598](https://arxiv.org/abs/2609.15598) P | [JazyJiang/Self-Evolving-Memory-for-Generative-Recommendation](https://github.com/JazyJiang/Self-Evolving-Memory-for-Generative-Recommendation) C, MIT |
+| QD-Rec (Sakana AI) | quality-diversity archive of recommendations | [2610.23470](https://arxiv.org/abs/2610.23470) P | [SakanaAI/QD-Rec](https://github.com/SakanaAI/QD-Rec) C, Apache-2.0 |
 | Agent4Rec | user simulator (used as an evaluator) | [2310.10108](https://arxiv.org/abs/2310.10108) P | [LehengTHU/Agent4Rec](https://github.com/LehengTHU/Agent4Rec) C, MIT |
 | RecAgent / YuLan-Rec | user-behavior simulation | [2306.02552](https://arxiv.org/abs/2306.02552) P | [RUC-GSAI/YuLan-Rec](https://github.com/RUC-GSAI/YuLan-Rec) C, MIT |
 
@@ -144,6 +190,9 @@ Generative backbones that the evolution systems use or compare against:
 | BARS | [2205.09626](https://arxiv.org/abs/2205.09626) P | [reczoo/RecBench](https://github.com/reczoo/RecBench) C, Apache-2.0 |
 | FuxiCTR | [2009.05794](https://arxiv.org/abs/2009.05794) P | [reczoo/FuxiCTR](https://github.com/reczoo/FuxiCTR) C, Apache-2.0 |
 | AgentRecBench (agents as recommenders) | [2505.19623](https://arxiv.org/abs/2505.19623) P | official repo not found |
+| RecoWorld (WWW '26 HCRS workshop) | [2509.10397](https://arxiv.org/abs/2509.10397) P | none found |
+| τ-Rec, verifiable agentic-recommender benchmark | [2606.10156](https://arxiv.org/abs/2606.10156) P | [nbharaths/tau-rec](https://github.com/nbharaths/tau-rec) C |
+| RecRM-Bench, reward models for agentic recommenders | [2605.11874](https://arxiv.org/abs/2605.11874) P | HF dataset (per abstract) |
 | RecBench+ (LLM recommendation assistants) | [2503.09382](https://arxiv.org/abs/2503.09382) P | [jiani-huang/RecBenchPlus](https://github.com/jiani-huang/RecBenchPlus) C, none |
 
 ### ML-engineering agent benchmarks
@@ -155,3 +204,16 @@ Generative backbones that the evolution systems use or compare against:
 | MLGym (Meta) | none | `validate` returns test-set metrics and can be called repeatedly | [2502.14499](https://arxiv.org/abs/2502.14499) P | [facebookresearch/MLGym](https://github.com/facebookresearch/MLGym) C |
 | MLAgentBench | none (task list not re-checked) | | [2310.03302](https://arxiv.org/abs/2310.03302) P | [snap-stanford/MLAgentBench](https://github.com/snap-stanford/MLAgentBench) C, MIT |
 | RE-Bench (METR) | none (task list not re-checked) | agents compared with humans at matched time budgets | [2411.15114](https://arxiv.org/abs/2411.15114) P | [METR/RE-Bench](https://github.com/METR/RE-Bench) C |
+
+### Surveys and roadmaps (none covers code-level evolution of recommenders)
+
+| survey | paper |
+|---|---|
+| Autonomous Information Seeking: A Roadmap for Agentic Recommender Systems (mentions "agent as engineer" in one clause) | [2607.04433](https://arxiv.org/abs/2607.04433) P |
+| A Survey on LLM-powered Agents for Recommender Systems | [2502.10050](https://arxiv.org/abs/2502.10050) P |
+| A Survey of LLM Empowered Agents for Recommendation and Search | [2503.05659](https://arxiv.org/abs/2503.05659) P |
+| A Survey of Foundation Model-Powered Recommender Systems | [2504.16420](https://arxiv.org/abs/2504.16420) P |
+| The Future is Agentic (multi-agent recommender perspective) | [2507.02097](https://arxiv.org/abs/2507.02097) P |
+| Towards Agentic Recommender Systems in the Era of Multimodal LLMs | [2503.16734](https://arxiv.org/abs/2503.16734) P |
+| A Survey of Self-Evolving Agents (general; no recommender code evolution) | [2507.21046](https://arxiv.org/abs/2507.21046) P |
+| A Comprehensive Survey of Self-Evolving AI Agents (general; never mentions recommendation) | [2508.07407](https://arxiv.org/abs/2508.07407) P |
