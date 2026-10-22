@@ -95,5 +95,6 @@ put in one table.
 
 Model code runs in its own process and receives only the train view, so the API cannot hand it a validation or
 test target, and asking for one raises `PermissionError`. It does not stop code that opens the raw data files
-under `data/` itself. For an agent you do not trust, run recforge in a container whose model process sees only
+under `data/` itself, and it does not stop an agent with file-system access from reading the sealed test scores or
+editing the session files under `sessions/`: sealing is enforced at the API, not the file system. For an agent you do not trust, run recforge in a container whose model process sees only
 the train view; that mode is planned, not built.
