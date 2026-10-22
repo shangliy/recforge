@@ -6,6 +6,7 @@ commands with `--json`, and evolve sessions give them a budget and validation-on
 
 - Agent / method interface: [docs/AGENTS.md](docs/AGENTS.md)
 - Design, protocol rules, roadmap: [docs/DESIGN.md](docs/DESIGN.md)
+- Survey of self-evolving recommenders: [docs/SURVEY.md](docs/SURVEY.md), catalogue in [docs/related-work.md](docs/related-work.md)
 
 ## Quick start
 
