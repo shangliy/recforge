@@ -1,0 +1,115 @@
+{
+  "slug": "self-evolving-recsys-survey",
+  "title": "Self-Evolving Recommender Systems: A Survey of Agent-Driven Model Improvement and How to Evaluate It",
+  "created": "2026-10-21T21:49:58-07:00",
+  "updated": "2026-10-21T22:28:39-07:00",
+  "meta": {
+    "domain": "recommender systems; LLM agents",
+    "venue": "arXiv (ACM two-column)",
+    "deadline": "",
+    "claim": "Auditing code/config-level self-evolving recommenders on eight evaluation criteria shows the field cannot yet separate real gains from selection noise, sampled-metric artefacts or weak baselines; a shared sealed, full-ranking, budget-accounted protocol is missing."
+  },
+  "stages": {
+    "01-idea": {
+      "status": "done",
+      "summary": "Survey; primary claim = taxonomy (what evolves x selection signal) + 8-criterion evaluation audit",
+      "updated": "2026-10-21T21:50:31-07:00"
+    },
+    "02-related-work": {
+      "status": "done",
+      "summary": "154 refs; 6 clusters (search-space AutoML, generic program evolution, code/config-level self-evolving recsys, generative-component evolution, policy/memory self-improvement, evaluation methodology); no prior survey of cluster C",
+      "updated": "2026-10-21T22:07:00-07:00"
+    },
+    "03-benchmarks": {
+      "status": "done",
+      "summary": "Evaluation settings in use, metric pathologies, blind spots, requirements for a shared evolver benchmark",
+      "updated": "2026-10-21T22:07:22-07:00"
+    },
+    "04-methodology": {
+      "status": "done",
+      "summary": "Two-axis taxonomy: evolved object L0-L4+meta x selection signal S1-S6; loop anatomy; comparison table",
+      "updated": "2026-10-21T22:09:46-07:00"
+    },
+    "05-challenges": {
+      "status": "done",
+      "summary": "11 limitations from full-text audit of 17 systems; L1 selection-on-noise + L2 no null control ranked first; Roelofs counter-evidence recorded",
+      "updated": "2026-10-21T22:09:46-07:00"
+    },
+    "06-alignment": {
+      "status": "done",
+      "summary": "keep, sharpened; no subsumption (4 nearest surveys read in full)",
+      "updated": "2026-10-21T22:09:46-07:00"
+    },
+    "07-refine": {
+      "status": "done",
+      "summary": "Draft paper.tex (10 pp acmart): taxonomy, systems, audit of 22+5 systems generated from audit.csv, reporting standard, recforge, open problems, threats",
+      "updated": "2026-10-21T22:18:53-07:00"
+    },
+    "08-implement": {
+      "status": "todo",
+      "summary": "",
+      "updated": ""
+    },
+    "09-experiments": {
+      "status": "todo",
+      "summary": "",
+      "updated": ""
+    },
+    "10-evolve": {
+      "status": "active",
+      "summary": "",
+      "updated": "2026-10-21T22:28:39-07:00"
+    }
+  },
+  "rounds": 1,
+  "log": [
+    {
+      "ts": "2026-10-21T21:49:58-07:00",
+      "event": "init self-evolving-recsys-survey"
+    },
+    {
+      "ts": "2026-10-21T21:50:31-07:00",
+      "event": "set claim=Auditing code/config-level self-evolving recommenders on eight evaluation criteria shows the field cannot yet separate real gains from selection noise, sampled-metric artefacts or weak baselines; a shared sealed, full-ranking, budget-accounted protocol is missing."
+    },
+    {
+      "ts": "2026-10-21T21:50:31-07:00",
+      "event": "note: Pure survey: stages 08-09 (implement/experiments) are out of scope by user choice 2026-10-21; stage 03 becomes the evaluation-protocol landscape, 04 the taxonomy, 05 the audit."
+    },
+    {
+      "ts": "2026-10-21T21:50:31-07:00",
+      "event": "complete 01-idea"
+    },
+    {
+      "ts": "2026-10-21T22:07:00-07:00",
+      "event": "complete 02-related-work"
+    },
+    {
+      "ts": "2026-10-21T22:07:22-07:00",
+      "event": "complete 03-benchmarks"
+    },
+    {
+      "ts": "2026-10-21T22:09:46-07:00",
+      "event": "complete 04-methodology"
+    },
+    {
+      "ts": "2026-10-21T22:09:46-07:00",
+      "event": "complete 05-challenges"
+    },
+    {
+      "ts": "2026-10-21T22:09:46-07:00",
+      "event": "complete 06-alignment"
+    },
+    {
+      "ts": "2026-10-21T22:18:53-07:00",
+      "event": "complete 07-refine"
+    },
+    {
+      "ts": "2026-10-21T22:18:53-07:00",
+      "event": "note: 08-implement and 09-experiments skipped: pure survey by user choice (2026-10-21). No new numbers; audit counts are generated from audit/audit.csv."
+    },
+    {
+      "ts": "2026-10-21T22:28:39-07:00",
+      "event": "open evolve round 1"
+    }
+  ]
+}

@@ -70,14 +70,16 @@ Most code-level systems share the same four parts, and they differ mainly in how
 
 ## 4. Open problems
 
-**4.1 Sampled metrics as the objective.** Both open-source recommender-evolution systems select and report
-with one target against 99 random negatives. Krichene and Rendle showed that sampled metrics can reverse model
-rankings. When the agent's objective is the sampled metric, a loop can learn to separate targets from random
-items rather than rank the catalogue. No paper checks whether evolved gains survive full ranking.
+**4.1 Sampled metrics as the objective.** In a full-text audit of 22 code- and configuration-level systems
+(`papers/self-evolving-recsys-survey/audit/`), two evaluate with full-catalogue ranking; Self-EvolveRec and
+RecHarness rank one target against 99 random negatives, and RecEvolve against in-batch negatives. Krichene and Rendle
+showed that sampled metrics can reverse model rankings. When the agent's objective is the sampled metric, a loop can
+learn to separate targets from random items rather than rank the catalogue. RecEvolve's agent did a version of this:
+it shrank the batch size, which made the in-batch metric easier.
 
-**4.2 Which split drives the search.** RecHarness, Self-EvolveRec and MLRC-Bench restrict feedback to
-validation and score the final choice on test once. Several other systems do not say which split drives
-per-round decisions. MLGym's `validate` returns test metrics and can be called repeatedly. In AIDE-style
+**4.2 Which split drives the search.** Of the 16 audited systems that select offline, three state that the final
+choice was scored on test once (RecHarness, VirtualMLE, EvoSkillRec), eight do not say which split drives per-round
+decisions, and two select on test data (both disclose it). MLRC-Bench also restricts agents to the development split. MLGym's `validate` returns test metrics and can be called repeatedly. In AIDE-style
 loops the agent writes its own validation split. Where a seal exists, it is a convention of the experiment
 script, and nothing stops the agent's code from reading the test data.
 

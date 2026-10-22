@@ -1,0 +1,7 @@
+draft/*.aux
+draft/*.log
+draft/*.out
+draft/*.blg
+draft/*.fls
+draft/*.fdb_latexmk
+arxiv.err
