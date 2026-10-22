@@ -46,7 +46,7 @@ protocol version and commit; the leaderboard is built from those files only.
 ## Citing
 
 The survey *Self-Evolving Recommender Systems: A Survey and an Evaluation Audit* and its audit data live in
-[`papers/self-evolving-recsys-survey`](papers/self-evolving-recsys-survey). Paper page: <https://shangliy.github.io/recforge/survey/>; preprint DOI [10.5281/zenodo.23575788](https://doi.org/10.5281/zenodo.23575788) (the badge above is the code and data archive). Cite the paper as:
+[`papers/self-evolving-recsys-survey`](papers/self-evolving-recsys-survey). Paper list: [Awesome Self-Evolving RecSys](https://github.com/shangliy/Awesome-Self-Evolving-RecSys). Paper page: <https://shangliy.github.io/recforge/survey/>; preprint DOI [10.5281/zenodo.23575788](https://doi.org/10.5281/zenodo.23575788) (the badge above is the code and data archive). Cite the paper as:
 
 ```bibtex
 @misc{yang2026selfevolvingrecsys,

@@ -1,7 +1,7 @@
 # Related work: self-evolving and agent-driven recommender systems
 
 A catalogue of work on improving recommenders automatically, with what each system changes, what feedback it
-learns from, and whether its code is open. Read [SURVEY.md](SURVEY.md) for the analysis.
+learns from, and whether its code is open. Read [SURVEY.md](SURVEY.md) for the analysis. A maintained, extended version of this catalogue is at [Awesome Self-Evolving RecSys](https://github.com/shangliy/Awesome-Self-Evolving-RecSys).
 
 Checked on 2026-10-21. Tags:
 
