@@ -115,6 +115,7 @@ recforge is meant to be the shared, offline and rerunnable environment that §4.
 |---|---|
 | 4.1 sampled metrics | Every result ranks the full catalogue with history removed (HR, NDCG at 10 and 20, MRR@100). No sampled metric exists in the code. |
 | 4.2 split hygiene | The model runs in a separate process that receives only the train view. Asking it for a validation or test target raises `PermissionError`. Evolve trials return validation metrics only. Test metrics are written sealed and revealed for exactly one trial at `finalize`, after which the session accepts nothing. |
+| 4.3 null control | `recforge evolve --evolver random` spends the same session budget on random search, and every evolver's summary reports the validation-to-test gap of its finalized trial. |
 | 4.4 budgets | Sessions have a trial limit and a minute limit, both enforced by recforge, and the session file keeps every trial with its note. |
 | 4.5 shared benchmark | One protocol version (`loo-2`), fixed datasets and seeds, and result keys that contain the source hash of the method. Evolved and hand-written methods share one leaderboard. |
 | 4.6 starting points | Pop, ItemKNN, BPR, SASRec, HSTU and TIGER ship as baselines. SASRec and HSTU reproduce the HSTU repository's ML-1M numbers within a few percent with `--preset hstu-repo`. |
@@ -125,16 +126,16 @@ Not built yet, in order of importance:
 - **Real isolation.** The train view protects the API, not the file system: model code could open the raw
   files itself. A container mode that mounts only the train view is planned and is needed before running
   agents that are not trusted.
-- **Overfitting measurements (4.3).** Each finalized session should report its validation-to-test gap, sessions
-  should be repeatable over seeds, and a random-search or Optuna evolver with the same budget should run as the
-  null baseline.
+- **Overfitting measurements (4.3), partly built.** `recforge evolve` reports the validation-to-test gap of the
+  finalized trial, and the `random` evolver is the equal-budget null baseline. Repeating sessions over seeds and
+  aggregating them is not automated yet.
 - **Cost accounting (4.4).** LLM tokens and dollars are not recorded; only trials and minutes are.
 - **A timeline-aware split.** Leave-one-out ignores the global timeline, which Ji et al. show leaks future
   data. A temporal split should be offered next to `loo-2`.
 - **More generative models.** An OneRec-style model with preference alignment is next.
-- **Evolver adapters.** OpenEvolve, ShinkaEvolve, AIDE, RecHarness (MIT) and Self-EvolveRec (no license, so link
-  only) could each drive a session through the same `--json` commands, which would make them comparable for the
-  first time.
+- **More evolver adapters.** `random`, `cli-agent` (any coding agent, e.g. Claude Code or Codex) and an
+  `openevolve` adapter are built; the OpenEvolve adapter has not yet been run end to end. ShinkaEvolve, AIDE,
+  RecHarness (MIT) and Self-EvolveRec (no license, so link only) are next.
 
 ## 6. Suggested experiments
 
