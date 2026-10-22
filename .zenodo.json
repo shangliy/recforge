@@ -3,12 +3,37 @@
   "upload_type": "software",
   "description": "recforge: one protocol to benchmark and evolve recommenders (leave-one-out, full-catalogue ranking, sealed test, budgeted evolve sessions). Includes the survey paper 'Self-Evolving Recommender Systems: A Survey and an Evaluation Audit' (papers/self-evolving-recsys-survey/draft/paper.pdf), its coded audit of 27 self-evolving recommender systems (audit/audit.csv) and the verbatim evidence behind every coded cell.",
   "creators": [
-    {"name": "Yang, Shanglin", "affiliation": "Independent Researcher"},
-    {"name": "Shi, Zhan", "affiliation": "Santa Clara University"}
+    {
+      "name": "Yang, Shanglin",
+      "affiliation": "Independent Researcher"
+    },
+    {
+      "name": "Shi, Zhan",
+      "affiliation": "Santa Clara University"
+    }
   ],
   "license": "MIT",
-  "keywords": ["recommender systems", "LLM agents", "self-evolving systems", "AutoML", "program evolution", "evaluation", "reproducibility", "benchmark"],
+  "keywords": [
+    "recommender systems",
+    "LLM agents",
+    "self-evolving systems",
+    "AutoML",
+    "program evolution",
+    "evaluation",
+    "reproducibility",
+    "benchmark"
+  ],
   "related_identifiers": [
-    {"identifier": "https://shangliy.github.io/recforge/survey/", "relation": "isDocumentedBy", "resource_type": "publication-preprint"}
+    {
+      "identifier": "https://shangliy.github.io/recforge/survey/",
+      "relation": "isDocumentedBy",
+      "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "10.5281/zenodo.23575788",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    }
   ]
 }
