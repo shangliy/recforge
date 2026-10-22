@@ -1,5 +1,6 @@
 [project]
 name = "recforge"
+license = { text = "MIT" }
 version = "0.1.0"
 description = "One protocol to train, evaluate, compare and evolve recommenders: classic, generative (TIGER/HSTU/OneRec) and LLM-based."
 requires-python = ">=3.10"

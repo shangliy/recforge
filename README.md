@@ -10,7 +10,7 @@ commands with `--json`, and evolve sessions give them a budget and validation-on
 ## Quick start
 
 ```bash
-git clone <repo> recforge && cd recforge
+git clone https://github.com/shangliy/recforge.git && cd recforge
 python -m venv .venv && .venv/bin/pip install -e .        # numpy, pandas, scipy, torch
 .venv/bin/python -m pytest -q                             # CPU, under a minute
 
