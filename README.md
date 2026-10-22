@@ -19,7 +19,13 @@ recforge new my_method.py
 recforge bench --model my_method.py:MarkovChain --suite smoke --baselines
 recforge bench --model my_method.py:MarkovChain --suite ml1m --device cuda   # downloads MovieLens-1M once
 recforge board
+
+recforge evolve --evolver random --dataset synthetic --base itemknn --max-trials 10   # an evolver under a budget
 ```
+
+Evolvers (`random`, `cli-agent` for Claude Code / Codex, `openevolve`, or your own `file.py:Class`) all run
+inside the same budgeted session, see validation only, and report their validation-to-test gap; see
+[docs/AGENTS.md](docs/AGENTS.md#4-run-an-evolver).
 
 Workspace: `RECFORGE_HOME` (default: the checkout) holds `data/`, `runs/` and `sessions/`.
 `RECFORGE_RAW` points at existing raw data (`ml-1m/`, `mind/{train,dev}/`) to skip downloads.

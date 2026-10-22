@@ -1,11 +1,11 @@
 """Evolve sessions: a budgeted search where the searcher sees validation only.
 
-    create(name, dataset, max_trials, max_minutes)
+    create(name, dataset, max_trials, max_minutes, evolver=None)
     trial(name, spec, overrides)   -> validation metrics; counts against the budget
     finalize(name, trial_id)       -> test metrics of one chosen trial; the session is then closed
 
-The searcher can be a person, a script or a coding agent; recforge enforces the
-rules, not the prompt. Test metrics are computed with every trial but sealed,
+The searcher can be a person, a script or a coding agent (see recforge.evolvers);
+recforge enforces the rules, not the prompt. Test metrics are computed with every trial but sealed,
 so finalize does not retrain. A finalized trial is copied to the main runs
 directory and appears on the leaderboard like any other record, with its
 session attached.
@@ -38,11 +38,12 @@ def load(name: str) -> Dict:
     return json.loads(p.read_text())
 
 
-def create(name: str, dataset: str, max_trials: int = 20, max_minutes: float = 120.0, seed: int = 1) -> Dict:
+def create(name: str, dataset: str, max_trials: int = 20, max_minutes: float = 120.0, seed: int = 1,
+           evolver: Optional[str] = None) -> Dict:
     if _path(name).exists():
         raise FileExistsError(f"session {name!r} exists")
     _path(name).parent.mkdir(parents=True)
-    s = {"name": name, "dataset": dataset, "seed": seed,
+    s = {"name": name, "dataset": dataset, "seed": seed, "evolver": evolver,
          "budget": {"trials": max_trials, "minutes": max_minutes}, "used": {"trials": 0, "minutes": 0.0},
          "trials": [], "final": None, "created": time.strftime("%Y-%m-%dT%H:%M:%S%z")}
     _save(s)
@@ -80,8 +81,8 @@ def finalize(name: str, trial_id: int) -> Dict:
     s["final"] = {"trial": trial_id, "test": test, "at": time.strftime("%Y-%m-%dT%H:%M:%S%z")}
     _save(s)
     rec = json.loads(src.read_text())
-    rec["test"], rec["evolve_session"] = test, {"name": name, "trial": trial_id, "used": s["used"],
-                                                "budget": s["budget"]}
+    rec["test"], rec["evolve_session"] = test, {"name": name, "trial": trial_id, "evolver": s.get("evolver"),
+                                                "used": s["used"], "budget": s["budget"]}
     dst = record_path(RUNS_DIR, s["dataset"], t["model"], t["config_hash"], s["seed"])
     dst.parent.mkdir(parents=True, exist_ok=True)
     dst.write_text(json.dumps(rec, indent=1))

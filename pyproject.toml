@@ -24,3 +24,4 @@ recforge = ["templates/*.py"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]  # test this checkout, even when another one is installed
