@@ -1,0 +1,88 @@
+% Figure 2: timeline. Left: 2019-2025 precursors by year. Right: 2026 systems by month of first arXiv version.
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize,
+  sys/.style={rounded corners=1.5pt, inner sep=1.6pt, text=white, font=\sffamily\tiny\bfseries, minimum width=17mm, align=center},
+  pre/.style={align=left, font=\sffamily\tiny, anchor=south west, inner sep=1pt},
+]
+\def\yr{25mm}   % width of one precursor year
+\def\mo{19.5mm} % width of one month in 2026
+% axes
+\draw[thick, gray] (0,0) -- (7*\yr,0);
+\draw[thick] (0,-50mm) -- (9*\mo,-50mm);
+\foreach \y [count=\i from 0] in {2019,2020,2021,2022,2023,2024,2025} {
+  \draw[gray] (\i*\yr+0.5*\yr,0.8mm) -- ++(0,-1.6mm);
+  \node[below, gray!70!black] at (\i*\yr+0.5*\yr,-1mm) {\y};
+}
+\foreach \m [count=\i from 0] in {Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct} {
+  \draw (\i*\mo+0.5*\mo,-49.2mm) -- ++(0,-1.6mm);
+  \node[below] at (\i*\mo+0.5*\mo,-51mm) {\m};
+}
+\node[below, font=\sffamily\scriptsize\bfseries] at (4.5*\mo,-54.5mm) {2026 (month of first arXiv version)};
+\node[below, font=\sffamily\scriptsize\bfseries, gray!70!black] at (3.5*\yr,-4.5mm) {2019--2025: precursors};
+
+% precursors (above the axis)
+\node[pre, text=cL0!60!black] at (0*\yr+0.5*\yr-4mm,2mm) {Sampled-metric\\critique};
+\node[pre, text=cL0!60!black] at (1*\yr+0.5*\yr-4mm,2mm) {AutoCTR\\AutoFIS\\AutoEmb};
+\node[pre, text=cL0!60!black] at (3*\yr+0.5*\yr-4mm,2mm) {NASRec\\AutoLossGen};
+\node[pre, text=cL2!80!black] at (4*\yr+0.5*\yr-4mm,2mm) {FunSearch\\TIGER};
+\node[pre, text=cL2!80!black] at (5*\yr+0.5*\yr-4mm,2mm) {HSTU\\AI Scientist\\MLE-bench};
+\node[pre, text=cL2!80!black] at (6*\yr+0.5*\yr-4mm,2mm) {AlphaEvolve\\OpenEvolve\\OneRec\\AutoRecLab};
+
+% 2026 systems, stacked by month; colour = level
+\newcommand{\sysat}[4]{\node[sys, fill=#3] at (#1*\mo+0.5*\mo, -47mm+#2*3.4mm) {#4};}
+% Feb (0)
+\sysat{0}{0}{cL2}{Self-EvolveRec}
+\sysat{0}{1}{cL2}{Google/YouTube}
+\sysat{0}{2}{cL1!85!black}{GEARS}
+\sysat{0}{3}{cL3!90!black}{AgenticTagger}
+% Mar (1)
+\sysat{1}{0}{cL1!85!black}{Sortify}
+% Apr (2)
+\sysat{2}{0}{cL1!85!black}{AgenticRecTune}
+% Jun (4)
+\sysat{4}{0}{cL2}{EvoRec}
+\sysat{4}{1}{cL1!85!black}{VirtualMLE}
+\sysat{4}{2}{cL2}{NOVA}
+\sysat{4}{3}{cL2}{AgentX}
+% Jul (5)
+\sysat{5}{0}{cL2}{RecHarness}
+\sysat{5}{1}{cL1!85!black}{SR-Agent}
+\sysat{5}{2}{cL2}{RecEvolve}
+% Aug (6)
+\sysat{6}{0}{cL2}{Trajectories}
+\sysat{6}{1}{cL2}{Astar}
+\sysat{6}{2}{cL1!85!black}{PILOT}
+\sysat{6}{3}{cL1!85!black}{A/B Agent}
+% Sep (7)
+\sysat{7}{0}{cL2}{AgentX-Model}
+\sysat{7}{1}{cL2}{Auto-RecSys}
+\sysat{7}{2}{cL2}{AutoLR}
+\sysat{7}{3}{cL1!85!black}{CORAL}
+\sysat{7}{4}{cL2}{A-MLE}
+\sysat{7}{5}{cL2}{EvoSkillRec}
+\sysat{7}{6}{cL2}{RankEvolve}
+\sysat{7}{7}{cL2}{EvoPilot}
+\sysat{7}{8}{cL3!90!black}{Amazon AutoRes.}
+\sysat{7}{9}{cL1!85!black}{DMRL}
+% Oct (8)
+\sysat{8}{0}{cL2}{Pop.\ Evolution}
+\sysat{8}{1}{cL3!90!black}{Sem.\ Indexes}
+
+% legend
+\begin{scope}[shift={(30mm,-28mm)}]
+\node[sys, fill=cL1!85!black, minimum width=9mm] (l1) at (5mm,0) {L1};
+\node[right=0.5mm of l1, font=\sffamily\tiny] (t1) {configuration};
+\node[sys, fill=cL2, minimum width=9mm, right=2mm of t1] (l2) {L2};
+\node[right=0.5mm of l2, font=\sffamily\tiny] (t2) {code};
+\node[sys, fill=cL3!90!black, minimum width=9mm, below=1.2mm of l1] (l3) {L3};
+\node[right=0.5mm of l3, font=\sffamily\tiny] {generative components};
+\end{scope}
+\end{tikzpicture}
+\caption{From search-space AutoML to agent-driven evolution. Top: precursors by year (grey: search-space AutoML and
+evaluation critique; blue: program evolution, ML-engineering agents and generative recommenders). Bottom: the 2026
+configuration-, code- and component-level systems surveyed here, by month of their first arXiv version; the
+colour gives the highest level of the evolved object. Comparison points outside recommendation and L4 systems are omitted.}
+\label{fig:timeline}
+\end{figure*}

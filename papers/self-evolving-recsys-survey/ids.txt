@@ -157,3 +157,24 @@ maragheh2025future 2507.02097
 huang2025multimodalagentic 2503.16734
 gao2025selfevolvingsurvey 2507.21046
 fang2025selfevolvingsurvey 2508.07407
+# sweep 2026-10-22 (review/sweep-2026-10-22.md): audit additions
+fu2026evopilot 2609.21257
+chandran2026autoresearch 2609.30541
+pilot2026 2608.18637
+jiang2026abagent 2608.04625
+zhang2026dmrl 2609.02170
+yao2026feedbackcontract 2610.28798
+wang2026pear 2609.35031
+# sweep 2026-10-22: should-cite
+hu2026winnerscurse 2610.09239
+bertran2026whatfits 2606.11045
+ferreira2026hpo 2603.24647
+rodrigues2026llmhpo 2606.21641
+luo2025pitfalls 2509.08713
+zhang2026autoreseval 2610.11877
+berman2026winners 2605.18887
+zhang2026dream 2608.09408
+kernelevolve2025 2512.23236
+srikanth2026aide2 2609.26457
+wang2026serm 2601.09515
+wu2025growthhacker 2511.00802

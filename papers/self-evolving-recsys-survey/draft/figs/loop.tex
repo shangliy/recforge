@@ -1,0 +1,52 @@
+% Figure 1: anatomy of a self-evolving recommender loop and where its evidence can fail.
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize,
+  box/.style={draw, rounded corners=2pt, thick, align=center, inner sep=4pt, minimum height=12mm},
+  arr/.style={-{Stealth[length=2.2mm]}, thick},
+  fail/.style={circle, fill=cBad, text=white, font=\sffamily\scriptsize\bfseries, inner sep=0.6pt, minimum size=3.8mm},
+  lab/.style={font=\sffamily\scriptsize, align=center}
+]
+% main loop
+\node[box, fill=cMeta!15, minimum width=27mm] (prop) {\textbf{Proposer}\\LLM agent or search\\[1pt]\scriptsize reads archive, memory, skills};
+\node[box, fill=cL2!12, right=6mm of prop, minimum width=34mm] (cand) {\textbf{Candidate change}\\[1pt]\scriptsize
+  \textcolor{cL0!70!black}{L0} space point \;
+  \textcolor{cL1!80!black}{L1} config \;
+  \textcolor{cL2}{L2} code\\\scriptsize
+  \textcolor{cL3!80!black}{L3} semantic IDs, decoding \;
+  \textcolor{cL4!80!black}{L4} policy};
+\node[box, fill=gray!8, right=6mm of cand, minimum width=27mm] (train) {\textbf{Train and evaluate}\\[1pt]\scriptsize data splits, metric,\\\scriptsize evaluation code};
+\node[box, fill=cL1!12, right=6mm of train, minimum width=31mm] (sel) {\textbf{Selection signal}\\[1pt]\scriptsize S1 val + sealed test \; S2 test\\\scriptsize S3 unstated \; S4 proxy\\\scriptsize S5 online A/B \; S6 self-feedback};
+\node[box, fill=cMeta!15, below=11mm of cand, minimum width=34mm] (arch) {\textbf{Archive / incumbent}\\\scriptsize kept candidates become the next baseline};
+\node[box, fill=gray!8, below=11mm of sel.south east, anchor=north east, xshift=9mm, minimum width=24mm] (out) {\textbf{Report or launch}\\\scriptsize test once \;/\; online experiment};
+
+\draw[arr] (prop) -- (cand);
+\draw[arr] (cand) -- (train);
+\draw[arr] (train) -- (sel);
+\draw[arr] (sel.south west) ++(3mm,0) |- node[lab, pos=0.75, above] {accept} (arch.east);
+\draw[arr] (arch.west) -| node[lab, pos=0.25, below] {next round} (prop.south);
+\draw[arr] ($(sel.south east)+(-5mm,0)$) -- node[lab, right] {stop} ($(sel.south east)+(-5mm,-11mm)$);
+\draw[arr, dashed, cMeta!80!black] (arch.north west) ++(2mm,0) to[bend left=10] node[lab, left, pos=0.55] {meta:\\evolve the\\proposer} (prop.south east);
+
+% failure points (numbers match the caption)
+\node[fail] at ($(train.north east)+(-1mm,0)$) {1};
+\node[fail] at ($(train.south)+(0,0)$) {2};
+\node[fail] at ($(sel.north west)+(1mm,0)$) {3};
+\node[fail] at ($(sel.north east)+(-1mm,0)$) {4};
+\node[fail] at ($(arch.north east)+(-1mm,0)$) {5};
+\node[fail] at ($(out.north east)+(-1mm,0)$) {6};
+\node[fail] at ($(cand.north east)+(-1mm,0)$) {7};
+\end{tikzpicture}
+\caption{Anatomy of a self-evolving recommender. A proposer changes some part of the recommender (the evolved
+object, axis 1 of the taxonomy); the changed system is trained and evaluated; a selection signal (axis 2) decides
+what is kept. Red markers show where the evidence for a reported gain can fail, with the audit criterion that checks it:
+\textbf{1} the agent edits evaluation code, reads test data or games the metric (C9);
+\textbf{2} sampled or unstated ranking metrics (C1);
+\textbf{3} the maximum over many candidates on one reused split, or selection on test (C2, C3);
+\textbf{4} a proxy or self-generated signal that does not transfer (S4, S6);
+\textbf{5} a gain inside run-to-run noise becomes the new baseline (C4, C5);
+\textbf{6} short or repeated online experiments without correction for multiple testing;
+\textbf{7} gains measured against an untuned starting point, with no equal-budget null search (C6, C8).}
+\label{fig:loop}
+\end{figure*}

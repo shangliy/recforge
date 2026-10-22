@@ -1,6 +1,6 @@
 """Build BibTeX entries for arXiv ids from the arXiv API (no guessing: every field comes from the API).
 
-usage: python3 arxiv2bib.py ids.txt manual.bib > refs.bib
+usage: python3 arxiv2bib.py ids.txt manual.bib > refs.bib && python3 published.py refs.bib
 ids.txt: one "key arxiv_id" per line (# comments allowed). manual.bib is appended verbatim (non-arXiv entries).
 """
 import re

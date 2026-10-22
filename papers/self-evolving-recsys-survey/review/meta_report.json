@@ -1,0 +1,987 @@
+{
+ "title": [
+  [
+   "xu2026harness2",
+   "Harness$^2$: Recursive Agent Harnessing for an Open World",
+   "Harness^2: Recursive Agent Harnessing for an Open World",
+   "norm-equal"
+  ],
+  [
+   "narasimhan2026taurec",
+   "$\\tau$-Rec: A Verifiable Benchmark for Agentic Recommender Systems",
+   "$\u03c4$-Rec: A Verifiable Benchmark for Agentic Recommender Systems",
+   "norm-equal"
+  ]
+ ],
+ "authors": [],
+ "year": [],
+ "missing": [],
+ "published": [
+  [
+   "song2020autoctr",
+   "2007.06434",
+   null,
+   "10.1145/3394486.3403137"
+  ],
+  [
+   "zhang2023nasrec",
+   "2207.07187",
+   "Proceedings of the ACM Web Conference 2023 (WWW'23)",
+   "10.1145/3543507.3583446"
+  ],
+  [
+   "li2022autolossgen",
+   "2204.13160",
+   null,
+   "10.1145/3477495.3531941"
+  ],
+  [
+   "song2019autoint",
+   "1810.11921",
+   null,
+   "10.1145/3357384.3357925"
+  ],
+  [
+   "wang2024macrec",
+   "2402.15235",
+   "ACM SIGIR Conference on Research and Development in Information Retrieval 47 (2024) 2760-2764",
+   "10.1145/3626772.3657669"
+  ],
+  [
+   "liu2023recprompt",
+   "2312.10463",
+   null,
+   "10.1145/3627673.3679987"
+  ],
+  [
+   "gao2024sprec",
+   "2412.09243",
+   null,
+   "10.1145/3696410.3714524"
+  ],
+  [
+   "dacrema2019progress",
+   "1907.06902",
+   "Proceedings of the 13th ACM Conference on Recommender Systems (RecSys 2019)",
+   "10.1145/3298689.3347058"
+  ],
+  [
+   "sun2022daisyrec",
+   "2206.10848",
+   null,
+   "10.1109/TPAMI.2022.3231891"
+  ],
+  [
+   "ji2020leakage",
+   "2010.11060",
+   "ACM Trans. Inf. Syst. 41, 3 (2023), 75:1-75:27",
+   "10.1145/3569930"
+  ],
+  [
+   "hidasi2023flaws",
+   "2307.14951",
+   null,
+   "10.1145/3604915.3608839"
+  ],
+  [
+   "klenitskiy2023dross",
+   "2309.07602",
+   null,
+   "10.1145/3604915.3610644"
+  ],
+  [
+   "anelli2021elliot",
+   "2103.02590",
+   "Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval 2021",
+   "10.1145/3404835.3463245"
+  ],
+  [
+   "huang2025recbenchplus",
+   "2503.09382",
+   null,
+   "10.1145/3773966.3777954"
+  ],
+  [
+   "palumbo2026spotify",
+   "2609.30297",
+   "RecSys 2026",
+   "10.1145/3773078.3831910"
+  ],
+  [
+   "baumgart2026autoreclab",
+   "2609.21863",
+   null,
+   "10.1145/3773078.3841273"
+  ],
+  [
+   "narasimhan2026taurec",
+   "2606.10156",
+   "Proceedings of the 20th ACM Conference on Recommender Systems (RecSys '26), pp. 915-919, 2026",
+   "10.1145/3773078.3831847"
+  ]
+ ],
+ "s2_venue": [
+  [
+   "wang2026selfevolving",
+   "2602.10226",
+   "Proceedings of the 20th ACM Conference on Recommender Systems",
+   null,
+   2026,
+   "10.1145/3773078.3831919",
+   "Proceedings of the 20th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "song2020autoctr",
+   "2007.06434",
+   "Knowledge Discovery and Data Mining",
+   "Knowledge Discovery and Data Mining",
+   2020,
+   "10.1145/3394486.3403137",
+   "Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining",
+   null
+  ],
+  [
+   "liu2020autofis",
+   "2003.11235",
+   "Knowledge Discovery and Data Mining",
+   "Knowledge Discovery and Data Mining",
+   2020,
+   "10.1145/3394486.3403314",
+   "Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining",
+   null
+  ],
+  [
+   "zhang2023nasrec",
+   "2207.07187",
+   "The Web Conference",
+   "The Web Conference",
+   2022,
+   "10.1145/3543507.3583446",
+   "Proceedings of the ACM Web Conference 2023",
+   null
+  ],
+  [
+   "zhang2024dnsrec",
+   "2402.00390",
+   "ACM Conference on Recommender Systems",
+   "ACM Conference on Recommender Systems",
+   2024,
+   "10.1145/3640457.3688117",
+   "Proceedings of the 18th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "li2022autolossgen",
+   "2204.13160",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   2022,
+   "10.1145/3477495.3531941",
+   "Proceedings of the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   null
+  ],
+  [
+   "song2019autoint",
+   "1810.11921",
+   "International Conference on Information and Knowledge Management",
+   "International Conference on Information and Knowledge Management",
+   2018,
+   "10.1145/3357384.3357925",
+   "Proceedings of the 28th ACM International Conference on Information and Knowledge Management",
+   null
+  ],
+  [
+   "wang2020autorec",
+   "2007.07224",
+   "ACM Conference on Recommender Systems",
+   "ACM Conference on Recommender Systems",
+   2020,
+   "10.1145/3383313.3411529",
+   "Proceedings of the 14th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "zheng2022automl",
+   "2203.13922",
+   "ACM Trans. Inf. Syst.",
+   null,
+   2022,
+   "10.1145/3579355",
+   "ACM Transactions on Information Systems",
+   "1 - 38"
+  ],
+  [
+   "jawahar2024llmpp",
+   "2310.16712",
+   "Annual Meeting of the Association for Computational Linguistics",
+   "Annual Meeting of the Association for Computational Linguistics",
+   2023,
+   "10.48550/arXiv.2310.16712",
+   "ArXiv",
+   null
+  ],
+  [
+   "nam2025mlestar",
+   "2506.15692",
+   "Neural Information Processing Systems",
+   "Neural Information Processing Systems",
+   2025,
+   "10.48550/arXiv.2506.15692",
+   "ArXiv",
+   null
+  ],
+  [
+   "toledo2025aira",
+   "2507.02554",
+   "Neural Information Processing Systems",
+   "Neural Information Processing Systems",
+   2025,
+   "10.48550/arXiv.2507.02554",
+   "ArXiv",
+   null
+  ],
+  [
+   "schmidgall2025agentlab",
+   "2501.04227",
+   "Conference on Empirical Methods in Natural Language Processing",
+   "Conference on Empirical Methods in Natural Language Processing",
+   2025,
+   "10.18653/v1/2025.findings-emnlp.320",
+   null,
+   "5977-6043"
+  ],
+  [
+   "liu2024agenthpo",
+   "2402.01881",
+   "CPAL",
+   null,
+   2024,
+   "10.48550/arXiv.2402.01881",
+   "ArXiv",
+   null
+  ],
+  [
+   "trirat2024automlagent",
+   "2410.02958",
+   "International Conference on Machine Learning",
+   "International Conference on Machine Learning",
+   2024,
+   "10.48550/arXiv.2410.02958",
+   "ArXiv",
+   null
+  ],
+  [
+   "guo2024dsagent",
+   "2402.17453",
+   "International Conference on Machine Learning",
+   "International Conference on Machine Learning",
+   2024,
+   "10.48550/arXiv.2402.17453",
+   "ArXiv",
+   null
+  ],
+  [
+   "wang2023recmind",
+   "2308.14296",
+   "NAACL-HLT",
+   null,
+   2023,
+   "10.18653/v1/2024.findings-naacl.271",
+   null,
+   "4351-4364"
+  ],
+  [
+   "huang2023interecagent",
+   "2308.16505",
+   "ACM Trans. Inf. Syst.",
+   null,
+   2023,
+   "10.1145/3731446",
+   "ACM Transactions on Information Systems",
+   "1 - 33"
+  ],
+  [
+   "zhang2023agent4rec",
+   "2310.10108",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   2023,
+   "10.1145/3626772.3657844",
+   "Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   null
+  ],
+  [
+   "wang2023recagent",
+   "2306.02552",
+   "ACM Trans. Inf. Syst.",
+   null,
+   2023,
+   "10.1145/3708985",
+   "ACM Transactions on Information Systems",
+   "1 - 37"
+  ],
+  [
+   "wang2024macrec",
+   "2402.15235",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   2024,
+   "10.1145/3626772.3657669",
+   "Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   null
+  ],
+  [
+   "zhang2024agentcf",
+   "2310.09233",
+   "The Web Conference",
+   "The Web Conference",
+   2023,
+   "10.1145/3589334.3645537",
+   "Proceedings of the ACM Web Conference 2024",
+   null
+  ],
+  [
+   "liu2023recprompt",
+   "2312.10463",
+   "International Conference on Information and Knowledge Management",
+   "International Conference on Information and Knowledge Management",
+   2023,
+   "10.1145/3627673.3679987",
+   "Proceedings of the 33rd ACM International Conference on Information and Knowledge Management",
+   null
+  ],
+  [
+   "wang2024re2llm",
+   "2403.16427",
+   "AAAI Conference on Artificial Intelligence",
+   "AAAI Conference on Artificial Intelligence",
+   2024,
+   "10.48550/arXiv.2403.16427",
+   "ArXiv",
+   null
+  ],
+  [
+   "gao2024sprec",
+   "2412.09243",
+   "The Web Conference",
+   "The Web Conference",
+   2024,
+   "10.1145/3696410.3714524",
+   "Proceedings of the ACM on Web Conference 2025",
+   null
+  ],
+  [
+   "lin2025recr1",
+   "2503.24289",
+   "Trans. Mach. Learn. Res.",
+   null,
+   2025,
+   "10.48550/arXiv.2503.24289",
+   "ArXiv",
+   null
+  ],
+  [
+   "xu2025iagent",
+   "2502.14662",
+   "Annual Meeting of the Association for Computational Linguistics",
+   "Annual Meeting of the Association for Computational Linguistics",
+   2025,
+   "10.18653/v1/2025.findings-acl.928",
+   null,
+   "18056-18084"
+  ],
+  [
+   "zhai2024hstu",
+   "2402.17152",
+   "International Conference on Machine Learning",
+   "International Conference on Machine Learning",
+   2024,
+   "10.48550/arXiv.2402.17152",
+   "ArXiv",
+   null
+  ],
+  [
+   "rajput2023tiger",
+   "2305.05065",
+   "Neural Information Processing Systems",
+   "Neural Information Processing Systems",
+   2023,
+   "10.48550/arXiv.2305.05065",
+   "ArXiv",
+   null
+  ],
+  [
+   "dacrema2019progress",
+   "1907.06902",
+   "ACM Conference on Recommender Systems",
+   "ACM Conference on Recommender Systems",
+   2019,
+   "10.1145/3298689.3347058",
+   "Proceedings of the 13th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "sun2022daisyrec",
+   "2206.10848",
+   "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+   "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+   2022,
+   "10.1109/TPAMI.2022.3231891",
+   "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+   "8206-8226"
+  ],
+  [
+   "ji2020leakage",
+   "2010.11060",
+   "ACM Trans. Inf. Syst.",
+   null,
+   2020,
+   "10.1145/3569930",
+   "ACM Transactions on Information Systems",
+   "1 - 27"
+  ],
+  [
+   "meng2020splitting",
+   "2007.13237",
+   "ACM Conference on Recommender Systems",
+   "ACM Conference on Recommender Systems",
+   2020,
+   "10.1145/3383313.3418479",
+   "Proceedings of the 14th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "hidasi2023flaws",
+   "2307.14951",
+   "ACM Conference on Recommender Systems",
+   "ACM Conference on Recommender Systems",
+   2023,
+   "10.1145/3604915.3608839",
+   "Proceedings of the 17th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "rendle2020ncf",
+   "2005.09683",
+   "ACM Conference on Recommender Systems",
+   "ACM Conference on Recommender Systems",
+   2020,
+   "10.1145/3383313.3412488",
+   "Proceedings of the 14th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "klenitskiy2023dross",
+   "2309.07602",
+   "ACM Conference on Recommender Systems",
+   "ACM Conference on Recommender Systems",
+   2023,
+   "10.1145/3604915.3610644",
+   "Proceedings of the 17th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "petrov2022bert4rec",
+   "2207.07483",
+   "ACM Conference on Recommender Systems",
+   "ACM Conference on Recommender Systems",
+   2022,
+   "10.1145/3523227.3548487",
+   "Proceedings of the 16th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "fan2023movielens",
+   "2307.09985",
+   "ACM Trans. Inf. Syst.",
+   null,
+   2023,
+   "10.1145/3675163",
+   "ACM Transactions on Information Systems",
+   "1 - 25"
+  ],
+  [
+   "zhao2021recbole",
+   "2011.01731",
+   "International Conference on Information and Knowledge Management",
+   "International Conference on Information and Knowledge Management",
+   2020,
+   "10.1145/3459637.3482016",
+   "Proceedings of the 30th ACM International Conference on Information & Knowledge Management",
+   null
+  ],
+  [
+   "zhao2022recbole2",
+   "2206.07351",
+   "International Conference on Information and Knowledge Management",
+   "International Conference on Information and Knowledge Management",
+   2022,
+   "10.1145/3511808.3557680",
+   "Proceedings of the 31st ACM International Conference on Information & Knowledge Management",
+   null
+  ],
+  [
+   "anelli2021elliot",
+   "2103.02590",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   2021,
+   "10.1145/3404835.3463245",
+   "Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   null
+  ],
+  [
+   "zhu2022bars",
+   "2205.09626",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   2022,
+   "10.1145/3477495.3531723",
+   "Proceedings of the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   null
+  ],
+  [
+   "zhu2021fuxictr",
+   "2009.05794",
+   "International Conference on Information and Knowledge Management",
+   "International Conference on Information and Knowledge Management",
+   2020,
+   "10.1145/3459637.3482486",
+   "Proceedings of the 30th ACM International Conference on Information & Knowledge Management",
+   null
+  ],
+  [
+   "shang2025agentrecbench",
+   "2505.19623",
+   "Neural Information Processing Systems",
+   "Neural Information Processing Systems",
+   2025,
+   "10.48550/arXiv.2505.19623",
+   "ArXiv",
+   null
+  ],
+  [
+   "huang2025recbenchplus",
+   "2503.09382",
+   "Web Search and Data Mining",
+   "Web Search and Data Mining",
+   2025,
+   "10.1145/3773966.3777954",
+   "Proceedings of the Nineteenth ACM International Conference on Web Search and Data Mining",
+   null
+  ],
+  [
+   "huang2023mlagentbench",
+   "2310.03302",
+   "International Conference on Machine Learning",
+   "International Conference on Machine Learning",
+   2023,
+   null,
+   null,
+   "20271-20309"
+  ],
+  [
+   "zhang2025mlrcbench",
+   "2504.09702",
+   "Neural Information Processing Systems",
+   "Neural Information Processing Systems",
+   2025,
+   "10.48550/arXiv.2504.09702",
+   "ArXiv",
+   null
+  ],
+  [
+   "kang2018sasrec",
+   "1808.09781",
+   "Industrial Conference on Data Mining",
+   "Industrial Conference on Data Mining",
+   2018,
+   "10.1109/ICDM.2018.00035",
+   "2018 IEEE International Conference on Data Mining (ICDM)",
+   "197-206"
+  ],
+  [
+   "sun2019bert4rec",
+   "1904.06690",
+   "International Conference on Information and Knowledge Management",
+   "International Conference on Information and Knowledge Management",
+   2019,
+   "10.1145/3357384.3357895",
+   "Proceedings of the 28th ACM International Conference on Information and Knowledge Management",
+   null
+  ],
+  [
+   "dwork2015reusable",
+   "1506.02629",
+   "Neural Information Processing Systems",
+   "Neural Information Processing Systems",
+   2015,
+   null,
+   "ArXiv",
+   null
+  ],
+  [
+   "blum2015ladder",
+   "1502.04585",
+   "International Conference on Machine Learning",
+   "International Conference on Machine Learning",
+   2015,
+   null,
+   null,
+   "1006-1014"
+  ],
+  [
+   "pan2026recevolve",
+   "2609.01622",
+   "Proceedings of the 20th ACM Conference on Recommender Systems",
+   null,
+   2026,
+   "10.1145/3773078.3831898",
+   "Proceedings of the 20th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "palumbo2026spotify",
+   "2609.30297",
+   "Proceedings of the 20th ACM Conference on Recommender Systems",
+   null,
+   2026,
+   "10.1145/3773078.3831910",
+   "Proceedings of the 20th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "baumgart2026autoreclab",
+   "2609.21863",
+   "Proceedings of the 20th ACM Conference on Recommender Systems",
+   null,
+   2026,
+   "10.1145/3773078.3841273",
+   "Proceedings of the 20th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "nian2026rankevolveir",
+   "2602.16932",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   2026,
+   "10.1145/3805712.3809962",
+   "Proceedings of the 49th International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   null
+  ],
+  [
+   "chen2026memrec",
+   "2601.08816",
+   "Annual Meeting of the Association for Computational Linguistics",
+   "Annual Meeting of the Association for Computational Linguistics",
+   2026,
+   "10.48550/arXiv.2601.08816",
+   null,
+   "44515-44544"
+  ],
+  [
+   "cai2024afl",
+   "2410.20027",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   2024,
+   "10.1145/3726302.3729893",
+   "Proceedings of the 48th International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   null
+  ],
+  [
+   "liu2025agentcfpp",
+   "2502.13843",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   2025,
+   "10.1145/3726302.3730161",
+   "Proceedings of the 48th International ACM SIGIR Conference on Research and Development in Information Retrieval",
+   null
+  ],
+  [
+   "liu2025dgdpo",
+   "2508.12645",
+   "AAAI Conference on Artificial Intelligence",
+   "AAAI Conference on Artificial Intelligence",
+   2025,
+   "10.48550/arXiv.2508.12645",
+   "ArXiv",
+   null
+  ],
+  [
+   "wang2025ruleagent",
+   "2503.23374",
+   "ACM Transactions on Information Systems",
+   null,
+   2025,
+   "10.1145/3841469",
+   "ACM Transactions on Information Systems",
+   "1 - 28"
+  ],
+  [
+   "liu2025recoworld",
+   "2509.10397",
+   "The Web Conference",
+   "The Web Conference",
+   2025,
+   "10.1145/3774905.3794661",
+   "Companion Proceedings of the ACM Web Conference 2026",
+   null
+  ],
+  [
+   "narasimhan2026taurec",
+   "2606.10156",
+   "Proceedings of the 20th ACM Conference on Recommender Systems",
+   null,
+   2026,
+   "10.1145/3773078.3831847",
+   "Proceedings of the 20th ACM Conference on Recommender Systems",
+   null
+  ],
+  [
+   "peng2025agentsurvey",
+   "2502.10050",
+   "Conference on Empirical Methods in Natural Language Processing",
+   "Conference on Empirical Methods in Natural Language Processing",
+   2025,
+   "10.48550/arXiv.2502.10050",
+   "ArXiv",
+   null
+  ],
+  [
+   "zhang2025agentsearchsurvey",
+   "2503.05659",
+   "ACM Transactions on Information Systems",
+   null,
+   2025,
+   "10.1145/3842663",
+   "ACM Transactions on Information Systems",
+   null
+  ],
+  [
+   "maragheh2025future",
+   "2507.02097",
+   "ACM Transactions on Recommender Systems",
+   "ACM Transactions on Recommender Systems",
+   2025,
+   "10.1145/3845988",
+   "ACM Transactions on Recommender Systems",
+   null
+  ]
+ ],
+ "versions": [
+  [
+   "wang2026selfevolving",
+   "2602.10226",
+   "RecSys 2026"
+  ],
+  [
+   "azhar2026coral",
+   "2609.02730",
+   "Accepted by RecSys '26 OARS Workshop"
+  ],
+  [
+   "wu2026coscientist",
+   "2603.22376",
+   "Submitted to EMNLP for review on June 14, 2026"
+  ],
+  [
+   "liu2020autofis",
+   "2003.11235",
+   "KDD 2020 ADS track oral accepted"
+  ],
+  [
+   "zhang2023nasrec",
+   "2207.07187",
+   "Proceedings of the ACM Web Conference 2023 (WWW'23)"
+  ],
+  [
+   "li2022autolossgen",
+   "2204.13160",
+   "12 pages, 6 figures. Conference: Proceedings of the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR '22)"
+  ],
+  [
+   "song2019autoint",
+   "1810.11921",
+   "Accepted at CIKM2019"
+  ],
+  [
+   "jawahar2024llmpp",
+   "2310.16712",
+   "ACL 2024 Findings"
+  ],
+  [
+   "trirat2024automlagent",
+   "2410.02958",
+   "ICML 2025, Project Page: https://deepauto-ai.github.io/automl-agent"
+  ],
+  [
+   "guo2024dsagent",
+   "2402.17453",
+   "Accepted by ICML 2024"
+  ],
+  [
+   "wang2023recmind",
+   "2308.14296",
+   "Accepted by NAACL 2024 (Findings)"
+  ],
+  [
+   "zhang2023agent4rec",
+   "2310.10108",
+   "SIGIR 2024 perspective paper"
+  ],
+  [
+   "wang2024macrec",
+   "2402.15235",
+   "Accepted by SIGIR2024"
+  ],
+  [
+   "gao2024sprec",
+   "2412.09243",
+   "Accepted by WWW 2025"
+  ],
+  [
+   "lin2025recr1",
+   "2503.24289",
+   "Published in the TMLR journal"
+  ],
+  [
+   "xu2025iagent",
+   "2502.14662",
+   "Findings of ACL 2025 and WWW2025@HCRS"
+  ],
+  [
+   "zhai2024hstu",
+   "2402.17152",
+   "26 pages, 13 figures. ICML'24. Code available at https://github.com/facebookresearch/generative-recommenders"
+  ],
+  [
+   "rajput2023tiger",
+   "2305.05065",
+   "To appear in The 37th Conference on Neural Information Processing Systems (NeurIPS 2023)"
+  ],
+  [
+   "dacrema2019progress",
+   "1907.06902",
+   "Source code available at: https://github.com/MaurizioFD/RecSys2019_DeepLearning_Evaluation"
+  ],
+  [
+   "sun2022daisyrec",
+   "2206.10848",
+   "DaisyRec-v2.0 contains a Python toolkit developed for benchmarking top-N recommendation task. Our code is available at https://github.com/recsys-benchmark/DaisyRec-v2.0"
+  ],
+  [
+   "ji2020leakage",
+   "2010.11060",
+   "Accepted by TOIS"
+  ],
+  [
+   "hidasi2023flaws",
+   "2307.14951",
+   "Appearing in the Proceedings of the 17th ACM Conference on Recommender Systems"
+  ],
+  [
+   "petrov2022bert4rec",
+   "2207.07483",
+   "This paper is accepted at the Reproducibility track of the ACM RecSys '22 conference"
+  ],
+  [
+   "anelli2021elliot",
+   "2103.02590",
+   "Published at SIGIR 2021, 10 pages, 1 figure"
+  ],
+  [
+   "zhu2022bars",
+   "2205.09626",
+   "Accepted by SIGIR 2022. Note that version v5 is updated to keep consistency with the ACM camera-ready version"
+  ],
+  [
+   "zhu2021fuxictr",
+   "2009.05794",
+   "Accepted by CIKM 2021. See BARS-CTR at https://openbenchmark.github.io/BARS/CTR"
+  ],
+  [
+   "huang2025recbenchplus",
+   "2503.09382",
+   "Accepted for publication at WSDM 2026"
+  ],
+  [
+   "chan2024mlebench",
+   "2410.07095",
+   "10 pages, 17 pages appendix. Equal contribution by first seven authors, authors randomized. ICLR version"
+  ],
+  [
+   "zhang2025mlrcbench",
+   "2504.09702",
+   "NeurIPS 2025 Datasets and Benchmarks Track"
+  ],
+  [
+   "kang2018sasrec",
+   "1808.09781",
+   "Accepted by ICDM'18 as a long paper"
+  ],
+  [
+   "sun2019bert4rec",
+   "1904.06690",
+   "To appear in CIKM 2019"
+  ],
+  [
+   "pan2026recevolve",
+   "2609.01622",
+   "8 pages, 4 figures, target conference: RecSys '26"
+  ],
+  [
+   "kim2026aura",
+   "2609.16625",
+   "14 pages, 1 figure, 6 tables. Accepted at GenAIECommerce'26: The Third Workshop on Agentic and Generative AI for E-Commerce, co-located with RecSys 2026, September 28, 2026, Minneapolis, MN, USA"
+  ],
+  [
+   "wu2026agentltv",
+   "2602.21634",
+   "12 pages, 4 figures, submitted to KDD 2026: 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining, ADS Track"
+  ],
+  [
+   "baumgart2026autoreclab",
+   "2609.21863",
+   "Accepted at the 20th ACM Conference on Recommender Systems (RecSys '26), Demo Track. 4 pages, 2 figures"
+  ],
+  [
+   "chen2026memrec",
+   "2601.08816",
+   "Accepted at ACL 2026 Main Conference"
+  ],
+  [
+   "liu2025agentcfpp",
+   "2502.13843",
+   "Accepted by SIGIR 2025, 6 pages"
+  ],
+  [
+   "zhang2026rsir",
+   "2602.15659",
+   "Accepted to ICML 2026"
+  ],
+  [
+   "lin2026lion",
+   "2609.15598",
+   "Accepted to CIKM'26"
+  ],
+  [
+   "skrlj2025agent0",
+   "2507.18993",
+   "Agent4IR, KDD '25"
+  ],
+  [
+   "liu2025recoworld",
+   "2509.10397",
+   "HCRS @ WWW 2026, Best Paper Award"
+  ],
+  [
+   "narasimhan2026taurec",
+   "2606.10156",
+   "Accepted at ACM RecSys 2026 (Reproducibility and Resource Track)"
+  ]
+ ]
+}

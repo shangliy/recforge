@@ -29,3 +29,10 @@ issues or pull requests with a quote from the paper.
 RecSys Factory (2608.11241, operations platform, human approval of every change), AutoRecLab (2609.21863, experiment
 generation), AURA (2609.16625, stops at pull requests), Spotify (2609.30297, prompt-level L4 loop). Their evidence is in
 `evidence-part2.md`.
+
+## Rows added 2026-10-22
+
+EvoPilot, Amazon AutoResearch, PILOT, A/B Agent, DMRL (core) and Feedback Contract, PEAR (comparison) were coded
+from the full text in the second sweep; the per-cell quotes with section pointers are in
+`../review/sweep-2026-10-22.md` §(b). C6 counts only non-LLM search; Feedback Contract's label-permuted no-signal task
+is a "null task", which the codebook does not score.

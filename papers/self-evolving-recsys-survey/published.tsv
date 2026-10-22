@@ -1,0 +1,48 @@
+# key	venue	year	volume/number	pages	doi  (generated from review/upgrades.md + venue-only list; applied by published.py)
+anelli2021elliot	Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval	2021	-	2405--2414	10.1145/3404835.3463245
+baumgart2026autoreclab	Proceedings of the 20th ACM Conference on Recommender Systems	2026	-	1790--1792	10.1145/3773078.3841273
+chen2026memrec	Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)	2026	-	44515--44544	10.18653/v1/2026.acl-long.2061
+dacrema2019progress	Proceedings of the 13th ACM Conference on Recommender Systems	2019	-	101--109	10.1145/3298689.3347058
+gao2024sprec	Proceedings of the ACM on Web Conference 2025	2025	-	5075--5084	10.1145/3696410.3714524
+hidasi2023flaws	Proceedings of the 17th ACM Conference on Recommender Systems	2023	-	848--855	10.1145/3604915.3608839
+ji2020leakage	ACM Transactions on Information Systems	2023	41/3	1--27	10.1145/3569930
+kang2018sasrec	2018 IEEE International Conference on Data Mining (ICDM)	2018	-	197--206	10.1109/icdm.2018.00035
+klenitskiy2023dross	Proceedings of the 17th ACM Conference on Recommender Systems	2023	-	1120--1125	10.1145/3604915.3610644
+li2022autolossgen	Proceedings of the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval	2022	-	1304--1315	10.1145/3477495.3531941
+liu2020autofis	Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining	2020	-	2636--2645	10.1145/3394486.3403314
+liu2025agentcfpp	Proceedings of the 48th International ACM SIGIR Conference on Research and Development in Information Retrieval	2025	-	2566--2571	10.1145/3726302.3730161
+liu2025recoworld	Companion Proceedings of the ACM Web Conference 2026	2026	-	650--659	10.1145/3774905.3794661
+meng2020splitting	Fourteenth ACM Conference on Recommender Systems	2020	-	681--686	10.1145/3383313.3418479
+nam2025mlestar	Advances in Neural Information Processing Systems 38	2025	-	129290--129310	10.52202/085713-3889
+narasimhan2026taurec	Proceedings of the 20th ACM Conference on Recommender Systems	2026	-	915--919	10.1145/3773078.3831847
+nian2026rankevolveir	Proceedings of the 49th International ACM SIGIR Conference on Research and Development in Information Retrieval	2026	-	4028--4033	10.1145/3805712.3809962
+palumbo2026spotify	Proceedings of the 20th ACM Conference on Recommender Systems	2026	-	994--1003	10.1145/3773078.3831910
+pan2026recevolve	Proceedings of the 20th ACM Conference on Recommender Systems	2026	-	1437--1442	10.1145/3773078.3831898
+peng2025agentsurvey	Findings of the Association for Computational Linguistics: EMNLP 2025	2025	-	11574--11583	10.18653/v1/2025.findings-emnlp.620
+petrov2022bert4rec	Proceedings of the 16th ACM Conference on Recommender Systems	2022	-	436--447	10.1145/3523227.3548487
+rendle2020ncf	Fourteenth ACM Conference on Recommender Systems	2020	-	240--248	10.1145/3383313.3412488
+song2020autoctr	Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining	2020	-	945--955	10.1145/3394486.3403137
+sun2022daisyrec	IEEE Transactions on Pattern Analysis and Machine Intelligence	2023	45/7	8206--8226	10.1109/tpami.2022.3231891
+toledo2025aira	Advances in Neural Information Processing Systems 38	2025	-	39717--39756	10.52202/085713-1186
+wang2023recagent	ACM Transactions on Information Systems	2025	43/2	1--37	10.1145/3708985
+wang2024macrec	Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval	2024	-	2760--2764	10.1145/3626772.3657669
+wang2026selfevolving	Proceedings of the 20th ACM Conference on Recommender Systems	2026	-	1462--1470	10.1145/3773078.3831919
+zhang2023agent4rec	Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval	2024	-	1807--1817	10.1145/3626772.3657844
+zhang2023nasrec	Proceedings of the ACM Web Conference 2023	2023	-	1199--1207	10.1145/3543507.3583446
+zhang2024agentcf	Proceedings of the ACM Web Conference 2024	2024	-	3679--3689	10.1145/3589334.3645537
+zhang2024dnsrec	18th ACM Conference on Recommender Systems	2024	-	591--600	10.1145/3640457.3688117
+zhang2025agentsearchsurvey	ACM Transactions on Information Systems	2026	-	article 3842663	10.1145/3842663
+zhang2025mlrcbench	Advances in Neural Information Processing Systems 38	2025	-	100801--100845	10.52202/085713-3036
+zhao2020autoemb	2021 IEEE International Conference on Data Mining (ICDM)	2021	-	896--905	10.1109/icdm51629.2021.00101
+zhao2021recbole	Proceedings of the 30th ACM International Conference on Information \& Knowledge Management	2021	-	4653--4664	10.1145/3459637.3482016
+zheng2022automl	ACM Transactions on Information Systems	2023	-	article 3579355	10.1145/3579355
+zhu2021fuxictr	Proceedings of the 30th ACM International Conference on Information \& Knowledge Management	2021	-	2759--2769	10.1145/3459637.3482486
+zhu2022bars	Proceedings of the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval	2022	-	2912--2923	10.1145/3477495.3531723
+zhai2024hstu	Proceedings of the 41st International Conference on Machine Learning (ICML), PMLR 235	2024	-	-	-
+rajput2023tiger	Advances in Neural Information Processing Systems 36	2023	-	-	-
+chan2024mlebench	International Conference on Learning Representations (ICLR)	2025	-	-	-
+lin2025recr1	Transactions on Machine Learning Research	2025	-	-	-
+gao2025selfevolvingsurvey	Transactions on Machine Learning Research	2026	-	-	-
+zhang2026rsir	Proceedings of the 43rd International Conference on Machine Learning (ICML)	2026	-	-	-
+dwork2015reusable	Advances in Neural Information Processing Systems 28	2015	-	-	-
+blum2015ladder	Proceedings of the 32nd International Conference on Machine Learning (ICML), PMLR 37	2015	-	1006--1014	-

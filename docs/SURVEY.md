@@ -70,27 +70,29 @@ Most code-level systems share the same four parts, and they differ mainly in how
 
 ## 4. Open problems
 
-**4.1 Sampled metrics as the objective.** In a full-text audit of 22 code- and configuration-level systems
-(`papers/self-evolving-recsys-survey/audit/`), two evaluate with full-catalogue ranking; Self-EvolveRec and
-RecHarness rank one target against 99 random negatives, and RecEvolve against in-batch negatives. Krichene and Rendle
+**4.1 Sampled metrics as the objective.** In a full-text audit of 27 code- and configuration-level systems
+(`papers/self-evolving-recsys-survey/audit/`), three evaluate with full-catalogue ranking; Self-EvolveRec and
+RecHarness rank one target against 99 sampled negatives, and five report ranking metrics without saying what the
+candidate set is. Krichene and Rendle
 showed that sampled metrics can reverse model rankings. When the agent's objective is the sampled metric, a loop can
 learn to separate targets from random items rather than rank the catalogue. RecEvolve's agent did a version of this:
-it shrank the batch size, which made the in-batch metric easier.
+it shrank the batch size, and with it the number of in-batch negatives, which inflated its proxy metrics.
 
-**4.2 Which split drives the search.** Of the 16 audited systems that select offline, three state that the final
-choice was scored on test once (RecHarness, VirtualMLE, EvoSkillRec), eight do not say which split drives per-round
-decisions, and two select on test data (both disclose it). MLRC-Bench also restricts agents to the development split. MLGym's `validate` returns test metrics and can be called repeatedly. In AIDE-style
+**4.2 Which split drives the search.** Of the 17 audited systems that select offline, three state that the final
+choice was scored on test once (RecHarness, VirtualMLE, EvoSkillRec), nine do not say which split drives per-round
+decisions, and two select on the data they report (both disclose it). MLRC-Bench also restricts agents to the development split. MLGym's `validate` returns test metrics and can be called repeatedly. In AIDE-style
 loops the agent writes its own validation split. Where a seal exists, it is a convention of the experiment
 script, and nothing stops the agent's code from reading the test data.
 
 **4.3 Overfitting the selection data.** An agent that runs hundreds of trials against one validation set will
-find edits that fit that set. Apart from EvoRank, which is about learning to rank, no paper in this survey reports
-the validation-to-test gap of the selected trial, the spread over repeated evolution sessions, or whether random
-search with the same budget does as well.
+find edits that fit that set. No audited recommender paper reports the spread over repeated evolution sessions or
+runs an equal-budget random search over its own edit space; only two report an explicit held-out check of the
+selected candidates. The comparison points outside recommendation (EvoRank for learning to rank, the Feedback Contract
+study on CTR and learning-to-rank data) show what such checks find.
 
 **4.4 Budgets.** Budgets are counted as GPU-seconds (RecHarness), offline evaluations (NOVA), steps
-(Self-EvolveRec), approved GPU estimates (Meta REA), or not at all. Almost no paper reports LLM tokens or cost,
-so improvement per unit of compute cannot be compared across systems.
+(Self-EvolveRec), approved GPU estimates (Meta REA), or not at all. Twelve of the 27 audited systems report LLM tokens
+or cost, each in its own unit, so improvement per unit of compute cannot be compared across systems.
 
 **4.5 No shared benchmark.** Each paper chooses its own datasets, splits, seeds, backbones and step limits.
 Industrial results use private data and online metrics. A number from one paper cannot be compared with a

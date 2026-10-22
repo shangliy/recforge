@@ -1,0 +1,33 @@
+% Figure 4: the recforge evolve-session protocol.
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize,
+  box/.style={draw, rounded corners=2pt, thick, align=center, inner sep=3pt},
+  arr/.style={-{Stealth[length=2mm]}, thick},
+  lab/.style={font=\sffamily\tiny, align=center, fill=white, inner sep=1pt},
+]
+\node[box, fill=cMeta!15, minimum width=21mm, minimum height=9mm] (ev) at (0,0) {\textbf{Evolver}\\random, coding\\agent, OpenEvolve};
+\node[box, fill=cL2!12, minimum width=21mm, minimum height=9mm] (m) at (0,-27mm) {\textbf{Method process}\\candidate code\\+ config};
+\node[box, fill=cL1!12, minimum width=24mm, minimum height=36mm, anchor=north] (j) at (44mm,4.5mm) {};
+\node[anchor=north, font=\sffamily\scriptsize\bfseries] at (j.north) {Judge (recforge)};
+\node[box, fill=white, minimum width=20mm] (bud) at (44mm,-7mm) {budget: trials,\\minutes};
+\node[box, fill=white, minimum width=20mm] (val) at (44mm,-16mm) {validation\\targets};
+\node[box, fill=cBad!15, minimum width=20mm] (test) at (44mm,-25mm) {test targets,\\sealed scores};
+\node[box, fill=gray!8, minimum width=24mm] (lb) at (44mm,-41mm) {leaderboard: one\\trial, val, test, gap};
+
+\draw[arr] ($(ev.east)+(0,2mm)$) -- node[lab, above] {1 trial(overrides)} ($(ev.east -| j.west)+(0,2mm)$);
+\draw[arr] ($(ev.east -| j.west)+(0,-2mm)$) -- node[lab, below] {5 validation metrics} ($(ev.east)+(0,-2mm)$);
+\draw[arr] (ev.south) -- node[lab, right] {2 spawn} (m.north);
+\draw[arr, cL2] ($(m.east -| j.west)+(0,2mm)$) -- node[lab, above] {3 train view only} ($(m.east)+(0,2mm)$);
+\draw[arr, cL2] ($(m.east)+(0,-2mm)$) -- node[lab, below] {4 top-100 lists} ($(m.east -| j.west)+(0,-2mm)$);
+\draw[arr, dashed] (ev.west) -- ++(-3mm,0) |- node[lab, pos=0.75, below] {6 finalize once} (lb.west);
+\draw[arr] (test) -- (lb);
+\end{tikzpicture}
+\caption{An evolve session in recforge. The evolver requests trials (1); each trial runs the candidate in its own
+process (2), which receives a training view without targets (3) and returns ranked lists (4). Only validation
+metrics flow back (5); test scores are computed and sealed. One \texttt{finalize} publishes a single trial with its
+validation score, test score, gap and budget (6). The seal holds at the API level; file-system isolation is
+planned.}
+\label{fig:protocol}
+\end{figure}

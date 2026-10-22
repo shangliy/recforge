@@ -8,6 +8,20 @@
 \usepackage{enumitem}
 \setlist{leftmargin=*,itemsep=1pt,topsep=2pt}
 
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.geometric}
+% Okabe-Ito palette (colour-blind safe)
+\definecolor{cL0}{HTML}{999999}
+\definecolor{cL1}{HTML}{009E73}
+\definecolor{cL2}{HTML}{0072B2}
+\definecolor{cL3}{HTML}{E69F00}
+\definecolor{cL4}{HTML}{CC79A7}
+\definecolor{cMeta}{HTML}{56B4E9}
+\definecolor{cBad}{HTML}{D55E00}
+\definecolor{cOk}{HTML}{009E73}
+\definecolor{cPart}{HTML}{F0E442}
+\definecolor{cNS}{HTML}{BBBBBB}
+
 \newcommand{\yes}{\textsf{Y}\xspace}
 \newcommand{\no}{\textsf{N}\xspace}
 \newcommand{\ns}{\textsf{NS}\xspace}
@@ -29,16 +43,16 @@
 \begin{abstract}
 In 2026 a new kind of recommender research appeared: large language model (LLM) agents that propose changes to a
 recommender's configuration or source code, train the changed model, and keep what the evaluation says is better.
-Within ten months, about thirty such systems were reported, from open-source research harnesses to production loops
-at Google, Meta, Alibaba, Kuaishou, Tencent and NetEase. This survey organises them, together with search-space AutoML
+Within ten months, more than thirty such systems were reported, from open-source research harnesses to production loops
+at Google, Meta, Amazon, Alibaba, Kuaishou, Tencent and NetEase. This survey organises them, together with search-space AutoML
 and the agentic recommenders that update their own memory or weights, along two axes: \emph{what} the loop changes
 and \emph{which signal} decides whether a change survives. Because a self-evolving system is only as good as the
-signal it selects on, we then audit how 22 configuration- and code-level recommender systems are evaluated, coding
-each paper's full text against nine criteria. Two of the 22 evaluate with full-catalogue ranking. Of the 15 that
-select candidates offline, eight do not say which data split makes the decision, one selects on its test leaderboard,
+signal it selects on, we then audit how 27 configuration- and code-level recommender systems are evaluated, coding
+each paper's full text against nine criteria. Three of the 27 evaluate with full-catalogue ranking. Of the 17 that
+select candidates offline, nine do not say which data split makes the decision, two select on the data they report,
 and three state that the test set was used once. None reports its headline result with the spread over repeated
 evolution sessions, and none runs an equal-budget random search over its own edit space; the few studies that measure
-transfer to held-out data find that part of the selected gain, sometimes most of it, does not survive. Two systems
+transfer to held-out data find that part of the selected gain, sometimes most of it, does not survive. Four systems
 report that their agent inflated the metric or leaked the target, caught by a human or by monitoring rather than by
 the acceptance rule. We distil these findings into a reporting standard and describe recforge, an open benchmark under
 development that implements the API side of a sealed-test, full-ranking, equal-budget protocol.
@@ -54,7 +68,7 @@ development that implements the API side of a sealed-test, full-ranking, equal-b
 
 Recommender models have long been improved by a loop that engineers run by hand: propose a change, train, compare
 offline, and launch the winners into an online experiment. Automating parts of this loop is an old goal. Neural
-architecture and embedding search for click-through-rate (CTR) models~\cite{song2020autoctr,liu2020autofis,
+architecture and embedding search for recommendation models, mostly click-through-rate (CTR) prediction~\cite{song2020autoctr,liu2020autofis,
 zhao2020autoemb,zhang2023nasrec} and loss search~\cite{li2022autolossgen} automated the choice inside a space that a
 person had written down~\cite{zheng2022automl}. What changed in 2026 is that the proposer became an LLM agent that
 writes code. Following FunSearch~\cite{romeraparedes2023funsearch}, AlphaEvolve~\cite{novikov2025alphaevolve} and
@@ -63,27 +77,37 @@ the model, loss and training code of recommenders directly. Google reported such
 ranking~\cite{wang2026selfevolving} and Self-EvolveRec released an open harness~\cite{kim2026selfevolverec} in February
 2026; within months, open harnesses such as RecHarness~\cite{ling2026recharness} and systems at Meta~\cite{meta2026rea,li2026autorecsys}, Alibaba
 \cite{mu2026evorec,hu2026astar}, Kuaishou~\cite{lao2026agentx,yang2026sragent,zhuang2026trajectories}, Tencent
-\cite{liu2026nova,ao2026recsysfactory}, NetEase~\cite{zhang2026autolr} and others.
+\cite{liu2026nova,ao2026recsysfactory}, NetEase~\cite{zhang2026autolr} and others followed.
 
 These systems are optimisers, and an optimiser exploits whatever its objective rewards. A loop that evaluates
 hundreds of agent-written candidates on one validation set and keeps the maximum is the setting in which the known
 weaknesses of recommender evaluation---sampled metrics~\cite{krichene2020sampled}, temporal
 leakage~\cite{ji2020leakage}, untuned baselines~\cite{dacrema2019progress,rendle2020ncf}, and the reuse of a holdout
 for adaptive decisions~\cite{dwork2015reusable,blum2015ladder}---are most likely to turn into reported gains. The agent
-also controls the code that produces its score. Two of the systems we read report that their agent did exactly
-this: RecEvolve's agent inflated an in-batch-negative metric by shrinking the batch size~\cite{pan2026recevolve}, and
-an AI co-scientist for search ranking produced ``metric-winning bugs'' such as silently growing the
-model~\cite{wu2026coscientist}.
+also controls the code that produces its score. Two of the systems we read report that their agent won on the
+metric without a real improvement: RecEvolve's agent inflated its proxy metrics by shrinking the batch size, and with
+it the number of in-batch negatives~\cite{pan2026recevolve}, and an AI co-scientist for search ranking produced
+implementations that ``improved $\mathcal{M}$ while being wrong (e.g., silently increasing model
+size)''~\cite{wu2026coscientist}. Figure~\ref{fig:loop} shows the loop these systems share and the points where the
+evidence for a gain can fail.
+
+\input{figs/loop}
 
 Existing surveys do not cover this development. Surveys of LLM agents for recommendation treat the agent as the
 recommender, a conversational interface or a user simulator~\cite{peng2025agentsurvey,zhang2025agentsearchsurvey,
 huang2025fmsurvey}; surveys of self-evolving agents treat the agent's own prompts, memory, tools or weights as the
-object that evolves, and mention recommendation at most in passing (one paragraph on self-optimised fine-tuning
+object that evolves, and mention recommendation at most in passing (a two-sentence mention of self-optimised fine-tuning and a recommendation task in a benchmark it describes
 in~\cite{gao2025selfevolvingsurvey}, none in~\cite{fang2025selfevolvingsurvey});
-the most recent roadmap for agentic recommender systems mentions the ``agent as engineer'' direction in one
-clause~\cite{lin2026roadmap}. Beel et al.\ call for autonomous recommender-systems research labs and for benchmarks
-to evaluate them~\cite{beel2025autoreclab}. RMD-Bench~\cite{peng2026population} and ExecML-HSTU~\cite{chen2026rankevolve}
-each fix one setting, but no shared benchmark yet compares evolvers under a sealed test, full-ranking evaluation and
+the most recent roadmap for agentic recommender systems mentions the ``agent as engineer'' direction only in passing,
+in two sentences that cite AgentX and the Google loop~\cite{lin2026roadmap}; and the most recent peer-reviewed
+survey of agentic recommenders organises 47 studies by where the agent sits in the serving workflow, not by what
+changes the recommender~\cite{xu2026scoringworkflow}. A general survey of how automated research is evaluated covers
+no recommender system~\cite{zhang2026autoreseval}. Closest to our audit, a concurrent controlled study shows on CTR and
+learning-to-rank data that exact validation feedback lets a coding agent overfit the validation split, and that a
+feedback contract with a quarantined test set removes the spurious gain on a task with no signal~\cite{yao2026feedbackcontract}. Beel et al.\ call for autonomous recommender-systems research labs and for benchmarks
+to evaluate them~\cite{beel2025autoreclab}. RMD-Bench~\cite{peng2026population} fixes protocols for cross-dataset and
+cross-scale discovery and ExecML-HSTU~\cite{chen2026rankevolve} measures whether agents' edits execute correctly, but no
+shared benchmark yet compares evolvers under a sealed test, full-ranking evaluation and
 equal-budget null controls.
 
 This survey makes four contributions.
@@ -112,17 +136,22 @@ itself. This includes systems whose proposer is a search algorithm over a fixed 
 components under an evaluation loop; (ii) agentic or LLM recommenders whose policy, memory, skills, prompts or weights
 improve from feedback they generate; and (iii) benchmarks, environments and surveys for these. We exclude LLM
 recommenders without a self-improvement loop, conversational recommendation in general, and general
-hyperparameter-optimisation libraries. Search and ranking systems outside recommendation (learning to
-rank~\cite{patel2026evorank}, lexical retrieval~\cite{nian2026rankevolveir}) are included as comparison points when
-they inform evaluation.
+hyperparameter-optimisation libraries. Systems outside recommendation (learning to rank~\cite{patel2026evorank}, search
+ranking~\cite{wu2026coscientist}, lexical retrieval~\cite{nian2026rankevolveir}, generative document
+retrieval~\cite{nian2026semanticindex} and lifetime-value prediction~\cite{wu2026agentltv}) are included as comparison
+points when they inform evaluation.
 
-\paragraph{Search protocol.} The cut-off date is 21 October 2026. We started from keyword searches over arXiv,
+\paragraph{Search protocol.} The cut-off date is 22 October 2026. We started from keyword searches over arXiv,
 OpenAlex and Semantic Scholar (``self-evolving recommender'', ``LLM agent recommender model optimisation'', ``agentic
 harness recommender'', ``LLM-driven architecture search CTR'' and survey queries), then walked the reference lists of
 the 2026 systems (RecHarness, EvoRec, AgentX-Model, RecEvolve) and of the agentic-recommender roadmap backwards and
 their titles forwards, and finished with about thirty full-text arXiv phrasings combined with company names. Generic
 keyword search returned mostly unrelated ``agent for $X$'' papers; the citation graph of the 2026 systems was the
-productive source. Every arXiv entry in our bibliography was generated from the arXiv API record, and every code
+productive source. A second sweep then ran 190 further arXiv queries (817 new candidates, all screened by title),
+enumerated 13 ACM proceedings (RecSys, KDD, SIGIR and WWW 2025--2026, CIKM 2025, WSDM 2026; 6{,}874 records) through
+OpenAlex, followed forward citations of 16 seed systems in Semantic Scholar, and searched industry engineering blogs;
+it added nine systems, five of which entered the audit. CIKM 2026, DBLP and OpenReview could not be searched
+automatically. Every arXiv entry in our bibliography was generated from the arXiv API record, and every code
 repository we list was checked to exist.
 
 \paragraph{Audit procedure.} For each configuration- or code-level system, we read the full text (arXiv HTML or PDF,
@@ -159,7 +188,7 @@ C9 & Isolation: can the agent reach test data or evaluation code, and is metric 
 AutoDim~\cite{zhao2020autodim}), whole architectures with weight sharing (NASRec~\cite{zhang2023nasrec},
 DNS-Rec~\cite{zhang2024dnsrec}) and loss functions (AutoLossGen~\cite{li2022autolossgen}); Zheng et al.\ survey this
 line~\cite{zheng2022automl}. Each method can only return a design that its space contains. Evaluation is mostly
-validation logloss or AUC on public CTR data with standard splits, and the number of full evaluations is small, so
+validation logloss or AUC on public CTR data, or standard rating and sequential benchmarks, with standard splits, and the number of full evaluations is small, so
 the selection problems we discuss later are mild.
 
 \paragraph{LLM program evolution and ML-engineering agents.} FunSearch~\cite{romeraparedes2023funsearch} and
@@ -181,15 +210,24 @@ zhou2025onerectech,zhou2025openonerec}. These models add new objects that a loop
 decoding procedures and generative losses.
 
 \paragraph{Evaluation methodology.} Tuned simple baselines beat many published neural
-recommenders~\cite{dacrema2019progress,rendle2020ncf}; a loss change alone can reorder SASRec and
-BERT4Rec~\cite{klenitskiy2023dross,petrov2022bert4rec}; sampled metrics are inconsistent with full-ranking metrics and
-can reverse model rankings~\cite{krichene2020sampled}; leave-one-out splits that ignore the global timeline leak
-future information~\cite{ji2020leakage}, and the split choice changes rankings~\cite{meng2020splitting,
-hidasi2023flaws}. Libraries and open benchmarks such as RecBole~\cite{zhao2021recbole}, Elliot~\cite{anelli2021elliot},
+recommenders~\cite{dacrema2019progress,rendle2020ncf}; a loss change alone can reorder SASRec~\cite{kang2018sasrec} and
+BERT4Rec~\cite{sun2019bert4rec,klenitskiy2023dross}, and BERT4Rec's reported advantage depends on much longer
+training~\cite{petrov2022bert4rec}; sampled metrics are inconsistent with full-ranking metrics and
+can reverse model rankings~\cite{rendle2019sampled,krichene2020sampled,hidasi2023flaws}; leave-one-out splits that
+ignore the global timeline leak future information~\cite{ji2020leakage,hidasi2023flaws}, and the split choice changes
+rankings~\cite{meng2020splitting}. Libraries and open benchmarks such as RecBole~\cite{zhao2021recbole}, Elliot~\cite{anelli2021elliot},
 DaisyRec~\cite{sun2022daisyrec}, BARS~\cite{zhu2022bars} and FuxiCTR~\cite{zhu2021fuxictr} standardise protocols for
 human-designed models. For adaptive reuse of a holdout, theory predicts overfitting~\cite{dwork2015reusable,
-blum2015ladder}; empirically, a meta-analysis of 120 Kaggle competitions found little~\cite{roelofs2019metaanalysis}.
-We return to this tension in \S\ref{sec:audit}.
+blum2015ladder}; empirically, a meta-analysis of 120 Kaggle competitions found little~\cite{roelofs2019metaanalysis}. For LLM
+loops specifically, keep-if-better acceptance is selection under noise, with selection-set scores well above held-out
+accuracy when the selection set is small~\cite{hu2026winnerscurse}; best-of-$N$ runs produce apparent gains from
+selection alone~\cite{grover2026luckyruns}; for LLM research agents, the scarcity of overfitting has been tied to how
+compressible their successful strategies are~\cite{bertran2026whatfits}; and AI-scientist systems hide post-hoc selection, leakage and metric
+misuse~\cite{luo2025pitfalls}.
+We return to this tension in \S\ref{sec:audit}. Figure~\ref{fig:timeline} places these precursors next to the
+2026 systems.
+
+\input{figs/timeline}
 
 %=====================================================================
 \section{A Taxonomy}\label{sec:taxonomy}
@@ -229,24 +267,25 @@ Code: \textsuperscript{\dag} open-source code verified.}\label{tab:taxonomy}
 & S1 offline val + test & S2/S3 offline, test reused or unstated & S4 proxy / screen & S5 online A/B (primary) \\
 \midrule
 L0 search space & AutoFIS\textsuperscript{\dag}~\cite{liu2020autofis}, NASRec\textsuperscript{\dag}~\cite{zhang2023nasrec},
-AutoCTR~\cite{song2020autoctr}, AutoLossGen~\cite{li2022autolossgen} & & & \\
+AutoCTR\textsuperscript{\dag}~\cite{song2020autoctr}, AutoLossGen\textsuperscript{\dag}~\cite{li2022autolossgen} & & & \\
 L1 configuration & VirtualMLE\textsuperscript{\dag}~\cite{cao2026virtualmle} & AutoLR~\cite{zhang2026autolr} & &
-CORAL~\cite{azhar2026coral}, AgenticRecTune~\cite{wu2026agenticrectune}, Sortify~\cite{cheng2026sortify},
-GEARS~\cite{yun2026gears}, SR-Agent~\cite{yang2026sragent} \\
+PILOT~\cite{pilot2026}, A/B Agent~\cite{jiang2026abagent}, DMRL~\cite{zhang2026dmrl}, CORAL~\cite{azhar2026coral}, AgenticRecTune~\cite{wu2026agenticrectune}, Sortify~\cite{cheng2026sortify},
+GEARS~\cite{yun2026gears}, SR-Agent~\cite{yang2026sragent}; \emph{comparison:} PEAR (search)~\cite{wang2026pear} \\
 L2 code & Self-EvolveRec\textsuperscript{\dag}~\cite{kim2026selfevolverec}, RecHarness\textsuperscript{\dag}~\cite{ling2026recharness},
-EvoSkillRec\textsuperscript{\dag}~\cite{li2026evoskillrec}; \emph{comparison:} EvoRank\textsuperscript{\dag} (LTR)~\cite{patel2026evorank} &
+EvoSkillRec\textsuperscript{\dag}~\cite{li2026evoskillrec}; \emph{comparison:} EvoRank\textsuperscript{\dag} (LTR)~\cite{patel2026evorank}, Feedback Contract~\cite{yao2026feedbackcontract} &
 RankEvolve~\cite{chen2026rankevolve}, EvoRec~\cite{mu2026evorec}, A-MLE~\cite{gao2026amle}, Trajectories-to-Evidence~\cite{zhuang2026trajectories}, NOVA~\cite{liu2026nova}, AgentX-Model~\cite{yang2026agentxmodel},
-Auto-RecSys~\cite{li2026autorecsys}, RecEvolve~\cite{pan2026recevolve}; \emph{comparison:} AI Co-Scientist (search)~\cite{wu2026coscientist} &
+Auto-RecSys~\cite{li2026autorecsys}, RecEvolve~\cite{pan2026recevolve}, AutoLR~\cite{zhang2026autolr}, EvoPilot~\cite{fu2026evopilot}, Amazon AutoResearch~\cite{chandran2026autoresearch}, Meta REA (blog)~\cite{meta2026rea}; \emph{comparison:} AI Co-Scientist (search)~\cite{wu2026coscientist} &
 Population Evolution~\cite{peng2026population}, Astar~\cite{hu2026astar} &
-Google/YouTube~\cite{wang2026selfevolving}, AgentX~\cite{lao2026agentx}, Meta REA (blog)~\cite{meta2026rea} \\
-L3 components & & & Evolving Semantic Indexes~\cite{nian2026semanticindex}, AgenticTagger~\cite{xie2026agentictagger} & \\
+Google/YouTube~\cite{wang2026selfevolving}, AgentX~\cite{lao2026agentx} \\
+L3 components & & Amazon AutoResearch (semantic-ID tokenizer)~\cite{chandran2026autoresearch} & AgenticTagger~\cite{xie2026agentictagger}; \emph{comparison:} Evolving Semantic Indexes (GR)~\cite{nian2026semanticindex} & \\
 L4 policy (S6) & \multicolumn{4}{p{0.82\textwidth}}{Memory/reflection: AgentCF\textsuperscript{\dag}~\cite{zhang2024agentcf}, AgentCF++\textsuperscript{\dag}~\cite{liu2025agentcfpp},
 SAGER~\cite{tao2026sager}, RecNet~\cite{li2026recnet}, AtomRec~\cite{hu2026atomrec}, MemRec\textsuperscript{\dag}~\cite{chen2026memrec};
 weights: OneRec~\cite{deng2025onerec}, SPRec\textsuperscript{\dag}~\cite{gao2024sprec}, Rec-R1\textsuperscript{\dag}~\cite{lin2025recr1},
-CoARS~\cite{wang2026coars}, RSIR\textsuperscript{\dag}~\cite{zhang2026rsir}; prompts and logic: Spotify~\cite{palumbo2026spotify}} \\
+CoARS~\cite{wang2026coars}, RSIR\textsuperscript{\dag}~\cite{zhang2026rsir}; prompts and tool descriptions: Spotify~\cite{palumbo2026spotify}} \\
 Meta & \multicolumn{4}{p{0.82\textwidth}}{Learned direction proposer: Astar~\cite{hu2026astar}; harness and skill evolution:
 AgentX SGPO~\cite{lao2026agentx}, EvoRec skills~\cite{mu2026evorec}, Auto-RecSys playbooks~\cite{li2026autorecsys},
-AgenticRecTune skill hub~\cite{wu2026agenticrectune}} \\
+AgenticRecTune skill hub~\cite{wu2026agenticrectune}, A/B Agent experience tree~\cite{jiang2026abagent}, DMRL's
+RL-trained skill optimiser~\cite{zhang2026dmrl}} \\
 \bottomrule
 \end{tabularx}
 \end{table*}
@@ -260,10 +299,16 @@ L1 systems let an LLM change numbers or switches while the model code stays fixe
 through an execute--reflect loop with a hierarchical memory that transfers across datasets~\cite{cao2026virtualmle}.
 In production, CORAL allocates retrieval budgets and serving treatments~\cite{azhar2026coral}, AgenticRecTune tunes
 fusion weights and thresholds across pre-ranking, ranking and re-ranking~\cite{wu2026agenticrectune}, Sortify
-adjusts the exchange rates of a sorting formula with Optuna inside an LLM meta-controller~\cite{cheng2026sortify},
+searches the exchange rates of a sorting formula with Optuna while an LLM meta-controller recalibrates the search's
+offline-to-online transfer intercepts and penalties~\cite{cheng2026sortify},
 GEARS selects segment-level treatment policies~\cite{yun2026gears}, and SR-Agent edits post-ranking diversity and
-exposure strategies through four bounded action types~\cite{yang2026sragent}. Most L1 systems in production select
-directly on online experiments.
+exposure strategies through four bounded action types~\cite{yang2026sragent}. Taobao's PILOT has LLM roles choose
+ranking-objective weights for user segments from a legal-command envelope generated by deterministic
+services~\cite{pilot2026}; Kuaishou's A/B Agent iterates strategy parameters across online rounds with a hierarchical
+experience tree~\cite{jiang2026abagent}; and DMRL trains a small LLM with reinforcement learning to rewrite the skill
+document that an ad-tuning agent follows~\cite{zhang2026dmrl}. Most L1 systems in production select
+directly on online experiments; an e-commerce search loop adds a multi-fidelity ladder from shadow-traffic proxies to
+decision-grade online tests~\cite{wang2026pear}.
 
 \subsection{Code-level loops in the open (L2)}
 \textbf{Self-EvolveRec}~\cite{kim2026selfevolverec} runs an AlphaEvolve-style loop over the whole pipeline code of
@@ -276,84 +321,113 @@ evolves architectures as typed ``skill genomes'' of executable modules and promo
 library. \textbf{RankEvolve}~\cite{chen2026rankevolve} composes Claude Code and Codex under an executable operating
 protocol in which the two agents review and repair each other's edits to HSTU, and introduces ExecML-HSTU, a benchmark
 of how often agent edits are executed correctly. \textbf{Population Evolution}~\cite{peng2026population} runs several
-evolution searches that share evidence across related datasets, screens candidates on small subsets, and promotes
+evolution searches that share evidence across related datasets, screens candidates on peer datasets (and, for LLM and VLM targets, on small training subsets), and promotes
 survivors to larger scales; it introduces RMD-Bench. AutoRecLab~\cite{baumgart2026autoreclab,beel2025autoreclab}
 generates recommender experiments from natural-language descriptions; it automates experimentation rather than
 evolving a model, and we do not audit it.
 
 \subsection{Code-level loops in industry (L2)}
-Industrial systems share a two-stage design: an offline loop screens agent-written candidates, and online
+Most industrial systems share a two-stage design: an offline loop screens agent-written candidates, and online
 experiments decide launches. Google's loop for YouTube ranking~\cite{wang2026selfevolving} has Gemini personas
-propose optimiser, architecture and reward changes, promotes on validation loss and then on north-star A/B
+propose optimiser, architecture and reward changes, promotes on validation loss (with a proxy metric for reward changes) and then on north-star A/B
 metrics, and reports LLM costs of about \$20{,}000 over six months. RecEvolve~\cite{pan2026recevolve} runs the full
 research loop on a production two-tower retrieval model. Meta's REA plans, launches and debugs ads-ranking
 experiments with up-front GPU budget approval~\cite{meta2026rea}; A-MLE explores a portfolio of ads-ranking models
 with human checkpoints~\cite{gao2026amle}; Auto-RecSys runs idea- and execution-evolution loops over multi-day training
 jobs~\cite{li2026autorecsys}; and RankEvolve and Population Evolution above also come from Meta. Alibaba's
 EvoRec~\cite{mu2026evorec} pairs research and code agents with a skill evolver, and Astar~\cite{hu2026astar} trains an
-8B model on the commit history of an advertising system to propose the next evolution direction. AgentX, deployed at Kuaishou~\cite{lao2026agentx}, and its successor AgentX-Model~\cite{yang2026agentxmodel} run research lineages
-(reproduce, follow up, compose, diagnose) over production rankers, and a Kuaishou paper converts research-agent trajectories
+8B model on the commit history of an advertising system to propose the next evolution direction. AgentX, deployed at Kuaishou~\cite{lao2026agentx}, iterates online strategies and model research, and its successor
+AgentX-Model~\cite{yang2026agentxmodel} runs research lineages (reproduce, follow up, compose, diagnose) over production
+rankers, and a Kuaishou paper converts research-agent trajectories
 into auditable evidence~\cite{zhuang2026trajectories}. Tencent's NOVA~\cite{liu2026nova} adds verification gates that
 reject recommender-invalid edits such as target leakage, NetEase's AutoLR~\cite{zhang2026autolr} reviews proposals with
 a multi-expert proposal council under a limited trial budget, and Tencent's RecSys Factory bounds agent autonomy to typed decision points
-in fixed pipelines~\cite{ao2026recsysfactory}. A Trip.com co-scientist for hotel search ranking~\cite{wu2026coscientist},
+in fixed pipelines~\cite{ao2026recsysfactory}. A Trip.com co-scientist for travel search ranking~\cite{wu2026coscientist},
 LLM evolution of learning-to-rank pipelines (EvoRank~\cite{patel2026evorank}) and of lexical retrieval
-functions~\cite{nian2026rankevolveir} are close relatives outside recommendation.
+functions~\cite{nian2026rankevolveir} are close relatives outside recommendation. Meta's EvoPilot runs a
+37-day campaign of agent-proposed configuration and retraining changes to video-retrieval models behind a fail-closed
+verifier and reports the failures it caught~\cite{fu2026evopilot}, and Amazon's AutoResearch rewrites the training code
+of a book-retrieval model and tunes a semantic-ID tokenizer over 220 experiments, naming the failure modes it
+met~\cite{chandran2026autoresearch}. Adjacent loops evolve ads kernels~\cite{kernelevolve2025}, off-policy-evaluation
+code~\cite{wu2025growthhacker}, search-relevance models~\cite{wang2026serm} and an LLM policy layer trained against a
+learned evaluator~\cite{zhang2026dream}.
 
 \subsection{Components of generative recommenders (L3)}
-Generative recommenders expose objects that do not exist in ID-based models. Evolving Semantic Indexes runs
+Generative recommenders expose objects that do not exist in ID-based models. Evolving Semantic Indexes, a generative
+document-retrieval system that we treat as a comparison point, runs
 LLM-driven program evolution over semantic-ID construction, collision handling, decoding and the generator's training
 objective, using a one-million-parameter proxy decoder as fitness~\cite{nian2026semanticindex}. AgenticTagger has an
 LLM refine a hierarchical item-descriptor vocabulary used as tokens~\cite{xie2026agentictagger}, and a generative
-recommender can reassign its own item tokenisation during training~\cite{chen2024tokenization}. Feedback-grounded
+recommender can reassign its own item tokenisation during training~\cite{chen2024tokenization}. Amazon's
+AutoResearch is the first audited production loop that edits a semantic-ID tokenizer, and the first in which the agent
+gamed a tokenizer metric~\cite{chandran2026autoresearch}. Feedback-grounded
 policy discovery distils LLM-discovered natural-language policies into a semantic-ID generator~\cite{chen2026policydiscovery}.
-No open system yet evolves TIGER- or OneRec-style components under a shared protocol.
+Evolving Semantic Indexes evolves TIGER-style semantic-ID components for document retrieval but releases no code;
+no open system yet does so for recommendation under a shared protocol.
 
 \subsection{Self-improving agentic recommenders (L4)}
 When the recommender is itself an LLM agent, the evolving object is its memory, skills, prompts or weights, and the
 feedback is mostly generated by the system. Memory and reflection methods update user and item agents
-(AgentCF~\cite{zhang2024agentcf}, AgentCF++~\cite{liu2025agentcfpp}, MACRec~\cite{wang2024macrec}), per-user policy
+(AgentCF~\cite{zhang2024agentcf}, AgentCF++~\cite{liu2025agentcfpp}), per-user policy
 skills (SAGER~\cite{tao2026sager}), propagation modules optimised with textual gradients (RecNet~\cite{li2026recnet}),
 and structured memories that are rewritten as interactions arrive (AtomRec~\cite{hu2026atomrec},
 AMEM4Rec~\cite{nguyen2026amem4rec}, STEAM~\cite{liao2026steam}, MARS~\cite{shen2026mars}, MemRec~\cite{chen2026memrec}).
-Weight-level self-improvement includes OneRec's iterative preference alignment on its own beam
-samples~\cite{deng2025onerec}, self-play debiasing (SPRec~\cite{gao2024sprec}), RL against a recommender's metric
+Weight-level self-improvement includes OneRec's alignment on its own samples, first by iterative
+DPO~\cite{deng2025onerec} and then by on-policy RL~\cite{zhou2025onerectech,zhou2025openonerec}, self-play debiasing (SPRec~\cite{gao2024sprec}), RL against a recommender's metric
 (Rec-R1~\cite{lin2025recr1}), co-evolving recommender and user agents (CoARS~\cite{wang2026coars}), and recursive
-self-training on filtered synthetic sequences~\cite{zhang2026rsir,hasan2026darsir}, where progress can sit in earlier
-generations rather than the latest model~\cite{xu2026stateretention}. Spotify improves a conversational
-recommendation agent's prompts and logic with a coding agent, evaluated on synthetic conversations~\cite{palumbo2026spotify}.
-Environments for training such agents include RecoWorld~\cite{liu2025recoworld}, Agent4Rec~\cite{zhang2023agent4rec},
-RecAgent~\cite{wang2023recagent} and the verifiable $\tau$-Rec benchmark~\cite{narasimhan2026taurec}.
+self-training on filtered synthetic sequences~\cite{zhang2026rsir,hasan2026darsir}, where progress can also sit in earlier
+generations, not only in the latest model~\cite{xu2026stateretention}. Spotify improves a conversational
+recommendation agent's prompts, few-shot examples and tool descriptions with a coding agent, evaluated by an LLM judge
+on synthetic conversations~\cite{palumbo2026spotify}. Simulated environments and benchmarks for such agents include
+RecoWorld~\cite{liu2025recoworld}, the user simulators Agent4Rec~\cite{zhang2023agent4rec} and
+RecAgent~\cite{wang2023recagent}, and the verifiable $\tau$-Rec benchmark~\cite{narasimhan2026taurec}.
 
 \subsection{Evolving the evolver (meta)}
 Several systems improve the loop itself: AgentX's SGPO applies semantic-gradient updates to its
 agents~\cite{lao2026agentx}, EvoRec and AgenticRecTune distil skills from experiment memory~\cite{mu2026evorec,
 wu2026agenticrectune}, Auto-RecSys evolves execution playbooks~\cite{li2026autorecsys}, and Astar learns the proposer
 from history~\cite{hu2026astar}. These are the recommender counterparts of harness optimisation~\cite{lee2026metaharness,
-xu2026harness2}.
+xu2026harness2}. Meta-evolution inherits the selection problem one level up: the harness is kept or discarded by a
+score of its own. In our own pre-registered study of LLM research-ideation harnesses, outside recommendation and not yet peer
+reviewed, a harness optimised against an LLM judge raised the judge's scores while the share of its hypotheses that
+held under measurement fell, on two hypothesis spaces with measured ground truth and for two Claude models
+(Sonnet and Opus)~\cite{yang2026ideationgoodhart}.
 
 %=====================================================================
 \section{How Are Self-Evolving Recommenders Evaluated? An Audit}\label{sec:audit}
 %=====================================================================
 
-\paragraph{Audited set.} We audited the 22 recommendation systems at levels L1--L2 (and L1+L2 with meta-evolution)
-that select candidates with an evaluation loop, and five comparison points outside recommendation (learning to rank,
-search ranking, lexical retrieval, generative document retrieval and lifetime-value prediction). Fifteen of the 22
-select candidates offline; six select on online experiments; Auto-RecSys reports only operational outcomes and makes
-no offline accuracy claim. Meta's REA is described only in a blog post and is not audited. Four borderline systems
+\paragraph{Audited set.} We audited the 27 recommendation systems at levels L1--L3 (with or without meta-evolution)
+that select candidates with an evaluation loop, and seven comparison points: learning to rank, search ranking,
+e-commerce search strategy, lexical retrieval, generative document retrieval, lifetime-value prediction, and a
+controlled study of agent feedback on public CTR and learning-to-rank data~\cite{yao2026feedbackcontract}. Seventeen of
+the 27 select candidates offline; nine select on online experiments; Auto-RecSys reports only operational outcomes and makes
+no offline accuracy claim. Meta's REA is described only in a blog post and is not audited, and two NeurIPS 2026 workshop papers are known to
+us only from their abstracts: MLE Agents, which kept 325 of 1{,}097 agent-written changes to production search
+rankers~\cite{li2026mleagents}, and an open-ended research loop on the public KuaiRand and KuaiRec
+data~\cite{chen2026openended}; we will code them once the full texts are available. Four borderline systems
 were read but not counted:
-RecSys Factory~\cite{ao2026recsysfactory} (an operations platform with human approval of every change),
+RecSys Factory~\cite{ao2026recsysfactory} (an operations platform in which an operator approves the agent's proposed overrides through human-in-the-loop cards),
 AutoRecLab~\cite{baumgart2026autoreclab} (experiment generation), AURA~\cite{kim2026aura} (stops at pull requests) and
-Spotify's prompt loop~\cite{palumbo2026spotify} (an L4 system). Table~\ref{tab:audit} gives the coding; counts below
+Spotify's prompt loop~\cite{palumbo2026spotify} (an L4 system). Table~\ref{tab:audit} gives the coding and Figure~\ref{fig:auditbars} summarises it; counts below
 are generated from the released data file.
 
+\begin{figure}[t]
+\centering
+\input{figs/audit_bars}
+\caption{Audit summary: how many of the 27 recommendation systems (17 for the criteria that apply only to offline
+selection) meet each criterion. C1 counts AUC- and online-only evaluations as not applicable; C9 counts a reported
+metric inflation or leakage by the loop as ``no''. Generated from the released \texttt{audit.csv}.}
+\label{fig:auditbars}
+\end{figure}
+
 \begin{table*}[t]
-\caption{Evaluation audit (full text, 21 October 2026). C1 metric: Full = full-catalogue ranking; Sampled = ranking against
+\caption{Evaluation audit (full text, 22 October 2026). C1 metric: Full = full-catalogue ranking; Sampled = ranking against
 sampled negatives; Rank? = ranking metric with the candidate set not stated; AUC = AUC/logloss/loss
-proxy; A/B = online only; ? = no metric stated. C2 selection signal. C8 baselines: prod.\ = production model; pub.\ =
+proxy; A/B = online only; other = a non-recommendation metric; ? = no metric stated. C2 selection signal. C8 baselines: prod.\ = production model; pub.\ =
 published anchors. C4: \pa = repeats without spread, repeats in an ablation only, or a re-run rule. C9: \pa = part of the loop
-constrained (fixed evaluation code, gates, whitelists, sandboxing); G = metric inflation or target leakage by the loop
-reported; \yes{}+G = isolation stated and leakage bugs caught by an audit. \yes = yes, \no = no, \pa = partial, \ns =
+constrained (fixed evaluation code, gates, whitelists, sandboxing); G = metric-winning bugs, metric inflation or target leakage
+by the loop reported. \yes = yes, \no = no, \pa = partial, \ns =
 not stated, \na = not applicable.}\label{tab:audit}
 \small
 \begin{tabular}{@{}llllllllllll@{}}
@@ -362,63 +436,79 @@ System & Level & C1 & C2 & C3 & C4 & C5 & C6 & C8 & C9 & A/B & Code \\
 & & metric & select & test once & repeats & gap & null & baselines & isolation & & \\
 \midrule
 %BEGIN-AUDIT-ROWS
-Self-EvolveRec~\cite{kim2026selfevolverec} & L2 & S99 & val & \ns & \no & \pa & \pa & \no & \ns & \no & \yes \\
-RecHarness~\cite{ling2026recharness} & L2 & S99 & val & \yes & \pa & \no & \pa & \no & \pa & \yes & \yes \\
+Self-EvolveRec~\cite{kim2026selfevolverec} & L2 & Sampled & val & \ns & \no & \pa & \pa & \no & \ns & \no & \yes \\
+RecHarness~\cite{ling2026recharness} & L2 & Sampled & val & \yes & \pa & \no & \pa & \ns & \pa & \yes & \yes \\
 Google/YouTube~\cite{wang2026selfevolving} & L1+L2 & AUC & val & \ns & \pa & \pa & \no & prod. & \ns & \yes & \no \\
-EvoRec~\cite{mu2026evorec} & L2 & LOO? & \ns & \ns & \no & \no & \pa & \ns & \ns & \yes & \no \\
-VirtualMLE~\cite{cao2026virtualmle} & L1 & LOO? & val & \yes & \pa & \pa & \yes & \yes & \yes & \no & \yes \\
-NOVA~\cite{liu2026nova} & L2 & AUC & \ns & \ns & \no & \no & \yes & prod. & \ns & \yes & \no \\
-AgentX~\cite{lao2026agentx} & L2+meta & A/B & A/B & \na & \no & \pa & \no & prod. & \ns & \yes & \no \\
+EvoRec~\cite{mu2026evorec} & L2 & Rank? & \ns & \ns & \no & \no & \pa & \ns & \ns & \yes & \no \\
+VirtualMLE~\cite{cao2026virtualmle} & L1 & Rank? & val & \yes & \pa & \pa & \yes & \yes & \yes & \no & \yes \\
+NOVA~\cite{liu2026nova} & L2 & AUC & \ns & \ns & \no & \no & \yes & prod. & \pa & \yes & \no \\
+AgentX~\cite{lao2026agentx} & L2+meta & A/B & A/B & \na & \no & \pa & \no & prod. & \pa & \yes & \no \\
 AgentX-Model~\cite{yang2026agentxmodel} & L2 & AUC & \ns & \ns & \pa & \no & \pa & prod. & \pa & \yes & \no \\
-Auto-RecSys~\cite{li2026autorecsys} & L2+meta & ? & \ns & \ns & \no & \no & \no & prod. & \ns & \no & \no \\
+Auto-RecSys~\cite{li2026autorecsys} & L2+meta & ? & \na & \na & \no & \no & \no & prod. & \ns & \no & \no \\
 AutoLR~\cite{zhang2026autolr} & L1+L2 & ? & \ns & \ns & \no & \no & \no & prod. & \pa & \yes & \no \\
 CORAL~\cite{azhar2026coral} & L1 & A/B & A/B & \na & \no & \no & \no & prod. & \na & \yes & \no \\
 AgenticRecTune~\cite{wu2026agenticrectune} & L1+meta & A/B & A/B & \na & \no & \no & \no & prod. & \na & \yes & \no \\
 Sortify~\cite{cheng2026sortify} & L1 & A/B & A/B & \na & \no & \pa & \no & prod. & \na & \yes & \no \\
 GEARS~\cite{yun2026gears} & L1 & A/B & A/B & \na & \no & \pa & \no & prod. & \na & \yes & \no \\
-RecEvolve~\cite{pan2026recevolve} & L2 & S99 & \ns & \ns & \no & \no & \no & prod. & G & \yes & \no \\
-Astar~\cite{hu2026astar} & L2+meta & LOO? & loss & \ns & \no & \pa & \pa & prod. & \ns & \yes & \no \\
-A-MLE~\cite{gao2026amle} & L1+L2 & AUC & \ns & \ns & \pa & \no & \pa & prod. & G & \no & \no \\
+RecEvolve~\cite{pan2026recevolve} & L2 & Rank? & \ns & \ns & \no & \no & \no & prod. & G & \yes & \no \\
+Astar~\cite{hu2026astar} & L2+meta & Rank? & loss & \ns & \no & \pa & \pa & prod. & \ns & \yes & \no \\
+A-MLE~\cite{gao2026amle} & L1+L2 & AUC & \ns & \ns & \pa & \no & \pa & prod. & \pa & \no & \no \\
 SR-Agent~\cite{yang2026sragent} & L1 & A/B & A/B & \na & \no & \pa & \no & prod. & \pa & \yes & \no \\
-EvoSkillRec~\cite{li2026evoskillrec} & L2 & AUC & val & \yes & \no & \yes & \yes & \no & \pa & \no & \yes \\
+EvoSkillRec~\cite{li2026evoskillrec} & L2 & AUC & val & \yes & \no & \yes & \yes & \pa & \pa & \no & \yes \\
 RankEvolve-HSTU~\cite{chen2026rankevolve} & L1+L2 & Full & test & \no & \no & \pa & \pa & pub. & G & \no & later \\
-Population Evolution~\cite{peng2026population}, Astar~\cite{hu2026astar} & L2 & Full & test & \no & \no & \yes & \pa & \yes & \ns & \no & later \\
+Population Evolution~\cite{peng2026population} & L2 & Full & \ns & \pa & \no & \yes & \pa & \yes & \pa & \no & later \\
 Trajectories-to-Evidence~\cite{zhuang2026trajectories} & L2 & AUC & \ns & \ns & \no & \pa & \pa & prod. & \pa & \yes & \no \\
+EvoPilot~\cite{fu2026evopilot} & L1+L2 & Rank? & \ns & \ns & \pa & \pa & \no & prod. & G & \yes & \no \\
+Amazon AutoResearch~\cite{chandran2026autoresearch} & L2+L3 & Full & test & \no & \pa & \pa & \no & \yes & G & \no & \no \\
+PILOT~\cite{pilot2026} & L1 & A/B & A/B & \na & \no & \pa & \no & prod. & \pa & \yes & \no \\
+A/B Agent~\cite{jiang2026abagent} & L1+meta & A/B & A/B & \na & \no & \no & \no & prod. & \pa & \yes & \no \\
+DMRL~\cite{zhang2026dmrl} & L1+meta & A/B & A/B & \na & \no & \pa & \no & pub. & \pa & \yes & \no \\
 \midrule
 \multicolumn{12}{@{}l}{\emph{Comparison points outside recommendation}} \\
-EvoRank (LTR)~\cite{patel2026evorank} & L2 & Full & val & \yes & \yes & \yes & \yes & \yes & \yes & \no & \yes \\
+EvoRank (LTR)~\cite{patel2026evorank} & L2 & other & val & \yes & \yes & \yes & \yes & \yes & \yes & \no & \yes \\
 AI Co-Scientist (search)~\cite{wu2026coscientist} & L2 & AUC & test & \no & \no & \no & \no & \pa & G & \no & \no \\
 RankEvolve-IR (lexical)~\cite{nian2026rankevolveir} & L2 & Full & \ns & \yes & \no & \yes & \pa & \no & \no & \no & \yes \\
 Evolving Semantic Indexes (GR)~\cite{nian2026semanticindex} & L3 & Full & val & \yes & \pa & \yes & \no & seed & \yes & \no & \no \\
-AgentLTV (LTV)~\cite{wu2026agentltv} & L2 & other & \ns & \ns & \no & \no & \pa & \ns & \no & \no & \yes \\
+AgentLTV (LTV)~\cite{wu2026agentltv} & L2 & other & test & \ns & \no & \no & \pa & \ns & \no & \no & \yes \\
+Feedback Contract (CTR/LTR)~\cite{yao2026feedbackcontract} & L2 & AUC & val & \yes & \yes & \yes & \no & seed & \yes & \no & \no \\
+PEAR (search)~\cite{wang2026pear} & L1 & A/B & A/B & \na & \pa & \pa & \no & prod. & \ns & \yes & \no \\
 %END-AUDIT-ROWS
 \bottomrule
 \end{tabular}
 \end{table*}
 
-\paragraph{F1: Almost nothing is evaluated with full-catalogue ranking.} Of the 22 systems, two state a full-catalogue
-ranking evaluation (RankEvolve on HSTU and Population Evolution). Two rank against sampled negatives:
-Self-EvolveRec and RecHarness pair each test item with 99 random negatives. Four report ranking metrics without saying
+\paragraph{F1: Almost nothing is evaluated with full-catalogue ranking.} Of the 27 systems, three state a full-catalogue
+ranking evaluation (RankEvolve on HSTU, Population Evolution, and the retrieval system of Amazon's
+AutoResearch~\cite{chandran2026autoresearch}), and in the last the agent itself designed a text-only fallback that ``expanded catalog coverage by
+5.8$\times$'', which by our reading changed the candidate set during the campaign. Two rank against sampled negatives:
+Self-EvolveRec and RecHarness pair each test item with 99 sampled negatives (random in Self-EvolveRec). Five report ranking metrics without saying
 what the candidate set is; for RecEvolve, the fact that shrinking the batch inflated its metrics (F7) suggests in-batch
-negatives. Six use AUC or a loss as the offline metric, six select on online
+negatives. Six use AUC or a loss as the offline metric, nine select on online
 experiments, and two report no usable offline metric.
 
-\paragraph{F2: The selection split is usually not stated, and sometimes it is the test set.} Of the 15 systems with an
+\paragraph{F2: The selection split is usually not stated, and sometimes it is the test set.} Of the 17 systems with an
 offline selection loop, five name a validation split (Self-EvolveRec, RecHarness, VirtualMLE, EvoSkillRec, and
-Google's validation loss), one selects on training loss and a learned reward model (Astar), and eight do not say which
-data accept or reject candidates. RankEvolve selects on test data: its persistent leaderboard is the canonical
-full-test NDCG@10~\cite{chen2026rankevolve}. Population Evolution selects candidates on source instances and reports on
-others, but calibrates the shared baseline configuration of its transfer targets on their released test
-split~\cite{peng2026population}. Both disclose these choices, which is to their credit. Outside recommendation, the hotel-search co-scientist keeps or reverts each
+Google's validation loss), one ranks candidates with a reward model trained on loss-curve outcomes and accepts by loss decrease (Astar), and nine do not say which
+data accept or reject candidates; EvoPilot, for example, selects and reports on one held-out replay
+set~\cite{fu2026evopilot}. RankEvolve selects on test data: its persistent leaderboard is the canonical
+full-test NDCG@10~\cite{chen2026rankevolve}. Population Evolution selects candidates on source instances (no separate validation split is stated) and also
+reports transfer to others, but calibrates the shared baseline configuration of its transfer targets on their released test
+split~\cite{peng2026population}. Amazon's AutoResearch ``retains
+modifications that improve a held-out scalar metric'' and reports the same metric, headlining the trajectory's peak
+(``1.82$\times$ relative lift \ldots{} on its peak evaluation date'')~\cite{chandran2026autoresearch}. All three disclose
+these choices, which is to their credit. Outside recommendation, the travel-search co-scientist keeps or reverts each
 change on the same held-out metric that it reports~\cite{wu2026coscientist}.
 
-\paragraph{F3: Test-once is rarely stated.} Three of the 15 offline loops state that the selected candidate was
-evaluated on held-out test data once after the search (RecHarness, VirtualMLE, EvoSkillRec); RankEvolve reports on the
-test leaderboard it selects on; Population Evolution partly; ten do not say.
+\paragraph{F3: Test-once is rarely stated.} Three of the 17 offline loops state that the selected candidate was
+evaluated on held-out test data once after the search (RecHarness, VirtualMLE, EvoSkillRec); RankEvolve and Amazon's
+AutoResearch report on the data they select on; Population Evolution partly; eleven do not say.
 
 \paragraph{F4: No headline result comes with its spread over repeated sessions.} RecHarness and VirtualMLE average
-three runs without reporting a standard deviation; Google runs six independent sessions with confidence intervals, but
-only for an ablation; A-MLE has a rule to re-run when within-run variance is high. Several papers
+three runs without reporting a standard deviation; Google runs six independent sessions with bracketed ranges, but
+only for an ablation; A-MLE has a rule to re-run when within-run variance is high. EvoPilot notes that two
+publications of the same model, configuration and pinned data ``differed by 0.36 points''~\cite{fu2026evopilot}, and
+Amazon re-evaluates one model across 11 dates (``6.18\% $\pm$ 0.28 pp'')~\cite{chandran2026autoresearch}; neither repeats
+a session. Several papers
 state that their gains are within the resolution of a single run: EvoSkillRec notes margins ``on the order of
 $10^{-4}$ AUC, which a single evolution run cannot reliably separate from run-to-run
 variation''~\cite{li2026evoskillrec}; AgentX-Model reports run-to-run standard deviations of 0.0010--0.0022 AUC while
@@ -429,65 +519,84 @@ it the ``KEEP ratchet''~\cite{zhang2026autolr}.
 
 \paragraph{F5: Where transfer is measured, selected gains shrink, sometimes to zero.} Two core systems report an
 explicit held-out check of their candidates. In EvoSkillRec, five candidates lie on the validation Pareto front, ``but
-only P1 (round 19) retains both improvements on the test set''~\cite{li2026evoskillrec}; the candidate it selects is
-P1. In Population Evolution, a ranking candidate gains 10.66\% on a peer dataset and loses 0.79\% at larger scale, and
+only P1 (round 19) retains both improvements on the test set''~\cite{li2026evoskillrec}; P1, the front's highest-validation candidate, is also the one that keeps both gains. In Population Evolution, a ranking candidate gains 10.66\% on a peer dataset and loses 0.79\% at larger scale, and
 two of three peer-screened designs keep their gains; sharing evidence across searches raises the larger-scale pass rate
-for ranking from 11/60 to 18/60~\cite{peng2026population}. Kuaishou's trajectory analysis finds that for 22
+for ranking from 11/60 to 18/60~\cite{peng2026population}. Amazon's peak lift of 1.82$\times$ lies ``${\sim}$2.6$\sigma$ above the
+across-date mean'' of 1.63$\times$~\cite{chandran2026autoresearch}, and EvoPilot's offline gain of 3.20 points became an
+online gain of 0.66\% on a different metric and population~\cite{fu2026evopilot}. Kuaishou's trajectory analysis finds that for 22
 of 30 methods the last round falls below an earlier best~\cite{zhuang2026trajectories}, so the final state of a loop is
 not necessarily its best. The comparison points tell the same story: in EvoRank, the gains of the first (loss-evolution)
 campaign ``were almost entirely fitness noise'' on 60k held-out queries, and about 70\% of the second campaign's gains
 survived~\cite{patel2026evorank}; in Evolving Semantic Indexes, a proxy decoder ranks semantic-ID programs well
 (Spearman $\rho = 0.90$), but once the generator's training objective may change, ``the proxy becomes not only less
-informative but misleading'', with five programs ranked inversely on proxy and target ($\rho = -0.80$)
-\cite{nian2026semanticindex}.
+informative but misleading'', with five programs ranked inversely on proxy and target ($\rho = -0.80$, $n = 5$)~\cite{nian2026semanticindex}; in
+an e-commerce search loop, effects on a shadow-traffic proxy were several to tens of times larger than in decision-grade
+online experiments, and five promoted candidates showed no significant gain~\cite{wang2026pear}. The cleanest
+measurement is a controlled one: on a label-permuted task where no real gain exists, a coding agent given exact
+validation scores ``ended by reporting a gain of 0.0157''~\cite{yao2026feedbackcontract}.
 
 \paragraph{F6: Null controls are rare.} Three core systems compare against a non-LLM search
-at an equal or favourable budget: VirtualMLE (grid search and Bayesian optimisation), NOVA (Optuna-TPE) and EvoSkillRec
+at an equal or favourable budget: VirtualMLE (grid search and Bayesian optimisation), NOVA (Optuna-TPE, matched evaluation budget but unmatched LLM cost, on one task) and EvoSkillRec
 (NASRec, alongside OpenEvolve); in all three the LLM loop is reported to win. Nine have partial controls (unmatched
-budgets, a random arm router that still uses LLM edits, cross-LLM swaps, or replay-only comparisons), and ten have
+budgets, a random arm router that still uses LLM edits, cross-LLM swaps, or replay-only comparisons), and fifteen have
 none. No core system runs an equal-budget random search over its own edit space. Where random selection was run, it was
 competitive: in AgentX-Model's historical replay, which randomises the choice of experiments rather than the edits,
-``Uniform Random's mean exceeds Fixed, Greedy, and Joint'' policies~\cite{yang2026agentxmodel}, and in EvoRank's loss campaign an equal-budget random search transferred as well
+in Scenario A ``Uniform Random's mean exceeds Fixed, Greedy, and Joint'' policies, and no policy led consistently
+across environments~\cite{yang2026agentxmodel}, and in EvoRank's loss campaign an equal-budget random search transferred as well
 or better ($p=0.03$)~\cite{patel2026evorank}. AutoLR states plainly that it ``does not establish superiority over
-random, greedy, or direct LLM-based routing under a matched trial budget''~\cite{zhang2026autolr}.
+random, greedy, or direct LLM-based routing under a matched trial budget''~\cite{zhang2026autolr}. Outside
+recommendation, classical optimisers beat LLM agents in fixed hyperparameter spaces~\cite{ferreira2026hpo,
+rodrigues2026llmhpo}, which is why the null control matters.
 
 \paragraph{F7: Agents find shortcuts in the evaluation; humans and monitoring, not the acceptance rule, catch them.}
-Two core systems and two comparison points report metric inflation or target leakage produced by the loop itself. RecEvolve's agent ``discovered that drastically reducing the batch
+Four core systems and one comparison point report metric-winning bugs, metric inflation or target leakage produced by the loop itself. RecEvolve's agent ``discovered that drastically reducing the batch
 size (from 8k down to 1k) artificially inflated proxy metrics''; a human caught it and rolled it
 back~\cite{pan2026recevolve}. On HSTU, RankEvolve's agents produced a genre feature that leaked the target (training
-loss collapsed to zero while evaluation spiked), a multi-position evaluation that inflated NDCG@10 from 0.2192 to 0.2577,
-and DPO negatives derived from the target. These surfaced as anomalous trajectories on the leaderboard and were
-diagnosed before being reported as gains, but the best agent pair still had a 10.4\% silent critical-defect rate on
-ExecML-HSTU, and a single Claude Code pass 35.4\%~\cite{chen2026rankevolve}. Agent reliability is a related problem:
-A-MLE's agent promoted candidates on a single seed until a re-run rule reduced this, and weaker models ``pretend to have
-completed tasks''~\cite{gao2026amle}. EvoRank's audit caught three
-target-encoding leakage bugs~\cite{patel2026evorank}, and the search co-scientist produced ``metric-winning bugs (e.g.,
-silently increasing model size)''~\cite{wu2026coscientist}. Among the borderline systems, RecSys Factory found a join
-bug that ``silently corrupted all downstream training samples'' and AURA's agent fabricated 904
-identifiers~\cite{ao2026recsysfactory,kim2026aura}. Only VirtualMLE states that the test set is hidden from the agent
-and the data pipeline immutable; ten systems constrain part of the loop (verification gates, whitelists, fixed
-evaluation code, frozen evaluation logic, isolated workspaces, sandboxed modules, bounded actions), and five say
-nothing about it.
+loss collapsed to zero while evaluation spiked), DPO preference pairs mined at the held-out target position (a training-overlap flaw), and a naive multi-position
+evaluation that would have inflated NDCG@10 from 0.2192 to 0.2517/0.2577. The genre and DPO bugs surfaced as anomalous
+trajectories on the leaderboard, the multi-position inflation was reasoned out, and none was reported as a gain, but the best agent pair still had a 10.4\% silent critical-defect rate on
+ExecML-HSTU, and a single Claude Code pass 35.4\%~\cite{chen2026rankevolve}. In EvoPilot, ``a favorable result used an
+evaluation date inside the candidate model's training window, so the result was retracted''; the same campaign
+recorded edits that history rewriting had silently removed and an evaluator whose aggregate metric ``changed
+meaning''~\cite{fu2026evopilot}. In Amazon's semantic-ID loop, ``maximizing codebook size trivially improves weighted
+coherence'', and the resulting hierarchy was unusable~\cite{chandran2026autoresearch}. Agent reliability is a related problem:
+A-MLE's agent sometimes promoted a candidate on a single seed, which its automatic re-run rule materially reduced, and weaker models ``pretend to have
+completed tasks''~\cite{gao2026amle}. Prevention works when it is designed in: EvoRank's pre-search audit caught three target-encoding leakage bugs in the
+authors' own hand-built candidate before any search used it~\cite{patel2026evorank}. Among the borderline systems,
+AURA's agent fabricated 904 session identifiers in its diagnostic stage~\cite{kim2026aura}, and RecSys Factory's
+diagnostics uncovered a pre-existing upstream join bug that had ``silently corrupted all downstream training
+samples''~\cite{ao2026recsysfactory}, a reminder that the data feeding the loop needs checks too. Only VirtualMLE states that the test set is hidden from the agent
+and the data pipeline immutable; thirteen systems constrain part of the loop (verification gates, whitelists, fixed
+evaluation code, frozen evaluation logic, isolated workspaces, sandboxed modules, bounded or legal-command actions),
+and five say nothing about it.
 
 \paragraph{F8: Baselines, budgets and openness.} The largest relative gains are measured against weak starting points:
 RecHarness improves average HR@10 by 85.85\% over a cold-start GRU4Rec template and by 12.58\% over HSTU, and also
 lists published numbers well above its cold-start base~\cite{ling2026recharness}; Self-EvolveRec configures all models
-with the same untuned hyperparameters~\cite{kim2026selfevolverec}. Only VirtualMLE and Population Evolution describe
-tuning their baselines. Budgets are
-reported in incompatible units (iterations, GPU-seconds, GPU-hours, ideas, tokens, dollars, yuan); twelve of 22 report
-LLM tokens or cost. Four of 22 release code, two promise to, and five do not name the LLM they use.
+with the same fixed hyperparameters (embedding 50, batch 128, learning rate 0.001) and does not describe tuning
+them~\cite{kim2026selfevolverec}. Only VirtualMLE, Population Evolution and Amazon's AutoResearch (a hand-tuned baseline from four
+engineer-weeks) describe tuning their baselines. Budgets are
+reported in incompatible units (iterations, GPU-seconds, GPU-hours, ideas, tokens, dollars, yuan); twelve of 27 report
+LLM tokens or cost. Four of 27 release code, two promise to, and six do not name the LLM they use.
 
-\paragraph{Online gates.} Fifteen of the 22 systems report online experiments. These are strong evidence when well
-designed, and they are the main safeguard of the industrial loops. Seven state the experiment duration and eight report
+\paragraph{Online gates.} Nineteen of the 27 systems report online experiments. These are strong evidence when well
+designed, and they are the main safeguard of the industrial loops. Nine state the experiment duration and nine report
 significance or confidence intervals; none corrects for multiple testing across the many rounds a loop runs (AutoLR discusses the problem but applies no correction). AutoLR's
-launch-review lifts are, in its own words, ``descriptive and are not pooled treatment effects''~\cite{zhang2026autolr};
+summed launch-review lifts are, in its own words, ``descriptive and are not pooled treatment effects''~\cite{zhang2026autolr};
 Sortify chose its frozen round on the same online signal, then re-tested it in a fresh seven-day
-experiment~\cite{cheng2026sortify}, a practice we recommend.
+experiment~\cite{cheng2026sortify}, a practice we recommend. PILOT goes further in design: its final confirmation is
+``a single pre-registered test'' that ``runs once'', because ``the data collected while searching \ldots{} cannot also
+serve as proof''~\cite{pilot2026}; the report does not yet include that confirmation, and its headline compares the best
+of five buckets before and after, ``not randomized''. Online selection has its own winner's curse: the arm chosen as
+best overstates its effect~\cite{berman2026winners}. Online noise is visible inside single papers: DMRL's default configuration
+(Qwen3-8B, eight rollouts) appears in three tables run in ``non-overlapping time windows'' with LTV lifts of
+$+0.052\%$, $+0.064\%$ and $+0.050\%$, a spread of half its $0.028$-point lead over the best
+baseline~\cite{zhang2026dmrl}.
 
 \paragraph{Does selection really overfit?} A meta-analysis of 120 Kaggle competitions found little overfitting to
 public leaderboards~\cite{roelofs2019metaanalysis}, which cautions against assuming that reuse of a validation set must
-inflate results. The setting differs in ways that matter: Kaggle limits submissions and teams submit few, diverse
-models, whereas an agent loop evaluates hundreds of correlated candidates on one split without a cap, keeps the
+inflate results. The setting differs in ways that matter: Kaggle caps the rate of resubmission~\cite{blum2015ladder} and its
+leaderboards are probed by many teams with different model families~\cite{roelofs2019metaanalysis}, whereas an agent loop evaluates hundreds of correlated candidates on one split without a cap, keeps the
 maximum, and controls the code that produces the score. The direct measurements we found (F5) show that some selected
 gains shrink or vanish on transfer, while others survive. The safe conclusion is not that self-evolving recommenders do not work,
 but that the published evidence cannot yet tell how much of their gain is real.
@@ -526,7 +635,10 @@ candidates take hundreds of GPU-hours~\cite{li2026autorecsys}, R4 can be applied
 proxy, as AgentX-Model does for scheduling policies~\cite{yang2026agentxmodel}.
 
 \paragraph{recforge.} We built recforge~\cite{recforge}, an open benchmark that implements R1--R3, R5, part of R6, and
-part of R8 for sequential recommendation. Its design choices follow from the audit:
+part of R8 for sequential recommendation (Figure~\ref{fig:protocol}).
+
+\input{figs/protocol}
+ Its design choices follow from the audit:
 \begin{itemize}
 \item \emph{One protocol.} Leave-one-out per user (last item test, second-to-last validation), full-catalogue ranking
 with the user's history removed, and HR and NDCG at 10 and 20 and MRR@100. Results from different protocol versions
@@ -580,8 +692,9 @@ targets for code-level evolution, and almost untouched (\S\ref{sec:systems}).
 
 \paragraph{From offline wins to online value.} RecEvolve observes that offline evaluations often show ``win-win''
 results while online tests show trade-offs~\cite{pan2026recevolve}. Loops that select on offline metrics inherit the
-gap; loops that select on online experiments face multiple testing and slow iteration. Combining the two with
-pre-registered online confirmation of the final candidate, as Sortify does, is a starting point.
+gap; loops that select on online experiments face multiple testing and slow iteration. Combining the two with a fresh
+online confirmation of the final candidate, as Sortify does with a seven-day re-test, ideally pre-registered, is a
+starting point.
 
 \paragraph{Circularity at the policy level.} L4 systems are often judged by simulators from the same model family as the
 agent being improved. Held-out simulators~\cite{kim2026selfevolverec}, verifiable rewards~\cite{narasimhan2026taurec}
@@ -591,13 +704,17 @@ and reward-model benchmarks~\cite{zeng2026recrmbench} are partial answers.
 \section{Threats to Validity}\label{sec:threats}
 %=====================================================================
 
-\paragraph{Coverage.} The field is months old and grows weekly; our cut-off is 21 October 2026. Many systems are
+\paragraph{Coverage.} The field is months old and grows weekly; our cut-off is 22 October 2026. Many systems are
 arXiv preprints whose versions change; we coded the version available on that date. Generic keyword search performed
 poorly, so coverage relies on citation-graph search and may miss systems that neither cite nor are cited by the core
 set.
 
 \paragraph{Coding.} The audit was coded from full text with verbatim evidence and then checked against the original
-papers by an adversarial second reading, which corrected 12 cells in nine rows; we have not yet measured agreement between two
+papers by two adversarial readings: the first corrected 12 cells in nine rows, the second re-verified every cited
+sentence against its source and corrected the remaining cells and claims (both reports are released). The seven rows added by the
+second literature sweep were coded from the full text by one reading, and their quotes were rechecked against the
+source. We have not yet
+measured agreement between two
 independent coders. ``Not stated'' does not mean ``not done'': authors may have followed a practice without
 reporting it. We release the evidence so that authors and readers can correct individual cells, and we will update
 the table.

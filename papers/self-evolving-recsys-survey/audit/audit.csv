@@ -4,13 +4,13 @@ ling2026recharness,RecHarness,core,L2,Georgia Tech+Kuaishou,sampled,val,Y,P,N,P,
 wang2026selfevolving,Google/YouTube,core,L1+L2,Google,auc,val,NS,P,P,N,$,production,NS,CI,N,Y
 mu2026evorec,EvoRec,core,L2,Alibaba,ranking-ns,NS,NS,N,N,P,iters,NS,NS,7d+CI,N,Y
 cao2026virtualmle,VirtualMLE,core,L1,Tsinghua+BUPT,ranking-ns,val,Y,P,P,Y,trials+$,tuned,Y,none,Y,Y
-liu2026nova,NOVA,core,L2,Tencent,auc,NS,NS,N,N,Y,rounds+$,production,P,6d+CI,N,Y
+liu2026nova,NOVA,core,L2,Tencent,auc,NS,NS,N,N,Y,rounds+$,production,P,6d+sig,N,Y
 lao2026agentx,AgentX,core,L2+meta,Kuaishou (deployment),online,online,na,N,P,N,ideas,production,P,3wk+CI,N,N
 yang2026agentxmodel,AgentX-Model,core,L2,not stated (successor of AgentX),auc,NS,NS,P,N,P,experiments+tokens,production,P,yes,N,Y
 li2026autorecsys,Auto-RecSys,core,L2+meta,Meta,none,na,na,N,N,N,iters,production,NS,none,N,N
 zhang2026autolr,AutoLR,core,L1+L2,NetEase,none,NS,NS,N,N,N,evals+RMB,production,P,yes,N,Y
-azhar2026coral,CORAL,core,L1,Meta,online,online,na,N,N,N,tokens,production,na,CI,N,N
-wu2026agenticrectune,AgenticRecTune,core,L1+meta,Google,online,online,na,N,N,N,NS,production,na,CI,N,Y
+azhar2026coral,CORAL,core,L1,Meta,online,online,na,N,N,N,tokens,production,na,sig,N,N
+wu2026agenticrectune,AgenticRecTune,core,L1+meta,Google,online,online,na,N,N,N,NS,production,na,sig,N,Y
 cheng2026sortify,Sortify,core,L1,Shopee,online,online,na,N,P,N,trials+$,production,na,7d,N,Y
 yun2026gears,GEARS,core,L1,Meta,online,online,na,N,P,N,tokens+$,production,na,CI,N,Y
 pan2026recevolve,RecEvolve,core,L2,Google,ranking-ns,NS,NS,N,N,N,runs,production,gaming,yes,N,N
@@ -21,8 +21,15 @@ li2026evoskillrec,EvoSkillRec,core,L2,CityU HK+Kuaishou+XJTU,auc,val,Y,N,Y,Y,slo
 chen2026rankevolve,RankEvolve-HSTU,core,L1+L2,Meta,full,test,N,N,P,P,runs+$,published,gaming,none,promised,Y
 peng2026population,Population Evolution,core,L2,Meta,full,NS,P,N,Y,P,GPU-h (order),tuned,P,none,promised,Y
 zhuang2026trajectories,Trajectories-to-Evidence,core,L2,Kuaishou,auc,NS,NS,N,P,P,experiments,production,P,yes,N,Y
-patel2026evorank,EvoRank (LTR),comparison,L2,UMD,full,val,Y,Y,Y,Y,iters+$,tuned,Y+caught,none,Y,N
+fu2026evopilot,EvoPilot,core,L1+L2,Meta,ranking-ns,NS,NS,P,P,N,rounds+configs,production,gaming,7d+sig,N,Y
+chandran2026autoresearch,Amazon AutoResearch,core,L2+L3,Amazon,full,test,N,P,P,N,iters,tuned,gaming,none,N,Y
+pilot2026,PILOT,core,L1,Alibaba (Taobao),online,online,na,N,P,N,bucket-days,production,P,5d,N,N
+jiang2026abagent,A/B Agent,core,L1+meta,Kuaishou+PolyU,online,online,na,N,N,N,NS,production,P,yes,N,Y
+zhang2026dmrl,DMRL,core,L1+meta,Kuaishou+SJTU,online,online,na,N,P,N,rollouts,published,P,yes,N,Y
+patel2026evorank,EvoRank (LTR),comparison,L2,UMD,other,val,Y,Y,Y,Y,iters+$,tuned,Y,none,Y,N
 wu2026coscientist,AI Co-Scientist (search),comparison,L2,Trip.com+UCLA,auc,test,N,N,N,N,GPU-h,P,gaming,none,N,Y
 nian2026rankevolveir,RankEvolve-IR (lexical),comparison,L2,Santa Clara+Walmart,full,NS,Y,N,Y,P,steps,untuned,N,none,Y,Y
 nian2026semanticindex,Evolving Semantic Indexes (GR),comparison,L3,Santa Clara+Coupang,full,val,Y,P,Y,N,hours,seed,Y,none,N,Y
-wu2026agentltv,AgentLTV (LTV),comparison,L2,Sichuan U. et al.,other,NS,NS,N,N,P,programs,NS,N,none,Y,Y
+wu2026agentltv,AgentLTV (LTV),comparison,L2,Sichuan U. et al.,other,test,NS,N,N,P,programs,NS,N,none,Y,Y
+yao2026feedbackcontract,Feedback Contract (CTR/LTR),comparison,L2,Walmart+Lehigh+Rutgers,auc,val,Y,Y,Y,N,submissions,seed,Y,none,N,Y
+wang2026pear,PEAR (search),comparison,L1,not stated (e-commerce search),online,online,na,P,P,N,rounds,production,NS,CI,N,N

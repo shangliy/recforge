@@ -5,3 +5,4 @@ draft/*.blg
 draft/*.fls
 draft/*.fdb_latexmk
 arxiv.err
+draft/arxiv-upload.tar.gz

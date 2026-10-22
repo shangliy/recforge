@@ -40,3 +40,17 @@ Workspace: `RECFORGE_HOME` (default: the checkout) holds `data/`, `runs/` and `s
 
 Every run writes `runs/<dataset>/<model>/<config-hash>-s<seed>.json` with the model's source hash, config,
 protocol version and commit; the leaderboard is built from those files only.
+
+## Citing
+
+The survey *Self-Evolving Recommender Systems: A Survey and an Evaluation Audit* and its audit data live in
+[`papers/self-evolving-recsys-survey`](papers/self-evolving-recsys-survey). Until the arXiv version is out, cite:
+
+```bibtex
+@misc{yang2026selfevolvingrecsys,
+  title  = {Self-Evolving Recommender Systems: A Survey and an Evaluation Audit},
+  author = {Shanglin Yang and Zhan Shi},
+  year   = {2026},
+  howpublished = {\url{https://github.com/shangliy/recforge/tree/master/papers/self-evolving-recsys-survey}}
+}
+```
