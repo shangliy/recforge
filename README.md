@@ -1,5 +1,7 @@
 # recforge
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23574306.svg)](https://doi.org/10.5281/zenodo.23574306)
+
 One protocol to benchmark and evolve recommenders — classic, generative (TIGER / HSTU / OneRec) and LLM-based.
 Bring a method as one Python file, run one command, get its place on the leaderboard. Agents use the same
 commands with `--json`, and evolve sessions give them a budget and validation-only feedback.
@@ -51,6 +53,7 @@ The survey *Self-Evolving Recommender Systems: A Survey and an Evaluation Audit*
   title  = {Self-Evolving Recommender Systems: A Survey and an Evaluation Audit},
   author = {Shanglin Yang and Zhan Shi},
   year   = {2026},
-  howpublished = {\url{https://shangliy.github.io/recforge/survey/}}
+  howpublished = {\url{https://shangliy.github.io/recforge/survey/}},
+  doi          = {10.5281/zenodo.23574306}
 }
 ```
