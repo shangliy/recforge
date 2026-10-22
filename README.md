@@ -44,13 +44,13 @@ protocol version and commit; the leaderboard is built from those files only.
 ## Citing
 
 The survey *Self-Evolving Recommender Systems: A Survey and an Evaluation Audit* and its audit data live in
-[`papers/self-evolving-recsys-survey`](papers/self-evolving-recsys-survey). Until the arXiv version is out, cite:
+[`papers/self-evolving-recsys-survey`](papers/self-evolving-recsys-survey). Paper page: <https://shangliy.github.io/recforge/survey/>. Cite:
 
 ```bibtex
 @misc{yang2026selfevolvingrecsys,
   title  = {Self-Evolving Recommender Systems: A Survey and an Evaluation Audit},
   author = {Shanglin Yang and Zhan Shi},
   year   = {2026},
-  howpublished = {\url{https://github.com/shangliy/recforge/tree/master/papers/self-evolving-recsys-survey}}
+  howpublished = {\url{https://shangliy.github.io/recforge/survey/}}
 }
 ```

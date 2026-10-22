@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Self-Evolving Recommender Systems: A Survey and an Evaluation Audit</title>
+<meta name="description" content="In 2026 a new kind of recommender research appeared: large language model (LLM) agents that propose changes to a recommender&#x27;s configuration or source code, train the changed model, and keep what the evaluation says is better. Within ten months, more than thirty such systems were reported, from open">
+<meta name="citation_title" content="Self-Evolving Recommender Systems: A Survey and an Evaluation Audit">
+<meta name="citation_author" content="Yang, Shanglin">
+<meta name="citation_author" content="Shi, Zhan">
+<meta name="citation_author_institution" content="Santa Clara University">
+<meta name="citation_publication_date" content="2026/10/22">
+<meta name="citation_online_date" content="2026/10/22">
+<meta name="citation_pdf_url" content="https://shangliy.github.io/recforge/survey/paper.pdf">
+<meta name="citation_abstract_html_url" content="https://shangliy.github.io/recforge/survey/">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="recommender systems; LLM agents; AutoML; program evolution; evaluation; reproducibility">
+<meta name="citation_technical_report_institution" content="recforge">
+<meta property="og:title" content="Self-Evolving Recommender Systems: A Survey and an Evaluation Audit">
+<meta property="og:description" content="An audit of how 27 LLM-driven self-evolving recommender systems are evaluated, with a taxonomy, a reporting standard and open data.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://shangliy.github.io/recforge/survey/">
+<style>
+:root { --bg:#fbfbf9; --fg:#1d1d1b; --muted:#5f5f5a; --rule:#deded8; --link:#0b5cad; }
+@media (prefers-color-scheme: dark) { :root { --bg:#141413; --fg:#ececea; --muted:#a3a39d; --rule:#33332f; --link:#7fb4ef; } }
+body { background:var(--bg); color:var(--fg); font:17px/1.6 Georgia, "Times New Roman", serif; margin:0; }
+main { max-width:46rem; margin:0 auto; padding:3rem 1rem 4rem; }
+h1 { font-size:1.9rem; line-height:1.25; margin:0 0 .75rem; }
+.authors { color:var(--muted); margin:0 0 1.5rem; }
+.links a { display:inline-block; margin:0 1.2rem .5rem 0; }
+a { color:var(--link); }
+h2 { font-size:1.1rem; margin:2rem 0 .5rem; border-top:1px solid var(--rule); padding-top:1rem; }
+pre { overflow-x:auto; font-size:.8rem; background:color-mix(in srgb, var(--fg) 6%, transparent); padding:.8rem; border-radius:4px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Self-Evolving Recommender Systems: A Survey and an Evaluation Audit</h1>
+<p class="authors">Shanglin Yang (Independent Researcher) &middot; Zhan Shi (Santa Clara University) &middot; preprint, 22 October 2026</p>
+<p class="links"><a href="paper.pdf">PDF</a><a href="cite.bib">BibTeX</a><a href="https://github.com/shangliy/recforge/tree/master/papers/self-evolving-recsys-survey/audit">Audit data and evidence</a><a href="https://github.com/shangliy/recforge">recforge benchmark</a></p>
+<h2>Abstract</h2>
+<p>In 2026 a new kind of recommender research appeared: large language model (LLM) agents that propose changes to a recommender&#x27;s configuration or source code, train the changed model, and keep what the evaluation says is better. Within ten months, more than thirty such systems were reported, from open-source research harnesses to production loops at Google, Meta, Amazon, Alibaba, Kuaishou, Tencent and NetEase. This survey organises them, together with search-space AutoML and the agentic recommenders that update their own memory or weights, along two axes: what the loop changes and which signal decides whether a change survives. Because a self-evolving system is only as good as the signal it selects on, we then audit how 27 configuration- and code-level recommender systems are evaluated, coding each paper&#x27;s full text against nine criteria. Three of the 27 evaluate with full-catalogue ranking. Of the 17 that select candidates offline, nine do not say which data split makes the decision, two select on the data they report, and three state that the test set was used once. None reports its headline result with the spread over repeated evolution sessions, and none runs an equal-budget random search over its own edit space; the few studies that measure transfer to held-out data find that part of the selected gain, sometimes most of it, does not survive. Four systems report that their agent inflated the metric or leaked the target, caught by a human or by monitoring rather than by the acceptance rule. We distil these findings into a reporting standard and describe recforge, an open benchmark under development that implements the API side of a sealed-test, full-ranking, equal-budget protocol.</p>
+<h2>Cite</h2>
+<pre>@misc{yang2026selfevolvingrecsys,
+  title        = {Self-Evolving Recommender Systems: A Survey and an Evaluation Audit},
+  author       = {Shanglin Yang and Zhan Shi},
+  year         = {2026},
+  howpublished = {\url{https://shangliy.github.io/recforge/survey/}}
+}
+</pre>
+<h2>Corrections</h2>
+<p>Every coded cell of the audit is backed by a quote from the audited paper. If you are an author of an audited system and a cell is wrong, please open an issue or pull request on <a href="https://github.com/shangliy/recforge">GitHub</a> citing the section; we will update the table.</p>
+</main>
+</body>
+</html>
