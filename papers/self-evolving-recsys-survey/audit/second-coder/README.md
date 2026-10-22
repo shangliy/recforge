@@ -5,7 +5,7 @@ coder independently codes a random sample of the core systems, and we report agr
 criterion in the paper's limitations paragraph.
 
 1. `python3 sample.py` writes `sheet.csv`: 10 core systems drawn with a fixed seed.
-2. The second coder copies it to `coder2.csv` and fills C1-C6, C8 and C9 from the full text of each paper
+2. Send the second coder `CODER-GUIDE.md` and a copy of the sheet named `coder2.csv` (nothing else). They fill C1-C6, C8 and C9 from the full text of each paper
    (arXiv link in the sheet; read the appendices too), using only the codebook in `../README.md`. Do **not** open
    `audit.csv`, `../evidence-part*.md` or the paper's Table 3 until the sheet is done. Put a short quote and
    section pointer for each non-obvious cell in `notes`.
