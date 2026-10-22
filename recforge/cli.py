@@ -13,6 +13,10 @@
     recforge session trial NAME --model my_model.py:MyModel --set lr=0.003 --note "why"
     recforge session status NAME
     recforge session finalize NAME --trial 7
+
+    recforge evolvers                                   list built-in evolvers
+    recforge evolve --evolver random --dataset ml1m --base sasrec --max-trials 20 --device cuda
+    recforge evolve --evolver cli-agent --agent-cmd 'claude -p "$(cat {prompt})"' --dataset ml1m --base sasrec
 """
 from __future__ import annotations
 
@@ -100,6 +104,20 @@ def _parser():
     f.add_argument("name")
     f.add_argument("--trial", type=int, required=True)
     _common(f, device=False)
+
+    ev = sub.add_parser("evolvers", help="list built-in evolvers")
+    _common(ev, device=False)
+    e = sub.add_parser("evolve", help="run an evolver in a new session, finalize, report the val->test gap")
+    e.add_argument("--evolver", required=True, help="built-in name or path/to/file.py:ClassName")
+    e.add_argument("--dataset", required=True)
+    e.add_argument("--base", required=True, help="model spec to start from")
+    e.add_argument("--session", default=None, help="session name (default: evolver-dataset-time)")
+    e.add_argument("--max-trials", type=int, default=20)
+    e.add_argument("--max-minutes", type=float, default=120.0)
+    e.add_argument("--seed", type=int, default=1)
+    e.add_argument("--evolver-set", action="append", metavar="KEY=VALUE", help="evolver setting")
+    e.add_argument("--agent-cmd", default=None, help="cli-agent: shell command, {prompt} is the prompt file")
+    _common(e)
     return p
 
 
@@ -181,6 +199,21 @@ def _dispatch(p, a, log) -> int:
         elif a.action == "finalize":
             r = evolve.finalize(a.name, a.trial)
             _emit(a, r, f"session {a.name} final trial {a.trial}: test {json.dumps(r['test'])}")
+    elif a.cmd == "evolvers":
+        from .evolvers import EVOLVERS
+        rows = {k: {"defaults": v.DEFAULTS, "about": (v.__doc__ or sys.modules[v.__module__].__doc__ or "").strip()
+                    .splitlines()[0]} for k, v in EVOLVERS.items()}
+        _emit(a, rows, "\n".join(f"{k:11} {v['about']}  settings {v['defaults']}" for k, v in rows.items()))
+    elif a.cmd == "evolve":
+        from .evolvers import run_evolver
+        cfg = _parse_set(a.evolver_set)
+        if a.agent_cmd:
+            cfg["cmd"] = a.agent_cmd
+        r = run_evolver(a.evolver, a.dataset, a.base, a.max_trials, a.max_minutes, a.session, cfg, a.device,
+                        a.seed, a.preset, a.val_users, log)
+        _emit(a, r, f"session {r['session']} ({r['evolver']}): {r['used']['trials']} trials, final trial "
+                    f"{r['final_trial']} val ndcg@10={r['val']['ndcg@10']:.4f} test ndcg@10="
+                    f"{r['test']['ndcg@10']:.4f} gap {r['val_test_gap']['ndcg@10']:+.4f}")
     return 0
 
 

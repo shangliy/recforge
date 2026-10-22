@@ -50,6 +50,36 @@ Rules enforced by recforge, not by the prompt:
 
 Write the reasoning for each trial in `--note`; it is kept in the session file and is the evolve trail.
 
+## 4. Run an evolver
+
+An evolver is a searcher that spends a session's budget for you. `recforge evolve` creates the session, runs
+the evolver, finalizes, and reports the gap between the finalized trial's test and validation metrics,
+so evolvers can be compared under identical rules.
+
+```bash
+recforge evolvers --json
+recforge evolve --evolver random --dataset ml1m --base sasrec --max-trials 20 --device cuda --json
+recforge evolve --evolver cli-agent --agent-cmd 'claude -p "$(cat {prompt})"' --dataset ml1m --base sasrec --json
+recforge evolve --evolver openevolve --evolver-set config=oe.yaml --dataset ml1m --base sasrec --json
+recforge evolve --evolver my_evolver.py:MyEvolver --dataset ml1m --base sasrec --json
+```
+
+| evolver | what it does |
+|---|---|
+| `random` | random search over the model's search space (`SEARCH_SPACE` class attribute, the built-in spaces, or `--evolver-set space={...}`); the null baseline |
+| `cli-agent` | runs a coding-agent command once with a prompt file describing the session; the agent calls `recforge session trial` itself. Placeholders `{prompt}`, `{session}`, `{workdir}`, `{python}`, `{device}` |
+| `openevolve` | writes an OpenEvolve initial program and an evaluator that scores each program with one session trial, then runs OpenEvolve (`pip install openevolve`, plus an OpenEvolve config for your LLM) |
+
+To add your own, subclass `recforge.evolvers.base.Evolver`, set `name` and `DEFAULTS`, and implement
+`run(ctx)`. Use `self.trial(ctx, overrides, spec=None, note="")`, which returns `None` once the budget is spent.
+To propose code, write a model file under `ctx.workdir` and pass `spec="that/file.py:Class"`. If `run` does
+not finalize, recforge finalizes the trial with the best validation NDCG@10. The output JSON reports:
+
+- `used`: the trials and minutes spent;
+- `final_trial`, `val`, `test`: the finalized trial and its metrics;
+- `val_test_gap`: test minus validation for each metric, which measures how much the search overfit validation;
+- `evolver_info`.
+
 ## Shared GPUs
 
 `RECFORGE_GPU_FRAC=0.25` caps the model process at that fraction of GPU memory. Past the cap the run fails
