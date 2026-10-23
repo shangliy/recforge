@@ -18,8 +18,8 @@ Prepared 2026-10-22. **The submitting author (Shanglin Yang) uploads this; Claud
 ## Form fields
 - **Title:** Self-Evolving Recommender Systems: A Survey and an Evaluation Audit
 - **Authors:**
-  1. Shanglin Yang, Independent Researcher, kudoysl@gmail.com (submitting author; add your ORCID if you have one)
-  2. Zhan Shi, Santa Clara University, ashi2@scu.edu
+  1. Shanglin Yang, Independent Researcher (submitting author; add your ORCID if you have one)
+  2. Zhan Shi, Santa Clara University
 - **Subject category:** Computing and Processing
 - **Keywords:** recommender systems; LLM agents; self-evolving systems; AutoML; program evolution; evaluation;
   reproducibility

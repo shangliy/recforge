@@ -93,8 +93,9 @@ def main():
     for f in ("tmlr.sty", "tmlr.bst", "fancyhdr.sty"):
         if not (HERE / f).exists():
             raise SystemExit(f"missing {f}: copy it from https://github.com/JmlrOrg/tmlr-style-file")
-    leaks = [w for w in ("Shanglin", "Zhan Shi", "kudoysl", "scu.edu", "shangliy", "Independent Researcher")
-             if w in (HERE / "main.tex").read_text()]
+    main_tex = (HERE / "main.tex").read_text()
+    leaks = [w for w in ("Shanglin", "Zhan Shi", "shangliy", "Independent Researcher", "Santa Clara")
+             if w in main_tex] + re.findall(r"[\w.+-]+@[\w-]+\.(?:com|edu)", main_tex)
     if leaks:
         raise SystemExit(f"main.tex still identifies the authors: {leaks}")
     print("wrote main.tex and refs-anon.bib")
