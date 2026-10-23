@@ -31,6 +31,9 @@ remains the citable record.
 
 ## After it is posted
 
+Posted 2026-10-23 as DOI 10.20944/preprints202610.2336.v1 (https://www.preprints.org/manuscript/202610.2336/v1).
+
+
 - Add the Preprints.org DOI to `site/index.html` (a link, not `citation_doi`; keep the Zenodo DOI as the
   canonical one so citations do not split), `CITATION.cff` (`identifiers`) and the Zenodo record's related works
   ("Is identical to").

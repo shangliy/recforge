@@ -23,3 +23,7 @@ preferred-citation:
   year: 2026
   doi: 10.5281/zenodo.23575788
   url: "https://shangliy.github.io/recforge/survey/"
+  identifiers:
+    - type: doi
+      value: 10.20944/preprints202610.2336.v1
+      description: "Preprints.org version"
