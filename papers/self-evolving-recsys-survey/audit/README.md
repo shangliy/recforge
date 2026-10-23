@@ -39,6 +39,31 @@ RecSys Factory (2608.11241, operations platform, human approval of every change)
 generation), AURA (2609.16625, stops at pull requests), Spotify (2609.30297, prompt-level L4 loop). Their evidence is in
 `evidence-part2.md`.
 
+## Reconciliation with the second coder (2026-10-23)
+
+A second author coded all 27 core systems independently (`second-coder/returned/`). Pre-reconciliation agreement:
+pooled 0.84, Cohen's kappa 0.81, Gwet's AC1 0.84; kappa below 0.6 for c5 (0.30) and c8 (0.57). The 38 disagreements
+and their resolutions are in `second-coder/reconciliation.md`; 31 cells changed in this file. Google/YouTube is now
+online-selecting (c2 `online`), so the strata are 16 offline-selecting, 10 online-selecting, 1 operational.
+
+Rules the reconciliation settled, to apply to new rows:
+- c2 in a multi-stage loop: code the last gate that keeps or rejects among several candidates. A single online test of
+  one already-selected candidate is c5 evidence, not selection.
+- c1: the headline metric is the one behind the numbers in the abstract's headline claim; `online` only when every
+  quantified gain there is online; `other` for any non-recommendation metric (fix steps, policy-selection nDCG);
+  `none` only when no quantitative metric is given. A success rate defined on a recommendation metric (NOVA's EPR on
+  AUC) is coded by that metric.
+- c3: `N` when test scores are computed during the search or the reported number is by construction the best over
+  rounds, even if the paper states they are not used for selection.
+- c5: an online A/B of an offline-selected candidate, or a check on another dataset or scale, is `P`; `Y` is reserved
+  for a same-task selection-vs-held-out comparison. A designed but unreported confirmation, or a check of a proxy rather
+  than of the selected candidates, is `N`.
+- c6: comparisons with humans, manual workflows, other LLMs or trivial decision rules are `N`.
+- c8: `P` if tuned on the reported split; else `tuned`/`untuned` if tuning is stated (original-paper defaults are
+  `untuned`); else the comparator's identity (`seed`, `production`, `published` only for numbers copied from papers).
+- c9: `N` when the text shows the agent reading test labels or running test evaluation, whatever the process gates.
+- incident: requires a documented instance; a risk the paper names (AutoLR's KEEP ratchet) is a note, not `Y`.
+
 ## Changes in v2 (2026-10-22, after review)
 
 - `c9` no longer mixes design and incidents: the four core rows formerly coded `gaming` now carry their isolation

@@ -49,9 +49,9 @@ and the agentic recommenders that update their own memory or weights, by what th
 change, and which chain of signals decides whether it survives, and we synthesise their recurring designs and the
 changes they keep. Because a self-evolving system is only as good as the signal it selects on, we then audit how 27
 configuration-, code- and component-level loops are evaluated, coding each paper's full text against eight criteria
-with released evidence. Of the 17 loops that select candidates offline, three of the ten that report ranking metrics
-rank the full catalogue, seven do not say which data keep or reject candidates, four select on the data they report,
-and three state that the test set was used once; none reports its headline result with the spread over repeated
+with released evidence. Of the 16 loops that select candidates offline, three of the ten that report ranking metrics
+rank the full catalogue, eight do not say which data keep or reject candidates, four select on the data they report,
+and two state that the test set was used once; none reports its headline result with the spread over repeated
 evolution sessions, and three compare against a non-LLM search at equal budget. Of the 19 loops that run online
 experiments, none corrects for the many rounds it tests and one confirms its final candidate in a fresh experiment.
 Where transfer to held-out data is checked, some selected gains survive and some do not. Four loops report that their
@@ -172,7 +172,7 @@ with a section pointer; the data file and the evidence are released\footnote{\ur
 so that the coding can be checked and corrected. Extraction and verification were LLM-assisted: LLM agents (Claude)
 drafted the evidence for each cell from the full text, two further agent passes re-checked every coded cell and every
 cited sentence against its source, and the authors reviewed the coding and each correction against the paper
-text. For systems whose launch decision is an online experiment, we read the offline criteria as describing the
+text. A second author coded every core system independently (\S\ref{sec:threats}). For systems whose launch decision is an online experiment, we read the offline criteria as describing the
 offline screen, and assess the launch evidence separately (R9 in \S\ref{sec:protocol}).
 
 \begin{table}[t]
@@ -510,7 +510,7 @@ system.
 \caption{Design of the 27 audited loops. Chain: S self (LLM critic, council or simulator), P proxy or screen, O offline
 evaluation, A online experiment; the stage in bold decides inside the loop. Meta: the loop changes its own proposer.
 Humans: approve each round or candidate (each), approve launches (launch), check at stage boundaries or intervene
-(checkpoints), or none stated. Google's offline stage keeps candidates and its online stage chooses launches; Sortify's proxy search
+(checkpoints), or none stated. Google's offline stage ranks candidates by validation loss and its online stage decides which run and launch; Sortify's proxy search
 proposes each round and the rounds are chosen online; DMRL's deciding proxy is a long-term predictor applied to online
 experiment outcomes, so the audit counts it as online-selecting. Evidence for every cell is in the released
 \texttt{design-evidence.md}.}\label{tab:design}
@@ -521,7 +521,7 @@ System & Object & Proposer & Chain & Meta & Humans & System & Object & Proposer 
 \midrule
 Self-EvolveRec & L2 & LLM & \textbf{O} & \yes & none & Sortify & L1 & hybrid & P\textbf{A}A & \yes & launch \\
 RecHarness & L1+L2 & hybrid & \textbf{O}A & \no & none & GEARS & L1 & hybrid & \textbf{A} (logged) & \no & launch \\
-Google/YouTube & L1+L2 & LLM & \textbf{O}A & \no & launch & RecEvolve & L2 & LLM & P\textbf{O}A & \no & checkpoints \\
+Google/YouTube & L1+L2 & LLM & O\textbf{A} & \no & launch & RecEvolve & L2 & LLM & P\textbf{O}A & \no & checkpoints \\
 EvoRec & L1+L2 & LLM & \textbf{O}A & \yes & none & Astar & L2 & learned & P\textbf{O}A & \yes & none \\
 VirtualMLE & L1 & LLM & \textbf{O} & \yes & none & A-MLE & L1+L2 & LLM & \textbf{O} & \no & each \\
 NOVA & L1+L2 & LLM & S\textbf{O}A & \yes & checkpoints & SR-Agent & L1 & LLM & SP\textbf{A} & \no & launch \\
@@ -564,8 +564,8 @@ edits.
 
 \paragraph{Audited set.} We audited the 27 recommendation loops at levels L1--L3 that keep or reject candidates by
 evaluation, and the seven comparison points of \S\ref{sec:method}. Because offline hygiene criteria mean little for a
-loop whose keep-or-reject decision is an online experiment, we report two strata: 17 \emph{offline-selecting} loops,
-which decide on offline or proxy evaluations (some later confirm online), and 9 \emph{online-selecting} loops, which
+loop whose keep-or-reject decision is an online experiment, we report two strata: 16 \emph{offline-selecting} loops,
+which decide on offline or proxy evaluations (some later confirm online), and 10 \emph{online-selecting} loops, which
 decide on A/B experiments and are assessed on the design of those experiments; Auto-RecSys reports only operational
 outcomes and makes no accuracy claim. Meta's REA is described only in a blog post and is not audited, and two NeurIPS
 2026 workshop papers are known to us only from their abstracts: MLE Agents, which kept 325 of 1{,}097 agent-written
@@ -584,8 +584,8 @@ rests on cells coded ``not stated'', we give the range it would span if every su
 \begin{figure}[t]
 \centering
 \input{figs/audit_bars}
-\caption{Audit summary. Top: the 17 offline-selecting loops (C1 among the 10 that report ranking metrics; the
-others report AUC or a loss). Bottom: the design of the online experiments reported by 19 loops. C9 counts the
+\caption{Audit summary. Top: the 16 offline-selecting loops (C1 among the 10 that report ranking metrics; five
+report AUC or a loss and one only online lifts). Bottom: the design of the online experiments reported by 19 loops. C9 counts the
 isolation design; incidents of gaming or leakage are reported separately (F7). Generated from the released
 \texttt{audit.csv}.}
 \label{fig:auditbars}
@@ -610,32 +610,32 @@ System & Level & C1 & C2 & C3 & C4 & C5 & C6 & C8 & C9 & A/B & Code \\
 \midrule
 %BEGIN-AUDIT-ROWS
 Self-EvolveRec~\cite{kim2026selfevolverec} & L2 & Sampled & val & \ns & \no & \pa & \pa & \no & \ns & \no & \yes \\
-RecHarness~\cite{ling2026recharness} & L1+L2 & Sampled & val & \yes & \pa & \no & \pa & \ns & \pa & \yes & \yes \\
-Google/YouTube~\cite{wang2026selfevolving} & L1+L2 & AUC & val & \ns & \pa & \pa & \no & prod. & \pa & \yes & \no \\
-EvoRec~\cite{mu2026evorec} & L1+L2 & Rank? & \ns & \ns & \no & \no & \pa & \ns & \ns & \yes & \no \\
+RecHarness~\cite{ling2026recharness} & L1+L2 & Sampled & val & \yes & \pa & \pa & \pa & seed & \pa & \yes & \yes \\
+Google/YouTube~\cite{wang2026selfevolving} & L1+L2 & A/B & A/B & \na & \pa & \pa & \no & prod. & \pa & \yes & \no \\
+EvoRec~\cite{mu2026evorec} & L1+L2 & Rank? & \ns & \ns & \no & \pa & \pa & \no & \ns & \yes & \no \\
 VirtualMLE~\cite{cao2026virtualmle} & L1 & Rank? & val & \yes & \pa & \pa & \yes & \yes & \yes & \no & \yes \\
-NOVA~\cite{liu2026nova} & L1+L2 & AUC & \ns & \ns & \no & \no & \yes & prod. & \pa & \yes & \no \\
-AgentX~\cite{lao2026agentx} & L1+L2 & A/B & A/B & \na & \no & \pa & \no & prod. & \pa & \yes & \no \\
-AgentX-Model~\cite{yang2026agentxmodel} & L2 & AUC & \ns & \ns & \pa & \no & \pa & prod. & \pa & \yes & \no \\
-Auto-RecSys~\cite{li2026autorecsys} & L2 & ? & \na & \na & \no & \no & \no & prod. & \ns & \no & \no \\
-AutoLR~\cite{zhang2026autolr} & L1+L2 & ? & \ns & \ns & \no & \no & \no & prod. & \pa & \yes & \no \\
+NOVA~\cite{liu2026nova} & L1+L2 & AUC & \ns & \ns & \no & \pa & \yes & prod. & \pa & \yes & \no \\
+AgentX~\cite{lao2026agentx} & L1+L2 & A/B & A/B & \na & \no & \no & \no & prod. & \pa & \yes & \no \\
+AgentX-Model~\cite{yang2026agentxmodel} & L2 & AUC & \ns & \no & \pa & \pa & \pa & prod. & \pa & \yes & \no \\
+Auto-RecSys~\cite{li2026autorecsys} & L2 & other & \na & \na & \no & \no & \no & prod. & \pa & \no & \no \\
+AutoLR~\cite{zhang2026autolr} & L1+L2 & A/B & \ns & \ns & \no & \pa & \no & prod. & \pa & \yes & \no \\
 CORAL~\cite{azhar2026coral} & L1 & A/B & A/B & \na & \no & \no & \no & prod. & \pa & \yes & \no \\
 AgenticRecTune~\cite{wu2026agenticrectune} & L1 & A/B & A/B & \na & \no & \no & \no & prod. & \pa & \yes & \no \\
 Sortify~\cite{cheng2026sortify} & L1 & A/B & A/B & \na & \no & \pa & \no & prod. & \pa & \yes & \no \\
-GEARS~\cite{yun2026gears} & L1 & A/B & A/B & \na & \no & \pa & \no & prod. & \pa & \yes & \no \\
-RecEvolve~\cite{pan2026recevolve} & L2 & Rank? & \ns & \ns & \no & \no & \no & prod. & \pa\textsuperscript{G} & \yes & \no \\
-Astar~\cite{hu2026astar} & L2 & Rank? & loss & \ns & \no & \pa & \pa & prod. & \ns & \yes & \no \\
-A-MLE~\cite{gao2026amle} & L1+L2 & AUC & \ns & \ns & \pa & \no & \pa & prod. & \pa & \no & \no \\
+GEARS~\cite{yun2026gears} & L1 & other & A/B & \na & \no & \pa & \no & prod. & \pa & \yes & \no \\
+RecEvolve~\cite{pan2026recevolve} & L2 & Sampled & \ns & \ns & \no & \pa & \no & prod. & \pa\textsuperscript{G} & \yes & \no \\
+Astar~\cite{hu2026astar} & L2 & Rank? & \ns & \ns & \no & \pa & \no & prod. & \ns & \yes & \no \\
+A-MLE~\cite{gao2026amle} & L1+L2 & AUC & \ns & \ns & \pa & \no & \no & prod. & \pa & \no & \no \\
 SR-Agent~\cite{yang2026sragent} & L1 & A/B & A/B & \na & \no & \pa & \no & prod. & \pa & \yes & \no \\
-EvoSkillRec~\cite{li2026evoskillrec} & L2 & AUC & val & \yes & \no & \yes & \yes & \pa & \pa & \no & \yes \\
-RankEvolve-HSTU~\cite{chen2026rankevolve} & L1+L2 & Full & test & \no & \no & \pa & \pa & pub. & \no\textsuperscript{G} & \no & later \\
-Population Evolution~\cite{peng2026population} & L2 & Full & test & \pa & \no & \yes & \pa & \pa & \pa & \no & later \\
-Trajectories-to-Evidence~\cite{zhuang2026trajectories} & L2 & AUC & \ns & \ns & \no & \pa & \pa & prod. & \pa & \yes & \no \\
+EvoSkillRec~\cite{li2026evoskillrec} & L2 & AUC & val & \no & \no & \yes & \yes & \no & \pa & \no & \yes \\
+RankEvolve-HSTU~\cite{chen2026rankevolve} & L1+L2 & Full & test & \no & \no & \pa & \no & pub. & \no\textsuperscript{G} & \no & later \\
+Population Evolution~\cite{peng2026population} & L2 & Full & test & \no & \pa & \pa & \pa & \pa & \pa & \no & later \\
+Trajectories-to-Evidence~\cite{zhuang2026trajectories} & L2 & AUC & \ns & \ns & \no & \pa & \no & prod. & \pa & \yes & \no \\
 EvoPilot~\cite{fu2026evopilot} & L1+L2 & Rank? & test & \no & \pa & \pa & \no & prod. & \pa\textsuperscript{G} & \yes & \no \\
 Amazon AutoResearch~\cite{chandran2026autoresearch} & L1+L2+L3 & Full & test & \no & \pa & \pa & \no & \yes & \pa\textsuperscript{G} & \no & \no \\
-PILOT~\cite{pilot2026} & L1 & A/B & A/B & \na & \no & \pa & \no & prod. & \pa & \yes & \no \\
+PILOT~\cite{pilot2026} & L1 & A/B & A/B & \na & \no & \no & \no & prod. & \pa & \yes & \no \\
 A/B Agent~\cite{jiang2026abagent} & L1 & A/B & A/B & \na & \no & \no & \no & prod. & \pa & \yes & \no \\
-DMRL~\cite{zhang2026dmrl} & L1 & A/B & A/B & \na & \no & \pa & \no & pub. & \pa & \yes & \no \\
+DMRL~\cite{zhang2026dmrl} & L1 & A/B & A/B & \na & \no & \no & \no & prod. & \pa & \yes & \no \\
 \midrule
 \multicolumn{12}{@{}l}{\emph{Comparison points outside recommendation}} \\
 EvoRank (LTR)~\cite{patel2026evorank} & L2 & other & val & \yes & \yes & \yes & \yes & \yes & \yes & \no & \yes \\
@@ -652,35 +652,38 @@ PEAR (search)~\cite{wang2026pear} & L1 & A/B & A/B & \na & \pa & \pa & \no & pro
 
 \paragraph{F1: Candidate sets are rarely full, and often unstated.} Ten offline-selecting loops report ranking
 metrics. Three rank the full catalogue (RankEvolve-HSTU, Population Evolution, and the retrieval system of Amazon's
-AutoResearch); two pair each test item with 99 sampled negatives (Self-EvolveRec, RecHarness); five do not say what
-the candidate set is, so between three and eight of the ten use full ranking. For RecEvolve, the fact that shrinking
-the batch inflated its metrics (F7) suggests in-batch negatives. In Amazon's loop the agent designed a text-only
+AutoResearch); two pair each test item with 99 sampled negatives (Self-EvolveRec, RecHarness), and RecEvolve ranks
+against in-batch negatives, which is why shrinking the batch inflated its metrics (F7); four do not say what the
+candidate set is, so between three and seven of the ten use full ranking. In Amazon's loop the agent designed a text-only
 fallback that ``expanded catalog coverage by 5.8$\times$''~\cite{chandran2026autoresearch}, which by our reading
-changed the candidate set during the campaign. Six offline-selecting loops evaluate ranking-stage CTR models with AUC
-or a loss, as is standard for that stage, and AutoLR reports no offline metric.
+changed the candidate set during the campaign. Five offline-selecting loops evaluate ranking-stage CTR models with AUC
+or a loss, as is standard for that stage, and AutoLR selects offline but headlines only online lifts.
 
-\paragraph{F2: The selection data are often unstated, and sometimes they are the reported data.} Of the 17
-offline-selecting loops, five name a validation split (Self-EvolveRec, RecHarness, VirtualMLE, EvoSkillRec, and
-Google's validation loss), and Astar ranks candidates with a reward model and accepts by training-loss decrease. Four
-select on the data they report. RankEvolve-HSTU's persistent leaderboard is the canonical full-test
+\paragraph{F2: The selection data are often unstated, and sometimes they are the reported data.} Of the 16
+offline-selecting loops, four name a validation split (Self-EvolveRec, RecHarness, VirtualMLE, EvoSkillRec). Google's
+loop also ranks candidates by validation loss, but online experiments decide which run and launch, so we count it as
+online-selecting; Astar's loss-decrease rule labels its training data and defines its success rate, but the paper does
+not say what decides its production iterations. Four select on the data they report. RankEvolve-HSTU's persistent leaderboard is the canonical full-test
 NDCG@10~\cite{chen2026rankevolve}; Amazon's AutoResearch ``retains modifications that improve a held-out scalar
 metric'' and headlines the trajectory's peak~\cite{chandran2026autoresearch}; EvoPilot selects and reports on one
 held-out replay set~\cite{fu2026evopilot}; and Population Evolution selects on its source instances' evaluation scores
 and reports its local gains on them, while withholding the transfer targets from the proposer, and calibrates the
 shared baseline configuration on the released test split~\cite{peng2026population}. All four disclose these choices,
-which is to their credit. Seven do not say which data keep or reject candidates; the number that name a non-test
-selection signal is therefore between 6 and 13 of 17. Outside recommendation, the travel-search co-scientist keeps or
+which is to their credit. Eight do not say which data keep or reject candidates; the number that name a non-test
+selection signal is therefore between 4 and 12 of 16. Outside recommendation, the travel-search co-scientist keeps or
 reverts each change on the same held-out metric that it reports~\cite{wu2026coscientist}.
 
-\paragraph{F3: Test-once is rarely stated.} Three offline-selecting loops state that the selected candidate was
-evaluated on held-out test data once after the search (RecHarness, VirtualMLE, EvoSkillRec); three report on the data
-they select on (RankEvolve-HSTU, Amazon, EvoPilot); Population Evolution does so for its transfer targets only; ten do
-not say, so the true number is between 3 and 13.
+\paragraph{F3: Test-once is rarely stated.} Two offline-selecting loops state that the selected candidate was
+evaluated on held-out test data once after the search (RecHarness, VirtualMLE). Six use the test data during the
+search or repeatedly: four report on the data they select on (RankEvolve-HSTU, Population Evolution, Amazon, EvoPilot),
+AgentX-Model reports the best AUC over rounds and experiments, and EvoSkillRec scores every candidate on test in every
+generation while stating that the scores are never used for selection. Eight do not say, so the true number is between
+2 and 10.
 
-\paragraph{F4: No headline result comes with its spread over repeated sessions.} None of the 17 offline-selecting
+\paragraph{F4: No headline result comes with its spread over repeated sessions.} None of the 16 offline-selecting
 loops repeats an evolution session and reports the spread. Seven have partial evidence: RecHarness and VirtualMLE
-average three runs without a standard deviation; Google runs six independent sessions with bracketed ranges, but only
-for an ablation; A-MLE re-runs a candidate when within-run variance is high, which the authors say ``materially
+average three runs without a standard deviation; Population Evolution reports one run per configuration, with repeated
+evaluations of the reference score and unreported preliminary runs whose ``ordering was consistent''~\cite{peng2026population}; A-MLE re-runs a candidate when within-run variance is high, which the authors say ``materially
 reduced'' single-seed promotions~\cite{gao2026amle}; and AgentX-Model, EvoPilot and Amazon estimate the noise of single
 models without repeating a session---EvoPilot notes that two publications of the same model, configuration and pinned
 data ``differed by 0.36 points''~\cite{fu2026evopilot}, and Amazon re-evaluates one model across 11 dates (``6.18\%
@@ -690,14 +693,15 @@ separate from run-to-run variation''~\cite{li2026evoskillrec}; AgentX-Model repo
 0.0010--0.0022 AUC while counting an experiment as above baseline if it exceeds it by more than
 $10^{-6}$~\cite{yang2026agentxmodel}; and AutoLR, in its audited configuration, promoted candidates after a single run
 with noise calibration disabled, a risk its authors name the ``KEEP ratchet'': each promoted model becomes the
-baseline for all later comparisons~\cite{zhang2026autolr}. None of the nine online-selecting loops repeats a session
-either; for them a repeat is only practical on a replay (R4 in \S\ref{sec:protocol}).
+baseline for all later comparisons~\cite{zhang2026autolr}. None of the ten online-selecting loops repeats a session
+either; Google runs six independent sessions with bracketed ranges, but only for an ablation. For these loops a repeat
+is only practical on a replay (R4 in \S\ref{sec:protocol}).
 
-\paragraph{F5: Where transfer is checked, some selected gains survive and some do not.} Two core loops report an
-explicit held-out check of their selected candidates. In EvoSkillRec, five candidates lie on the validation Pareto
+\paragraph{F5: Where transfer is checked, some selected gains survive and some do not.} One core loop reports an
+explicit held-out check of its selected candidates. In EvoSkillRec, five candidates lie on the validation Pareto
 front, ``but only P1 (round 19) retains both improvements on the test set''~\cite{li2026evoskillrec}; P1 has the
 highest validation score of the five, so choosing by validation would have picked it (the paper states no rule for choosing a
-front point); P2 and P3 lose their AUC gain on test, and P4 and P5 have none on validation. In Population Evolution, a ranking candidate gains 10.66\% on a peer dataset and loses 0.79\% at
+front point); P2 and P3 lose their AUC gain on test, and P4 and P5 have none on validation. Population Evolution checks transfer across datasets and scale: a ranking candidate gains 10.66\% on a peer dataset and loses 0.79\% at
 larger scale, two of three peer-screened designs keep their gains, and sharing evidence across searches raises the
 larger-scale pass rate for ranking from 11/60 to 18/60~\cite{peng2026population}: in ranking and RL, most locally selected
 candidates do not graduate. Two further observations point the same way. Amazon's headline lift of 1.82$\times$ is the peak of a
@@ -717,8 +721,9 @@ published recommender gains is selection noise; it shows that the question canno
 \paragraph{F6: Null controls are rare.} Three offline-selecting loops compare against a non-LLM search at an equal or
 favourable budget: VirtualMLE (grid search and Bayesian optimisation), NOVA (Optuna-TPE at a matched offline-evaluation
 budget, in its code-level setting) and EvoSkillRec (NASRec, alongside OpenEvolve); in all three the LLM loop is reported
-to win. Nine have partial controls (unmatched budgets, a random arm router that still uses LLM edits, cross-LLM swaps,
-or replay-only comparisons), and five have none. No loop runs an equal-budget random search over its own edit space,
+to win. Five have partial controls (NAS baselines at unmatched budgets, a random arm router that still uses LLM edits, a
+replay-only random policy, or a starting model tuned by an optimiser that the LLM partly steers), and eight have none;
+comparisons with human workflows or with other LLMs do not count. No loop runs an equal-budget random search over its own edit space,
 and none runs the catalogue-of-known-techniques null of \S\ref{sec:kept}. Where random selection was run, it was
 competitive: in AgentX-Model's historical replay, which randomises the choice of experiments rather than the edits, in
 Scenario A ``Uniform Random's mean exceeds Fixed, Greedy, and Joint'' policies~\cite{yang2026agentxmodel}, and in
@@ -769,9 +774,9 @@ Among the borderline systems, AURA's agent fabricated 904 session identifiers in
 stage~\cite{kim2026aura}, and RecSys Factory's diagnostics uncovered a pre-existing upstream join bug that had
 ``silently corrupted all downstream training samples''~\cite{ao2026recsysfactory}, a reminder that the data feeding the
 loop need checks too. As designed, only VirtualMLE states that the test set is hidden from the agent and the data
-pipeline immutable; twelve offline-selecting loops constrain part of the loop (verification gates, fixed evaluation
+pipeline immutable; eleven offline-selecting loops constrain part of the loop (verification gates, fixed evaluation
 code, whitelists, isolated workspaces, sandboxed modules), RankEvolve-HSTU lets its agents run evaluations at the test
-position, and three say nothing; all nine online-selecting loops bound the agent's actions.
+position, and three say nothing; all ten online-selecting loops bound the agent's actions.
 
 \paragraph{F8: Baselines, budgets and openness.} The largest relative gains are measured against weak starting
 points. RecHarness improves average HR@10 by 85.85\% over a cold-start GRU4Rec~\cite{hidasi2016gru4rec} template and by
@@ -925,10 +930,20 @@ original papers in two adversarial verification passes, run by LLM agents and re
 corrected 12 cells in nine rows, the second re-verified every cited sentence against its source and corrected the
 remaining cells and claims (both reports are released in \texttt{review/}). A third pass, prompted by an internal
 review of this version, recoded nine criterion cells and five object labels, moved meta-evolution into its own column, and separated C9 into isolation design and reported incidents (listed in
-the released \texttt{audit/README.md}). All of this is one reading. A second author is independently coding all 27 core
-systems from the full texts without access to the first coding; we will report, before any reconciliation, the raw
-agreement and Cohen's $\kappa$ per criterion with bootstrap intervals, a prevalence-robust coefficient (Gwet's AC1),
-and the confusion matrices, and we will flag in the text every count that rests on a criterion with $\kappa < 0.6$.
+the released \texttt{audit/README.md}). A second author then coded all 27 core systems from the full texts with the
+same codebook, without access to the coding data; as a co-author, the second coder could have seen the first
+version of this survey, whose audit table was public. Before reconciliation, the two codings agreed on 84\% of the
+243 cells (pooled Cohen's $\kappa = 0.81$, Gwet's AC1 $= 0.84$). By criterion, $\kappa$ was 0.67 for C1 (95\%
+bootstrap interval 0.46--0.86), 0.90 for C2, 0.79 for C3, 0.91 for C4, 0.30 for C5 ($-0.04$--0.63), 0.65 for C6,
+0.57 for C8, 0.77 for C9 and 0.87 for reported incidents; AC1 was at least 0.70 everywhere except C5 (0.50). The 38
+disagreements were resolved against the paper text, with LLM agents drafting a resolution and quote for each and both
+authors reviewing them: 31 in favour of the second coding and seven in favour of the first. Most of them came from rules the codebook left open: which gate counts as the selection in a multi-stage
+loop, whether an online test of an offline-selected candidate is transfer evidence, and whether computing test
+scores that are not used for selection breaks test-once. The counts in this paper use the reconciled coding; the
+two independent sheets, the agreement script and every resolution are released. Two criteria fall below $\kappa =
+0.6$, so the counts that rest on them are the least certain: C5 (F5, where the disagreements were mostly between
+``partial'' and ``no'') and C8 (F8, where they were mostly about which label describes a baseline, not whether it
+was tuned).
 ``Not stated'' does not mean ``not done'': authors may have followed a practice without reporting it, which is why
 we give ranges for the counts that rest on such cells. We have not yet asked the audited authors to check their rows;
 the evidence is released so that they and other readers can correct individual cells, and we will update the table.

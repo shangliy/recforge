@@ -1,0 +1,39 @@
+key,system,arxiv,criterion,first,second
+chen2026rankevolve,RankEvolve-HSTU,2609.39551,c6,P,N
+chen2026rankevolve,RankEvolve-HSTU,2609.39551,c9,N,P
+kim2026selfevolverec,Self-EvolveRec,2602.12612,c8,untuned,seed
+li2026evoskillrec,EvoSkillRec,2609.34552,c3,Y,N
+li2026evoskillrec,EvoSkillRec,2609.34552,c8,P,untuned
+ling2026recharness,RecHarness,2607.29241,c5,N,P
+ling2026recharness,RecHarness,2607.29241,c8,NS,seed
+liu2026nova,NOVA,2606.27243,c1,auc,other
+liu2026nova,NOVA,2606.27243,c5,N,P
+peng2026population,Population Evolution,2610.05950,c3,P,N
+peng2026population,Population Evolution,2610.05950,c4,N,P
+peng2026population,Population Evolution,2610.05950,c5,Y,P
+peng2026population,Population Evolution,2610.05950,c6,P,N
+peng2026population,Population Evolution,2610.05950,c8,P,tuned
+yang2026agentxmodel,AgentX-Model,2609.30001,c3,NS,N
+yang2026agentxmodel,AgentX-Model,2609.30001,c5,N,P
+zhang2026autolr,AutoLR,2609.04871,c1,none,online
+zhang2026autolr,AutoLR,2609.04871,c5,N,P
+zhang2026autolr,AutoLR,2609.04871,incident,N,Y
+zhuang2026trajectories,Trajectories-to-Evidence,2608.05235,c1,auc,online
+zhuang2026trajectories,Trajectories-to-Evidence,2608.05235,c6,P,N
+gao2026amle,A-MLE,2609.08248,c6,P,N
+hu2026astar,Astar,2608.27287,c2,trainloss,NS
+hu2026astar,Astar,2608.27287,c6,P,N
+lao2026agentx,AgentX,2606.26859,c5,P,N
+li2026autorecsys,Auto-RecSys,2609.10922,c1,none,other
+li2026autorecsys,Auto-RecSys,2609.10922,c9,NS,P
+mu2026evorec,EvoRec,2606.28368,c5,N,P
+mu2026evorec,EvoRec,2606.28368,c8,NS,untuned
+pan2026recevolve,RecEvolve,2609.01622,c1,ranking-ns,sampled
+pan2026recevolve,RecEvolve,2609.01622,c5,N,P
+pilot2026,PILOT,2608.18637,c5,P,N
+wang2026selfevolving,Google/YouTube,2602.10226,c1,auc,online
+wang2026selfevolving,Google/YouTube,2602.10226,c2,val,online
+wang2026selfevolving,Google/YouTube,2602.10226,c3,NS,na
+yun2026gears,GEARS,2602.18640,c1,online,other
+zhang2026dmrl,DMRL,2609.02170,c5,P,N
+zhang2026dmrl,DMRL,2609.02170,c8,published,production
