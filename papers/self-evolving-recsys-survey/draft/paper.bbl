@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{135}
+\begin{thebibliography}{202}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -39,6 +39,37 @@
 \@ifundefined{NAT@parse@date}{}{\let\NAT@parse@date@orig\NAT@parse@date}
 \@ifundefined{NAT@parse@date}{}{\def\NAT@parse@date#1#2#3#4#5#6@@{\NAT@parse@date@orig#1#2#3#4#5#6@@\def\NAT@tempyear{0000}\def\NAT@tempexlab{{?}}\ifx\NAT@year\NAT@tempyear\ifx\NAT@exlab\NAT@tempexlab\def\NAT@date{[n.\,d.]}\else\edef\NAT@date{[n.\,d.]\NAT@exlab}\fi\fi}}
 \makeatother
+
+\bibitem[Agarwal et~al\mbox{.}(2021)]%
+        {agarwal2021precipice}
+\bibfield{author}{\bibinfo{person}{Rishabh Agarwal}, \bibinfo{person}{Max
+  Schwarzer}, \bibinfo{person}{Pablo~Samuel Castro}, \bibinfo{person}{Aaron
+  Courville}, {and} \bibinfo{person}{Marc~G. Bellemare}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{{Deep Reinforcement Learning at the Edge of the
+  Statistical Precipice}}. In \bibinfo{booktitle}{\emph{Advances in Neural
+  Information Processing Systems}}, Vol.~\bibinfo{volume}{34}.
+  \bibinfo{publisher}{Curran Associates, Inc.}, \bibinfo{pages}{29304--29320}.
+\newblock
+\showeprint[arxiv]{2108.13264}
+\urldef\tempurl%
+\url{https://proceedings.neurips.cc/paper_files/paper/2021/hash/f514cec81cb148559cf475e7426eed5e-Abstract.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Akiba et~al\mbox{.}(2019)]%
+        {akiba2019optuna}
+\bibfield{author}{\bibinfo{person}{Takuya Akiba}, \bibinfo{person}{Shotaro
+  Sano}, \bibinfo{person}{Toshihiko Yanase}, \bibinfo{person}{Takeru Ohta},
+  {and} \bibinfo{person}{Masanori Koyama}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{{Optuna: A Next-generation Hyperparameter
+  Optimization Framework}}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  25th ACM SIGKDD International Conference on Knowledge Discovery \& Data
+  Mining}}. \bibinfo{publisher}{ACM}, \bibinfo{pages}{2623--2631}.
+\newblock
+\href{https://doi.org/10.1145/3292500.3330701}{doi:\nolinkurl{10.1145/3292500.3330701}}
+
 
 \bibitem[Anelli et~al\mbox{.}(2021)]%
         {anelli2021elliot}
@@ -116,6 +147,39 @@
 \showeprint[arxiv]{2609.02730}
 \urldef\tempurl%
 \url{https://arxiv.org/abs/2609.02730}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Baker et~al\mbox{.}(2025)]%
+        {baker2025monitoring}
+\bibfield{author}{\bibinfo{person}{Bowen Baker}, \bibinfo{person}{Joost
+  Huizinga}, \bibinfo{person}{Leo Gao}, \bibinfo{person}{Zehao Dou},
+  \bibinfo{person}{Melody~Y. Guan}, \bibinfo{person}{Aleksander Madry},
+  \bibinfo{person}{Wojciech Zaremba}, \bibinfo{person}{Jakub Pachocki}, {and}
+  \bibinfo{person}{David Farhi}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{{Monitoring Reasoning Models for Misbehavior and the
+  Risks of Promoting Obfuscation}}.
+\newblock \bibinfo{howpublished}{arXiv:2503.11926}.
+\newblock
+\showeprint[arxiv]{2503.11926}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2503.11926}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Barlier and Skrlj(2026)]%
+        {barlier2026feature}
+\bibfield{author}{\bibinfo{person}{Merwan Barlier} {and} \bibinfo{person}{Blaz
+  Skrlj}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \bibinfo{title}{{LLMs as Feature Engineers for Text-and-Tabular
+  Prediction}}.
+\newblock \bibinfo{howpublished}{arXiv:2609.21894}.
+\newblock
+\showeprint[arxiv]{2609.21894}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2609.21894}
 \showURL{%
 \tempurl}
 
@@ -199,6 +263,45 @@
 \tempurl}
 
 
+\bibitem[Bouthillier et~al\mbox{.}(2021)]%
+        {bouthillier2021variance}
+\bibfield{author}{\bibinfo{person}{Xavier Bouthillier}, \bibinfo{person}{Pierre
+  Delaunay}, \bibinfo{person}{Mirko Bronzi}, \bibinfo{person}{Assya Trofimov},
+  \bibinfo{person}{Brennan Nichyporuk}, \bibinfo{person}{Justin Szeto},
+  \bibinfo{person}{Nazanin~Mohammadi Sepahvand}, \bibinfo{person}{Edward Raff},
+  \bibinfo{person}{Kanika Madan}, \bibinfo{person}{Vikram Voleti},
+  \bibinfo{person}{Samira~Ebrahimi Kahou}, \bibinfo{person}{Vincent Michalski},
+  \bibinfo{person}{Tal Arbel}, \bibinfo{person}{Chris Pal},
+  \bibinfo{person}{Ga{\"e}l Varoquaux}, {and} \bibinfo{person}{Pascal
+  Vincent}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{{Accounting for Variance in Machine Learning
+  Benchmarks}}. In \bibinfo{booktitle}{\emph{Proceedings of Machine Learning
+  and Systems (MLSys)}}, Vol.~\bibinfo{volume}{3}. \bibinfo{pages}{747--769}.
+\newblock
+\showeprint[arxiv]{2103.03098}
+\urldef\tempurl%
+\url{https://proceedings.mlsys.org/paper_files/paper/2021/hash/0184b0cd3cfb185989f858a1d9f5c1eb-Abstract.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Cai et~al\mbox{.}(2024)]%
+        {cai2024afl}
+\bibfield{author}{\bibinfo{person}{Shihao Cai}, \bibinfo{person}{Jizhi Zhang},
+  \bibinfo{person}{Keqin Bao}, \bibinfo{person}{Chongming Gao},
+  \bibinfo{person}{Qifan Wang}, \bibinfo{person}{Fuli Feng}, {and}
+  \bibinfo{person}{Xiangnan He}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{{Agentic Feedback Loop Modeling Improves
+  Recommendation and User Simulation}}.
+\newblock \bibinfo{howpublished}{arXiv:2410.20027}.
+\newblock
+\showeprint[arxiv]{2410.20027}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2410.20027}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Cao et~al\mbox{.}(2026)]%
         {cao2026virtualmle}
 \bibfield{author}{\bibinfo{person}{Shiteng Cao}, \bibinfo{person}{Jingwen Liu},
@@ -251,6 +354,22 @@
 \tempurl}
 
 
+\bibitem[Chen et~al\mbox{.}(2026b)]%
+        {chen2026covemem}
+\bibfield{author}{\bibinfo{person}{Hanchong Chen}, \bibinfo{person}{Xing Tang},
+  \bibinfo{person}{Lingjie Li}, \bibinfo{person}{Xiongfeng Shan}, {and}
+  \bibinfo{person}{Xiuqiang He}.} \bibinfo{year}{2026}\natexlab{b}.
+\newblock \bibinfo{title}{{When Memory Takes Gradients: Collaborative Vector
+  Memory for Agentic Recommender Systems}}.
+\newblock \bibinfo{howpublished}{arXiv:2608.26895}.
+\newblock
+\showeprint[arxiv]{2608.26895}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2608.26895}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Chen et~al\mbox{.}(2024)]%
         {chen2024tokenization}
 \bibfield{author}{\bibinfo{person}{Runjin Chen}, \bibinfo{person}{Mingxuan Ju},
@@ -270,13 +389,13 @@
 \tempurl}
 
 
-\bibitem[Chen et~al\mbox{.}(2026c)]%
+\bibitem[Chen et~al\mbox{.}(2026d)]%
         {chen2026memrec}
 \bibfield{author}{\bibinfo{person}{Weixin Chen}, \bibinfo{person}{Yuhan Zhao},
   \bibinfo{person}{Jingyuan Huang}, \bibinfo{person}{Zihe Ye},
   \bibinfo{person}{Clark~Mingxuan Ju}, \bibinfo{person}{Tong Zhao},
   \bibinfo{person}{Neil Shah}, \bibinfo{person}{Li Chen}, {and}
-  \bibinfo{person}{Yongfeng Zhang}.} \bibinfo{year}{2026}\natexlab{c}.
+  \bibinfo{person}{Yongfeng Zhang}.} \bibinfo{year}{2026}\natexlab{d}.
 \newblock \showarticletitle{{MemRec: Collaborative Memory-Augmented Agentic
   Recommender System}}. In \bibinfo{booktitle}{\emph{Proceedings of the 64th
   Annual Meeting of the Association for Computational Linguistics (Volume 1:
@@ -316,14 +435,14 @@
 \tempurl}
 
 
-\bibitem[Chen et~al\mbox{.}(2026b)]%
+\bibitem[Chen et~al\mbox{.}(2026c)]%
         {chen2026policydiscovery}
 \bibfield{author}{\bibinfo{person}{Zhi Chen}, \bibinfo{person}{Minmao Wang},
   \bibinfo{person}{Xingchen Liu}, \bibinfo{person}{Haoqiang Liang},
   \bibinfo{person}{Huihuang Lin}, \bibinfo{person}{Likang Wu},
   \bibinfo{person}{Hongke Zhao}, \bibinfo{person}{Yulong Wang},
   \bibinfo{person}{Shijie Yi}, \bibinfo{person}{Fei Pan}, {and}
-  \bibinfo{person}{Peng Jiang}.} \bibinfo{year}{2026}\natexlab{b}.
+  \bibinfo{person}{Peng Jiang}.} \bibinfo{year}{2026}\natexlab{c}.
 \newblock \bibinfo{title}{{From Understanding to Action: Feedback-Grounded
   Policy Discovery for Generative Recommendation}}.
 \newblock \bibinfo{howpublished}{arXiv:2607.27789}.
@@ -352,6 +471,21 @@
 \url{https://arxiv.org/abs/2603.27765}
 \showURL{%
 \tempurl}
+
+
+\bibitem[Dacrema et~al\mbox{.}(2021)]%
+        {dacrema2021troubling}
+\bibfield{author}{\bibinfo{person}{Maurizio~Ferrari Dacrema},
+  \bibinfo{person}{Simone Boglio}, \bibinfo{person}{Paolo Cremonesi}, {and}
+  \bibinfo{person}{Dietmar Jannach}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{{A Troubling Analysis of Reproducibility and
+  Progress in Recommender Systems Research}}.
+\newblock \bibinfo{journal}{\emph{ACM Transactions on Information Systems}}
+  \bibinfo{volume}{39}, \bibinfo{number}{2}, Article \bibinfo{articleno}{20}
+  (\bibinfo{year}{2021}), \bibinfo{numpages}{49}~pages.
+\newblock
+\showeprint[arxiv]{1911.07698}
+\href{https://doi.org/10.1145/3434185}{doi:\nolinkurl{10.1145/3434185}}
 
 
 \bibitem[Dacrema et~al\mbox{.}(2019)]%
@@ -387,6 +521,37 @@
 \tempurl}
 
 
+\bibitem[Dodge et~al\mbox{.}(2019)]%
+        {dodge2019showyourwork}
+\bibfield{author}{\bibinfo{person}{Jesse Dodge}, \bibinfo{person}{Suchin
+  Gururangan}, \bibinfo{person}{Dallas Card}, \bibinfo{person}{Roy Schwartz},
+  {and} \bibinfo{person}{Noah~A. Smith}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{{Show Your Work: Improved Reporting of Experimental
+  Results}}. In \bibinfo{booktitle}{\emph{Proceedings of the 2019 Conference on
+  Empirical Methods in Natural Language Processing and the 9th International
+  Joint Conference on Natural Language Processing (EMNLP-IJCNLP)}}.
+  \bibinfo{publisher}{Association for Computational Linguistics},
+  \bibinfo{pages}{2185--2194}.
+\newblock
+\showeprint[arxiv]{1909.03004}
+\href{https://doi.org/10.18653/v1/D19-1224}{doi:\nolinkurl{10.18653/v1/D19-1224}}
+
+
+\bibitem[Dong and Yang(2020)]%
+        {dong2020nasbench201}
+\bibfield{author}{\bibinfo{person}{Xuanyi Dong} {and} \bibinfo{person}{Yi
+  Yang}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{NAS-Bench-201: Extending the Scope of Reproducible
+  Neural Architecture Search}}. In \bibinfo{booktitle}{\emph{International
+  Conference on Learning Representations (ICLR)}}.
+\newblock
+\showeprint[arxiv]{2001.00326}
+\urldef\tempurl%
+\url{https://openreview.net/forum?id=HJxyZkBKDr}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Dwork et~al\mbox{.}(2015)]%
         {dwork2015reusable}
 \bibfield{author}{\bibinfo{person}{Cynthia Dwork}, \bibinfo{person}{Vitaly
@@ -400,6 +565,26 @@
 \showeprint[arxiv]{1506.02629}
 \urldef\tempurl%
 \url{https://arxiv.org/abs/1506.02629}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Eggensperger et~al\mbox{.}(2021)]%
+        {eggensperger2021hpobench}
+\bibfield{author}{\bibinfo{person}{Katharina Eggensperger},
+  \bibinfo{person}{Philipp M{\"u}ller}, \bibinfo{person}{Neeratyoy Mallik},
+  \bibinfo{person}{Matthias Feurer}, \bibinfo{person}{Ren{\'e} Sass},
+  \bibinfo{person}{Aaron Klein}, \bibinfo{person}{Noor Awad},
+  \bibinfo{person}{Marius Lindauer}, {and} \bibinfo{person}{Frank Hutter}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{{HPOBench: A Collection of Reproducible
+  Multi-Fidelity Benchmark Problems for HPO}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the Neural Information Processing
+  Systems Track on Datasets and Benchmarks}}, Vol.~\bibinfo{volume}{1}.
+\newblock
+\showeprint[arxiv]{2109.06716}
+\urldef\tempurl%
+\url{https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/hash/93db85ed909c13838ff95ccfa94cebd9-Abstract-round2.html}
 \showURL{%
 \tempurl}
 
@@ -472,6 +657,37 @@
 \href{https://doi.org/10.1145/3696410.3714524}{doi:\nolinkurl{10.1145/3696410.3714524}}
 
 
+\bibitem[Gao et~al\mbox{.}(2022a)]%
+        {gao2022kuairec}
+\bibfield{author}{\bibinfo{person}{Chongming Gao}, \bibinfo{person}{Shijun Li},
+  \bibinfo{person}{Wenqiang Lei}, \bibinfo{person}{Jiawei Chen},
+  \bibinfo{person}{Biao Li}, \bibinfo{person}{Peng Jiang},
+  \bibinfo{person}{Xiangnan He}, \bibinfo{person}{Jiaxin Mao}, {and}
+  \bibinfo{person}{Tat-Seng Chua}.} \bibinfo{year}{2022}\natexlab{a}.
+\newblock \showarticletitle{{KuaiRec: A Fully-observed Dataset and Insights for
+  Evaluating Recommender Systems}}. In \bibinfo{booktitle}{\emph{Proceedings of
+  the 31st ACM International Conference on Information \& Knowledge
+  Management}}. \bibinfo{publisher}{ACM}, \bibinfo{pages}{540--550}.
+\newblock
+\href{https://doi.org/10.1145/3511808.3557220}{doi:\nolinkurl{10.1145/3511808.3557220}}
+
+
+\bibitem[Gao et~al\mbox{.}(2022b)]%
+        {gao2022kuairand}
+\bibfield{author}{\bibinfo{person}{Chongming Gao}, \bibinfo{person}{Shijun Li},
+  \bibinfo{person}{Yuan Zhang}, \bibinfo{person}{Jiawei Chen},
+  \bibinfo{person}{Biao Li}, \bibinfo{person}{Wenqiang Lei},
+  \bibinfo{person}{Peng Jiang}, {and} \bibinfo{person}{Xiangnan He}.}
+  \bibinfo{year}{2022}\natexlab{b}.
+\newblock \showarticletitle{{KuaiRand: An Unbiased Sequential Recommendation
+  Dataset with Randomly Exposed Videos}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 31st ACM International
+  Conference on Information \& Knowledge Management}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{3953--3957}.
+\newblock
+\href{https://doi.org/10.1145/3511808.3557624}{doi:\nolinkurl{10.1145/3511808.3557624}}
+
+
 \bibitem[Gao et~al\mbox{.}(2026)]%
         {gao2026amle}
 \bibfield{author}{\bibinfo{person}{Erwin Gao}, \bibinfo{person}{Vinodh~Kumar
@@ -504,6 +720,23 @@
 \tempurl}
 
 
+\bibitem[Gao et~al\mbox{.}(2023)]%
+        {gao2023overoptimization}
+\bibfield{author}{\bibinfo{person}{Leo Gao}, \bibinfo{person}{John Schulman},
+  {and} \bibinfo{person}{Jacob Hilton}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{Scaling Laws for Reward Model Overoptimization}}.
+  In \bibinfo{booktitle}{\emph{Proceedings of the 40th International Conference
+  on Machine Learning (ICML)}} \emph{(\bibinfo{series}{Proceedings of Machine
+  Learning Research}, Vol.~\bibinfo{volume}{202})}. \bibinfo{publisher}{PMLR},
+  \bibinfo{pages}{10835--10866}.
+\newblock
+\showeprint[arxiv]{2210.10760}
+\urldef\tempurl%
+\url{https://proceedings.mlr.press/v202/gao23h.html}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Grover(2026)]%
         {grover2026luckyruns}
 \bibfield{author}{\bibinfo{person}{Pratham Grover}.}
@@ -516,6 +749,51 @@
 \url{https://openreview.net/forum?id=x3lY2QO0Xe}
 \showURL{%
 \tempurl}
+
+
+\bibitem[Guo et~al\mbox{.}(2024)]%
+        {guo2024dsagent}
+\bibfield{author}{\bibinfo{person}{Siyuan Guo}, \bibinfo{person}{Cheng Deng},
+  \bibinfo{person}{Ying Wen}, \bibinfo{person}{Hechang Chen},
+  \bibinfo{person}{Yi Chang}, {and} \bibinfo{person}{Jun Wang}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{{DS-Agent: Automated Data Science by Empowering Large
+  Language Models with Case-Based Reasoning}}.
+\newblock \bibinfo{howpublished}{arXiv:2402.17453}.
+\newblock
+\showeprint[arxiv]{2402.17453}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2402.17453}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Hao et~al\mbox{.}(2026)]%
+        {hao2026lattearena}
+\bibfield{author}{\bibinfo{person}{Ankai Hao}, \bibinfo{person}{Ke Chen},
+  \bibinfo{person}{Huan Li}, {and} \bibinfo{person}{Lidan Shou}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \bibinfo{title}{{LATTEArena: An Evaluation Framework for LLM-powered
+  Tabular Feature Engineering (Extended Version)}}.
+\newblock \bibinfo{howpublished}{arXiv:2606.09004}.
+\newblock
+\showeprint[arxiv]{2606.09004}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2606.09004}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Harper and Konstan(2015)]%
+        {harper2015movielens}
+\bibfield{author}{\bibinfo{person}{F.~Maxwell Harper} {and}
+  \bibinfo{person}{Joseph~A. Konstan}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{{The MovieLens Datasets: History and Context}}.
+\newblock \bibinfo{journal}{\emph{ACM Transactions on Interactive Intelligent
+  Systems}} \bibinfo{volume}{5}, \bibinfo{number}{4}, Article
+  \bibinfo{articleno}{19} (\bibinfo{year}{2015}), \bibinfo{numpages}{19}~pages.
+\newblock
+\href{https://doi.org/10.1145/2827872}{doi:\nolinkurl{10.1145/2827872}}
 
 
 \bibitem[Hasan et~al\mbox{.}(2026)]%
@@ -536,6 +814,34 @@
 \tempurl}
 
 
+\bibitem[He et~al\mbox{.}(2017)]%
+        {he2017ncf}
+\bibfield{author}{\bibinfo{person}{Xiangnan He}, \bibinfo{person}{Lizi Liao},
+  \bibinfo{person}{Hanwang Zhang}, \bibinfo{person}{Liqiang Nie},
+  \bibinfo{person}{Xia Hu}, {and} \bibinfo{person}{Tat-Seng Chua}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{{Neural Collaborative Filtering}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 26th International Conference on
+  World Wide Web}}. \bibinfo{publisher}{International World Wide Web
+  Conferences Steering Committee}, \bibinfo{pages}{173--182}.
+\newblock
+\href{https://doi.org/10.1145/3038912.3052569}{doi:\nolinkurl{10.1145/3038912.3052569}}
+
+
+\bibitem[Henderson et~al\mbox{.}(2018)]%
+        {henderson2018deeprl}
+\bibfield{author}{\bibinfo{person}{Peter Henderson}, \bibinfo{person}{Riashat
+  Islam}, \bibinfo{person}{Philip Bachman}, \bibinfo{person}{Joelle Pineau},
+  \bibinfo{person}{Doina Precup}, {and} \bibinfo{person}{David Meger}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{{Deep Reinforcement Learning That Matters}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}}, Vol.~\bibinfo{volume}{32}. \bibinfo{publisher}{AAAI Press}.
+\newblock
+\showeprint[arxiv]{1709.06560}
+\href{https://doi.org/10.1609/aaai.v32i1.11694}{doi:\nolinkurl{10.1609/aaai.v32i1.11694}}
+
+
 \bibitem[Hidasi and Czapp(2023)]%
         {hidasi2023flaws}
 \bibfield{author}{\bibinfo{person}{Bal{\'a}zs Hidasi} {and}
@@ -549,7 +855,36 @@
 \href{https://doi.org/10.1145/3604915.3608839}{doi:\nolinkurl{10.1145/3604915.3608839}}
 
 
+\bibitem[Hidasi et~al\mbox{.}(2016)]%
+        {hidasi2016gru4rec}
+\bibfield{author}{\bibinfo{person}{Bal{\'a}zs Hidasi},
+  \bibinfo{person}{Alexandros Karatzoglou}, \bibinfo{person}{Linas Baltrunas},
+  {and} \bibinfo{person}{Domonkos Tikk}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{{Session-based Recommendations with Recurrent
+  Neural Networks}}. In \bibinfo{booktitle}{\emph{International Conference on
+  Learning Representations (ICLR)}}.
+\newblock
+\showeprint[arxiv]{1511.06939}
+
+
 \bibitem[Hu et~al\mbox{.}(2026a)]%
+        {hu2026rethinking}
+\bibfield{author}{\bibinfo{person}{Jinxin Hu}, \bibinfo{person}{Hao Deng},
+  \bibinfo{person}{Lingyu Mu}, \bibinfo{person}{Hao Zhang},
+  \bibinfo{person}{Shizhun Wang}, \bibinfo{person}{Yu Zhang}, {and}
+  \bibinfo{person}{Xiaoyi Zeng}.} \bibinfo{year}{2026}\natexlab{a}.
+\newblock \bibinfo{title}{{Rethinking Recommendation Paradigms: From Pipelines
+  to Agentic Recommender Systems}}.
+\newblock \bibinfo{howpublished}{arXiv:2603.26100}.
+\newblock
+\showeprint[arxiv]{2603.26100}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2603.26100}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Hu et~al\mbox{.}(2026b)]%
         {hu2026astar}
 \bibfield{author}{\bibinfo{person}{Jinxin Hu}, \bibinfo{person}{Hao Deng},
   \bibinfo{person}{Haibo Xing}, \bibinfo{person}{Lingyu Mu},
@@ -558,7 +893,7 @@
   \bibinfo{person}{Zhezheng Hao}, \bibinfo{person}{Hao Zhang},
   \bibinfo{person}{Zulong Chen}, \bibinfo{person}{Shizhun Wang},
   \bibinfo{person}{Yu Zhang}, \bibinfo{person}{Xiaoyi Zeng}, {and}
-  \bibinfo{person}{Jiawei Chen}.} \bibinfo{year}{2026}\natexlab{a}.
+  \bibinfo{person}{Jiawei Chen}.} \bibinfo{year}{2026}\natexlab{b}.
 \newblock \bibinfo{title}{{Astar: Learning to Propose Evolution Directions for
   Self-Evolving Industrial AI Systems}}.
 \newblock \bibinfo{howpublished}{arXiv:2608.27287}.
@@ -585,13 +920,13 @@
 \tempurl}
 
 
-\bibitem[Hu et~al\mbox{.}(2026b)]%
+\bibitem[Hu et~al\mbox{.}(2026c)]%
         {hu2026atomrec}
 \bibfield{author}{\bibinfo{person}{Peiyu Hu}, \bibinfo{person}{Weihai Lu},
   \bibinfo{person}{Siying Gu}, \bibinfo{person}{Zhuodong Liu},
   \bibinfo{person}{Zhaokai Luo}, \bibinfo{person}{Yuean Niu},
   \bibinfo{person}{Zhiyong Wang}, {and} \bibinfo{person}{Jia Wang}.}
-  \bibinfo{year}{2026}\natexlab{b}.
+  \bibinfo{year}{2026}\natexlab{c}.
 \newblock \bibinfo{title}{{AtomRec: Evolving Atomic Memory for Agentic
   Recommendation}}.
 \newblock \bibinfo{howpublished}{arXiv:2609.04882}.
@@ -617,6 +952,55 @@
 \showeprint[arxiv]{2504.16420}
 \urldef\tempurl%
 \url{https://arxiv.org/abs/2504.16420}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Huang et~al\mbox{.}(2024)]%
+        {huang2023mlagentbench}
+\bibfield{author}{\bibinfo{person}{Qian Huang}, \bibinfo{person}{Jian Vora},
+  \bibinfo{person}{Percy Liang}, {and} \bibinfo{person}{Jure Leskovec}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{MLAgentBench: Evaluating Language Agents on
+  Machine Learning Experimentation}}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the 41st International Conference on Machine Learning (ICML), PMLR 235}}.
+  \bibinfo{pages}{20271--20309}.
+\newblock
+\showeprint[arxiv]{2310.03302}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2310.03302}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Ishida et~al\mbox{.}(2026)]%
+        {ishida2026qdrec}
+\bibfield{author}{\bibinfo{person}{Takashi Ishida}, \bibinfo{person}{Taro
+  Makino}, {and} \bibinfo{person}{Issa Sugiura}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \bibinfo{title}{{QD-Rec: Open-Ended Evolution of Recommendations via
+  Quality-Diversity}}.
+\newblock \bibinfo{howpublished}{arXiv:2610.23470}.
+\newblock
+\showeprint[arxiv]{2610.23470}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2610.23470}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Jawahar et~al\mbox{.}(2023)]%
+        {jawahar2024llmpp}
+\bibfield{author}{\bibinfo{person}{Ganesh Jawahar}, \bibinfo{person}{Muhammad
+  Abdul-Mageed}, \bibinfo{person}{Laks V.~S. Lakshmanan}, {and}
+  \bibinfo{person}{Dujian Ding}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{{LLM Performance Predictors are good initializers for
+  Architecture Search}}.
+\newblock \bibinfo{howpublished}{arXiv:2310.16712}.
+\newblock
+\showeprint[arxiv]{2310.16712}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2310.16712}
 \showURL{%
 \tempurl}
 
@@ -682,6 +1066,59 @@
 \href{https://doi.org/10.1109/icdm.2018.00035}{doi:\nolinkurl{10.1109/icdm.2018.00035}}
 
 
+\bibitem[Kapoor et~al\mbox{.}(2024)]%
+        {kapoor2024reforms}
+\bibfield{author}{\bibinfo{person}{Sayash Kapoor}, \bibinfo{person}{Emily~M.
+  Cantrell}, \bibinfo{person}{Kenny Peng}, \bibinfo{person}{Thanh~Hien Pham},
+  \bibinfo{person}{Christopher~A. Bail}, \bibinfo{person}{Odd~Erik Gundersen},
+  \bibinfo{person}{Jake~M. Hofman}, \bibinfo{person}{Jessica Hullman},
+  \bibinfo{person}{Michael~A. Lones}, \bibinfo{person}{Momin~M. Malik},
+  \bibinfo{person}{Priyanka Nanayakkara}, \bibinfo{person}{Russell~A.
+  Poldrack}, \bibinfo{person}{Inioluwa~Deborah Raji}, \bibinfo{person}{Michael
+  Roberts}, \bibinfo{person}{Matthew~J. Salganik}, \bibinfo{person}{Marta
+  Serra-Garcia}, \bibinfo{person}{Brandon~M. Stewart}, \bibinfo{person}{Gilles
+  Vandewiele}, {and} \bibinfo{person}{Arvind Narayanan}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{REFORMS: Consensus-Based Recommendations for
+  Machine-Learning-Based Science}}.
+\newblock \bibinfo{journal}{\emph{Science Advances}} \bibinfo{volume}{10},
+  \bibinfo{number}{18} (\bibinfo{year}{2024}), \bibinfo{pages}{eadk3452}.
+\newblock
+\showeprint[arxiv]{2308.07832}
+\href{https://doi.org/10.1126/sciadv.adk3452}{doi:\nolinkurl{10.1126/sciadv.adk3452}}
+
+
+\bibitem[Kapoor and Narayanan(2023)]%
+        {kapoor2023leakage}
+\bibfield{author}{\bibinfo{person}{Sayash Kapoor} {and} \bibinfo{person}{Arvind
+  Narayanan}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{Leakage and the Reproducibility Crisis in
+  Machine-Learning-Based Science}}.
+\newblock \bibinfo{journal}{\emph{Patterns}} \bibinfo{volume}{4},
+  \bibinfo{number}{9} (\bibinfo{year}{2023}), \bibinfo{pages}{100804}.
+\newblock
+\showeprint[arxiv]{2207.07048}
+\href{https://doi.org/10.1016/j.patter.2023.100804}{doi:\nolinkurl{10.1016/j.patter.2023.100804}}
+
+
+\bibitem[Kapoor et~al\mbox{.}(2025)]%
+        {kapoor2025agentsmatter}
+\bibfield{author}{\bibinfo{person}{Sayash Kapoor}, \bibinfo{person}{Benedikt
+  Stroebl}, \bibinfo{person}{Zachary~S. Siegel}, \bibinfo{person}{Nitya
+  Nadgir}, {and} \bibinfo{person}{Arvind Narayanan}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{AI Agents That Matter}}.
+\newblock \bibinfo{journal}{\emph{Transactions on Machine Learning Research}}
+  (\bibinfo{year}{2025}).
+\newblock
+\showISSN{2835-8856}
+\showeprint[arxiv]{2407.01502}
+\urldef\tempurl%
+\url{https://openreview.net/forum?id=Zy4uFzMviZ}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Kim et~al\mbox{.}(2026a)]%
         {kim2026aura}
 \bibfield{author}{\bibinfo{person}{SungGeun Kim}, \bibinfo{person}{Abhinav
@@ -727,6 +1164,18 @@
 \newblock
 \showeprint[arxiv]{2309.07602}
 \href{https://doi.org/10.1145/3604915.3610644}{doi:\nolinkurl{10.1145/3604915.3610644}}
+
+
+\bibitem[Kohavi et~al\mbox{.}(2020)]%
+        {kohavi2020trustworthy}
+\bibfield{author}{\bibinfo{person}{Ron Kohavi}, \bibinfo{person}{Diane Tang},
+  {and} \bibinfo{person}{Ya Xu}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{{Trustworthy Online Controlled Experiments:
+  A Practical Guide to A/B Testing}}}.
+\newblock \bibinfo{publisher}{Cambridge University Press}.
+\newblock
+\showISBNx{9781108724265}
+\href{https://doi.org/10.1017/9781108653985}{doi:\nolinkurl{10.1017/9781108653985}}
 
 
 \bibitem[Krichene and Rendle(2020)]%
@@ -802,6 +1251,19 @@
 \tempurl}
 
 
+\bibitem[Lee and Shen(2018)]%
+        {lee2018winnerscurse}
+\bibfield{author}{\bibinfo{person}{Minyong~R. Lee} {and} \bibinfo{person}{Milan
+  Shen}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{{Winner's Curse: Bias Estimation for Total Effects
+  of Features in Online Controlled Experiments}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 24th ACM SIGKDD International
+  Conference on Knowledge Discovery \& Data Mining}}. \bibinfo{publisher}{ACM},
+  \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{491--499}.
+\newblock
+\href{https://doi.org/10.1145/3219819.3219905}{doi:\nolinkurl{10.1145/3219819.3219905}}
+
+
 \bibitem[Lee et~al\mbox{.}(2026)]%
         {lee2026metaharness}
 \bibfield{author}{\bibinfo{person}{Yoonho Lee}, \bibinfo{person}{Roshen Nair},
@@ -833,6 +1295,24 @@
 \showeprint[arxiv]{2601.21609}
 \urldef\tempurl%
 \url{https://arxiv.org/abs/2601.21609}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Li and Talwalkar(2020)]%
+        {li2019randomnas}
+\bibfield{author}{\bibinfo{person}{Liam Li} {and} \bibinfo{person}{Ameet
+  Talwalkar}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{Random Search and Reproducibility for Neural
+  Architecture Search}}. In \bibinfo{booktitle}{\emph{Proceedings of the 35th
+  Uncertainty in Artificial Intelligence Conference (UAI)}}
+  \emph{(\bibinfo{series}{Proceedings of Machine Learning Research},
+  Vol.~\bibinfo{volume}{115})}. \bibinfo{publisher}{PMLR},
+  \bibinfo{pages}{367--377}.
+\newblock
+\showeprint[arxiv]{1902.07638}
+\urldef\tempurl%
+\url{https://proceedings.mlr.press/v115/li20c.html}
 \showURL{%
 \tempurl}
 
@@ -957,7 +1437,7 @@
 \tempurl}
 
 
-\bibitem[Lin et~al\mbox{.}(2026b)]%
+\bibitem[Lin et~al\mbox{.}(2026c)]%
         {pilot2026}
 \bibfield{author}{\bibinfo{person}{Jiuning Lin}, \bibinfo{person}{Ruiquan Lan},
   \bibinfo{person}{Xiaodong Zhu}, \bibinfo{person}{Bin Zhang},
@@ -969,7 +1449,7 @@
   \bibinfo{person}{Yinjiang Cai}, \bibinfo{person}{Yinnan Song},
   \bibinfo{person}{Yuan Liu}, \bibinfo{person}{Zhibo Xiao},
   \bibinfo{person}{Zhixin Ma}, {and} \bibinfo{person}{Zihong Huang}.}
-  \bibinfo{year}{2026}\natexlab{b}.
+  \bibinfo{year}{2026}\natexlab{c}.
 \newblock \bibinfo{title}{{PILOT Technical Report}}.
 \newblock \bibinfo{howpublished}{arXiv:2608.18637}.
 \newblock
@@ -1015,6 +1495,44 @@
 \tempurl}
 
 
+\bibitem[Lin et~al\mbox{.}(2026b)]%
+        {lin2026lion}
+\bibfield{author}{\bibinfo{person}{Xinyu Lin}, \bibinfo{person}{Zhuosong
+  Jiang}, \bibinfo{person}{Zixiao Suo}, \bibinfo{person}{Siqin Wang},
+  \bibinfo{person}{Hanqing Zeng}, \bibinfo{person}{Hanchao Yu},
+  \bibinfo{person}{Yinglong Xia}, \bibinfo{person}{Jiang Zhang},
+  \bibinfo{person}{Aashu Singh}, \bibinfo{person}{Fei Liu},
+  \bibinfo{person}{Wenjie Wang}, \bibinfo{person}{Fuli Feng},
+  \bibinfo{person}{Yang Song}, \bibinfo{person}{Qifan Wang}, {and}
+  \bibinfo{person}{Tat-Seng Chua}.} \bibinfo{year}{2026}\natexlab{b}.
+\newblock \bibinfo{title}{{Self-Evolving Memory for Generative
+  Recommendation}}.
+\newblock \bibinfo{howpublished}{arXiv:2609.15598}.
+\newblock
+\showeprint[arxiv]{2609.15598}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2609.15598}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Lindauer and Hutter(2020)]%
+        {lindauer2020bestpractices}
+\bibfield{author}{\bibinfo{person}{Marius Lindauer} {and}
+  \bibinfo{person}{Frank Hutter}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{Best Practices for Scientific Research on Neural
+  Architecture Search}}.
+\newblock \bibinfo{journal}{\emph{Journal of Machine Learning Research}}
+  \bibinfo{volume}{21}, \bibinfo{number}{243} (\bibinfo{year}{2020}),
+  \bibinfo{pages}{1--18}.
+\newblock
+\showeprint[arxiv]{1909.02453}
+\urldef\tempurl%
+\url{https://jmlr.org/papers/v21/20-056.html}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Ling et~al\mbox{.}(2026)]%
         {ling2026recharness}
 \bibfield{author}{\bibinfo{person}{Haoran Ling}, \bibinfo{person}{Yuecheng Li},
@@ -1029,6 +1547,26 @@
 \showeprint[arxiv]{2607.29241}
 \urldef\tempurl%
 \url{https://arxiv.org/abs/2607.29241}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Liu et~al\mbox{.}(2026c)]%
+        {liu2026bianque}
+\bibfield{author}{\bibinfo{person}{Bochao Liu}, \bibinfo{person}{Zhipeng Qian},
+  \bibinfo{person}{Yang Zhao}, \bibinfo{person}{Xinyuan Jiang},
+  \bibinfo{person}{Zihan Liang}, \bibinfo{person}{Yufei Ma},
+  \bibinfo{person}{Junpeng Zhuang}, \bibinfo{person}{Ben Chen},
+  \bibinfo{person}{Shuo Yang}, \bibinfo{person}{Hongen Wan},
+  \bibinfo{person}{Yao Wu}, \bibinfo{person}{Chenyi Lei}, {and}
+  \bibinfo{person}{Xiao Liang}.} \bibinfo{year}{2026}\natexlab{c}.
+\newblock \bibinfo{title}{{Bian Que: An Agentic Framework with Flexible Skill
+  Arrangement for Online System Operations}}.
+\newblock \bibinfo{howpublished}{arXiv:2604.26805}.
+\newblock
+\showeprint[arxiv]{2604.26805}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2604.26805}
 \showURL{%
 \tempurl}
 
@@ -1048,6 +1586,24 @@
 \newblock
 \showeprint[arxiv]{2003.11235}
 \href{https://doi.org/10.1145/3394486.3403314}{doi:\nolinkurl{10.1145/3394486.3403314}}
+
+
+\bibitem[Liu et~al\mbox{.}(2023)]%
+        {liu2023recprompt}
+\bibfield{author}{\bibinfo{person}{Dairui Liu}, \bibinfo{person}{Boming Yang},
+  \bibinfo{person}{Honghui Du}, \bibinfo{person}{Derek Greene},
+  \bibinfo{person}{Neil Hurley}, \bibinfo{person}{Aonghus Lawlor},
+  \bibinfo{person}{Ruihai Dong}, {and} \bibinfo{person}{Irene Li}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{{RecPrompt: A Self-tuning Prompting Framework for
+  News Recommendation Using Large Language Models}}.
+\newblock \bibinfo{howpublished}{arXiv:2312.10463}.
+\newblock
+\showeprint[arxiv]{2312.10463}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2312.10463}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Liu et~al\mbox{.}(2026b)]%
@@ -1126,6 +1682,21 @@
 \tempurl}
 
 
+\bibitem[Liu et~al\mbox{.}(2024)]%
+        {liu2024agenthpo}
+\bibfield{author}{\bibinfo{person}{Siyi Liu}, \bibinfo{person}{Chen Gao}, {and}
+  \bibinfo{person}{Yong Li}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{{Large Language Model Agent for Hyper-Parameter
+  Optimization}}.
+\newblock \bibinfo{howpublished}{arXiv:2402.01881}.
+\newblock
+\showeprint[arxiv]{2402.01881}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2402.01881}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Lou et~al\mbox{.}(2026)]%
         {lou2026autoharness}
 \bibfield{author}{\bibinfo{person}{Xinghua Lou}, \bibinfo{person}{Miguel
@@ -1176,6 +1747,65 @@
 \tempurl}
 
 
+\bibitem[Manheim and Garrabrant(2018)]%
+        {manheim2018goodhart}
+\bibfield{author}{\bibinfo{person}{David Manheim} {and} \bibinfo{person}{Scott
+  Garrabrant}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \bibinfo{title}{{Categorizing Variants of Goodhart's Law}}.
+\newblock \bibinfo{howpublished}{arXiv:1803.04585}.
+\newblock
+\showeprint[arxiv]{1803.04585}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1803.04585}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Mania et~al\mbox{.}(2019)]%
+        {mania2019similarity}
+\bibfield{author}{\bibinfo{person}{Horia Mania}, \bibinfo{person}{John Miller},
+  \bibinfo{person}{Ludwig Schmidt}, \bibinfo{person}{Moritz Hardt}, {and}
+  \bibinfo{person}{Benjamin Recht}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{{Model Similarity Mitigates Test Set Overuse}}. In
+  \bibinfo{booktitle}{\emph{Advances in Neural Information Processing
+  Systems}}, Vol.~\bibinfo{volume}{32}. \bibinfo{publisher}{Curran Associates,
+  Inc.}
+\newblock
+\showeprint[arxiv]{1905.12580}
+\urldef\tempurl%
+\url{https://proceedings.neurips.cc/paper_files/paper/2019/hash/48237d9f2dea8c74c2a72126cf63d933-Abstract.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Maragheh and Deldjoo(2025)]%
+        {maragheh2025future}
+\bibfield{author}{\bibinfo{person}{Reza~Yousefi Maragheh} {and}
+  \bibinfo{person}{Yashar Deldjoo}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{{The Future is Agentic: Definitions, Perspectives,
+  and Open Challenges of Multi-Agent Recommender Systems}}.
+\newblock \bibinfo{howpublished}{arXiv:2507.02097}.
+\newblock
+\showeprint[arxiv]{2507.02097}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2507.02097}
+\showURL{%
+\tempurl}
+
+
+\bibitem[McAuley et~al\mbox{.}(2015)]%
+        {mcauley2015amazon}
+\bibfield{author}{\bibinfo{person}{Julian McAuley},
+  \bibinfo{person}{Christopher Targett}, \bibinfo{person}{Qinfeng Shi}, {and}
+  \bibinfo{person}{Anton van~den Hengel}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{{Image-Based Recommendations on Styles and
+  Substitutes}}. In \bibinfo{booktitle}{\emph{Proceedings of the 38th
+  International ACM SIGIR Conference on Research and Development in Information
+  Retrieval}}. \bibinfo{publisher}{ACM}, \bibinfo{pages}{43--52}.
+\newblock
+\href{https://doi.org/10.1145/2766462.2767755}{doi:\nolinkurl{10.1145/2766462.2767755}}
+
+
 \bibitem[Meng et~al\mbox{.}(2020)]%
         {meng2020splitting}
 \bibfield{author}{\bibinfo{person}{Zaiqiao Meng}, \bibinfo{person}{Richard
@@ -1201,6 +1831,18 @@
 \newblock
 \urldef\tempurl%
 \url{https://engineering.fb.com/2026/03/17/developer-tools/ranking-engineer-agent-rea-autonomous-ai-system-accelerating-meta-ads-ranking-innovation/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[{METR}(2025)]%
+        {metr2025rewardhacking}
+\bibfield{author}{\bibinfo{person}{{METR}}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{{Recent Frontier Models Are Reward Hacking}}.
+\newblock \bibinfo{howpublished}{METR blog, 5 June 2025}.
+\newblock
+\urldef\tempurl%
+\url{https://metr.org/blog/2025-06-05-recent-reward-hacking/}
 \showURL{%
 \tempurl}
 
@@ -1351,6 +1993,23 @@
 \newblock
 
 
+\bibitem[Ou et~al\mbox{.}(2026)]%
+        {ou2026recpilot}
+\bibfield{author}{\bibinfo{person}{Kesha Ou}, \bibinfo{person}{Chenghao Wu},
+  \bibinfo{person}{Xiaolei Wang}, \bibinfo{person}{Bowen Zheng},
+  \bibinfo{person}{Wayne~Xin Zhao}, \bibinfo{person}{Weitao Li},
+  \bibinfo{person}{Long Zhang}, \bibinfo{person}{Sheng Chen}, {and}
+  \bibinfo{person}{Ji-Rong Wen}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \bibinfo{title}{{Deep Research for Recommender Systems}}.
+\newblock \bibinfo{howpublished}{arXiv:2603.07605}.
+\newblock
+\showeprint[arxiv]{2603.07605}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2603.07605}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Palumbo et~al\mbox{.}(2026)]%
         {palumbo2026spotify}
 \bibfield{author}{\bibinfo{person}{Enrico Palumbo}, \bibinfo{person}{Alexandre
@@ -1482,6 +2141,24 @@
 \newblock
 
 
+\bibitem[Recht et~al\mbox{.}(2019)]%
+        {recht2019imagenet}
+\bibfield{author}{\bibinfo{person}{Benjamin Recht}, \bibinfo{person}{Rebecca
+  Roelofs}, \bibinfo{person}{Ludwig Schmidt}, {and} \bibinfo{person}{Vaishaal
+  Shankar}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{{Do ImageNet Classifiers Generalize to ImageNet?}}.
+  In \bibinfo{booktitle}{\emph{Proceedings of the 36th International Conference
+  on Machine Learning (ICML)}} \emph{(\bibinfo{series}{Proceedings of Machine
+  Learning Research}, Vol.~\bibinfo{volume}{97})}. \bibinfo{publisher}{PMLR},
+  \bibinfo{pages}{5389--5400}.
+\newblock
+\showeprint[arxiv]{1902.10811}
+\urldef\tempurl%
+\url{https://proceedings.mlr.press/v97/recht19a.html}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Rendle(2019)]%
         {rendle2019sampled}
 \bibfield{author}{\bibinfo{person}{Steffen Rendle}.}
@@ -1495,6 +2172,18 @@
 \url{https://arxiv.org/abs/1912.02263}
 \showURL{%
 \tempurl}
+
+
+\bibitem[Rendle et~al\mbox{.}(2009)]%
+        {rendle2009bpr}
+\bibfield{author}{\bibinfo{person}{Steffen Rendle}, \bibinfo{person}{Christoph
+  Freudenthaler}, \bibinfo{person}{Zeno Gantner}, {and} \bibinfo{person}{Lars
+  Schmidt-Thieme}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{{BPR: Bayesian Personalized Ranking from Implicit
+  Feedback}}. In \bibinfo{booktitle}{\emph{Proceedings of the 25th Conference
+  on Uncertainty in Artificial Intelligence (UAI)}}. \bibinfo{pages}{452--461}.
+\newblock
+\showeprint[arxiv]{1205.2618}
 
 
 \bibitem[Rendle et~al\mbox{.}(2020)]%
@@ -1564,6 +2253,50 @@
 \href{https://doi.org/10.1038/s41586-023-06924-6}{doi:\nolinkurl{10.1038/s41586-023-06924-6}}
 
 
+\bibitem[Sarwar et~al\mbox{.}(2001)]%
+        {sarwar2001itemknn}
+\bibfield{author}{\bibinfo{person}{Badrul Sarwar}, \bibinfo{person}{George
+  Karypis}, \bibinfo{person}{Joseph Konstan}, {and} \bibinfo{person}{John
+  Riedl}.} \bibinfo{year}{2001}\natexlab{}.
+\newblock \showarticletitle{{Item-based collaborative filtering recommendation
+  algorithms}}. In \bibinfo{booktitle}{\emph{Proceedings of the 10th
+  international conference on World Wide Web}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{285--295}.
+\newblock
+\href{https://doi.org/10.1145/371920.372071}{doi:\nolinkurl{10.1145/371920.372071}}
+
+
+\bibitem[Schmidgall et~al\mbox{.}(2025)]%
+        {schmidgall2025agentlab}
+\bibfield{author}{\bibinfo{person}{Samuel Schmidgall}, \bibinfo{person}{Yusheng
+  Su}, \bibinfo{person}{Ze Wang}, \bibinfo{person}{Ximeng Sun},
+  \bibinfo{person}{Jialian Wu}, \bibinfo{person}{Xiaodong Yu},
+  \bibinfo{person}{Jiang Liu}, \bibinfo{person}{Michael Moor},
+  \bibinfo{person}{Zicheng Liu}, {and} \bibinfo{person}{Emad Barsoum}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{{Agent Laboratory: Using LLM Agents as Research
+  Assistants}}.
+\newblock \bibinfo{howpublished}{arXiv:2501.04227}.
+\newblock
+\showeprint[arxiv]{2501.04227}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2501.04227}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Shehzad and Jannach(2023)]%
+        {shehzad2023everyone}
+\bibfield{author}{\bibinfo{person}{Faisal Shehzad} {and}
+  \bibinfo{person}{Dietmar Jannach}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{Everyone's a Winner! On Hyperparameter Tuning of
+  Recommendation Models}}. In \bibinfo{booktitle}{\emph{Proceedings of the 17th
+  ACM Conference on Recommender Systems}}. \bibinfo{publisher}{ACM},
+  \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{652--657}.
+\newblock
+\href{https://doi.org/10.1145/3604915.3609488}{doi:\nolinkurl{10.1145/3604915.3609488}}
+
+
 \bibitem[Shen et~al\mbox{.}(2026)]%
         {shen2026mars}
 \bibfield{author}{\bibinfo{person}{Xiang Shen}, \bibinfo{person}{Yuhang Zhou},
@@ -1583,6 +2316,36 @@
 \tempurl}
 
 
+\bibitem[Skalse et~al\mbox{.}(2022)]%
+        {skalse2022rewardhacking}
+\bibfield{author}{\bibinfo{person}{Joar Skalse}, \bibinfo{person}{Nikolaus
+  H.~R. Howe}, \bibinfo{person}{Dmitrii Krasheninnikov}, {and}
+  \bibinfo{person}{David Krueger}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{{Defining and Characterizing Reward Hacking}}. In
+  \bibinfo{booktitle}{\emph{Advances in Neural Information Processing
+  Systems}}, Vol.~\bibinfo{volume}{35}. \bibinfo{publisher}{Curran Associates,
+  Inc.}, \bibinfo{pages}{9460--9471}.
+\newblock
+\showeprint[arxiv]{2209.13085}
+\href{https://doi.org/10.52202/068431-0687}{doi:\nolinkurl{10.52202/068431-0687}}
+
+
+\bibitem[{\v{S}}krlj et~al\mbox{.}(2025)]%
+        {skrlj2025agent0}
+\bibfield{author}{\bibinfo{person}{Bla{\v{z}} {\v{S}}krlj},
+  \bibinfo{person}{Beno{\^\i}t Guilleminot}, {and}
+  \bibinfo{person}{Andra{\v{z}} Tori}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{{Agent0: Leveraging LLM Agents to Discover
+  Multi-value Features from Text for Enhanced Recommendations}}.
+\newblock \bibinfo{howpublished}{arXiv:2507.18993}.
+\newblock
+\showeprint[arxiv]{2507.18993}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2507.18993}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Song et~al\mbox{.}(2020)]%
         {song2020autoctr}
 \bibfield{author}{\bibinfo{person}{Qingquan Song}, \bibinfo{person}{Dehua
@@ -1597,6 +2360,21 @@
 \newblock
 \showeprint[arxiv]{2007.06434}
 \href{https://doi.org/10.1145/3394486.3403137}{doi:\nolinkurl{10.1145/3394486.3403137}}
+
+
+\bibitem[Srikanth et~al\mbox{.}(2026)]%
+        {srikanth2026aide2}
+\bibfield{author}{\bibinfo{person}{Dhruv Srikanth}, \bibinfo{person}{Bingchen
+  Zhao}, \bibinfo{person}{Dixing Xu}, \bibinfo{person}{Yuxiang Wu}, {and}
+  \bibinfo{person}{Zhengyao Jiang}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \bibinfo{title}{{Recursive self-improvement of AI research agents}}.
+\newblock \bibinfo{howpublished}{arXiv:2609.26457}.
+\newblock
+\showeprint[arxiv]{2609.26457}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2609.26457}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Sun et~al\mbox{.}(2019)]%
@@ -1633,6 +2411,21 @@
 \href{https://doi.org/10.1109/tpami.2022.3231891}{doi:\nolinkurl{10.1109/tpami.2022.3231891}}
 
 
+\bibitem[Sun et~al\mbox{.}(2020)]%
+        {sun2020rigorous}
+\bibfield{author}{\bibinfo{person}{Zhu Sun}, \bibinfo{person}{Di Yu},
+  \bibinfo{person}{Hui Fang}, \bibinfo{person}{Jie Yang},
+  \bibinfo{person}{Xinghua Qu}, \bibinfo{person}{Jie Zhang}, {and}
+  \bibinfo{person}{Cong Geng}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{Are We Evaluating Rigorously? Benchmarking
+  Recommendation for Reproducible Evaluation and Fair Comparison}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 14th ACM Conference on
+  Recommender Systems}}. \bibinfo{publisher}{ACM}, \bibinfo{address}{New York,
+  NY, USA}, \bibinfo{pages}{23--32}.
+\newblock
+\href{https://doi.org/10.1145/3383313.3412489}{doi:\nolinkurl{10.1145/3383313.3412489}}
+
+
 \bibitem[Tao et~al\mbox{.}(2026)]%
         {tao2026sager}
 \bibfield{author}{\bibinfo{person}{Zhen Tao}, \bibinfo{person}{Riwei Lai},
@@ -1648,6 +2441,23 @@
 \showeprint[arxiv]{2604.14972}
 \urldef\tempurl%
 \url{https://arxiv.org/abs/2604.14972}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Thakur et~al\mbox{.}(2026)]%
+        {thakur2026feature}
+\bibfield{author}{\bibinfo{person}{Himanshu Thakur}, \bibinfo{person}{Anusha
+  Kamath}, \bibinfo{person}{Anurag Muthyala}, \bibinfo{person}{Dhwani
+  Sanmukhani}, \bibinfo{person}{Smruthi Mukund}, {and} \bibinfo{person}{Jay
+  Katukuri}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \bibinfo{title}{{Towards Reliable ML Feature Engineering via Planning
+  in Constrained-Topology of LLM Agents}}.
+\newblock \bibinfo{howpublished}{arXiv:2601.10820}.
+\newblock
+\showeprint[arxiv]{2601.10820}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2601.10820}
 \showURL{%
 \tempurl}
 
@@ -1675,6 +2485,22 @@
 \newblock
 \showeprint[arxiv]{2507.02554}
 \href{https://doi.org/10.52202/085713-1186}{doi:\nolinkurl{10.52202/085713-1186}}
+
+
+\bibitem[Trirat et~al\mbox{.}(2024)]%
+        {trirat2024automlagent}
+\bibfield{author}{\bibinfo{person}{Patara Trirat}, \bibinfo{person}{Wonyong
+  Jeong}, {and} \bibinfo{person}{Sung~Ju Hwang}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{{AutoML-Agent: A Multi-Agent LLM Framework for
+  Full-Pipeline AutoML}}.
+\newblock \bibinfo{howpublished}{arXiv:2410.02958}.
+\newblock
+\showeprint[arxiv]{2410.02958}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2410.02958}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Wang et~al\mbox{.}(2026b)]%
@@ -1714,7 +2540,7 @@
 \shownote{The audit coded the arXiv version}.
 
 
-\bibitem[Wang et~al\mbox{.}(2025)]%
+\bibitem[Wang et~al\mbox{.}(2025b)]%
         {wang2023recagent}
 \bibfield{author}{\bibinfo{person}{Lei Wang}, \bibinfo{person}{Jingsen Zhang},
   \bibinfo{person}{Hao Yang}, \bibinfo{person}{Zhi-Yuan Chen},
@@ -1723,7 +2549,7 @@
   Sun}, \bibinfo{person}{Ruihua Song}, \bibinfo{person}{Wayne~Xin Zhao},
   \bibinfo{person}{Jun Xu}, \bibinfo{person}{Zhicheng Dou},
   \bibinfo{person}{Jun Wang}, {and} \bibinfo{person}{Ji-Rong Wen}.}
-  \bibinfo{year}{2025}\natexlab{}.
+  \bibinfo{year}{2025}\natexlab{b}.
 \newblock \showarticletitle{{User Behavior Simulation with Large Language
   Model-based Agents}}.
 \newblock \bibinfo{journal}{\emph{ACM Transactions on Information Systems}}
@@ -1732,6 +2558,19 @@
 \newblock
 \showeprint[arxiv]{2306.02552}
 \href{https://doi.org/10.1145/3708985}{doi:\nolinkurl{10.1145/3708985}}
+
+
+\bibitem[Wang et~al\mbox{.}(2019)]%
+        {wang2019ngcf}
+\bibfield{author}{\bibinfo{person}{Xiang Wang}, \bibinfo{person}{Xiangnan He},
+  \bibinfo{person}{Meng Wang}, \bibinfo{person}{Fuli Feng}, {and}
+  \bibinfo{person}{Tat-Seng Chua}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{{Neural Graph Collaborative Filtering}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 42nd International ACM SIGIR
+  Conference on Research and Development in Information Retrieval}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{165--174}.
+\newblock
+\href{https://doi.org/10.1145/3331184.3331267}{doi:\nolinkurl{10.1145/3331184.3331267}}
 
 
 \bibitem[Wang et~al\mbox{.}(2026d)]%
@@ -1748,6 +2587,23 @@
 \showeprint[arxiv]{2609.35031}
 \urldef\tempurl%
 \url{https://arxiv.org/abs/2609.35031}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Wang et~al\mbox{.}(2024)]%
+        {wang2024re2llm}
+\bibfield{author}{\bibinfo{person}{Ziyan Wang}, \bibinfo{person}{Yingpeng Du},
+  \bibinfo{person}{Zhu Sun}, \bibinfo{person}{Haoyan Chua},
+  \bibinfo{person}{Kaidong Feng}, \bibinfo{person}{Wenya Wang}, {and}
+  \bibinfo{person}{Jie Zhang}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{{Re2LLM: Reflective Reinforcement Large Language
+  Model for Session-based Recommendation}}.
+\newblock \bibinfo{howpublished}{arXiv:2403.16427}.
+\newblock
+\showeprint[arxiv]{2403.16427}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2403.16427}
 \showURL{%
 \tempurl}
 
@@ -1770,6 +2626,67 @@
 \tempurl}
 
 
+\bibitem[Wang et~al\mbox{.}(2025a)]%
+        {wang2025ruleagent}
+\bibfield{author}{\bibinfo{person}{Zongwei Wang}, \bibinfo{person}{Min Gao},
+  \bibinfo{person}{Junliang Yu}, \bibinfo{person}{Yupeng Hou},
+  \bibinfo{person}{Shazia Sadiq}, {and} \bibinfo{person}{Hongzhi Yin}.}
+  \bibinfo{year}{2025}\natexlab{a}.
+\newblock \bibinfo{title}{{RuleAgent: Discovering Rules for Recommendation
+  Denoising with Autonomous Language Agents}}.
+\newblock \bibinfo{howpublished}{arXiv:2503.23374}.
+\newblock
+\showeprint[arxiv]{2503.23374}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2503.23374}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Wijk et~al\mbox{.}(2024)]%
+        {wijk2024rebench}
+\bibfield{author}{\bibinfo{person}{Hjalmar Wijk}, \bibinfo{person}{Tao Lin},
+  \bibinfo{person}{Joel Becker}, \bibinfo{person}{Sami Jawhar},
+  \bibinfo{person}{Neev Parikh}, \bibinfo{person}{Thomas Broadley},
+  \bibinfo{person}{Lawrence Chan}, \bibinfo{person}{Michael Chen},
+  \bibinfo{person}{Josh Clymer}, \bibinfo{person}{Jai Dhyani},
+  \bibinfo{person}{Elena Ericheva}, \bibinfo{person}{Katharyn Garcia},
+  \bibinfo{person}{Brian Goodrich}, \bibinfo{person}{Nikola Jurkovic},
+  \bibinfo{person}{Holden Karnofsky}, \bibinfo{person}{Megan Kinniment},
+  \bibinfo{person}{Aron Lajko}, \bibinfo{person}{Seraphina Nix},
+  \bibinfo{person}{Lucas Sato}, \bibinfo{person}{William Saunders},
+  \bibinfo{person}{Maksym Taran}, \bibinfo{person}{Ben West}, {and}
+  \bibinfo{person}{Elizabeth Barnes}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{{RE-Bench: Evaluating frontier AI R\&D capabilities
+  of language model agents against human experts}}.
+\newblock \bibinfo{howpublished}{arXiv:2411.15114}.
+\newblock
+\showeprint[arxiv]{2411.15114}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2411.15114}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Wong et~al\mbox{.}(2025)]%
+        {wong2025confucius}
+\bibfield{author}{\bibinfo{person}{Sherman Wong}, \bibinfo{person}{Zhenting
+  Qi}, \bibinfo{person}{Zhaodong Wang}, \bibinfo{person}{Nathan Hu},
+  \bibinfo{person}{Samuel Lin}, \bibinfo{person}{Jun Ge},
+  \bibinfo{person}{Erwin Gao}, \bibinfo{person}{Wenlin Chen},
+  \bibinfo{person}{Yilun Du}, \bibinfo{person}{Minlan Yu}, {and}
+  \bibinfo{person}{Ying Zhang}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{{Confucius Code Agent: Scalable Agent Scaffolding for
+  Real-World Codebases}}.
+\newblock \bibinfo{howpublished}{arXiv:2512.10398}.
+\newblock
+\showeprint[arxiv]{2512.10398}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2512.10398}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Wu et~al\mbox{.}(2026a)]%
         {wu2026agentltv}
 \bibfield{author}{\bibinfo{person}{Chaowei Wu}, \bibinfo{person}{Huazhu Chen},
@@ -1786,6 +2703,23 @@
 \url{https://arxiv.org/abs/2602.21634}
 \showURL{%
 \tempurl}
+
+
+\bibitem[Wu et~al\mbox{.}(2020)]%
+        {wu2020mind}
+\bibfield{author}{\bibinfo{person}{Fangzhao Wu}, \bibinfo{person}{Ying Qiao},
+  \bibinfo{person}{Jiun-Hung Chen}, \bibinfo{person}{Chuhan Wu},
+  \bibinfo{person}{Tao Qi}, \bibinfo{person}{Jianxun Lian},
+  \bibinfo{person}{Danyang Liu}, \bibinfo{person}{Xing Xie},
+  \bibinfo{person}{Jianfeng Gao}, \bibinfo{person}{Winnie Wu}, {and}
+  \bibinfo{person}{Ming Zhou}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{MIND: A Large-scale Dataset for News
+  Recommendation}}. In \bibinfo{booktitle}{\emph{Proceedings of the 58th Annual
+  Meeting of the Association for Computational Linguistics}}.
+  \bibinfo{publisher}{Association for Computational Linguistics},
+  \bibinfo{pages}{3597--3606}.
+\newblock
+\href{https://doi.org/10.18653/v1/2020.acl-main.331}{doi:\nolinkurl{10.18653/v1/2020.acl-main.331}}
 
 
 \bibitem[Wu et~al\mbox{.}(2025)]%
@@ -1927,6 +2861,22 @@
 \tempurl}
 
 
+\bibitem[Yang et~al\mbox{.}(2020)]%
+        {yang2020nashard}
+\bibfield{author}{\bibinfo{person}{Antoine Yang}, \bibinfo{person}{Pedro~M.
+  Esperan{\c{c}}a}, {and} \bibinfo{person}{Fabio~M. Carlucci}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{NAS Evaluation is Frustratingly Hard}}. In
+  \bibinfo{booktitle}{\emph{International Conference on Learning
+  Representations (ICLR)}}.
+\newblock
+\showeprint[arxiv]{1912.12522}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1912.12522}
+\showURL{%
+\tempurl}
+
+
 \bibitem[Yang et~al\mbox{.}(2026a)]%
         {yang2026sragent}
 \bibfield{author}{\bibinfo{person}{Hanchen Yang}, \bibinfo{person}{Kaiwen
@@ -2024,6 +2974,58 @@
 \tempurl}
 
 
+\bibitem[Ying et~al\mbox{.}(2019)]%
+        {ying2019nasbench101}
+\bibfield{author}{\bibinfo{person}{Chris Ying}, \bibinfo{person}{Aaron Klein},
+  \bibinfo{person}{Eric Christiansen}, \bibinfo{person}{Esteban Real},
+  \bibinfo{person}{Kevin Murphy}, {and} \bibinfo{person}{Frank Hutter}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{{NAS-Bench-101: Towards Reproducible Neural
+  Architecture Search}}. In \bibinfo{booktitle}{\emph{Proceedings of the 36th
+  International Conference on Machine Learning (ICML)}}
+  \emph{(\bibinfo{series}{Proceedings of Machine Learning Research},
+  Vol.~\bibinfo{volume}{97})}. \bibinfo{publisher}{PMLR},
+  \bibinfo{pages}{7105--7114}.
+\newblock
+\showeprint[arxiv]{1902.09635}
+\urldef\tempurl%
+\url{https://proceedings.mlr.press/v97/ying19a.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Yu et~al\mbox{.}(2020)]%
+        {yu2020searchphase}
+\bibfield{author}{\bibinfo{person}{Kaicheng Yu}, \bibinfo{person}{Christian
+  Sciuto}, \bibinfo{person}{Martin Jaggi}, \bibinfo{person}{Claudiu Musat},
+  {and} \bibinfo{person}{Mathieu Salzmann}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{Evaluating the Search Phase of Neural Architecture
+  Search}}. In \bibinfo{booktitle}{\emph{International Conference on Learning
+  Representations (ICLR)}}.
+\newblock
+\showeprint[arxiv]{1902.08142}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1902.08142}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Yuan et~al\mbox{.}(2023)]%
+        {yuan2023morec}
+\bibfield{author}{\bibinfo{person}{Zheng Yuan}, \bibinfo{person}{Fajie Yuan},
+  \bibinfo{person}{Yu Song}, \bibinfo{person}{Youhua Li},
+  \bibinfo{person}{Junchen Fu}, \bibinfo{person}{Fei Yang},
+  \bibinfo{person}{Yunzhu Pan}, {and} \bibinfo{person}{Yongxin Ni}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{Where to Go Next for Recommender Systems? ID- vs.
+  Modality-based Recommender Models Revisited}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 46th International ACM SIGIR
+  Conference on Research and Development in Information Retrieval}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{2639--2649}.
+\newblock
+\href{https://doi.org/10.1145/3539618.3591932}{doi:\nolinkurl{10.1145/3539618.3591932}}
+
+
 \bibitem[Yun et~al\mbox{.}(2026)]%
         {yun2026gears}
 \bibfield{author}{\bibinfo{person}{Longfei Yun}, \bibinfo{person}{Yihan Wu},
@@ -2100,7 +3102,7 @@
 \href{https://doi.org/10.1145/3626772.3657844}{doi:\nolinkurl{10.1145/3626772.3657844}}
 
 
-\bibitem[Zhang et~al\mbox{.}(2026e)]%
+\bibitem[Zhang et~al\mbox{.}(2026f)]%
         {zhang2026dream}
 \bibfield{author}{\bibinfo{person}{Bin Zhang}, \bibinfo{person}{Bowen Zheng},
   \bibinfo{person}{Chao Yi}, \bibinfo{person}{Chengyu Lai},
@@ -2139,13 +3141,30 @@
   \bibinfo{person}{Yipeng Yu}, \bibinfo{person}{Yuan Liu},
   \bibinfo{person}{Yunqi Gao}, \bibinfo{person}{Zhiliang Huang},
   \bibinfo{person}{Zhujin Gao}, {and} \bibinfo{person}{Zongyuan Wu}.}
-  \bibinfo{year}{2026}\natexlab{e}.
+  \bibinfo{year}{2026}\natexlab{f}.
 \newblock \bibinfo{title}{{DREAM Technical Report}}.
 \newblock \bibinfo{howpublished}{arXiv:2608.09408}.
 \newblock
 \showeprint[arxiv]{2608.09408}
 \urldef\tempurl%
 \url{https://arxiv.org/abs/2608.09408}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zhang et~al\mbox{.}(2026b)]%
+        {zhang2026agenticrs}
+\bibfield{author}{\bibinfo{person}{Hao Zhang}, \bibinfo{person}{Jinxin Hu},
+  \bibinfo{person}{Hao Deng}, \bibinfo{person}{Lingyu Mu},
+  \bibinfo{person}{Shizhun Wang}, \bibinfo{person}{Yu Zhang}, {and}
+  \bibinfo{person}{Xiaoyi Zeng}.} \bibinfo{year}{2026}\natexlab{b}.
+\newblock \bibinfo{title}{{AgenticRS-Architecture: System Design for Agentic
+  Recommender Systems}}.
+\newblock \bibinfo{howpublished}{arXiv:2603.26085}.
+\newblock
+\showeprint[arxiv]{2603.26085}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2603.26085}
 \showURL{%
 \tempurl}
 
@@ -2167,14 +3186,14 @@
 \href{https://doi.org/10.1145/3589334.3645537}{doi:\nolinkurl{10.1145/3589334.3645537}}
 
 
-\bibitem[Zhang et~al\mbox{.}(2026d)]%
+\bibitem[Zhang et~al\mbox{.}(2026e)]%
         {zhang2026rsir}
 \bibfield{author}{\bibinfo{person}{Luankang Zhang}, \bibinfo{person}{Hao Wang},
   \bibinfo{person}{Zhongzhou Liu}, \bibinfo{person}{Mingjia Yin},
   \bibinfo{person}{Yonghao Huang}, \bibinfo{person}{Jiaqi Li},
   \bibinfo{person}{Wei Guo}, \bibinfo{person}{Yong Liu},
   \bibinfo{person}{Huifeng Guo}, \bibinfo{person}{Defu Lian}, {and}
-  \bibinfo{person}{Enhong Chen}.} \bibinfo{year}{2026}\natexlab{d}.
+  \bibinfo{person}{Enhong Chen}.} \bibinfo{year}{2026}\natexlab{e}.
 \newblock \showarticletitle{{Can Recommender Systems Teach Themselves? A
   Recursive Self-Improving Framework with Fidelity Control}}. In
   \bibinfo{booktitle}{\emph{Proceedings of the 43rd International Conference on
@@ -2187,13 +3206,13 @@
 \tempurl}
 
 
-\bibitem[Zhang et~al\mbox{.}(2026f)]%
+\bibitem[Zhang et~al\mbox{.}(2026g)]%
         {zhang2026autoreseval}
 \bibfield{author}{\bibinfo{person}{Liulei Zhang}, \bibinfo{person}{Dejing
   Zhou}, \bibinfo{person}{Chuyue Huang}, \bibinfo{person}{Guanhua Chen},
   \bibinfo{person}{Yutong Yao}, \bibinfo{person}{Lidia~S. Chao},
   \bibinfo{person}{Chi~Man Vong}, {and} \bibinfo{person}{Derek~F. Wong}.}
-  \bibinfo{year}{2026}\natexlab{f}.
+  \bibinfo{year}{2026}\natexlab{g}.
 \newblock \bibinfo{title}{{How Is Automated Research Evaluated? A Survey of
   Benchmarks and Evaluation Practices}}.
 \newblock \bibinfo{howpublished}{arXiv:2610.11877}.
@@ -2201,6 +3220,22 @@
 \showeprint[arxiv]{2610.11877}
 \urldef\tempurl%
 \url{https://arxiv.org/abs/2610.11877}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zhang et~al\mbox{.}(2023b)]%
+        {zhang2023llmhpo}
+\bibfield{author}{\bibinfo{person}{Michael~R. Zhang}, \bibinfo{person}{Nishkrit
+  Desai}, \bibinfo{person}{Juhan Bae}, \bibinfo{person}{Jonathan Lorraine},
+  {and} \bibinfo{person}{Jimmy Ba}.} \bibinfo{year}{2023}\natexlab{b}.
+\newblock \bibinfo{title}{{Using Large Language Models for Hyperparameter
+  Optimization}}.
+\newblock \bibinfo{howpublished}{arXiv:2312.04528}.
+\newblock
+\showeprint[arxiv]{2312.04528}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2312.04528}
 \showURL{%
 \tempurl}
 
@@ -2236,13 +3271,13 @@
 \href{https://doi.org/10.1145/3640457.3688117}{doi:\nolinkurl{10.1145/3640457.3688117}}
 
 
-\bibitem[Zhang et~al\mbox{.}(2023)]%
+\bibitem[Zhang et~al\mbox{.}(2023a)]%
         {zhang2023nasrec}
 \bibfield{author}{\bibinfo{person}{Tunhou Zhang}, \bibinfo{person}{Dehua
   Cheng}, \bibinfo{person}{Yuchen He}, \bibinfo{person}{Zhengxing Chen},
   \bibinfo{person}{Xiaoliang Dai}, \bibinfo{person}{Liang Xiong},
   \bibinfo{person}{Feng Yan}, \bibinfo{person}{Hai Li}, \bibinfo{person}{Yiran
-  Chen}, {and} \bibinfo{person}{Wei Wen}.} \bibinfo{year}{2023}\natexlab{}.
+  Chen}, {and} \bibinfo{person}{Wei Wen}.} \bibinfo{year}{2023}\natexlab{a}.
 \newblock \showarticletitle{{NASRec: Weight Sharing Neural Architecture Search
   for Recommender Systems}}. In \bibinfo{booktitle}{\emph{Proceedings of the
   ACM Web Conference 2023}}. \bibinfo{publisher}{ACM}, \bibinfo{address}{New
@@ -2252,12 +3287,12 @@
 \href{https://doi.org/10.1145/3543507.3583446}{doi:\nolinkurl{10.1145/3543507.3583446}}
 
 
-\bibitem[Zhang et~al\mbox{.}(2026b)]%
+\bibitem[Zhang et~al\mbox{.}(2026c)]%
         {zhang2026dmrl}
 \bibfield{author}{\bibinfo{person}{Wei Zhang}, \bibinfo{person}{Hongji Li},
   \bibinfo{person}{Song Sun}, \bibinfo{person}{Peng Yu}, \bibinfo{person}{Xue
   Yang}, \bibinfo{person}{Lei Zhao}, {and} \bibinfo{person}{Peng Jiang}.}
-  \bibinfo{year}{2026}\natexlab{b}.
+  \bibinfo{year}{2026}\natexlab{c}.
 \newblock \bibinfo{title}{{DMRL: Document-Mediated Reinforcement Learning for
   Skill Optimization in Advertising Recommendation}}.
 \newblock \bibinfo{howpublished}{arXiv:2609.02170}.
@@ -2284,12 +3319,12 @@
 \href{https://doi.org/10.52202/085713-3036}{doi:\nolinkurl{10.52202/085713-3036}}
 
 
-\bibitem[Zhang et~al\mbox{.}(2026c)]%
+\bibitem[Zhang et~al\mbox{.}(2026d)]%
         {zhang2025agentsearchsurvey}
 \bibfield{author}{\bibinfo{person}{Yu Zhang}, \bibinfo{person}{Shutong Qiao},
   \bibinfo{person}{Jiaqi Zhang}, \bibinfo{person}{Tzu-Heng Lin},
   \bibinfo{person}{Chen Gao}, {and} \bibinfo{person}{Yong Li}.}
-  \bibinfo{year}{2026}\natexlab{c}.
+  \bibinfo{year}{2026}\natexlab{d}.
 \newblock \showarticletitle{{A Survey of Large Language Model Empowered Agents
   for Recommendation and Search: Towards Next-Generation Information
   Retrieval}}.
@@ -2367,6 +3402,22 @@
 \newblock
 \showeprint[arxiv]{2203.13922}
 \href{https://doi.org/10.1145/3579355}{doi:\nolinkurl{10.1145/3579355}}
+
+
+\bibitem[Zhong et~al\mbox{.}(2026)]%
+        {zhong2026impossiblebench}
+\bibfield{author}{\bibinfo{person}{Ziqian Zhong}, \bibinfo{person}{Aditi
+  Raghunathan}, {and} \bibinfo{person}{Nicholas Carlini}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{ImpossibleBench: Measuring LLMs' Propensity of
+  Exploiting Test Cases}}. In \bibinfo{booktitle}{\emph{International
+  Conference on Learning Representations (ICLR)}}.
+\newblock
+\showeprint[arxiv]{2510.20270}
+\urldef\tempurl%
+\url{https://openreview.net/forum?id=SeO4vyAj7E}
+\showURL{%
+\tempurl}
 
 
 \bibitem[Zhou et~al\mbox{.}(2025a)]%
@@ -2481,7 +3532,33 @@
 \href{https://doi.org/10.1145/3459637.3482486}{doi:\nolinkurl{10.1145/3459637.3482486}}
 
 
-\bibitem[Zhuang et~al\mbox{.}(2026)]%
+\bibitem[Zhu et~al\mbox{.}(2025)]%
+        {zhu2025abc}
+\bibfield{author}{\bibinfo{person}{Yuxuan Zhu}, \bibinfo{person}{Tengjun Jin},
+  \bibinfo{person}{Yada Pruksachatkun}, \bibinfo{person}{Andy Zhang},
+  \bibinfo{person}{Shu Liu}, \bibinfo{person}{Sasha Cui},
+  \bibinfo{person}{Sayash Kapoor}, \bibinfo{person}{Shayne Longpre},
+  \bibinfo{person}{Kevin Meng}, \bibinfo{person}{Rebecca Weiss},
+  \bibinfo{person}{Fazl Barez}, \bibinfo{person}{Rahul Gupta},
+  \bibinfo{person}{Jwala Dhamala}, \bibinfo{person}{Jacob Merizian},
+  \bibinfo{person}{Mario Giulianelli}, \bibinfo{person}{Harry Coppock},
+  \bibinfo{person}{Cozmin Ududec}, \bibinfo{person}{Jasjeet Sekhon},
+  \bibinfo{person}{Jacob Steinhardt}, \bibinfo{person}{Antony Kellermann},
+  \bibinfo{person}{Sarah Schwettmann}, \bibinfo{person}{Matei Zaharia},
+  \bibinfo{person}{Ion Stoica}, \bibinfo{person}{Percy Liang}, {and}
+  \bibinfo{person}{Daniel Kang}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{Establishing Best Practices in Building Rigorous
+  Agentic Benchmarks}}. In \bibinfo{booktitle}{\emph{Advances in Neural
+  Information Processing Systems (Datasets and Benchmarks Track)}}.
+\newblock
+\showeprint[arxiv]{2507.02825}
+\urldef\tempurl%
+\url{https://openreview.net/forum?id=E58HNCqoaA}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zhuang et~al\mbox{.}(2026a)]%
         {zhuang2026trajectories}
 \bibfield{author}{\bibinfo{person}{Zijie Zhuang}, \bibinfo{person}{Changxin
   Lao}, \bibinfo{person}{Pengbo Xu}, \bibinfo{person}{Hanwen Xu},
@@ -2491,7 +3568,7 @@
   \bibinfo{person}{Jian Liang}, \bibinfo{person}{Ruiming Tang},
   \bibinfo{person}{Shuang Yang}, \bibinfo{person}{Zhaojie Liu},
   \bibinfo{person}{Wenwu Ou}, {and} \bibinfo{person}{Kun Gai}.}
-  \bibinfo{year}{2026}\natexlab{}.
+  \bibinfo{year}{2026}\natexlab{a}.
 \newblock \bibinfo{title}{{From Trajectories to Evidence: Auditable
   Experimental Records for Industrial Research Agents}}.
 \newblock \bibinfo{howpublished}{arXiv:2608.05235}.
@@ -2499,6 +3576,23 @@
 \showeprint[arxiv]{2608.05235}
 \urldef\tempurl%
 \url{https://arxiv.org/abs/2608.05235}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zhuang et~al\mbox{.}(2026b)]%
+        {zhuang2026evoreason}
+\bibfield{author}{\bibinfo{person}{Zhuang Zhuang}, \bibinfo{person}{Zhipeng
+  Wei}, \bibinfo{person}{Rongfeng Guo}, \bibinfo{person}{Shijie Li},
+  \bibinfo{person}{Peng Zhao}, \bibinfo{person}{Jie Chen}, {and}
+  \bibinfo{person}{Fei Pan}.} \bibinfo{year}{2026}\natexlab{b}.
+\newblock \bibinfo{title}{{EvoReason: Self-Evolving Reasoning Primitive-Guided
+  On-Policy Distillation for Latent Reasoning in Generative Recommendation}}.
+\newblock \bibinfo{howpublished}{arXiv:2607.29010}.
+\newblock
+\showeprint[arxiv]{2607.29010}
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2607.29010}
 \showURL{%
 \tempurl}
 

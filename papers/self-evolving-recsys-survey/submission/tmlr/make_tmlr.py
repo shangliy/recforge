@@ -56,18 +56,21 @@ def build_tex():
     tex = sub_once(r"\n\\maketitle\n(?=\n%=)", "\n", tex)
     # natbib author-year: every citation in the draft is parenthetical
     tex = tex.replace("\\cite{", "\\citep{")
-    tex = sub_once(r"In our own pre-registered study", "In a pre-registered study", tex)
+    # links to the authors' repositories in the text (the audit-data footnote)
+    for real, anon in ANON.items():
+        tex = tex.replace(real, anon)
     tex = sub_once(r"\\bibliographystyle\{ACM-Reference-Format\}\n\\bibliography\{\.\./refs\}",
                    "\\bibliographystyle{tmlr}\n\\bibliography{refs-anon}", tex)
-    # the 12-column audit table only fits in landscape with author-year citations
-    tables = tex.split("\\begin{table*}[t]")
-    hits = [i for i, t in enumerate(tables) if i and "Evaluation audit" in t.split("\\end{table*}")[0]]
-    if len(hits) != 1:
-        raise SystemExit("audit table not found")
-    body, rest = tables[hits[0]].split("\\end{table*}", 1)
-    tables[hits[0]] = "\\begin{sidewaystable}" + body + "\\end{sidewaystable}" + rest
-    tex = tables[0] + "".join(t if t.startswith("\\begin{sidewaystable}") else "\\begin{table*}[t]" + t
-                              for t in tables[1:])
+    # the 12-column audit and design tables only fit in landscape with author-year citations
+    for marker in ("Evaluation audit", "Design of the 27 audited loops"):
+        tables = tex.split("\\begin{table*}[t]")
+        hits = [i for i, t in enumerate(tables) if i and marker in t.split("\\end{table*}")[0]]
+        if len(hits) != 1:
+            raise SystemExit(f"table not found: {marker}")
+        body, rest = tables[hits[0]].split("\\end{table*}", 1)
+        tables[hits[0]] = "\\begin{sidewaystable}" + body + "\\end{sidewaystable}" + rest
+        tex = tables[0] + "".join(t if t.startswith("\\begin{sidewaystable}") else "\\begin{table*}[t]" + t
+                                  for t in tables[1:])
     tex = tex.replace("\\usetikzlibrary{", "\\tikzset{every picture/.append style={transform shape, scale=0.92}}\n"
                       "\\usetikzlibrary{", 1)
     tex = sub_once(r"\\pdfinfo\{[^\n]*\}\n", "", tex)

@@ -272,44 +272,7 @@ Conventions: "not stated" means the paper does not say. "no" means the paper rep
 
 ## Summary table
 
-Legend: Y = yes / stated; N = no; NS = not stated; P = partial; n/a = not applicable. C1: S99 = sampled with 99 negatives; LOO-NS = leave-one-out ranking with the candidate protocol unstated; AUC = AUC or loss proxy; ON = online A/B primary; LTR = full per-query list; ? = no metric stated.
-
-| # | Paper | Evolves | C1 metric | C2 selection signal | C3 test once | C4 variance | C5 gap/transfer | C6 null control | C7 budget reported | C8 baselines tuned | C9 isolation | Online A/B | Code |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Self-EvolveRec | code | S99 | val (Eq.1) | NS | N | P (held-out simulator) | P (NAS, unmatched) | iters, time, tokens | N (fixed shared HPs) | NS (agent edits loaders) | none | Y |
-| 2 | RecHarness | code (arms) | S99 | val | Y | 3 runs, no std | N | P (random arm routing) | GPU-s 43,200 | NS (cold-start base) | P (isolated workspace) | 7d, 10% | Y |
-| 3 | Google/YouTube | config + code deltas | AUC (loss) + ON | val loss + online | NS | ablation only (6 runs) | P (2nd surface) | N | $20k / 6 mo | prod. baseline | NS | yes, CIs | N |
-| 4 | EvoRec | code | LOO-NS | NS | NS | N | N | P (unspecified AutoML) | 50 iters | "original papers" | NS | 7d, 20% | N |
-| 5 | VirtualMLE | config (+switches) | LOO-NS | val | Y | 3 runs, no std | P (val & test both shown) | Y (Grid 729, BO 500, OPRO) | trials, $ | Y (AutoML-tuned) | Y | none | Y |
-| 6 | NOVA | code (architecture) | AUC | NS | NS | 20 tasks, no CI | N | Y (Optuna-TPE, L2) | rounds, $/task | same skills | NS | 6d, 5% | N |
-| 7 | AgentX | code + strategy + prompts | ON (+AUC) | online A/B | NS | N | P (public→industrial) | N (vs engineer) | ideas/weeks | NS | NS | 3 wk | N |
-| 8 | AgentX-Model | code | AUC | NS (best round) | NS | P (std reported, ignored) | N | P (replay only) | experiments, tokens | prod. baseline | P (fixed eval code) | 5 LRs | N |
-| 9 | Auto-RecSys | code/config | ? | NS | NS | N | N | N | iterations | n/a | NS | none | N |
-| 10 | AutoLR | code/config | ? (scalar proxy) | NS (one-run KEEP) | NS | N (calibration off) | N | N (explicitly) | evals, RMB/iter | prod. trunk | P (frozen eval) | 9 LRs, no CIs | N |
-| 11 | CORAL | config/policy | ON | online A/B | n/a | N | N | N | calls, tokens | hand-set prod. | n/a | yes | N |
-| 12 | AgenticRecTune | config | ON | online A/B | n/a | N | N | N | NS | prod. tuned | n/a | yes (p<.05) | N |
-| 13 | Sortify | config | ON + proxy | online A/B | P (fresh 7d A/B) | N | P (offline→online) | N | trials, CPU-h, $ | manual loop | n/a | 7d | N |
-| 14 | GEARS | policy | ON (+benchmark nDCG) | online experiment data | NS | N (CIs only) | P (1-month backtest) | N | tokens, $ | prompting only | n/a | 9 surfaces | N |
-| 15 | AI Co-Scientist | code + LR | AUC | held-out eval = report set | N | N (single runs) | N | N | GPU-h | P (inherited LR) | NS (bugs noted) | none | N |
-| 16 | RecEvolve | code/config | LOO-NS (NDCG/MRR) | NS | NS | N | N | N | runs, hours | prod. | N (reward hack found) | yes | N |
-| 17 | EvoRank (LTR) | code | LTR | val (fitness fold) | Y | 3 runs + bootstrap | Y | Y (random search, Optuna) | iters, $ | Y (Optuna 40) | Y | none | Y |
-
-### Counts (n = 17; 16 if EvoRank is excluded)
-
-- **C1 metric:** 0/17 state full-catalogue ranking evaluation. 2 use sampled metrics with 99 negatives (Self-EvolveRec, RecHarness). 3 report LOO ranking metrics without stating the candidate set (EvoRec, VirtualMLE, RecEvolve). 4 use AUC or a loss proxy as the primary offline metric (Google, NOVA, AgentX-Model, Co-Scientist). 5 are online-A/B primary (AgentX, CORAL, AgenticRecTune, Sortify, GEARS). 2 state no usable metric (Auto-RecSys; AutoLR's unspecified scalar). 1 uses a full per-query LTR list (EvoRank).
-- **C2 selection signal:** among the 12 papers with an offline accept/reject loop, 4 name a validation split explicitly (Self-EvolveRec, RecHarness, VirtualMLE, EvoRank); Google says "validation loss"; Co-Scientist selects on the held-out set it also reports; 6 do not state the split (EvoRec, NOVA, AgentX-Model, Auto-RecSys, AutoLR, RecEvolve). The other 5 select on online A/B.
-- **C3 test exactly once:** 3/17 yes (RecHarness, VirtualMLE, EvoRank); 1 partial (Sortify, fresh 7-day A/B after the freeze); 1 explicit no (Co-Scientist); the rest not stated or n/a. **Of the 11 recommender papers with an offline selection loop (the 12 above minus EvoRank), only 2 state test-once (RecHarness, VirtualMLE).**
-- **C4 variance on headline numbers:** 3/17 report repeated runs (RecHarness 3, VirtualMLE 3, EvoRank 3 plus bootstrap). None of the first two report std or CIs. 2 partial (Google: ablation only; AgentX-Model: reports run-to-run σ ≈ 0.001–0.002 AUC but counts any gain >10⁻⁶ as "above baseline"). 12 report none.
-- **C5 val→test gap / transfer:** 1/17 reports an explicit selection-vs-held-out gap (EvoRank); 6 partial (Self-EvolveRec, VirtualMLE, Google, AgentX, Sortify, GEARS); 10 none.
-- **C6 null control:** 3/17 have a real non-LLM search baseline (VirtualMLE: Grid/BO; NOVA: Optuna-TPE; EvoRank: equal-budget random search + Optuna). 4 partial (Self-EvolveRec NAS with unmatched budget; EvoRec unspecified "AutoML"; RecHarness random routing with LLM edits; AgentX-Model random/greedy in replay only). 10 none. Where tested properly, the null control was competitive: in EvoRank campaign 1, random search transferred as well or better (p = 0.03), and in AgentX-Model's Scenario A replay, Uniform Random beat the agent policies on mean best AUC.
-- **C7 budget:** reported in some unit by 16/17 (AgenticRecTune reports none). Units are heterogeneous (iterations, GPU-seconds, GPU-hours, tokens, $, RMB, ideas), and only NOVA, Self-EvolveRec (tokens), VirtualMLE, and EvoRank match budgets across compared methods.
-- **C8 baselines:** clearly tuned baselines only in VirtualMLE (Grid/BO-tuned) and EvoRank (Optuna, re-tuned per scale). Self-EvolveRec states untuned shared HPs; RecHarness starts from "cold-start" templates; industrial papers compare against production models (tuning n/a).
-- **C9 isolation:** 2/17 state that the agent cannot see the test set or labels (VirtualMLE; EvoRank via leakage-guarded helpers). 3 partial (AgentX-Model fixed evaluation code; AutoLR frozen evaluation logic; RecHarness isolated workspace). 2 report actual metric gaming or leakage (RecEvolve batch-size reward hack; Co-Scientist "metric-winning bugs"). The rest are silent.
-- **Online A/B:** 12/17 report online tests (Google, RecHarness, EvoRec, NOVA, AgentX, AgentX-Model, AutoLR, CORAL, AgenticRecTune, Sortify, GEARS, RecEvolve). Explicit significance or CIs: Google, EvoRec, NOVA, AgentX, AgenticRecTune, GEARS, CORAL (significance stated). Durations stated: RecHarness 7d, EvoRec 7d, NOVA 6d, AgentX 3 wk, Sortify 7d.
-- **Code released:** 4/17 (Self-EvolveRec, RecHarness, VirtualMLE, EvoRank). All industrial systems are closed.
-- **LLM not named:** 6/17 (RecHarness, AgentX, Auto-RecSys, CORAL, RecEvolve, EvoRank).
-
----
+Removed in v2: the summary counts that stood here were superseded by `audit.csv` (see `README.md`, "Changes in v2"). All counts in the paper are generated from `audit.csv` by `summarize.py`.
 
 ## Survey overlap (subsumption check)
 

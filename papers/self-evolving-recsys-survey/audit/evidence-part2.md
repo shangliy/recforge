@@ -331,41 +331,9 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 
 ---
 
-## Compact table (paper × C1–C9)
+## Compact table
 
-| # | Paper | C1 metric | C2 selection | C3 test once | C4 variance | C5 transfer/overfit | C6 null control | C7 budget | C8 baselines | C9 leakage/hacking |
-|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | RecEvolve | NDCG/MRR/Recall@K, in-batch (sampled) | offline metric threshold; split n.s. | n.s. | no | online A/B only | no | 41 runs, ~2 d, >3 h/run, 5 threads | production seed | **yes**: batch-size reward hack |
-| 2 | Astar | Hitrate@200 (n.s.); train-loss success | train loss + reward-model proxy | n.s. | no | RM vs real "consistency"; RM recalibration | humans + 7 frontier LLMs; ablations | Θ(100) dirs/wk; training tokens | humans, untuned LLMs | RM drift only |
-| 3 | A-MLE | NE / rMSE (logloss-type) | significance vs rolling baseline | n.s. | re-run rule; n n.s. | no | cross-LLM, manual, semi-auto | not quantified | production rolling | failure list (single-seed promotion) |
-| 4 | AURA | AUC/NDCG@10 (screen); rubric | LLM-judged rubric (same for select/report) | n/a | 3 trained days | no | no | $349 / $253 per run | n/a | fabricated IDs, self-preference |
-| 5 | RecSys Factory | AUC, CPM | human HITL | n/a | no | no | no | 1,624 dispatches / 78 d | rule baseline | silent data corruption found |
-| 6 | SR-Agent | online + retest | 4-stage gate incl. replay + A/B | n/a (A/B) | no | replay pre-check | no | 36M tokens/loop | manual strategies | bounded action space |
-| 7 | EvoSkillRec | AUC | validation AUC | **yes** | no (single runs, admitted) | **yes**: val→test Pareto | **NASRec + OpenEvolve**, ablations | 200 slots, ~$7k | untuned manual best | sandboxing only |
-| 8 | RankEvolve-HSTU | **full-catalogue** NDCG@10 | full-test leaderboard | **no** | no (HSTU); CIs (ExecML) | 4-dataset replay; LitGPT | budget-matched (ExecML only) | ~55 runs, 1–8 H200, $/task | published anchors | **yes**: 3 leakage incidents |
-| 9 | Population Evolution | **full-catalogue** rank; MAE; AUC | source fitness + peer promotion | **no** (transfer calibrated on test) | no (1 run) | **yes**: peer/large-scale failures | standalone S, Direct (matched) | orders of magnitude only | CMA-ES-tuned | test-split calibration disclosed |
-| 10 | Traj→Evidence | AUC | per-round outcome; split n.s. | n.s. | no (single-run pairs) | memory-transfer audit | no-memory arm; always-Reject | experiment count, n.s. | production | validity gates; non-monotonic |
-| 11 | Spotify | LLM-judge pass@1 | judge on mini-batches | yes (test, sign test) | no (1 run) | no | no | "a few hours" | manual prompt | variance root-cause filtering |
-| 12 | AgentLTV | ER/Gini/Spearman/RMSE | n.s. (program prints score; final computes on test) | n.s. / doubtful | ± unexplained | no | ablations only | ~250 programs | 10 LTV models, tuning n.s. | no |
-| 13 | AutoRecLab | n/a (requirement score) | LLM requirement coverage | n/a | 9 runs listed | no | no | ~$1/run | n/a | "not scientifically meaningful" |
-| 14 | Semantic Indexes GR | Recall@K / MRR (doc retrieval) | proxy R@100 on train-split feedback | **yes** | 3 target trainings; 1 search | **yes**: proxy→target ρ, failures | no | 20 min vs 5 h per candidate | seed GR | **yes**: test isolation, hackable proxy |
-| 15 | Policy Discovery GR | R/N@K leave-one-out | similarity to train last item | n.s. (hps) | 5 repeats, mean only | reward–recall trend | **random policy selection** | n.s. | TIGER/LETTER official | target isolation stated |
-| 16 | RankEvolve-IR | nDCG@10 / R@100 | fitness on 12 datasets | yes (16 held-out datasets) | no | **yes**: seen vs unseen | constrained seed ≈ grid search | 300 / 200 steps | default params | no |
-
-n.s. = not stated; n/a = not applicable.
-
-### Counts (16 papers)
-- **C1 full-catalogue recsys ranking stated explicitly:** 2 (RankEvolve-HSTU, Population Evolution). Another 2 retrieval papers use full-corpus document retrieval (GR indexes, RankEvolve-IR). Sampled/in-batch: 1 (RecEvolve, inferred from its own reward-hack explanation). AUC/logloss-type: 5 (A-MLE, EvoSkillRec, Traj→Evidence, AURA screening, RecSys Factory). Online only: 1 (SR-Agent). Other: 5.
-- **C2 validation (or a train-split held-out feedback set) explicitly used for selection:** 3 (EvoSkillRec, GR indexes, Policy Discovery via the train last item). Test used for selection or calibration: 2 (RankEvolve-HSTU leaderboard; PE transfer calibration). Training loss: 1 (Astar). Not stated or unclear: about 6.
-- **C3 explicit "selected on val, scored once on held-out test":** 4 (EvoSkillRec, GR indexes, RankEvolve-IR cross-dataset, Spotify). Explicit no: 2. Not stated or not applicable: 10.
-- **C4 repeated evolution runs behind headline numbers:** 0 of 16. Repeated final-model training seeds only: 4 (GR indexes ×3, Policy Discovery ×5, PE transfer ×3, AURA ×3 days).
-- **C5 a transfer or overfitting check with numbers:** 6 (EvoSkillRec, RankEvolve-HSTU, PE, GR indexes, RankEvolve-IR, Traj→Evidence).
-- **C6 any null control:** 7 with some control. Only 3 are equal-budget non-LLM or non-sharing searches: EvoSkillRec (NASRec), PE (S and Direct at matched budget), RankEvolve-IR (constrained ≈ grid search). Policy Discovery has random selection. A random-search baseline: 0.
-- **C7 dollar or GPU-hour numbers:** 4 ($: AURA, EvoSkillRec, AutoRecLab, RankEvolve-HSTU per task; GPU-hours partial for the GR paper). PE reports orders of magnitude only and calls exact figures policy-restricted.
-- **Online A/B reported:** 7 (RecEvolve, Astar, SR-Agent, Spotify, Policy Discovery, Traj→Evidence; RecSys Factory gray rollout). Duration stated: 4 (Astar 5 d, SR-Agent 1 month, Spotify 2 wk, Policy Discovery 7 d). Significance stated: 2 (Astar, Policy Discovery).
-- **Code released:** 4 (EvoSkillRec, AgentLTV, AutoRecLab, RankEvolve-IR). Promised: 2 (RankEvolve-HSTU, PE).
-
----
+Removed in v2: the summary counts that stood here were superseded by `audit.csv` (see `README.md`, "Changes in v2"). All counts in the paper are generated from `audit.csv` by `summarize.py`.
 
 ## Failure-mode evidence (quotes)
 

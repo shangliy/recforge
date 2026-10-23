@@ -1,5 +1,9 @@
 # Second-coder reliability check
 
+**v2:** the second coder codes all 27 core systems: `sheet.csv` (10, sent first) and `sheet2.csv` (the other 17). The
+v2 codebook separates C9 (isolation design) from `incident` (gaming or leakage reported); add the `incident` column to
+the first sheet as well. Run `python3 kappa.py coder2.csv coder2-part2.csv`.
+
 The audit in the paper was coded by one person. This folder holds the check a reviewer will ask for: a second
 coder independently codes a random sample of the core systems, and we report agreement (Cohen's kappa) per
 criterion in the paper's limitations paragraph.
