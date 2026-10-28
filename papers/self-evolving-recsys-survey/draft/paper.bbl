@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{202}
+\begin{thebibliography}{203}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -1327,7 +1327,7 @@
   \bibinfo{person}{Zhigang Wang}, \bibinfo{person}{Yinglong Xia}, {and}
   \bibinfo{person}{Andy Wang}.} \bibinfo{year}{2026}\natexlab{b}.
 \newblock \bibinfo{title}{{Auto-RecSys: Harnessing Autonomous Research Agents
-  for Industry-Scale Recommender System}}.
+  for Industry-Scale Recommender Systems}}.
 \newblock \bibinfo{howpublished}{arXiv:2609.10922}.
 \newblock
 \showeprint[arxiv]{2609.10922}
@@ -1853,7 +1853,7 @@
   \bibinfo{person}{Haibo Xing}, \bibinfo{person}{Jinxin Hu},
   \bibinfo{person}{Yu Zhang}, {and} \bibinfo{person}{Xiaoyi Zeng}.}
   \bibinfo{year}{2026}\natexlab{}.
-\newblock \bibinfo{title}{{EvoRec: Self Evolving Agentic Recommender Systems}}.
+\newblock \bibinfo{title}{{EvoRec: Self-Evolving Agentic Recommender Systems}}.
 \newblock \bibinfo{howpublished}{arXiv:2606.28368}.
 \newblock
 \showeprint[arxiv]{2606.28368}
@@ -2314,6 +2314,20 @@
 \url{https://arxiv.org/abs/2605.14401}
 \showURL{%
 \tempurl}
+
+
+\bibitem[Shi and Yang(2026)]%
+        {shi2026selective}
+\bibfield{author}{\bibinfo{person}{Zhan Shi} {and} \bibinfo{person}{Shanglin
+  Yang}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{Selective LLM-Guided Regularization for Enhancing
+  Recommendation Models}}. In \bibinfo{booktitle}{\emph{Companion Proceedings
+  of the 19th ACM International Conference on Web Search and Data Mining}}.
+  \bibinfo{pages}{148--153}.
+\newblock
+\href{https://doi.org/10.1145/3779211.3795736}{doi:\nolinkurl{10.1145/3779211.3795736}}
+\newblock
+\shownote{GenAIRecP Workshop; arXiv:2512.21526}.
 
 
 \bibitem[Skalse et~al\mbox{.}(2022)]%

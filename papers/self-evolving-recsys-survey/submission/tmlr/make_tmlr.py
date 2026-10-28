@@ -76,9 +76,10 @@ def build_tex():
     tex = sub_once(r"\\pdfinfo\{[^\n]*\}\n", "", tex)
     # first-person self-citation -> third person (double-blind)
     tex = sub_once(r"research-ideation harnesses by one of us, outside", "research-ideation harnesses, outside", tex)
-    tex = sub_once(r" One of us wrote the ideation-harness study cited in\n\\S\\ref\{sec:systems\}, which is outside recommendation and not peer reviewed\.",
+    tex = sub_once(r" One of us wrote the ideation-harness study cited in\n\\S\\ref\{sec:systems\}, which is outside recommendation and not peer reviewed,"
+                   r" and both of us wrote the LLM-guided\nregularisation paper cited in \\S\\ref\{sec:method\} as an excluded example\.",
                    "", tex)
-    if re.search(r"[Oo]ne of us", tex):
+    if re.search(r"[Oo]ne of us|[Bb]oth of us", tex):
         raise SystemExit("first-person self-citation left in main.tex")
     tex = tex.replace("\\input{figs/", "\\input{../../draft/figs/")
     tex = tex.replace("\\input{audit_rows}", "\\input{../../draft/audit_rows}")
@@ -90,6 +91,8 @@ def build_bib():
     for real, anon in ANON.items():
         bib = bib.replace(real, anon)
     bib = re.sub(r"(@misc\{yang2026ideationgoodhart,.*?author = )\{[^}]*\}",
+                 r"\1{Anonymous}", bib, count=1, flags=re.S)
+    bib = re.sub(r"(@inproceedings\{shi2026selective,.*?author = )\{[^}]*\}",
                  r"\1{Anonymous}", bib, count=1, flags=re.S)
     if "shangliy" in bib or "Shanglin" in bib:
         raise SystemExit("bibliography still identifies the authors")

@@ -139,7 +139,9 @@ decision. This includes systems whose proposer is a search algorithm over a fixe
 \paragraph{Inclusion.} We include (i) systems that change a recommender's or ranker's configuration, features, code or
 components under an evaluation loop; (ii) agentic or LLM recommenders whose policy, memory, skills, prompts or weights
 improve from feedback they generate; and (iii) benchmarks, environments and surveys for these. We exclude LLM
-recommenders without a self-improvement loop, conversational recommendation in general, general
+recommenders without a self-improvement loop, methods that use an LLM once as a fixed training signal for a
+conventional recommender (such as offline LLM pairwise supervision applied only where a gate on history length,
+item popularity and model uncertainty predicts it is reliable~\cite{shi2026selective}), conversational recommendation in general, general
 hyperparameter-optimisation libraries, methods that evolve the recommendations rather than the recommender (such as
 QD-Rec's quality--diversity archive of items and hypotheses~\cite{ishida2026qdrec}), and continual-learning methods
 that call themselves self-evolving but have no proposer or selection step, such as LION's sparse key--value memory
@@ -956,7 +958,8 @@ online experiment. We therefore report those loops separately and assess them on
 
 \paragraph{Conflict of interest.} The authors are building recforge, the reference implementation described in
 Appendix~\ref{app:recforge}; the audit does not depend on it. One of us wrote the ideation-harness study cited in
-\S\ref{sec:systems}, which is outside recommendation and not peer reviewed.
+\S\ref{sec:systems}, which is outside recommendation and not peer reviewed, and both of us wrote the LLM-guided
+regularisation paper cited in \S\ref{sec:method} as an excluded example.
 
 %=====================================================================
 \section{Conclusion}
