@@ -201,8 +201,8 @@ recorded separately. \\
 
 \paragraph{Search-space AutoML for recommenders.} AutoML for recommenders searched for feature-interaction structures
 (AutoCTR~\cite{song2020autoctr}, AutoFIS~\cite{liu2020autofis}), embedding dimensions (AutoEmb~\cite{zhao2020autoemb},
-AutoDim~\cite{zhao2020autodim}), whole architectures with weight sharing (NASRec~\cite{zhang2023nasrec},
-DNS-Rec~\cite{zhang2024dnsrec}) and loss functions (AutoLossGen~\cite{li2022autolossgen}); Zheng et al.\ survey this
+AutoDim~\cite{zhao2020autodim}), whole architectures with a weight-sharing supernet (NASRec~\cite{zhang2023nasrec}),
+compact attention-based sequential models under resource constraints (DNS-Rec~\cite{zhang2024dnsrec}) and loss functions (AutoLossGen~\cite{li2022autolossgen}); Zheng et al.\ survey this
 line~\cite{zheng2022automl}. Each method can only return a design that its space contains. Evaluation is mostly
 validation logloss or AUC on public CTR data, or standard rating and sequential benchmarks, with standard splits. Even
 in this setting, careful re-evaluation of architecture search found that the search phase often added little over
@@ -227,8 +227,8 @@ MLGym's \texttt{validate} command returns test-set metrics during the session~\c
 
 \paragraph{Generative recommenders.} HSTU~\cite{zhai2024hstu} and TIGER~\cite{rajput2023tiger} recast recommendation
 as sequence generation over item IDs or semantic IDs, and OneRec unifies retrieval and ranking in one generative model
-that is further aligned by iterative preference optimisation on its own samples~\cite{deng2025onerec,
-zhou2025onerectech,zhou2025openonerec}. These models add new objects that a loop can evolve: tokenisers, codebooks,
+that is further aligned on its own samples, first by iterative DPO~\cite{deng2025onerec} and then by on-policy
+RL~\cite{zhou2025onerectech,zhou2025openonerec}. These models add new objects that a loop can evolve: tokenisers, codebooks,
 decoding procedures and generative losses.
 
 \paragraph{Evaluation methodology.} Tuned simple baselines beat many published neural
@@ -600,7 +600,7 @@ repeats in an ablation only, a re-run rule, or a noise estimate of single models
 \pa: unmatched budget, LLM still proposing, or replay only. C8: \yes tuned, \no untuned, \pa partly or on test data,
 prod.\ = production model, pub.\ = published numbers, seed = the loop's seed program. C9 isolation design: \pa part of
 the loop constrained (fixed evaluation code, gates, whitelists, sandboxing, bounded actions);
-\textsuperscript{G} = the paper reports gaming, metric inflation or leakage by the loop. Code: later = promised. \yes
+\textsuperscript{G} = the paper reports gaming, metric-winning bugs, metric inflation or leakage by the loop. Code: later = promised. \yes
 = yes, \no = no, \pa = partial, \ns = not stated, \na = not applicable.}\label{tab:audit}
 \small
 \begin{tabular}{@{}llllllllllll@{}}
@@ -720,13 +720,14 @@ published recommender gains is selection noise; it shows that the question canno
 
 \paragraph{F6: Null controls are rare.} Three offline-selecting loops compare against a non-LLM search at an equal or
 favourable budget: VirtualMLE (grid search and Bayesian optimisation), NOVA (Optuna-TPE at a matched offline-evaluation
-budget, in its code-level setting) and EvoSkillRec (NASRec, alongside OpenEvolve); in all three the LLM loop is reported
+budget but unmatched LLM cost, and only on its ScaleUp task, a search over structural hyperparameters) and EvoSkillRec (NASRec, alongside OpenEvolve); in all three the LLM loop is reported
 to win. Five have partial controls (NAS baselines at unmatched budgets, a random arm router that still uses LLM edits, a
 replay-only random policy, or a starting model tuned by an optimiser that the LLM partly steers), and eight have none;
 comparisons with human workflows or with other LLMs do not count. No loop runs an equal-budget random search over its own edit space,
 and none runs the catalogue-of-known-techniques null of \S\ref{sec:kept}. Where random selection was run, it was
 competitive: in AgentX-Model's historical replay, which randomises the choice of experiments rather than the edits, in
-Scenario A ``Uniform Random's mean exceeds Fixed, Greedy, and Joint'' policies~\cite{yang2026agentxmodel}, and in
+Scenario A ``Uniform Random's mean exceeds Fixed, Greedy, and Joint'' policies, and no policy led consistently across
+scenarios~\cite{yang2026agentxmodel}; in
 EvoRank's loss campaign an equal-budget random search transferred as well or better ($p=0.03$)~\cite{patel2026evorank}.
 AutoLR states plainly that it ``does not establish superiority over random, greedy, or direct LLM-based routing under a
 matched trial budget''~\cite{zhang2026autolr}. The history of architecture search explains why the control matters: random
@@ -759,8 +760,9 @@ loops and one comparison point report metric-winning bugs, metric inflation or l
 1k) artificially inflated proxy metrics''; a human caught it and rolled it back~\cite{pan2026recevolve}. On HSTU,
 RankEvolve-HSTU's agents produced a genre feature that leaked the target (training loss collapsed to zero while
 evaluation spiked), DPO preference pairs mined at the held-out target position, and a naive multi-position evaluation
-that would have inflated NDCG@10 from 0.2192 to 0.2517/0.2577; the leaks surfaced as anomalous trajectories on the
-leaderboard and the inflation through a mandatory diagnosis step, none was reported as a gain, but the best agent pair
+that would have inflated NDCG@10 from 0.2192 to 0.2517/0.2577; the genre and DPO bugs surfaced as anomalous trajectories on
+the leaderboard, the inflation was reasoned out as leakage in the diagnosis the loop requires for every negative result,
+and none was reported as a gain, but the best agent pair
 still had a 10.4\% silent critical-defect rate on ExecML-HSTU, and a single Claude Code pass
 35.4\%~\cite{chen2026rankevolve}. In EvoPilot, ``a favorable result used an evaluation date inside the candidate
 model's training window, so the result was retracted''~\cite{fu2026evopilot}. In Amazon's semantic-ID loop,
@@ -871,7 +873,7 @@ multiply training cost: three sessions plus one equal-budget null cost four sess
 as RecHarness, whose budget is 43{,}200 GPU-seconds per backbone~\cite{ling2026recharness}, that is 48 GPU-hours per
 backbone. LLM costs are small next to training: VirtualMLE reports \$1.5--4.8 of LLM cost per
 session~\cite{cao2026virtualmle}, EvoRank about ten dollars for fifty iterations~\cite{patel2026evorank}, and NOVA
-about \$29 per task~\cite{liu2026nova} (LLM cost only). For industrial loops whose candidates take hundreds of
+about \$29 per task, or about \$22 with cached artifacts~\cite{liu2026nova} (LLM cost only). For industrial loops whose candidates take hundreds of
 GPU-hours~\cite{li2026autorecsys}, R4 and R5 can be applied to a replay or a reduced-scale proxy, as AgentX-Model
 does for scheduling policies~\cite{yang2026agentxmodel}, while R9 governs the launch decision.
 

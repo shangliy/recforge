@@ -23,6 +23,9 @@ TITLES = {
     "narasimhan2026taurec": r"$\tau$-Rec: A Verifiable Benchmark for Agentic Recommender Systems",
     "wang2023recagent": "User Behavior Simulation with Large Language Model-based Agents",
     "baumgart2026autoreclab": "AutoRecLab: An Autonomous Recommender Systems Lab",
+    # the papers' own titles (arXiv metadata: "Self Evolving", "...Recommender System")
+    "mu2026evorec": "EvoRec: Self-Evolving Agentic Recommender Systems",
+    "li2026autorecsys": "Auto-RecSys: Harnessing Autonomous Research Agents for Industry-Scale Recommender Systems",
 }
 
 path = Path(sys.argv[1])
