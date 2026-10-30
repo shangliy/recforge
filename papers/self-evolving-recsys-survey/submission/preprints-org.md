@@ -32,6 +32,8 @@ remains the citable record.
 ## After it is posted
 
 Posted 2026-10-23 as DOI 10.20944/preprints202610.2336.v1 (https://www.preprints.org/manuscript/202610.2336/v1).
+Version 2 posted as DOI 10.20944/preprints202610.2336.v2 (https://www.preprints.org/manuscript/202610.2336/v2);
+it is now the canonical DOI in `README.md`, `CITATION.cff`, `site/` and the BibTeX, with Zenodo as an alternate.
 
 
 - Add the Preprints.org DOI to `site/index.html` (a link, not `citation_doi`; keep the Zenodo DOI as the

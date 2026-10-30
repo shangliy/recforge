@@ -27,8 +27,8 @@ https://github.com/JmlrOrg/tmlr-style-file (Apache-2.0).
 3. Both authors need OpenReview profiles. The submitting author fills in the form: title, abstract, keywords,
    PDF, and two to three suggested action editors from the TMLR editor list whose areas include recommender
    systems, AutoML or LLM agents.
-4. In the submission form or cover letter, say that a non-anonymous preprint exists (Zenodo
-   10.5281/zenodo.23575788) without linking it from the PDF.
+4. In the submission form or cover letter, say that a non-anonymous preprint exists (Preprints.org
+   10.20944/preprints202610.2336.v2) without linking it from the PDF.
 5. The main text is longer than 12 pages, so TMLR's standard short review timeline does not apply; expect a
    longer review.
 

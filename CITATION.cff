@@ -21,9 +21,9 @@ preferred-citation:
       given-names: Zhan
       affiliation: Santa Clara University
   year: 2026
-  doi: 10.5281/zenodo.23575788
+  doi: 10.20944/preprints202610.2336.v2
   url: "https://shangliy.github.io/recforge/survey/"
   identifiers:
     - type: doi
-      value: 10.20944/preprints202610.2336.v1
-      description: "Preprints.org version"
+      value: 10.5281/zenodo.23575788
+      description: "Zenodo version"
