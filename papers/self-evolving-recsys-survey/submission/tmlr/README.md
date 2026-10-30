@@ -19,8 +19,9 @@ https://github.com/JmlrOrg/tmlr-style-file (Apache-2.0).
 
 ## Before submitting
 
-1. Create anonymous mirrors at https://anonymous.4open.science for `shangliy/recforge` and
-   `shangliy/ideation-goodhart`, paste their URLs into `ANON` in `make_tmlr.py`, and rebuild.
+1. Upload `supplement.zip` (written by `make_tmlr.py`, refused if it contains an identifying string) as the
+   supplementary material. The PDF has no repository links: the audit-data footnote points at the supplement, and
+   the authors' own ideation-harness citation is dropped.
 2. Check the PDF: `pdfinfo main.pdf` shows no author, and
    `pdftotext main.pdf - | grep -iE "shangliy|Shanglin|Zhan Shi|Independent Researcher|Santa Clara|@[a-z0-9-]+\.(com|edu)"` prints nothing.
 3. Both authors need OpenReview profiles. The submitting author fills in the form: title, abstract, keywords,
