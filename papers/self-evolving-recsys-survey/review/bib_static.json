@@ -1,600 +1,999 @@
 {
- "n_entries": 155,
- "n_cited_keys": 112,
+ "n_entries": 249,
+ "n_cited_keys": 232,
  "missing_in_bib": {},
  "uncited": [
-  "zhang2026agenticrs",
-  "thakur2026feature",
-  "barlier2026feature",
   "song2019autoint",
   "wang2020autorec",
-  "jawahar2024llmpp",
-  "schmidgall2025agentlab",
-  "wong2025confucius",
-  "liu2024agenthpo",
-  "zhang2023llmhpo",
-  "trirat2024automlagent",
-  "guo2024dsagent",
   "li2024autokaggle",
   "wang2023recmind",
   "huang2023interecagent",
-  "liu2023recprompt",
-  "wang2024re2llm",
+  "wang2024macrec",
   "xu2025iagent",
-  "rendle2019sampled",
   "fan2023movielens",
   "zhao2022recbole2",
   "shang2025agentrecbench",
   "huang2025recbenchplus",
-  "huang2023mlagentbench",
-  "wijk2024rebench",
-  "sun2019bert4rec",
-  "hu2026rethinking",
-  "liu2026bianque",
-  "chen2026covemem",
-  "cai2024afl",
   "wang2025srlf",
   "liu2025dgdpo",
-  "zhuang2026evoreason",
-  "ou2026recpilot",
-  "lin2026lion",
-  "ishida2026qdrec",
-  "skrlj2025agent0",
   "koralewski2026promptpack",
-  "zhou2026mofa",
-  "wang2025ruleagent",
-  "hao2026lattearena",
-  "maragheh2025future",
-  "huang2025multimodalagentic"
+  "huang2025multimodalagentic",
+  "krakovna2020specgaming",
+  "macdiarmid2025emergent"
  ],
  "duplicate_keys": [],
  "duplicate_works": [],
  "field_issues": [
   [
-   "novikov2025alphaevolve",
-   "non-ASCII '\u00e2\u0169' in author"
-  ],
-  [
-   "nam2025mlestar",
-   "non-ASCII '\u00d6\u0131' in author"
-  ],
-  [
-   "lou2026autoharness",
-   "non-ASCII '\u00e1' in author"
-  ],
-  [
-   "hidasi2023flaws",
-   "non-ASCII '\u00c1\u00e1' in author"
-  ],
-  [
-   "anelli2021elliot",
-   "non-ASCII '\u00ed' in author"
-  ],
-  [
-   "chan2024mlebench",
-   "non-ASCII '\u0105' in author"
-  ],
-  [
-   "palumbo2026spotify",
-   "non-ASCII '\u00e0\u00e3\u00e9\u00ed\u00f6' in author"
-  ],
-  [
-   "skrlj2025agent0",
-   "non-ASCII '\u00ee\u0160\u017e' in author"
-  ],
-  [
-   "koralewski2026promptpack",
-   "non-ASCII '\u0160\u017e' in author"
-  ],
-  [
-   "zhou2026mofa",
-   "non-ASCII '\u00f6' in author"
-  ],
-  [
-   "romeraparedes2023funsearch",
+   "xu2026scoringworkflow",
    "author list truncated with 'and others'"
   ]
  ],
  "cites": {
   "song2020autoctr": [
-   71,
-   175,
-   252
+   65,
+   239,
+   384
   ],
   "liu2020autofis": [
-   71,
-   175,
-   251
+   65,
+   239,
+   384
   ],
   "zhao2020autoemb": [
-   71,
-   175
+   65,
+   239,
+   378
   ],
   "zhang2023nasrec": [
-   71,
-   176,
-   251
+   65,
+   240,
+   385
   ],
   "li2022autolossgen": [
-   72,
-   177,
-   252
+   65,
+   242,
+   386
   ],
   "zheng2022automl": [
-   73,
-   178
+   66,
+   243
   ],
   "romeraparedes2023funsearch": [
-   74,
-   182
+   67,
+   252
   ],
   "novikov2025alphaevolve": [
-   74,
-   183
+   67,
+   253
   ],
   "openevolve": [
-   75,
-   184
+   68,
+   255
   ],
   "lange2025shinka": [
-   75,
-   184
+   68,
+   255
   ],
   "wang2026selfevolving": [
-   77,
-   261,
-   306,
-   400
+   70,
+   387,
+   453,
+   626,
+   675
   ],
   "kim2026selfevolverec": [
-   77,
-   256,
-   289,
-   398,
-   508,
-   623
+   70,
+   387,
+   433,
+   624,
+   673,
+   963,
+   1233
   ],
   "ling2026recharness": [
-   78,
-   256,
-   291,
-   399,
-   507
+   71,
+   335,
+   396,
+   435,
+   674,
+   918,
+   1232
   ],
   "meta2026rea": [
-   78,
-   261,
-   310
+   71,
+   393,
+   457
   ],
   "li2026autorecsys": [
-   78,
-   259,
-   268,
-   312,
-   351,
-   406,
-   558
+   71,
+   390,
+   459,
+   526,
+   681,
+   922
   ],
   "mu2026evorec": [
-   79,
-   258,
-   268,
-   313,
-   350,
-   401
+   72,
+   388,
+   460,
+   525,
+   624,
+   676
   ],
   "hu2026astar": [
-   79,
-   260,
-   267,
-   313,
-   352,
-   413,
-   418,
-   605
+   72,
+   337,
+   397,
+   460,
+   528,
+   688,
+   943
   ],
   "lao2026agentx": [
-   79,
-   261,
-   268,
-   314,
-   350,
-   404
+   72,
+   389,
+   464,
+   524,
+   679
   ],
   "yang2026sragent": [
-   79,
-   255,
-   285,
-   415
+   72,
+   380,
+   423,
+   690
   ],
   "zhuang2026trajectories": [
-   79,
-   258,
-   316,
-   419,
-   469
+   72,
+   392,
+   467,
+   626,
+   694,
+   1179,
+   1182
   ],
   "liu2026nova": [
-   80,
-   258,
-   316,
-   403,
-   557
+   73,
+   388,
+   467,
+   529,
+   559,
+   625,
+   678,
+   820,
+   921,
+   1220
   ],
   "ao2026recsysfactory": [
-   80,
-   319,
-   369,
-   500
+   73,
+   470,
+   1072,
+   1225
   ],
   "zhang2026autolr": [
-   80,
-   253,
-   317,
-   407,
-   461,
-   485,
-   516
+   73,
+   396,
+   468,
+   682,
+   785,
+   1201,
+   1254
   ],
   "krichene2020sampled": [
-   84,
-   203
+   77,
+   285,
+   862,
+   888
   ],
   "ji2020leakage": [
-   85,
-   204,
-   590
+   78,
+   286,
+   1298
   ],
   "dacrema2019progress": [
-   85,
-   201
+   78,
+   282
   ],
   "rendle2020ncf": [
-   85,
-   201
+   78,
+   282
   ],
   "dwork2015reusable": [
-   86,
-   207
+   79,
+   291,
+   362
   ],
   "blum2015ladder": [
-   86,
-   207
+   79,
+   291,
+   847
   ],
   "pan2026recevolve": [
-   88,
-   259,
-   308,
-   412,
-   490,
-   618
+   83,
+   390,
+   455,
+   625,
+   687,
+   957,
+   1208
   ],
   "wu2026coscientist": [
-   90,
-   259,
-   319,
-   423,
-   446,
-   498
+   85,
+   152,
+   394,
+   470,
+   703,
+   764
+  ],
+  "wu2023llmrecsurvey": [
+   92
+  ],
+  "lin2023recsysllmsurvey": [
+   92
   ],
   "peng2025agentsurvey": [
-   96
+   93
   ],
   "zhang2025agentsearchsurvey": [
-   96
+   93
   ],
   "huang2025fmsurvey": [
-   96
+   93
   ],
   "gao2025selfevolvingsurvey": [
-   99
+   96
   ],
   "fang2025selfevolvingsurvey": [
-   99
+   96
   ],
   "lin2026roadmap": [
+   98
+  ],
+  "xu2026scoringworkflow": [
+   100
+  ],
+  "zhang2026autoreseval": [
    101
   ],
+  "yao2026feedbackcontract": [
+   103,
+   155,
+   395,
+   707,
+   1191
+  ],
   "beel2025autoreclab": [
-   102,
-   300
+   104,
+   444
   ],
   "peng2026population": [
-   102,
-   260,
-   298,
-   418,
-   445,
-   468,
-   604
+   104,
+   391,
+   442,
+   627,
+   693,
+   758,
+   775,
+   789,
+   942,
+   1177
   ],
   "chen2026rankevolve": [
-   102,
-   258,
-   296,
-   417,
-   443,
-   494
+   105,
+   391,
+   440,
+   692,
+   754,
+   1179,
+   1214
   ],
-  "recforge": [
-   115,
-   561
+  "shi2026selective": [
+   147
+  ],
+  "ishida2026qdrec": [
+   149
+  ],
+  "lin2026lion": [
+   151
   ],
   "patel2026evorank": [
-   133,
-   257,
-   320,
-   422,
-   472,
-   484,
-   497,
-   556
+   152,
+   393,
+   471,
+   702,
+   789,
+   820,
+   920,
+   1184,
+   1199,
+   1219
+  ],
+  "wang2026pear": [
+   153,
+   381,
+   430,
+   708,
+   1187
   ],
   "nian2026rankevolveir": [
-   133,
-   321,
-   424
-  ],
-  "zhao2020autodim": [
-   176
-  ],
-  "zhang2024dnsrec": [
-   177
-  ],
-  "liu2025deepevolve": [
-   185
-  ],
-  "jiang2025aide": [
-   185
-  ],
-  "nam2025mlestar": [
-   186
-  ],
-  "yang2025rdagent": [
-   186
-  ],
-  "toledo2025aira": [
-   186
-  ],
-  "lu2024aiscientist": [
-   187
-  ],
-  "yamada2025aiscientistv2": [
-   187
-  ],
-  "lou2026autoharness": [
-   188
-  ],
-  "lee2026metaharness": [
-   188,
-   352
-  ],
-  "xu2026harness2": [
-   188,
-   352
-  ],
-  "chan2024mlebench": [
-   190
-  ],
-  "zhang2025mlrcbench": [
-   190
-  ],
-  "nathani2025mlgym": [
-   192
-  ],
-  "zhai2024hstu": [
-   194,
-   583
-  ],
-  "rajput2023tiger": [
-   194,
-   584
-  ],
-  "deng2025onerec": [
-   196,
-   265,
-   340
-  ],
-  "zhou2025onerectech": [
-   196
-  ],
-  "zhou2025openonerec": [
-   196,
-   585
-  ],
-  "klenitskiy2023dross": [
-   202
-  ],
-  "petrov2022bert4rec": [
-   202
-  ],
-  "meng2020splitting": [
-   204
-  ],
-  "hidasi2023flaws": [
-   204
-  ],
-  "zhao2021recbole": [
-   205
-  ],
-  "anelli2021elliot": [
-   205
-  ],
-  "sun2022daisyrec": [
-   206
-  ],
-  "zhu2022bars": [
-   206
-  ],
-  "zhu2021fuxictr": [
-   206
-  ],
-  "roelofs2019metaanalysis": [
-   208,
-   521
-  ],
-  "cao2026virtualmle": [
-   253,
-   280,
-   402,
-   556
-  ],
-  "azhar2026coral": [
-   254,
-   281,
-   408
-  ],
-  "wu2026agenticrectune": [
-   254,
-   269,
-   282,
-   350,
-   409
-  ],
-  "cheng2026sortify": [
-   254,
-   283,
-   410,
-   518
-  ],
-  "yun2026gears": [
-   255,
-   284,
-   411
-  ],
-  "li2026evoskillrec": [
-   257,
-   294,
-   416,
-   457,
-   465
-  ],
-  "gao2026amle": [
-   258,
-   311,
-   414,
-   496
-  ],
-  "yang2026agentxmodel": [
-   258,
-   314,
-   405,
-   458,
-   483,
-   559
+   153,
+   394,
+   472,
+   704
   ],
   "nian2026semanticindex": [
-   262,
-   326,
-   425,
-   475,
-   604
-  ],
-  "xie2026agentictagger": [
-   262,
-   327
-  ],
-  "zhang2024agentcf": [
-   263,
-   335
-  ],
-  "liu2025agentcfpp": [
-   263,
-   335
-  ],
-  "tao2026sager": [
-   264,
-   336
-  ],
-  "li2026recnet": [
-   264,
-   336
-  ],
-  "hu2026atomrec": [
-   264,
-   337
-  ],
-  "chen2026memrec": [
-   264,
-   338
-  ],
-  "gao2024sprec": [
-   265,
-   340
-  ],
-  "lin2025recr1": [
-   265,
-   341
-  ],
-  "wang2026coars": [
-   266,
-   341
-  ],
-  "zhang2026rsir": [
-   266,
-   342
-  ],
-  "palumbo2026spotify": [
-   266,
-   344,
-   371
-  ],
-  "baumgart2026autoreclab": [
-   300,
-   370
-  ],
-  "chen2024tokenization": [
-   328
-  ],
-  "chen2026policydiscovery": [
-   329
-  ],
-  "wang2024macrec": [
-   335
-  ],
-  "nguyen2026amem4rec": [
-   338
-  ],
-  "liao2026steam": [
-   338
-  ],
-  "shen2026mars": [
-   338
-  ],
-  "hasan2026darsir": [
-   342
-  ],
-  "xu2026stateretention": [
-   343
-  ],
-  "liu2025recoworld": [
-   345
-  ],
-  "zhang2023agent4rec": [
-   345
-  ],
-  "wang2023recagent": [
-   346
-  ],
-  "narasimhan2026taurec": [
-   346,
-   623
-  ],
-  "yang2026ideationgoodhart": [
-   357
-  ],
-  "kim2026aura": [
-   370,
-   500
+   154,
+   399,
+   488,
+   705,
+   942,
+   1189
   ],
   "wu2026agentltv": [
-   426
+   154,
+   395,
+   706
+  ],
+  "zhao2020autodim": [
+   240,
+   378
+  ],
+  "zhang2024dnsrec": [
+   241,
+   385
+  ],
+  "lyu2022optembed": [
+   242
+  ],
+  "chen2022automlrecsurvey": [
+   243
+  ],
+  "li2019randomnas": [
+   246,
+   794,
+   1202
+  ],
+  "yu2020searchphase": [
+   246,
+   1203
+  ],
+  "yang2020nashard": [
+   246,
+   1203
+  ],
+  "ying2019nasbench101": [
+   248
+  ],
+  "dong2020nasbench201": [
+   248
+  ],
+  "eggensperger2021hpobench": [
+   248
+  ],
+  "lindauer2020bestpractices": [
+   249,
+   859,
+   863
+  ],
+  "real2020automlzero": [
+   255
+  ],
+  "liu2025deepevolve": [
+   256
+  ],
+  "chen2023evoprompting": [
+   257
+  ],
+  "nasir2023llmatic": [
+   257
+  ],
+  "yu2023gptnas": [
+   257
+  ],
+  "zheng2023gpt4nas": [
+   258
+  ],
+  "ye2024reevo": [
+   258
+  ],
+  "ma2023eureka": [
+   258
+  ],
+  "shojaee2024llmsr": [
+   259
+  ],
+  "yang2023opro": [
+   260
+  ],
+  "guo2023evoprompt": [
+   260
+  ],
+  "khattab2023dspy": [
+   260
+  ],
+  "yuksekgonul2024textgrad": [
+   261
+  ],
+  "jiang2025aide": [
+   262
+  ],
+  "nam2025mlestar": [
+   263
+  ],
+  "yang2025rdagent": [
+   263
+  ],
+  "toledo2025aira": [
+   263
+  ],
+  "guo2024dsagent": [
+   263
+  ],
+  "trirat2024automlagent": [
+   264
+  ],
+  "schmidgall2025agentlab": [
+   264
+  ],
+  "lu2024aiscientist": [
+   265
+  ],
+  "yamada2025aiscientistv2": [
+   265
+  ],
+  "lou2026autoharness": [
+   266,
+   532
+  ],
+  "lee2026metaharness": [
+   266,
+   532
+  ],
+  "xu2026harness2": [
+   266,
+   532
+  ],
+  "wong2025confucius": [
+   266
+  ],
+  "chan2024mlebench": [
+   268
+  ],
+  "zhang2025mlrcbench": [
+   268
+  ],
+  "nathani2025mlgym": [
+   270
+  ],
+  "chen2024scienceagentbench": [
+   271
+  ],
+  "jing2024dsbench": [
+   271
+  ],
+  "qiang2025mledojo": [
+   271
+  ],
+  "starace2025paperbench": [
+   271
+  ],
+  "chen2025mlrbench": [
+   271
+  ],
+  "kon2025expbench": [
+   271
+  ],
+  "beel2025aiscientist": [
+   273
+  ],
+  "zhai2024hstu": [
+   275,
+   1314
+  ],
+  "rajput2023tiger": [
+   275,
+   1314
+  ],
+  "deng2025onerec": [
+   277,
+   403,
+   509
+  ],
+  "zhou2025onerectech": [
+   278,
+   509
+  ],
+  "zhou2025openonerec": [
+   278,
+   509,
+   1316
   ],
   "kang2018sasrec": [
-   583
+   282,
+   1314
+  ],
+  "sun2019bert4rec": [
+   283
+  ],
+  "klenitskiy2023dross": [
+   283
+  ],
+  "petrov2022bert4rec": [
+   284
+  ],
+  "rendle2019sampled": [
+   285
+  ],
+  "hidasi2023flaws": [
+   285,
+   286,
+   1298
+  ],
+  "meng2020splitting": [
+   287
+  ],
+  "dacrema2021troubling": [
+   288
+  ],
+  "sun2020rigorous": [
+   288
+  ],
+  "shehzad2023everyone": [
+   289
+  ],
+  "zhao2021recbole": [
+   289
+  ],
+  "anelli2021elliot": [
+   289
+  ],
+  "sun2022daisyrec": [
+   290
+  ],
+  "zhu2022bars": [
+   290
+  ],
+  "zhu2021fuxictr": [
+   290
+  ],
+  "roelofs2019metaanalysis": [
+   292,
+   843
+  ],
+  "hu2026winnerscurse": [
+   294
+  ],
+  "grover2026luckyruns": [
+   295
+  ],
+  "bertran2026whatfits": [
+   296
+  ],
+  "luo2025pitfalls": [
+   297
+  ],
+  "henderson2018deeprl": [
+   298,
+   862
+  ],
+  "bouthillier2021variance": [
+   298
+  ],
+  "dodge2019showyourwork": [
+   298,
+   862,
+   895
+  ],
+  "kapoor2023leakage": [
+   299
+  ],
+  "kapoor2025agentsmatter": [
+   300,
+   864,
+   899
+  ],
+  "wijk2024rebench": [
+   300
+  ],
+  "huang2023mlagentbench": [
+   300
+  ],
+  "zhu2025abc": [
+   300,
+   860
+  ],
+  "deng2013cuped": [
+   301
+  ],
+  "chapelle2012interleaving": [
+   302
+  ],
+  "johari2015alwaysvalid": [
+   303
+  ],
+  "li2011replay": [
+   304
+  ],
+  "dudik2011doublyrobust": [
+   304
+  ],
+  "hu2026rethinking": [
+   315
+  ],
+  "cheng2026sortify": [
+   336,
+   382,
+   421,
+   685,
+   832,
+   1255
+  ],
+  "manheim2018goodhart": [
+   360
+  ],
+  "lee2018winnerscurse": [
+   363,
+   831,
+   1252
+  ],
+  "skalse2022rewardhacking": [
+   366
+  ],
+  "zhong2026impossiblebench": [
+   366,
+   1222
+  ],
+  "cao2026virtualmle": [
+   379,
+   417,
+   527,
+   625,
+   677,
+   920
+  ],
+  "azhar2026coral": [
+   379,
+   418,
+   683
+  ],
+  "wu2026agenticrectune": [
+   380,
+   419,
+   525,
+   684
+  ],
+  "jiang2026abagent": [
+   381,
+   426,
+   698,
+   1249
+  ],
+  "yun2026gears": [
+   382,
+   422,
+   686
+  ],
+  "pilot2026": [
+   382,
+   425,
+   527,
+   697,
+   1257
+  ],
+  "zhang2026dmrl": [
+   383,
+   427,
+   531,
+   699,
+   1264
+  ],
+  "yang2026agentxmodel": [
+   389,
+   465,
+   530,
+   626,
+   680,
+   783,
+   923,
+   1198
+  ],
+  "gao2026amle": [
+   390,
+   458,
+   689,
+   776
+  ],
+  "fu2026evopilot": [
+   392,
+   474,
+   695,
+   756,
+   778,
+   1215
+  ],
+  "zhang2026agenticrs": [
+   393,
+   464,
+   1071
+  ],
+  "wang2025ruleagent": [
+   393,
+   448,
+   1070
+  ],
+  "li2026evoskillrec": [
+   397,
+   438,
+   525,
+   691,
+   781,
+   1167
+  ],
+  "chandran2026autoresearch": [
+   398,
+   476,
+   492,
+   624,
+   696,
+   748,
+   755,
+   779,
+   1180,
+   1218
+  ],
+  "xie2026agentictagger": [
+   398,
+   489,
+   1070
+  ],
+  "skrlj2025agent0": [
+   398,
+   449,
+   1070
+  ],
+  "zhang2024agentcf": [
+   401,
+   501
+  ],
+  "liu2025agentcfpp": [
+   401,
+   501
+  ],
+  "tao2026sager": [
+   402,
+   502
+  ],
+  "li2026recnet": [
+   402,
+   502
+  ],
+  "hu2026atomrec": [
+   402,
+   503
+  ],
+  "chen2026memrec": [
+   403,
+   504
+  ],
+  "wang2024re2llm": [
+   403,
+   504
+  ],
+  "ou2026recpilot": [
+   403,
+   505
+  ],
+  "gao2024sprec": [
+   404,
+   509
+  ],
+  "lin2025recr1": [
+   404,
+   510
+  ],
+  "wang2026coars": [
+   405,
+   510
+  ],
+  "zhang2026rsir": [
+   405,
+   512
+  ],
+  "zhuang2026evoreason": [
+   405,
+   511
+  ],
+  "liu2023recprompt": [
+   406,
+   514
+  ],
+  "palumbo2026spotify": [
+   406,
+   516,
+   1074
+  ],
+  "akiba2019optuna": [
+   420
+  ],
+  "zhang2023llmhpo": [
+   427
+  ],
+  "liu2024agenthpo": [
+   427
+  ],
+  "he2017ncf": [
+   434
+  ],
+  "wang2019ngcf": [
+   434
+  ],
+  "yuan2023morec": [
+   434
+  ],
+  "baumgart2026autoreclab": [
+   444,
+   1073
+  ],
+  "kernelevolve2025": [
+   476
+  ],
+  "wu2025growthhacker": [
+   477
+  ],
+  "wang2026serm": [
+   477
+  ],
+  "zhang2026dream": [
+   478
+  ],
+  "liu2026bianque": [
+   479
+  ],
+  "barlier2026feature": [
+   480
+  ],
+  "thakur2026feature": [
+   481
+  ],
+  "hao2026lattearena": [
+   482
+  ],
+  "chen2024tokenization": [
+   490
+  ],
+  "chen2026policydiscovery": [
+   493,
+   1075
+  ],
+  "nguyen2026amem4rec": [
+   504
+  ],
+  "liao2026steam": [
+   504
+  ],
+  "shen2026mars": [
+   504
+  ],
+  "cai2024afl": [
+   506
+  ],
+  "chen2026covemem": [
+   507
+  ],
+  "hasan2026darsir": [
+   512
+  ],
+  "xu2026stateretention": [
+   513
+  ],
+  "liu2025recoworld": [
+   517
+  ],
+  "zhang2023agent4rec": [
+   517
+  ],
+  "wang2023recagent": [
+   518
+  ],
+  "narasimhan2026taurec": [
+   518,
+   963
+  ],
+  "maragheh2025future": [
+   519
+  ],
+  "srikanth2026aide2": [
+   534
+  ],
+  "gao2023overoptimization": [
+   537,
+   561
+  ],
+  "yang2026ideationgoodhart": [
+   540,
+   561
+  ],
+  "ferreira2026hpo": [
+   795,
+   1204
+  ],
+  "rodrigues2026llmhpo": [
+   795,
+   1204
+  ],
+  "berman2026winners": [
+   831,
+   1252
+  ],
+  "recht2019imagenet": [
+   844
+  ],
+  "mania2019similarity": [
+   845
+  ],
+  "kapoor2024reforms": [
+   859
+  ],
+  "agarwal2021precipice": [
+   862,
+   894
+  ],
+  "kohavi2020trustworthy": [
+   865,
+   907
+  ],
+  "recforge": [
+   927,
+   1288
+  ],
+  "jawahar2024llmpp": [
+   944
   ],
   "zeng2026recrmbench": [
-   624
+   964
+  ],
+  "li2026mleagents": [
+   1068
+  ],
+  "gao2022kuairand": [
+   1069
+  ],
+  "gao2022kuairec": [
+   1069
+  ],
+  "chen2026openended": [
+   1069
+  ],
+  "kim2026aura": [
+   1074,
+   1224
+  ],
+  "zhou2026mofa": [
+   1154
+  ],
+  "metr2025rewardhacking": [
+   1222
+  ],
+  "baker2025monitoring": [
+   1222
+  ],
+  "hidasi2016gru4rec": [
+   1231
+  ],
+  "sarwar2001itemknn": [
+   1313
+  ],
+  "rendle2009bpr": [
+   1313
+  ],
+  "harper2015movielens": [
+   1315
+  ],
+  "mcauley2015amazon": [
+   1315
+  ],
+  "wu2020mind": [
+   1316
   ]
  }
 }

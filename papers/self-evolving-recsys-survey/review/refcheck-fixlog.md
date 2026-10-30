@@ -1,6 +1,6 @@
 # Ref-check fix log
 
-Pass of 2026-10-26 over `review/ref-check.md` (2026-10-22). Each item was checked against the current `draft/paper.tex`, `audit/audit.csv` and `refs.bib`. Backups: `draft/paper_pre_refcheck.tex`, `*.pre_refcheck` (refs.bib, manual.bib, published.tsv, published.py, audit/audit.csv, draft/audit_rows.tex, draft/figs/audit_bars.tex, draft/figs/timeline.tex, submission/tmlr/make_tmlr.py, submission/tmlr/main.pdf).
+Pass of 2026-10-26 over `review/ref-check.md` (2026-10-22). Each item was checked against the current the paper source, `audit/audit.csv` and `refs.bib`. Pre-fix copies of the edited files were kept locally and are not released.
 
 Status counts: already fixed 106, fixed now 10, not applicable 5 (total 121; ref-check has no I-27).
 
@@ -17,7 +17,7 @@ audit.csv was not changed. `summarize.py` output is identical to the embedded ta
 | T-7 | already fixed | "\emph{comparison:} Evolving Semantic Indexes" in the taxonomy. The L3 text says "a generative document-retrieval system that we treat as a comparison point". |
 | T-8 | already fixed | "prompts and tool descriptions: ... Spotify". |
 | T-9 | already fixed | EvoRank C1 = other. |
-| T-10 | already fixed | audit.csv online values: NOVA 6d+sig, CORAL sig, AgenticRecTune sig. F9 says "nine report significance or confidence intervals", which matches summarize. |
+| T-10 | already fixed | audit.csv online values: NOVA 6d+sig, CORAL sig, AgenticRecTune sig. F9 says "nine report significance or confidence intervals", which matched summarize at the time. Later recoding (see audit/CHANGELOG.md) brought the count to seven, as F9 now states. |
 | C-1 | already fixed | Intro: "inflated its proxy metrics by shrinking the batch size, and with it the number of in-batch negatives". |
 | C-2 | already fixed | Intro: "won on the metric without a real improvement", with the verbatim co-scientist quote. "Five" = 4 core + 1 comparison, as in F7. |
 | C-3 | already fixed | F7: "Four core loops and one comparison point". EvoRank appears only as a pre-search leakage audit (prevention). |
@@ -129,3 +129,7 @@ audit.csv was not changed. `summarize.py` output is identical to the embedded ta
 | P-blum2015ladder | already fixed | Venue applied before this pass, confirmed only by the arXiv comment or Semantic Scholar (no Crossref record). Kept; pages not verified. |
 | P-azhar2026coral | not applicable | Workshop paper. Ref-check: may stay an arXiv citation. Left as @misc. |
 | P-kim2026aura | not applicable | Workshop paper. Ref-check: may stay an arXiv citation. Left as @misc. |
+
+## Re-check of 29 October 2026
+
+`check_bib.py` (249 entries, 232 cited, no missing keys, no duplicates) and `fetch_meta.py` + `compare_meta.py` were re-run over every entry. arXiv records were fetched for all eprints; Semantic Scholar rate-limited 30 lookups (`s2_error` in `meta_report.json`), so venue cross-checks for those rely on the 22 October run. Every title, author and year difference is explained by the published version in `published.tsv` (spot-checked on Crossref: peng2025agentsurvey, zhao2020autoemb; on OpenReview: zhu2025abc) or by LaTeX accent formatting. No bibliography change was needed. Code repositories were not re-checked.

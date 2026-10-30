@@ -2,7 +2,7 @@
 
 Checked 2026-10-22. Nothing in `refs.bib`, `manual.bib` or `paper.tex` was edited.
 
-**Line numbers.** `paper.tex`, `refs.bib` and `manual.bib` changed while this review was running (09:55: figures added and a new citation `yang2026ideationgoodhart`). All line numbers below refer to the snapshot taken at 10:00 (665 lines, md5 `23722565c24143ccc7c74eeb54f0630b`; copy at `/tmp/claude-1000/-home-shawnyang-Documents-2026-agent-newsroom/30ea0f8c-b5c4-4bcd-83b5-845d76320543/scratchpad/paper.snapshot.tex`). Each claim row also quotes the current text, so it can be found again with grep.
+**Line numbers.** `paper.tex`, `refs.bib` and `manual.bib` changed while this review was running (09:55: figures added and a new citation `yang2026ideationgoodhart`). All line numbers below refer to the snapshot taken at 10:00 (665 lines, md5 `23722565c24143ccc7c74eeb54f0630b`; the snapshot itself was not kept). Each claim row also quotes the current text, so it can be found again with grep.
 
 **Scripts** (all in `review/`, run from the survey root):
 
@@ -16,7 +16,7 @@ Checked 2026-10-22. Nothing in `refs.bib`, `manual.bib` or `paper.tex` was edite
 | `compare_meta.py` | compares bib fields with the arXiv record; writes `meta_report.json` |
 | `upgrades.py` | builds the published-version table; writes `upgrades.md` |
 
-**Claim checks.** Every sentence that carries a `\cite` was checked against the full text: arXiv HTML for all audited systems and comparison points, the arXiv HTML or PDF for surveys and any sentence with a number, a quote or a strong claim, and the abstract for the remaining L4 and background citations. Per-paper working notes with more quotes are in the scratchpad (`claims/A.md` … `claims/E.md`).
+**Claim checks.** Every sentence that carries a `\cite` was checked against the full text: arXiv HTML for all audited systems and comparison points, the arXiv HTML or PDF for surveys and any sentence with a number, a quote or a strong claim, and the abstract for the remaining L4 and background citations. Per-paper working notes with more quotes were not kept; the quotes that support each finding are in the tables below.
 
 ---
 
@@ -46,7 +46,7 @@ Checked 2026-10-22. Nothing in `refs.bib`, `manual.bib` or `paper.tex` was edite
 - Unescaped `& % _ #`: **0**.
 - Unbalanced braces: **0**.
 - Every title is double-braced (`{{...}}`), so acronym capitalisation (LLM, CTR, HSTU, OneRec, BERT4Rec, …) is preserved in all of them.
-- **10 entries** have raw UTF-8 letters in author names. They compile with `inputenc`/`T1`, but they should be TeX-escaped for ACM TAPS: `novikov2025alphaevolve` (Ngân Vũ), `nam2025mlestar` (Sercan Ö. Arık), `lou2026autoharness`, `hidasi2023flaws` (Balázs Hidasi, Ádám Czapp), `anelli2021elliot`, `chan2024mlebench`, `palumbo2026spotify`, `skrlj2025agent0`, `koralewski2026promptpack`, `zhou2026mofa`.
+- **10 entries** have raw UTF-8 letters in author names. They compile with `inputenc`/`T1`, but they should be TeX-escaped for publisher pipelines: `novikov2025alphaevolve` (Ngân Vũ), `nam2025mlestar` (Sercan Ö. Arık), `lou2026autoharness`, `hidasi2023flaws` (Balázs Hidasi, Ádám Czapp), `anelli2021elliot`, `chan2024mlebench`, `palumbo2026spotify`, `skrlj2025agent0`, `koralewski2026promptpack`, `zhou2026mofa`.
 
 **Published versions.**
 - **59** arXiv entries have a published version with a Crossref record; **39 of these are cited**.

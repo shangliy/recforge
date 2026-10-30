@@ -109,3 +109,10 @@ def escape(name):
 
 bib = re.sub(r"(  author = \{)(.*)(\},?\n)", lambda m: m.group(1) + escape(m.group(2)) + m.group(3), path.read_text())
 path.write_text(bib)
+
+# names the arXiv metadata spells without diacritics, or that BibTeX splits wrongly
+NAMES = {"Blaz Skrlj": r"Bla{\v{z}} {\v{S}}krlj", "Huan-ang Gao": "{Huan-ang} Gao"}
+bib = path.read_text()
+for old, new in NAMES.items():
+    bib = bib.replace(old, new)
+path.write_text(bib)

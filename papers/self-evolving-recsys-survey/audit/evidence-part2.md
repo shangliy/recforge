@@ -1,5 +1,18 @@
+> **How to read this file:** the authoritative code for every cell is the **Released codes (audit.csv)** line under each system's heading; a verdict in the body that differs from it is flagged with the released code. Count sections and summary tables are first-coding records, kept for provenance, and superseded.
+>
 > **Note (2026-10-21, after review round 1):** the per-paper evidence below is the source; the count sections and
-> summary tables in this file are superseded by `audit.csv`, which corrects 12 cells (see `../10-evolve/round-1.md`).
+> summary tables in this file are superseded by `audit.csv`, which corrected 12 cells at the first verification pass (see `verification-pass-1.md`) and more since (see `CHANGELOG.md`).
+>
+> **Cells recoded after this file was written** (in order, from `CHANGELOG.md`; the verdict given below for these
+> cells may be the earlier one, and the final code is the one in `audit.csv`):
+> - RecEvolve: C9 `gaming` → `P` (925fd50); C1 `ranking-ns` → `sampled` (4ae46ea); C5 `N` → `P` (4ae46ea)
+> - Astar: C2 `trainloss` → `NS` (4ae46ea); C6 `P` → `N` (4ae46ea)
+> - A-MLE: C6 `P` → `N` (4ae46ea)
+> - EvoSkillRec: C3 `Y` → `N` (4ae46ea); C8 `P` → `untuned` (4ae46ea)
+> - RankEvolve-HSTU: C9 `gaming` → `N` (925fd50); C6 `P` → `N` (4ae46ea)
+> - Population Evolution: C2 `NS` → `test` (925fd50); C8 `tuned` → `P` (925fd50); C3 `P` → `N` (4ae46ea); C4 `N` → `P` (4ae46ea); C5 `Y` → `P` (4ae46ea)
+> - Trajectories-to-Evidence: C6 `P` → `N` (4ae46ea)
+> - AgentLTV (LTV): C2 `NS` → `test` (fffc066)
 
 # Audit 2: self-evolving recommender papers (16 papers, full text read)
 
@@ -11,25 +24,29 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 
 ## 1. RecEvolve, 2609.01622
 
+> **Released codes (audit.csv):** C1 `sampled` · C2 `NS` · C3 `NS` · C4 `N` · C5 `P` · C6 `N` · C8 `production` · C9 `P` · incident `Y`; recoded since first coding: C1, C5, C9 (see CHANGELOG.md). Where a verdict below differs, this code is the released one; such verdicts are flagged, including changes made before the changelog starts.
+
 - **Org:** Google (Mountain View), all 9 authors.
 - **LLM:** not stated (roles named: Orchestrator, Ideator, Critic, Coding Agent).
 - **Evolved:** code and config of a production two-tower retrieval model (loss/temperature, watch-time weighting, DCN-V2 user tower, gated dense layers, LR schedule).
 - **Seed/base:** "latest production" two-tower retrieval model.
 - **Datasets:** proprietary production logs (video watch-time implied).
-- **C1:** NDCG, MRR, Recall@K (K = 1, 5, 50, 200) (§4). Ranking is over in-batch negatives (sampled), as the reward-hack explanation shows: "a smaller batch size mathematically reduces the difficulty of the retrieval task by providing fewer negative candidates per step" (§5.2).
+- **C1:** ⟨superseded verdict, released code `sampled`; see end of line⟩ NDCG, MRR, Recall@K (K = 1, 5, 50, 200) (§4). Ranking is over in-batch negatives (sampled), as the reward-hack explanation shows: "a smaller batch size mathematically reduces the difficulty of the retrieval task by providing fewer negative candidates per step" (§5.2). ⟨recoded since this was written; released code: `sampled`; the second coder's evidence for it: sampled, headline "~20% relative improvement in NDCG" (Abstract). The offline proxy relies on in-batch negatives: "Because the Two-Tower model utilizes in-batch negative sampling, a smaller batch size ... providing fewer negative candidates per step" (Sec 5.2). Not stated for the final table, so ranking-ns is the alternative.⟩
 - **C2:** offline metric threshold, "γ(Φ_NS) > τ + ϵ and γ(Φ_Aux) ≥ Threshold" (Alg. 1). Which data split is used: not stated. Short probes are "validated against full 2M-step offline training runs" (§4).
 - **C3:** not stated.
 - **C4:** no (single trajectory of 41 runs).
-- **C5:** online A/B only. There is no val→test gap analysis. The paper flags an online-offline gap: offline "win-win" results versus online "complex trade-offs" (§6(3)).
+- **C5:** ⟨superseded verdict, released code `P`; see end of line⟩ online A/B only. There is no val→test gap analysis. The paper flags an online-offline gap: offline "win-win" results versus online "complex trade-offs" (§6(3)). ⟨recoded since this was written; released code: `P`; the second coder's evidence for it: P, champion model deployed "in a production A/B test on live user traffic" (Sec 5.6, Table 2).⟩
 - **C6:** no.
 - **C7:** "41 distinct autonomous experiments in approximately 2 days, with each individual run requiring over 3 hours" on 5 threads, TPU (§5). Tokens and $: not stated.
 - **C8:** the mature production model is the baseline. Strong, but it is the seed, not a tuned competitor.
-- **C9:** yes. Reward hacking through batch size was caught by a human (§5.2). The short-horizon budget favoured aggressive LR (§5.3). Failed ideas were re-tested (§5.4).
+- **C9:** ⟨superseded verdict, released code `P`; see end of line⟩ yes. Reward hacking through batch size was caught by a human (§5.2). The short-horizon budget favoured aggressive LR (§5.3). Failed ideas were re-tested (§5.4). ⟨recoded since this was written; released code: `P`; the second coder's evidence for it: P, pre-execution validation gate, "isolated branches" and VCS rollback (Fig 1, Alg. 1); test access not addressed.⟩
 - **Online A/B:** User Satisfaction +3.77%, Cold-Start −16.50% (faster discovery), Unique Content +7.44% (Table 2). Duration, traffic share, significance and guardrails: not stated.
 - **Code:** not released.
 - **Headline:** NDCG@50 0.4796 → 0.5751 (+19.9%) vs the production baseline (Table 1). Online User Satisfaction +3.77%.
 
 ## 2. Astar, 2608.27287
+
+> **Released codes (audit.csv):** C1 `ranking-ns` · C2 `NS` · C3 `NS` · C4 `N` · C5 `P` · C6 `N` · C8 `production` · C9 `NS` · incident `N`; recoded since first coding: C2, C6 (see CHANGELOG.md). Where a verdict below differs, this code is the released one; such verdicts are flagged, including changes made before the changelog starts.
 
 - **Org:** Alibaba Group (Lazada advertising) and Zhejiang University.
 - **LLM:** a trained proposer (Qwen3 0.6B/4B/8B: mid-training on 112B tokens, SFT on 81.1M, GRPO on 8.06M). The code agent is "built on general-purpose LLMs such as Qwen or Claude" (§3.4). Frontier baselines: GPT-5.5, Claude-4.8-Opus, GLM-5.2, Kimi-K2.6, MiniMax-M2.7, DeepSeek V4 Pro, Qwen-3.7 Max.
@@ -37,19 +54,21 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 - **Seed/base:** the Lazada ad recall model. Corpus: historical commits and experiment logs.
 - **Datasets:** proprietary.
 - **C1:** offline Hitrate@200 (whether full catalogue is used: not stated). Proposal success is the "actual loss decrease obtained from real execution" (§4.1).
-- **C2:** training loss. s = (1−α)ℓ_T + α·mean_k + γ·σ_k computed from loss curves (Eq. 1). A learned reward model ranks candidates (proxy).
+- **C2:** ⟨superseded verdict, released code `NS`; see end of line⟩ training loss. s = (1−α)ℓ_T + α·mean_k + γ·σ_k computed from loss curves (Eq. 1). A learned reward model ranks candidates (proxy). ⟨recoded since this was written; released code: `NS`; the second coder's evidence for it: NS, each direction is "trained, evaluated offline, and deployed online if successful" (Sec 5); the split and success criterion for the loop are not given.⟩
 - **C3:** not stated.
 - **C4:** no.
 - **C5:** partial. The paper claims RM@k (proxy) and S@k (real) "exhibit high consistency" (Table 2). The reward model is recalibrated "when persistent discrepancies emerge between true outcomes and predictions" (§3.3, App. B, Alg. 1).
-- **C6:** compared against human experts and 7 frontier LLMs given the same context, plus training-stage and data-design ablations. No random search or HPO.
+- **C6:** ⟨superseded verdict, released code `N`; see end of line⟩ compared against human experts and 7 frontier LLMs given the same context, plus training-stage and data-design ablations. No random search or HPO. ⟨recoded since this was written; released code: `N`; the second coder's evidence for it: N, baselines are human experts and general LLMs.⟩
 - **C7:** "Θ(100) directions/week" vs "Θ(1)–Θ(10)" manually (Table 6). Training tokens are given above. GPU-hours and $ for the evolution loop: not stated.
 - **C8:** "senior algorithm engineers" and untrained frontier LLMs. Neither is tuned to the task.
-- **C9:** no discussion of leakage or hacking, beyond reward-model drift.
+- **C9:** ⟨superseded verdict, released code `NS`; see end of line⟩ no discussion of leakage or hacking, beyond reward-model drift. ⟨recoded since this was written; released code: `NS`; the second coder's evidence for it: NS, no description of what the code agent can access.⟩
 - **Online A/B:** July 1–5, 2026 (5 days), random traffic split. GMV +4.86%, ad revenue +1.82%, clicks +0.84%, orders +1.79%, "statistically significant at p < 0.05" (Table 5). Guardrails: not stated.
 - **Code:** not released.
 - **Headline:** Astar-8B S@1 0.6786 vs human 0.3229 and GPT-5.5 0.3071. 20 iterations over 2 weeks gave offline Hitrate@200 +23.6%.
 
 ## 3. A-MLE (Agentic ML Exploration for ads ranking), 2609.08248
+
+> **Released codes (audit.csv):** C1 `auc` · C2 `NS` · C3 `NS` · C4 `P` · C5 `N` · C6 `N` · C8 `production` · C9 `P` · incident `N`; recoded since first coding: C6 (see CHANGELOG.md). Where a verdict below differs, this code is the released one; such verdicts are flagged, including changes made before the changelog starts.
 
 - **Org:** Meta Platforms (Menlo Park, New York).
 - **LLM:** a fixed agent loop run with Claude Sonnet (≥3.5, 4.0), Gemini 2.5 and GPT-5 families (§6.7).
@@ -61,7 +80,7 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 - **C3:** not stated.
 - **C4:** a variance re-run rule exists (§4.4). The number of seeds behind the headline: not stated.
 - **C5:** no.
-- **C6:** cross-LLM swap with the loop held fixed, plus manual and semi-automated baselines. L1 bench: generic LLM 8%, generic ML agent 16%, A-MLE 68% (§6.4). No random search.
+- **C6:** ⟨superseded verdict, released code `N`; see end of line⟩ cross-LLM swap with the loop held fixed, plus manual and semi-automated baselines. L1 bench: generic LLM 8%, generic ML agent 16%, A-MLE 68% (§6.4). No random search. ⟨recoded since this was written; released code: `N`; the second coder's evidence for it: N, HPO/NAS appear only in related work.⟩
 - **C7:** not quantified ("multiple times the productivity", §6.1).
 - **C8:** production rolling baseline. Strong.
 - **C9:** failure modes are listed (§6.9): single-seed promotion, baseline drift, hallucinated APIs, agents that "pretend to have completed tasks".
@@ -111,6 +130,8 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 
 ## 6. SR-Agent, 2607.17719
 
+> **Released codes (audit.csv):** C1 `online` · C2 `online` · C3 `na` · C4 `N` · C5 `P` · C6 `N` · C8 `production` · C9 `P` · incident `N`. Where a verdict below differs, this code is the released one; such verdicts are flagged, including changes made before the changelog starts.
+
 - **Org:** Kuaishou Technology (Beijing). RecSys workshop 2026.
 - **LLM:** "All LLM-based components use Claude Sonnet 4.6" (§4.3).
 - **Evolved:** post-ranking strategy configuration, through four typed bounded actions: relation threshold Δτ∈[−0.15, 0.15], suppression Δλ∈[−0.5, 0.5], exposure limits, taxonomy correction. The base ranker is frozen.
@@ -131,6 +152,8 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 
 ## 7. EvoSkillRec, 2609.34552
 
+> **Released codes (audit.csv):** C1 `auc` · C2 `val` · C3 `N` · C4 `N` · C5 `Y` · C6 `Y` · C8 `untuned` · C9 `P` · incident `N`; recoded since first coding: C3, C8 (see CHANGELOG.md). Where a verdict below differs, this code is the released one; such verdicts are flagged, including changes made before the changelog starts.
+
 - **Org:** City University of Hong Kong, Kuaishou Technology, Xi'an Jiaotong University.
 - **LLM:** GPT-5.5 through Codex CLI. RQ5 compares Claude Opus 4.8, GPT-5.6, DeepSeek-V4-Pro and GLM-5.2.
 - **Evolved:** architecture, as a skill genome of 94 curated skills plus LLM-synthesised `nn.Module` code promoted into a Tier-2 library.
@@ -138,18 +161,20 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 - **Datasets:** MovieLens-1M, Amazon Beauty and Books (CTR, chronological 70/10/20 split), Census-Income (MTL), Amazon and MovieLens MDL (random 80/10/10), QK-Video (394.6M / 50.1M / 48.6M rows).
 - **C1:** AUC (logloss also logged).
 - **C2:** validation AUC (validation AUC + MFU for co-evolution).
-- **C3:** yes. "Candidate and checkpoint selection uses the corresponding validation metric; held-out test metrics are used for reporting, not selection" (§5.1). "Test metrics are never used for selection in either setting" (App. D.2).
+- **C3:** ⟨superseded verdict, released code `N`; see end of line⟩ yes. "Candidate and checkpoint selection uses the corresponding validation metric; held-out test metrics are used for reporting, not selection" (§5.1). "Test metrics are never used for selection in either setting" (App. D.2). Released code `N` (second coder's reading, adopted over the drafted resolution): the test score is computed for every candidate in every generation ("Selection uses validation AUC only; test scores are reported but never used in the search", App. E.2 traces; Tables 27-28 give validation next to test per generation), which the codebook's "used during search or repeatedly" codes `N`; `Y` if only use in selection counts (F3 would then be 3). ⟨recoded since this was written; released code: `N`; the second coder's evidence for it: N, test is never used to select, but it is scored for every candidate in every generation ("Selection uses validation AUC only; test scores are reported but never used in the search", App E.2 traces); per the guide, repeated test use is N. Y is the other reading if only use in selection counts.⟩
 - **C4:** no, single runs. "margins … on the order of 10⁻⁴ AUC, which a single evolution run cannot reliably separate from run-to-run variation" (§6).
-- **C5:** yes, val→test. "Five candidates, P1–P5, lie on the Pareto front, but only P1 (round 19) retains both improvements on the test set" (§5.5, Table 4). Cross-task transfer untested (§6).
+- **C5:** yes, val→test. "Five candidates, P1–P5, lie on the Pareto front, but only P1 (round 19) retains both improvements on the test set" (§5.5, Table 4). Validation and test AUC of P1–P5: design-evidence.md (EvoSkillRec, Table 4). Cross-task transfer untested (§6).
 - **C6:** yes. NASRec (weight-sharing NAS) and OpenEvolve (LLM code evolution) at B = 200/250 training slots vs EvoSkillRec's 200 (App. D.5, Table 17), plus skill-only and code-only ablations. No random search.
 - **C7:** 25 generations × 8 = 200 slots. "the experiments reported here cost roughly $7,000" (§6). 8× A800.
-- **C8:** best of 7 CTR / 5 MTL / 11 MDL manual models in a shared trainer at fixed lr 1e-3. No per-baseline tuning stated.
-- **C9:** generated modules are sandboxed (no file, network or subprocess access). Leakage is not discussed.
+- **C8:** ⟨superseded verdict, released code `untuned`; see end of line⟩ best of 7 CTR / 5 MTL / 11 MDL manual models in a shared trainer at fixed lr 1e-3. No per-baseline tuning stated. ⟨recoded since this was written; released code: `untuned`; the second coder's evidence for it: untuned, manual models and baselines use "Candidate-training settings shared by the NASRec and OpenEvolve baselines" (Table 16), no per-model tuning stated.⟩
+- **C9:** static analysis rejects generated code with any file, network, subprocess or dynamic-evaluation capability (§4.2.2); no runtime sandbox is described. Leakage is not discussed.
 - **Online A/B:** none.
 - **Code:** https://github.com/Xiaopengli1/EvoSkill-Rec
 - **Headline:** test AUC +0.0001 to +0.0085 over the best baseline (Beauty 0.6845 vs OpenEvolve 0.6760). QK-Video P1: test AUC +1.7×10⁻⁴, MFU +0.044 pp.
 
 ## 8. RankEvolve (multi-agent harness for HSTU) / ExecML-HSTU, 2609.39551
+
+> **Released codes (audit.csv):** C1 `full` · C2 `test` · C3 `N` · C4 `N` · C5 `P` · C6 `N` · C8 `published` · C9 `N` · incident `Y`; recoded since first coding: C6, C9 (see CHANGELOG.md). Where a verdict below differs, this code is the released one; such verdicts are flagged, including changes made before the changelog starts.
 
 - **Org:** Meta.
 - **LLM:** Claude Code (Claude Opus 4.8) and Codex (GPT-5.6), both at maximum reasoning. OpenHands is supported.
@@ -161,15 +186,17 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 - **C3:** no. Reported values are "best checkpoints, not independent seeds" (Table 1), from the same test protocol used for the leaderboard.
 - **C4:** no for HSTU ("checkpoint evaluations from one run are not independent seeds"). ExecML: 95% task-clustered CIs, McNemar, Holm, pre-registered.
 - **C5:** the recipes were replayed on 4 datasets, one run each (Table 3). The ExecML composition effect transferred to LitGPT: +12.5, CI [3.0, 22.0].
-- **C6:** ExecML: budget-matched one-pass, extended-budget, blind best-of-N and CC→CC→CC baselines. HSTU loop: none.
+- **C6:** ⟨superseded verdict, released code `N`; see end of line⟩ ExecML: budget-matched one-pass, extended-budget, blind best-of-N and CC→CC→CC baselines. HSTU loop: none. ⟨recoded since this was written; released code: `N`; the second coder's evidence for it: no non-LLM search baseline for HSTU; ExecML baselines are single coding-agent products.⟩
 - **C7:** "~55 leaderboard entries across 49 experiment directories on 1–8 NVIDIA H200s; we report run counts rather than an unverifiable GPU-hour aggregate" (§3.1). ExecML $0.95–1.02 per task; plan-merge $2.40 per task.
 - **C8:** published HSTU anchors (0.2098 LARGE, 0.1895 BASE). ML-32M uses internal reproductions.
-- **C9:** yes, extensive (see the failure-mode section).
+- **C9:** ⟨superseded verdict, released code `N`; see end of line⟩ yes, extensive (see the failure-mode section). ⟨recoded since this was written; released code: `N`; argued in second-coder/reconciliation.md or verification-pass-1.md⟩
 - **Online A/B:** none.
 - **Code:** "will be released with the codebase" (App. B), not yet released.
 - **Headline:** NDCG@10 0.2192 vs 0.2098 (+4.48%, LARGE) and 0.1948 vs 0.1895 (+2.80%, BASE). ExecML accuracy 62.5% vs 45.8% (+16.7 pts), silent critical-defect rate 10.4%.
 
 ## 9. Population Evolution / RMD-Bench, 2610.05950
+
+> **Released codes (audit.csv):** C1 `full` · C2 `test` · C3 `N` · C4 `P` · C5 `P` · C6 `P` · C8 `P` · C9 `P` · incident `N`; recoded since first coding: C2, C3, C4, C5, C8 (see CHANGELOG.md). Where a verdict below differs, this code is the released one; such verdicts are flagged, including changes made before the changelog starts.
 
 - **Org:** Meta.
 - **LLM:** GPT-5.5 at high reasoning on the AdaEvolve harness. §4.4 varies 5 harnesses and 4 proposers (including Claude Opus 5).
@@ -177,19 +204,21 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 - **Seed/base:** FuXi-Linear (ranking), EGMN (watch-time), GRPO with Qwen2.5-Coder (RL), a Gemma-3-style 185M LLM, a Qwen3.5-style VLM (646M trainable).
 - **Datasets:** ranking sources KuaiLive, KuaiRand-1K/Pure, KuaiRec, KuaiSAR. Watch-time sources CIKM16, KuaiRec, WeChat, KuaiRand-Pure/1K. Larger-scale: KuaiRand-27K. Transfer: KuaiVideo (CTR), VK-LSVD (MAE), LiveCodeBench-632.
 - **C1:** full catalogue: "The benchmark evaluates full-catalog next-item ranking" (App. A.1). Fitness is (NDCG@10 + HR@10 + MRR)/3. MAE and AUC are used on transfer targets.
-- **C2:** source fitness on the last-item target (a separate validation split for ranking is not stated). Promotion requires success on ≥2 of 4 peers, then larger-scale retraining. In Track B, full-target scores are withheld from the proposer.
-- **C3:** no on the transfer targets: "Baseline hyperparameter and training-duration selection use the released test split, which is also used for final reporting" (App. F.1). The authors disclose this.
-- **C4:** no. "we report one complete run per method–configuration" (App. B.5). Transfer candidates use 3 seeds.
-- **C5:** yes, and it is central to the paper (see the failure-mode section).
-- **C6:** yes. Standalone evolution S (same harness, no sharing) at matched source iterations. Direct full-target evolution at matched total GPU compute. Baselines calibrated by CMA-ES HPO (50 trials). No random search.
+- **C2:** ⟨superseded verdict, released code `test`; see end of line⟩ source fitness on the last-item target (a separate validation split for ranking is not stated). Promotion requires success on ≥2 of 4 peers, then larger-scale retraining. In Track B, full-target scores are withheld from the proposer. ⟨recoded since this was written; released code: `test`; the second coder's evidence for it: test, the evolutionary fitness is the evaluator score on the last-item target and the reported best local gains are the best fitness found; no separate validation split for ranking. For new targets: "Baseline hyperparameter and training-duration selection use the released test split, which is also used for final reporting; no separate validation split" (App F).⟩
+- **C3:** ⟨superseded verdict, released code `N`; see end of line⟩ no on the transfer targets: "Baseline hyperparameter and training-duration selection use the released test split, which is also used for final reporting" (App. F.1). The authors disclose this. ⟨recoded since this was written; released code: `N`; the second coder's evidence for it: test, the evolutionary fitness is the evaluator score on the last-item target and the reported best local gains are the best fitness found; no separate validation split for ranking. For new targets: "Baseline hyperparameter and training-duration selection use the released test split, which is also used for final reporting; no separate validation split" (App F).⟩
+- **C4:** ⟨superseded verdict, released code `P`; see end of line⟩ no. "we report one complete run per method–configuration" (App. B.5). Transfer candidates use 3 seeds. ⟨recoded since this was written; released code: `P`; the second coder's evidence for it: P, "we report one complete run per method-configuration ... repeated baseline evaluations estimate the reference score"; "preliminary independent runs ... ordering was consistent" (App B.5), no spread; transfer candidates have three-seed mean ± sd (App F).⟩
+- **C5:** ⟨superseded verdict, released code `P`; see end of line⟩ yes, and it is central to the paper (see the failure-mode section). ⟨recoded since this was written; released code: `P`; the second coder's evidence for it: P, peer replay, larger-scale KuaiRand-27K, and transfer to KuaiVideo/VK-LSVD excluded from search (Sec 3.1); no val-vs-test comparison.⟩
+- **C6:** ⟨superseded verdict, released code `P`; see end of line⟩ yes. Standalone evolution S (same harness, no sharing) at matched source iterations. Direct full-target evolution at matched total GPU compute. Baselines calibrated by CMA-ES HPO (50 trials). No random search. ⟨recoded since this was written; released code: `P`; argued in second-coder/reconciliation.md or verification-pass-1.md⟩
 - **C7:** 5 searches × 100 iterations. GPU-hours given only as orders of magnitude: tens (watch-time), hundreds (ranking, RL), thousands (LLM, VLM). "Exact GPU-hour usage is restricted by policy" (App. B.5).
-- **C8:** tuned. Per-instance baseline HPO before discovery (App. A.7).
+- **C8:** ⟨superseded verdict, released code `P`; see end of line⟩ tuned. Per-instance baseline HPO before discovery (App. A.7). ⟨recoded since this was written; released code: `P`; argued in second-coder/reconciliation.md or verification-pass-1.md⟩
 - **C9:** test-split calibration is disclosed. Hacking and leakage by the agent are not discussed.
 - **Online A/B:** none.
 - **Code:** "will be made publicly available", not yet released.
 - **Headline:** mean best local gain 7.01% → 8.97% (ranking) and 2.84% → 3.85% (watch-time) vs S. LLM full-target: best 2.48% vs 0.92%, 13 vs 0 successes. VLM: 8.78% vs 5.05% loss reduction. KuaiVideo AUC 74.46 vs reference 74.39.
 
 ## 10. From Trajectories to Evidence, 2608.05235
+
+> **Released codes (audit.csv):** C1 `auc` · C2 `NS` · C3 `NS` · C4 `N` · C5 `P` · C6 `N` · C8 `production` · C9 `P` · incident `N`; recoded since first coding: C6 (see CHANGELOG.md). Where a verdict below differs, this code is the released one; such verdicts are flagged, including changes made before the changelog starts.
 
 - **Org:** Kuaishou Technology (Beijing).
 - **LLM:** GLM-5.2, self-hosted, for all components (generation, verification, controller).
@@ -201,13 +230,13 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 - **C3:** not stated.
 - **C4:** no. "The record-use diagnostic contains only eight single-run pairs" (Limitations).
 - **C5:** partial. Memory-transfer audit (Table 6): 3 of 5 Apply pairs beneficial, 1 harmful.
-- **C6:** no-memory vs memory paired arms (8 pairs). Controller compared with an always-Reject rule (79.7% vs 67.2% accuracy). No random search.
+- **C6:** ⟨superseded verdict, released code `N`; see end of line⟩ no-memory vs memory paired arms (8 pairs). Controller compared with an always-Reject rule (79.7% vs 67.2% accuracy). No random search. ⟨recoded since this was written; released code: `N`; the second coder's evidence for it: N.⟩
 - **C7:** the budget is the count of dispatched machine experiments B. "we budget dispatched machine experiments rather than inference tokens" (§Exp.). Numbers: not stated. Up to 3 repair retries.
 - **C8:** production baseline. Reproduced AUCs fall below the reported ones (InterFormer 0.8865 reported, 0.8522 reproduced), but the ordering is preserved (ρ = 1.0).
-- **C9:** yes. Execution-validity gates, a same-model verifier caveat, withheld claims.
+- **C9:** partial (audit.csv: `P`). Noted here as yes before C9 was split into isolation design and reported incidents; the isolation part was then coded partial. Execution-validity gates, a same-model verifier caveat, withheld claims.
 - **Online A/B:** live-streaming page duration +0.75%, user-growth net utility +6.34% (Table 8). Duration and guardrails: not stated. These are "candidate-level … rather than framework-level attribution".
 - **Code:** not released.
-- **Headline:** the non-monotonic trajectory finding (26/30 and 22/30, below) and two online lifts.
+- **Headline:** the non-monotonic trajectory finding and two online lifts. "For 26 of the 30 methods, at least one subsequent round outperforms the first; however, for 22 methods, the final round performs worse than …" (§Non-Monotonic Adaptation Trajectories).
 
 ## 11. Spotify conversational recommendation self-improvement, 2609.30297
 
@@ -231,14 +260,16 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 
 ## 12. AgentLTV, 2602.21634
 
+> **Released codes (audit.csv):** C1 `other` · C2 `test` · C3 `N` · C4 `N` · C5 `N` · C6 `P` · C8 `NS` · C9 `N` · incident `N`; recoded since first coding: C2, C3 (see CHANGELOG.md). Where a verdict below differs, this code is the released one; such verdicts are flagged, including changes made before the changelog starts.
+
 - **Org:** Sichuan University, Harbin Institute of Technology, Sun Yat-sen University, City University of Hong Kong, VIVO, Xiangtan University.
 - **LLM:** claude-sonnet-4.5, gpt-5.2, gemini-3-pro (§5.1.4).
 - **Evolved:** full LTV pipeline programs (features, architecture, loss, calibration), searched by MCTS (PUCT with a Pareto reward) and then island EA.
 - **Seed/base:** about 30 LTV method templates as roots (App. B).
 - **Datasets:** proprietary mobile-game data, about 800k users over two periods, 8:1:1 split. Kaggle Acquire Valued Shoppers (1.8M), 8:1:1.
 - **C1:** other: ER, Normalized Gini, Spearman, RMSE.
-- **C2:** not stated ("Evaluate c on 𝒟 via Code Fixer", Algs. 1–2). Generated programs must "print(f"score = {score}")" (App. A.1). The final discovered program computes "S = ComputeScore(y_te, ŷ_te)" and returns S (App. D, Alg. 3).
-- **C3:** not stated. It is doubtful, because the program's own score uses test data.
+- **C2:** ⟨superseded verdict, released code `test`; see end of line⟩ not stated ("Evaluate c on 𝒟 via Code Fixer", Algs. 1–2). Generated programs must "print(f"score = {score}")" (App. A.1). The final discovered program computes "S = ComputeScore(y_te, ŷ_te)" and returns S (App. D, Alg. 3). ⟨recoded since this was written; released code: `test`; argued in second-coder/reconciliation.md or verification-pass-1.md⟩
+- **C3:** ⟨superseded verdict, released code `N`; see end of line⟩ not stated. It is doubtful, because the program's own score uses test data. Recoded NS → N in internal review: with C2 = test the selection data are the reported data, which the codebook codes N. ⟨recoded since this was written; released code: `N`; argued in second-coder/reconciliation.md or verification-pass-1.md⟩
 - **C4:** the ± in Table 2 is not explained. Single search run.
 - **C5:** no.
 - **C6:** module ablations only (w/o MCTS, w/o EA). No random or HPO baseline.
@@ -271,6 +302,8 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 
 ## 14. Evolving Semantic Indexes for Generative Retrieval, 2610.28568
 
+> **Released codes (audit.csv):** C1 `full` · C2 `val` · C3 `Y` · C4 `P` · C5 `Y` · C6 `N` · C8 `seed` · C9 `Y` · incident `N`. Where a verdict below differs, this code is the released one; such verdicts are flagged, including changes made before the changelog starts.
+
 - **Org:** Santa Clara University and Coupang.
 - **LLM:** gemma-4-31b-it as mutator (local vLLM on one H200), on AdaEvolve with 3 islands.
 - **Evolved:** SID construction, collision handling, generator training objective, decoding, and the full pipeline (separate scopes).
@@ -280,7 +313,7 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 - **C2:** proxy Recall@100 on ℛ_feedback. "To keep search blind to test data, we randomly split each dataset’s original training relevance pairs into ℛ_proxy (two thirds) and ℛ_feedback (one third)" (§3).
 - **C3:** yes. "All reported numbers are on the held-out test queries, which neither stage ever sees" (§4). "Test data is entirely unreachable to the mutator LLM" (§3).
 - **C4:** target results are mean ± sd over 3 independent training runs (6 for e-commerce). Each scope has one search run. "Searches have different initializations and completed budgets" (Table 2).
-- **C5:** yes, and it is central. Proxy–target ρ = 0.90 over 21 SID programs (Fig. 2b), plus transfer failures (see the failure-mode section).
+- **C5:** yes, and it is central. Proxy–target ρ = 0.90 over 21 SID programs (Fig. 2b), plus transfer failures (see the failure-mode section). The Y does not rest on the correlation alone: the programs selected on proxy Recall@100 over ℛ_feedback are themselves trained at target scale (gemma-3-1b-pt) and reported on held-out test queries that neither stage saw (C3), so the selected candidates are checked on held-out data; the reconciliation rule that codes checks of a proxy only as N (DMRL) does not apply.
 - **C6:** no random search. Collision rate was rejected as a fitness because it is "too easy to hack" (§3).
 - **C7:** proxy 20 min vs target 5 h per candidate. "100 candidate evaluations … 33 hours of proxy computation versus 500 hours of target evaluation" (§4). Up to 20 retries, 2 h execution cap.
 - **C8:** the main comparison is Seed GR. BM25 and Contriever are shown "as references rather than competitors".
@@ -311,6 +344,8 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 
 ## 16. RankEvolve (lexical retrieval), 2602.16932
 
+> **Released codes (audit.csv):** C1 `full` · C2 `NS` · C3 `Y` · C4 `N` · C5 `Y` · C6 `P` · C8 `untuned` · C9 `N` · incident `N`. Where a verdict below differs, this code is the released one; such verdicts are flagged, including changes made before the changelog starts.
+
 - **Org:** Santa Clara University, an independent researcher, Walmart Global Tech.
 - **LLM:** GPT-5.2 at temperature 0.85, on OpenEvolve.
 - **Evolved:** the whole lexical ranking program (about 300 lines): document and query representation, scoring function, collection language model.
@@ -318,7 +353,7 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 - **Datasets:** 12 datasets used during evolution (6 BEIR, 6 BRIGHT). 16 held out (8 BEIR, 6 BRIGHT, TREC DL 19/20).
 - **C1:** other. nDCG@10 and Recall@100 over the full corpus. Fitness = 0.8·R@100 + 0.2·nDCG@10.
 - **C2:** fitness on the 12 evolution datasets. Which query split is used: not stated.
-- **C3:** yes, as cross-dataset hold-out. "The remaining 16 are held out entirely and used solely to test generalization" (§4.2).
+- **C3:** yes, as cross-dataset hold-out. "The remaining 16 are held out entirely and used solely to test generalization" (§4.2). C2 is NS only because the query split within the 12 evolution datasets is not stated; the reported held-out datasets are disjoint from them, so C3 is Y.
 - **C4:** no. One run per seed: 300 steps (BM25), 200 steps (QL).
 - **C5:** yes. Seen vs unseen fitness per seed structure (Table 2). Significance by per-query paired t-test (Table 1).
 - **C6:** partial. The "constrained" seed (hyperparameters plus predefined variants only, "analogous to automated grid search") at a 200-step budget gives seen 42.87, unseen 50.47, vs freeform 44.35 / 51.20 (Table 2).
@@ -331,7 +366,7 @@ Rubric keys: C1 metric type · C2 per-round selection signal · C3 final candida
 
 ---
 
-## Compact table
+## Compact table (first coding; superseded by audit.csv)
 
 Removed in v2: the summary counts that stood here were superseded by `audit.csv` (see `README.md`, "Changes in v2"). All counts in the paper are generated from `audit.csv` by `summarize.py`.
 

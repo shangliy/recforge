@@ -1,20 +1,820 @@
 {
  "title": [
   [
+   "mu2026evorec",
+   "EvoRec: Self-Evolving Agentic Recommender Systems",
+   "EvoRec: Self Evolving Agentic Recommender Systems",
+   "norm-equal"
+  ],
+  [
+   "li2026autorecsys",
+   "Auto-RecSys: Harnessing Autonomous Research Agents for Industry-Scale Recommender Systems",
+   "Auto-RecSys: Harnessing Autonomous Research Agents for Industry-Scale Recommender System",
+   "DIFF"
+  ],
+  [
    "xu2026harness2",
    "Harness$^2$: Recursive Agent Harnessing for an Open World",
    "Harness^2: Recursive Agent Harnessing for an Open World",
    "norm-equal"
   ],
   [
+   "wang2023recagent",
+   "User Behavior Simulation with Large Language Model-based Agents",
+   "User Behavior Simulation with Large Language Model based Agents",
+   "norm-equal"
+  ],
+  [
+   "baumgart2026autoreclab",
+   "AutoRecLab: An Autonomous Recommender Systems Lab",
+   "AutoRecLab: Describe the Experiment, Get the Code!",
+   "DIFF"
+  ],
+  [
    "narasimhan2026taurec",
    "$\\tau$-Rec: A Verifiable Benchmark for Agentic Recommender Systems",
    "$\u03c4$-Rec: A Verifiable Benchmark for Agentic Recommender Systems",
    "norm-equal"
+  ],
+  [
+   "yang2020nashard",
+   "NAS Evaluation is Frustratingly Hard",
+   "NAS evaluation is frustratingly hard",
+   "norm-equal"
+  ],
+  [
+   "zhu2025abc",
+   "Establishing Best Practices in Building Rigorous Agentic Benchmarks",
+   "Establishing Best Practices for Building Rigorous Agentic Benchmarks",
+   "DIFF"
+  ],
+  [
+   "henderson2018deeprl",
+   "Deep Reinforcement Learning That Matters",
+   "Deep Reinforcement Learning that Matters",
+   "norm-equal"
+  ],
+  [
+   "kapoor2023leakage",
+   "Leakage and the Reproducibility Crisis in Machine-Learning-Based Science",
+   "Leakage and the Reproducibility Crisis in ML-based Science",
+   "DIFF"
+  ],
+  [
+   "kapoor2024reforms",
+   "REFORMS: Consensus-Based Recommendations for Machine-Learning-Based Science",
+   "REFORMS: Reporting Standards for Machine Learning Based Science",
+   "DIFF"
   ]
  ],
- "authors": [],
- "year": [],
+ "authors": [
+  [
+   "barlier2026feature",
+   [
+    "Merwan Barlier",
+    "Bla{\\v{z}} {\\v{S}}krlj"
+   ],
+   [
+    "Merwan Barlier",
+    "Blaz Skrlj"
+   ]
+  ],
+  [
+   "zhao2020autoemb",
+   [
+    "Xiangyu Zhao",
+    "Haochen Liu",
+    "Wenqi Fan",
+    "Hui Liu",
+    "Jiliang Tang",
+    "Chong Wang",
+    "Ming Chen",
+    "Xudong Zheng",
+    "Xiaobing Liu",
+    "Xiwang Yang"
+   ],
+   [
+    "Xiangyu Zhao",
+    "Chong Wang",
+    "Ming Chen",
+    "Xudong Zheng",
+    "Xiaobing Liu",
+    "Jiliang Tang"
+   ]
+  ],
+  [
+   "novikov2025alphaevolve",
+   [
+    "Alexander Novikov",
+    "Ng{\\^a}n V{\\~u}",
+    "Marvin Eisenberger",
+    "Emilien Dupont",
+    "Po-Sen Huang",
+    "Adam Zsolt Wagner",
+    "Sergey Shirobokov",
+    "Borislav Kozlovskii",
+    "Francisco J. R. Ruiz",
+    "Abbas Mehrabian",
+    "M. Pawan Kumar",
+    "Abigail See",
+    "Swarat Chaudhuri",
+    "George Holland",
+    "Alex Davies",
+    "Sebastian Nowozin",
+    "Pushmeet Kohli",
+    "Matej Balog"
+   ],
+   [
+    "Alexander Novikov",
+    "Ng\u00e2n V\u0169",
+    "Marvin Eisenberger",
+    "Emilien Dupont",
+    "Po-Sen Huang",
+    "Adam Zsolt Wagner",
+    "Sergey Shirobokov",
+    "Borislav Kozlovskii",
+    "Francisco J. R. Ruiz",
+    "Abbas Mehrabian",
+    "M. Pawan Kumar",
+    "Abigail See",
+    "Swarat Chaudhuri",
+    "George Holland",
+    "Alex Davies",
+    "Sebastian Nowozin",
+    "Pushmeet Kohli",
+    "Matej Balog"
+   ]
+  ],
+  [
+   "nam2025mlestar",
+   [
+    "Jaehyun Nam",
+    "Jinsung Yoon",
+    "Jiefeng Chen",
+    "Jinwoo Shin",
+    "Sercan {\\\"O}. Ar{\\i}k",
+    "Tomas Pfister"
+   ],
+   [
+    "Jaehyun Nam",
+    "Jinsung Yoon",
+    "Jiefeng Chen",
+    "Jinwoo Shin",
+    "Sercan \u00d6. Ar\u0131k",
+    "Tomas Pfister"
+   ]
+  ],
+  [
+   "lou2026autoharness",
+   [
+    "Xinghua Lou",
+    "Miguel L{\\'a}zaro-Gredilla",
+    "Antoine Dedieu",
+    "Carter Wendelken",
+    "Wolfgang Lehrach",
+    "Kevin P. Murphy"
+   ],
+   [
+    "Xinghua Lou",
+    "Miguel L\u00e1zaro-Gredilla",
+    "Antoine Dedieu",
+    "Carter Wendelken",
+    "Wolfgang Lehrach",
+    "Kevin P. Murphy"
+   ]
+  ],
+  [
+   "wang2023recagent",
+   [
+    "Lei Wang",
+    "Jingsen Zhang",
+    "Hao Yang",
+    "Zhi-Yuan Chen",
+    "Jiakai Tang",
+    "Zeyu Zhang",
+    "Xu Chen",
+    "Yankai Lin",
+    "Hao Sun",
+    "Ruihua Song",
+    "Wayne Xin Zhao",
+    "Jun Xu",
+    "Zhicheng Dou",
+    "Jun Wang",
+    "Ji-Rong Wen"
+   ],
+   [
+    "Lei Wang",
+    "Jingsen Zhang",
+    "Hao Yang",
+    "Zhiyuan Chen",
+    "Jiakai Tang",
+    "Zeyu Zhang",
+    "Xu Chen",
+    "Yankai Lin",
+    "Ruihua Song",
+    "Wayne Xin Zhao",
+    "Jun Xu",
+    "Zhicheng Dou",
+    "Jun Wang",
+    "Ji-Rong Wen"
+   ]
+  ],
+  [
+   "hidasi2023flaws",
+   [
+    "Bal{\\'a}zs Hidasi",
+    "{\\'A}d{\\'a}m Tibor Czapp"
+   ],
+   [
+    "Bal\u00e1zs Hidasi",
+    "\u00c1d\u00e1m Tibor Czapp"
+   ]
+  ],
+  [
+   "anelli2021elliot",
+   [
+    "Vito Walter Anelli",
+    "Alejandro Bellog{\\'\\i}n",
+    "Antonio Ferrara",
+    "Daniele Malitesta",
+    "Felice Antonio Merra",
+    "Claudio Pomo",
+    "Francesco Maria Donini",
+    "Tommaso Di Noia"
+   ],
+   [
+    "Vito Walter Anelli",
+    "Alejandro Bellog\u00edn",
+    "Antonio Ferrara",
+    "Daniele Malitesta",
+    "Felice Antonio Merra",
+    "Claudio Pomo",
+    "Francesco Maria Donini",
+    "Tommaso Di Noia"
+   ]
+  ],
+  [
+   "chan2024mlebench",
+   [
+    "Jun Shern Chan",
+    "Neil Chowdhury",
+    "Oliver Jaffe",
+    "James Aung",
+    "Dane Sherburn",
+    "Evan Mays",
+    "Giulio Starace",
+    "Kevin Liu",
+    "Leon Maksin",
+    "Tejal Patwardhan",
+    "Lilian Weng",
+    "Aleksander M{\\k{a}}dry"
+   ],
+   [
+    "Jun Shern Chan",
+    "Neil Chowdhury",
+    "Oliver Jaffe",
+    "James Aung",
+    "Dane Sherburn",
+    "Evan Mays",
+    "Giulio Starace",
+    "Kevin Liu",
+    "Leon Maksin",
+    "Tejal Patwardhan",
+    "Lilian Weng",
+    "Aleksander M\u0105dry"
+   ]
+  ],
+  [
+   "palumbo2026spotify",
+   [
+    "Enrico Palumbo",
+    "Alexandre Tamborrino",
+    "Victor Ode",
+    "Ben Lacker",
+    "Adri{\\`a} Casas Escoda",
+    "Jeremy Hopple",
+    "Marcus Better",
+    "James Leoni",
+    "Hugo Galv{\\~a}o",
+    "Hugues Bouchard",
+    "Mounia Lalmas",
+    "Jos{\\'e} Luis Redondo Garc{\\'\\i}a",
+    "Abenezer Abebe",
+    "Ann Clifton",
+    "Anton Blomberg",
+    "Henrik Lindstr{\\\"o}m",
+    "Dani Doro",
+    "Christine Doig Cardet"
+   ],
+   [
+    "Enrico Palumbo",
+    "Alexandre Tamborrino",
+    "Victor Ode",
+    "Ben Lacker",
+    "Adri\u00e0 Casas Escoda",
+    "Jeremy Hopple",
+    "Marcus Better",
+    "James Leoni",
+    "Hugo Galv\u00e3o",
+    "Hugues Bouchard",
+    "Mounia Lalmas",
+    "Jos\u00e9 Luis Redondo Garc\u00eda",
+    "Abenezer Abebe",
+    "Ann Clifton",
+    "Anton Blomberg",
+    "Henrik Lindstr\u00f6m",
+    "Dani Doro",
+    "Christine Doig Cardet"
+   ]
+  ],
+  [
+   "skrlj2025agent0",
+   [
+    "Bla{\\v{z}} {\\v{S}}krlj",
+    "Beno{\\^\\i}t Guilleminot",
+    "Andra{\\v{z}} Tori"
+   ],
+   [
+    "Bla\u017e \u0160krlj",
+    "Beno\u00eet Guilleminot",
+    "Andra\u017e Tori"
+   ]
+  ],
+  [
+   "koralewski2026promptpack",
+   [
+    "Sebastian Koralewski",
+    "Merwan Barlier",
+    "Yulia Stolin",
+    "Bla{\\v{z}} {\\v{S}}krlj"
+   ],
+   [
+    "Sebastian Koralewski",
+    "Merwan Barlier",
+    "Yulia Stolin",
+    "Bla\u017e \u0160krlj"
+   ]
+  ],
+  [
+   "zhou2026mofa",
+   [
+    "Yuhang Zhou",
+    "Zhuokai Zhao",
+    "Ke Li",
+    "Spilios Evmorfos",
+    "G{\\\"o}kalp Demirci",
+    "Mingyi Wang",
+    "Qiao Liu",
+    "Qifei Wang",
+    "Serena Li",
+    "Weiwei Li",
+    "Tingting Wang",
+    "Mingze Gao",
+    "Gedi Zhou",
+    "Abhishek Kumar",
+    "Xiangjun Fan",
+    "Lizhu Zhang",
+    "Jiayi Liu"
+   ],
+   [
+    "Yuhang Zhou",
+    "Zhuokai Zhao",
+    "Ke Li",
+    "Spilios Evmorfos",
+    "G\u00f6kalp Demirci",
+    "Mingyi Wang",
+    "Qiao Liu",
+    "Qifei Wang",
+    "Serena Li",
+    "Weiwei Li",
+    "Tingting Wang",
+    "Mingze Gao",
+    "Gedi Zhou",
+    "Abhishek Kumar",
+    "Xiangjun Fan",
+    "Lizhu Zhang",
+    "Jiayi Liu"
+   ]
+  ],
+  [
+   "peng2025agentsurvey",
+   [
+    "Qiyao Peng",
+    "Hongtao Liu",
+    "Hua Huang",
+    "Jian Yang",
+    "Qing Yang",
+    "Minglai Shao"
+   ],
+   [
+    "Qiyao Peng",
+    "Hongtao Liu",
+    "Hua Huang",
+    "Qing Yang",
+    "Minglai Shao"
+   ]
+  ],
+  [
+   "gao2025selfevolvingsurvey",
+   [
+    "{Huan-ang} Gao",
+    "Jiayi Geng",
+    "Wenyue Hua",
+    "Mengkang Hu",
+    "Xinzhe Juan",
+    "Hongzhang Liu",
+    "Shilong Liu",
+    "Jiahao Qiu",
+    "Xuan Qi",
+    "Yiran Wu",
+    "Hongru Wang",
+    "Han Xiao",
+    "Yuhang Zhou",
+    "Shaokun Zhang",
+    "Jiayi Zhang",
+    "Jinyu Xiang",
+    "Yixiong Fang",
+    "Qiwen Zhao",
+    "Dongrui Liu",
+    "Qihan Ren",
+    "Cheng Qian",
+    "Zhenhailong Wang",
+    "Minda Hu",
+    "Huazheng Wang",
+    "Qingyun Wu",
+    "Heng Ji",
+    "Mengdi Wang"
+   ],
+   [
+    "Huan-ang Gao",
+    "Jiayi Geng",
+    "Wenyue Hua",
+    "Mengkang Hu",
+    "Xinzhe Juan",
+    "Hongzhang Liu",
+    "Shilong Liu",
+    "Jiahao Qiu",
+    "Xuan Qi",
+    "Yiran Wu",
+    "Hongru Wang",
+    "Han Xiao",
+    "Yuhang Zhou",
+    "Shaokun Zhang",
+    "Jiayi Zhang",
+    "Jinyu Xiang",
+    "Yixiong Fang",
+    "Qiwen Zhao",
+    "Dongrui Liu",
+    "Qihan Ren",
+    "Cheng Qian",
+    "Zhenhailong Wang",
+    "Minda Hu",
+    "Huazheng Wang",
+    "Qingyun Wu",
+    "Heng Ji",
+    "Mengdi Wang"
+   ]
+  ],
+  [
+   "hidasi2016gru4rec",
+   [
+    "Bal{\\'a}zs Hidasi",
+    "Alexandros Karatzoglou",
+    "Linas Baltrunas",
+    "Domonkos Tikk"
+   ],
+   [
+    "Bal\u00e1zs Hidasi",
+    "Alexandros Karatzoglou",
+    "Linas Baltrunas",
+    "Domonkos Tikk"
+   ]
+  ],
+  [
+   "yang2020nashard",
+   [
+    "Antoine Yang",
+    "Pedro M. Esperan{\\c{c}}a",
+    "Fabio M. Carlucci"
+   ],
+   [
+    "Antoine Yang",
+    "Pedro M. Esperan\u00e7a",
+    "Fabio M. Carlucci"
+   ]
+  ],
+  [
+   "ying2019nasbench101",
+   [
+    "Chris Ying",
+    "Aaron Klein",
+    "Eric Christiansen",
+    "Esteban Real",
+    "Kevin Murphy",
+    "Frank Hutter"
+   ],
+   [
+    "Chris Ying",
+    "Aaron Klein",
+    "Esteban Real",
+    "Eric Christiansen",
+    "Kevin Murphy",
+    "Frank Hutter"
+   ]
+  ],
+  [
+   "eggensperger2021hpobench",
+   [
+    "Katharina Eggensperger",
+    "Philipp M{\\\"u}ller",
+    "Neeratyoy Mallik",
+    "Matthias Feurer",
+    "Ren{\\'e} Sass",
+    "Aaron Klein",
+    "Noor Awad",
+    "Marius Lindauer",
+    "Frank Hutter"
+   ],
+   [
+    "Katharina Eggensperger",
+    "Philipp M\u00fcller",
+    "Neeratyoy Mallik",
+    "Matthias Feurer",
+    "Ren\u00e9 Sass",
+    "Aaron Klein",
+    "Noor Awad",
+    "Marius Lindauer",
+    "Frank Hutter"
+   ]
+  ],
+  [
+   "bouthillier2021variance",
+   [
+    "Xavier Bouthillier",
+    "Pierre Delaunay",
+    "Mirko Bronzi",
+    "Assya Trofimov",
+    "Brennan Nichyporuk",
+    "Justin Szeto",
+    "Nazanin Mohammadi Sepahvand",
+    "Edward Raff",
+    "Kanika Madan",
+    "Vikram Voleti",
+    "Samira Ebrahimi Kahou",
+    "Vincent Michalski",
+    "Tal Arbel",
+    "Chris Pal",
+    "Ga{\\\"e}l Varoquaux",
+    "Pascal Vincent"
+   ],
+   [
+    "Xavier Bouthillier",
+    "Pierre Delaunay",
+    "Mirko Bronzi",
+    "Assya Trofimov",
+    "Brennan Nichyporuk",
+    "Justin Szeto",
+    "Naz Sepah",
+    "Edward Raff",
+    "Kanika Madan",
+    "Vikram Voleti",
+    "Samira Ebrahimi Kahou",
+    "Vincent Michalski",
+    "Dmitriy Serdyuk",
+    "Tal Arbel",
+    "Chris Pal",
+    "Ga\u00ebl Varoquaux",
+    "Pascal Vincent"
+   ]
+  ],
+  [
+   "kapoor2024reforms",
+   [
+    "Sayash Kapoor",
+    "Emily M. Cantrell",
+    "Kenny Peng",
+    "Thanh Hien Pham",
+    "Christopher A. Bail",
+    "Odd Erik Gundersen",
+    "Jake M. Hofman",
+    "Jessica Hullman",
+    "Michael A. Lones",
+    "Momin M. Malik",
+    "Priyanka Nanayakkara",
+    "Russell A. Poldrack",
+    "Inioluwa Deborah Raji",
+    "Michael Roberts",
+    "Matthew J. Salganik",
+    "Marta Serra-Garcia",
+    "Brandon M. Stewart",
+    "Gilles Vandewiele",
+    "Arvind Narayanan"
+   ],
+   [
+    "Sayash Kapoor",
+    "Emily Cantrell",
+    "Kenny Peng",
+    "Thanh Hien Pham",
+    "Christopher A. Bail",
+    "Odd Erik Gundersen",
+    "Jake M. Hofman",
+    "Jessica Hullman",
+    "Michael A. Lones",
+    "Momin M. Malik",
+    "Priyanka Nanayakkara",
+    "Russell A. Poldrack",
+    "Inioluwa Deborah Raji",
+    "Michael Roberts",
+    "Matthew J. Salganik",
+    "Marta Serra-Garcia",
+    "Brandon M. Stewart",
+    "Gilles Vandewiele",
+    "Arvind Narayanan"
+   ]
+  ]
+ ],
+ "year": [
+  [
+   "zhao2020autoemb",
+   "2021",
+   "2020"
+  ],
+  [
+   "zhang2023nasrec",
+   "2023",
+   "2022"
+  ],
+  [
+   "zheng2022automl",
+   "2023",
+   "2022"
+  ],
+  [
+   "zhang2023agent4rec",
+   "2024",
+   "2023"
+  ],
+  [
+   "wang2023recagent",
+   "2025",
+   "2023"
+  ],
+  [
+   "zhang2024agentcf",
+   "2024",
+   "2023"
+  ],
+  [
+   "gao2024sprec",
+   "2025",
+   "2024"
+  ],
+  [
+   "sun2022daisyrec",
+   "2023",
+   "2022"
+  ],
+  [
+   "ji2020leakage",
+   "2023",
+   "2020"
+  ],
+  [
+   "zhao2021recbole",
+   "2021",
+   "2020"
+  ],
+  [
+   "zhu2021fuxictr",
+   "2021",
+   "2020"
+  ],
+  [
+   "chan2024mlebench",
+   "2025",
+   "2024"
+  ],
+  [
+   "huang2023mlagentbench",
+   "2024",
+   "2023"
+  ],
+  [
+   "liu2025recoworld",
+   "2026",
+   "2025"
+  ],
+  [
+   "zhang2025agentsearchsurvey",
+   "2026",
+   "2025"
+  ],
+  [
+   "gao2025selfevolvingsurvey",
+   "2026",
+   "2025"
+  ],
+  [
+   "ma2023eureka",
+   "2024",
+   "2023"
+  ],
+  [
+   "shojaee2024llmsr",
+   "2025",
+   "2024"
+  ],
+  [
+   "yang2023opro",
+   "2024",
+   "2023"
+  ],
+  [
+   "khattab2023dspy",
+   "2024",
+   "2023"
+  ],
+  [
+   "guo2023evoprompt",
+   "2024",
+   "2023"
+  ],
+  [
+   "chen2024scienceagentbench",
+   "2025",
+   "2024"
+  ],
+  [
+   "li2011replay",
+   "2011",
+   "2010"
+  ],
+  [
+   "hidasi2016gru4rec",
+   "2016",
+   "2015"
+  ],
+  [
+   "rendle2009bpr",
+   "2009",
+   "2012"
+  ],
+  [
+   "li2019randomnas",
+   "2020",
+   "2019"
+  ],
+  [
+   "yu2020searchphase",
+   "2020",
+   "2019"
+  ],
+  [
+   "yang2020nashard",
+   "2020",
+   "2019"
+  ],
+  [
+   "lindauer2020bestpractices",
+   "2020",
+   "2019"
+  ],
+  [
+   "gao2023overoptimization",
+   "2023",
+   "2022"
+  ],
+  [
+   "zhong2026impossiblebench",
+   "2026",
+   "2025"
+  ],
+  [
+   "kapoor2025agentsmatter",
+   "2025",
+   "2024"
+  ],
+  [
+   "henderson2018deeprl",
+   "2018",
+   "2017"
+  ],
+  [
+   "dacrema2021troubling",
+   "2021",
+   "2019"
+  ],
+  [
+   "kapoor2023leakage",
+   "2023",
+   "2022"
+  ],
+  [
+   "kapoor2024reforms",
+   "2024",
+   "2023"
+  ]
+ ],
  "missing": [],
  "published": [
   [
@@ -118,6 +918,54 @@
    "2606.10156",
    "Proceedings of the 20th ACM Conference on Recommender Systems (RecSys '26), pp. 915-919, 2026",
    "10.1145/3773078.3831847"
+  ],
+  [
+   "wu2025growthhacker",
+   "2511.00802",
+   null,
+   "10.1145/3815588"
+  ],
+  [
+   "nasir2023llmatic",
+   "2306.01102",
+   null,
+   "10.1145/3638529.3654017"
+  ],
+  [
+   "yu2023gptnas",
+   "2305.05351",
+   null,
+   "10.26599/BDMA.2024.9020036"
+  ],
+  [
+   "beel2025aiscientist",
+   "2502.14297",
+   "SIGIR Forum 2025",
+   "10.1145/3769733.376974"
+  ],
+  [
+   "lyu2022optembed",
+   "2208.04482",
+   null,
+   "10.1145/3511808.3557411"
+  ],
+  [
+   "li2011replay",
+   "1003.5956",
+   null,
+   "10.1145/1935826.1935878"
+  ],
+  [
+   "li2019randomnas",
+   "1902.07638",
+   "Conference on Uncertainty in Artificial Intelligence (UAI), 2019",
+   null
+  ],
+  [
+   "dacrema2021troubling",
+   "1911.07698",
+   "ACM Transactions on Information Systems 39, 2, Article 20 (January 2021), 49 pages",
+   "10.1145/3434185"
   ]
  ],
  "s2_venue": [
@@ -770,6 +1618,136 @@
    "10.1145/3845988",
    "ACM Transactions on Recommender Systems",
    null
+  ],
+  [
+   "chen2023evoprompting",
+   "2302.14838",
+   "Neural Information Processing Systems",
+   "Neural Information Processing Systems",
+   2023,
+   "10.48550/arXiv.2302.14838",
+   "ArXiv",
+   null
+  ],
+  [
+   "yang2023opro",
+   "2309.03409",
+   "International Conference on Learning Representations",
+   "International Conference on Learning Representations",
+   2023,
+   "10.48550/arXiv.2309.03409",
+   "ArXiv",
+   null
+  ],
+  [
+   "starace2025paperbench",
+   "2504.01848",
+   "International Conference on Machine Learning",
+   "International Conference on Machine Learning",
+   2025,
+   "10.48550/arXiv.2504.01848",
+   "ArXiv",
+   null
+  ],
+  [
+   "qiang2025mledojo",
+   "2505.07782",
+   "Neural Information Processing Systems",
+   "Neural Information Processing Systems",
+   2025,
+   "10.48550/arXiv.2505.07782",
+   "ArXiv",
+   null
+  ],
+  [
+   "chen2025mlrbench",
+   "2505.19955",
+   "Neural Information Processing Systems",
+   "Neural Information Processing Systems",
+   2025,
+   "10.48550/arXiv.2505.19955",
+   "ArXiv",
+   null
+  ],
+  [
+   "lyu2022optembed",
+   "2208.04482",
+   "International Conference on Information and Knowledge Management",
+   "International Conference on Information and Knowledge Management",
+   2022,
+   "10.1145/3511808.3557411",
+   "Proceedings of the 31st ACM International Conference on Information & Knowledge Management",
+   null
+  ],
+  [
+   "dudik2011doublyrobust",
+   "1103.4601",
+   "International Conference on Machine Learning",
+   "International Conference on Machine Learning",
+   2011,
+   null,
+   null,
+   "1097-1104"
+  ],
+  [
+   "wu2023llmrecsurvey",
+   "2305.19860",
+   "World wide web (Bussum)",
+   "World wide web (Bussum)",
+   2023,
+   "10.1007/s11280-024-01291-2",
+   "World Wide Web",
+   null
+  ],
+  [
+   "lin2023recsysllmsurvey",
+   "2306.05817",
+   "ACM Trans. Inf. Syst.",
+   null,
+   2023,
+   "10.1145/3678004",
+   "ACM Transactions on Information Systems",
+   "1 - 47"
+  ],
+  [
+   "hidasi2016gru4rec",
+   "1511.06939",
+   "International Conference on Learning Representations",
+   "International Conference on Learning Representations",
+   2015,
+   null,
+   "CoRR",
+   null
+  ],
+  [
+   "yang2020nashard",
+   "1912.12522",
+   "International Conference on Learning Representations",
+   "International Conference on Learning Representations",
+   2019,
+   null,
+   "ArXiv",
+   null
+  ],
+  [
+   "ying2019nasbench101",
+   "1902.09635",
+   "International Conference on Machine Learning",
+   "International Conference on Machine Learning",
+   2019,
+   null,
+   null,
+   "7105-7114"
+  ],
+  [
+   "dong2020nasbench201",
+   "2001.00326",
+   "International Conference on Learning Representations",
+   "International Conference on Learning Representations",
+   2020,
+   null,
+   "ArXiv",
+   null
   ]
  ],
  "versions": [
@@ -982,6 +1960,273 @@
    "narasimhan2026taurec",
    "2606.10156",
    "Accepted at ACM RecSys 2026 (Reproducibility and Resource Track)"
+  ],
+  [
+   "fu2026evopilot",
+   "2609.21257",
+   "9 pages, 1 figure, 8 tables. ACM sigconf format; submitted to the KDD 2027 Applied Data Science Track"
+  ],
+  [
+   "chandran2026autoresearch",
+   "2609.30541",
+   "10 pages, 3 figures. Accepted at IEEE ICDM 2026 (Applied Track)"
+  ],
+  [
+   "luo2025pitfalls",
+   "2509.08713",
+   "NeurIPS 2025 AI4Science (Spotlight)"
+  ],
+  [
+   "zhang2026autoreseval",
+   "2610.11877",
+   "Accepted to Findings of AACL-IJCNLP 2026"
+  ],
+  [
+   "wang2026serm",
+   "2601.09515",
+   "Accepted by Findings of ACL 2026"
+  ],
+  [
+   "wu2025growthhacker",
+   "2511.00802",
+   "Accepted for publication in ACM Transactions on Software Engineering and Methodology (TOSEM), 2026"
+  ],
+  [
+   "chen2023evoprompting",
+   "2302.14838",
+   "NeurIPS 2023"
+  ],
+  [
+   "nasir2023llmatic",
+   "2306.01102",
+   "Accepted to The Genetic and Evolutionary Computation Conference 2024"
+  ],
+  [
+   "real2020automlzero",
+   "2003.03384",
+   "Accepted for publication at the 37th International Conference on Machine Learning (ICML 2020). Near camera-ready version"
+  ],
+  [
+   "ye2024reevo",
+   "2402.01145",
+   "Accepted at NeurIPS 2024"
+  ],
+  [
+   "ma2023eureka",
+   "2310.12931",
+   "ICLR 2024. Project website and open-source code: https://eureka-research.github.io/"
+  ],
+  [
+   "shojaee2024llmsr",
+   "2404.18400",
+   "ICLR 2025 Oral"
+  ],
+  [
+   "yang2023opro",
+   "2309.03409",
+   "ICLR 2024; 42 pages, 26 figures, 15 tables. Code at https://github.com/google-deepmind/opro"
+  ],
+  [
+   "guo2023evoprompt",
+   "2309.08532",
+   "International Conference on Learning Representations (ICLR) 2024"
+  ],
+  [
+   "chen2024scienceagentbench",
+   "2410.05080",
+   "ICLR 2025. 60 pages"
+  ],
+  [
+   "chen2025mlrbench",
+   "2505.19955",
+   "49 pages, 9 figures. Accepted by NeurIPS 2025 D&B Track"
+  ],
+  [
+   "lyu2022optembed",
+   "2208.04482",
+   "Accepted by CIKM 2022 Research Track"
+  ],
+  [
+   "li2011replay",
+   "1003.5956",
+   "10 pages, 7 figures, revised from the published version at the WSDM 2011 conference"
+  ],
+  [
+   "dudik2011doublyrobust",
+   "1103.4601",
+   "Published at ICML 2011, 8 pages, 6 figures"
+  ],
+  [
+   "lin2023recsysllmsurvey",
+   "2306.05817",
+   "Accepted by ACM Transactions on Information Systems (TOIS); Look-up table in appendix"
+  ],
+  [
+   "rendle2009bpr",
+   "1205.2618",
+   "Appears in Proceedings of the Twenty-Fifth Conference on Uncertainty in Artificial Intelligence (UAI2009)"
+  ],
+  [
+   "li2019randomnas",
+   "1902.07638",
+   "V2 Changelog: - Modified footnote 2 for ENAS. - Expanded broad reproducibility study for random search with WS for CNN to 6 sets of random seeds v3 Changelog: - Added journal reference - Updated acknowledgements"
+  ],
+  [
+   "yang2020nashard",
+   "1912.12522",
+   "Published as a conference paper at ICLR2020; 13 pages; 10 figures"
+  ],
+  [
+   "ying2019nasbench101",
+   "1902.09635",
+   "Published in the Proceedings of the 36th International Conference on Machine Learning"
+  ],
+  [
+   "dong2020nasbench201",
+   "2001.00326",
+   "Published at ICLR 2020 as a spotlight paper; 16 pages; 10 figures; 7 tables; Code is available at https://github.com/D-X-Y/AutoDL-Projects"
+  ],
+  [
+   "eggensperger2021hpobench",
+   "2109.06716",
+   "Published at NeurIPS Datasets and Benchmarks Track 2021. Updated version"
+  ],
+  [
+   "agarwal2021precipice",
+   "2108.13264",
+   "Outstanding Paper Award at NeurIPS 2021. Website: https://agarwl.github.io/rliable. 28 Pages, 33 Figures"
+  ],
+  [
+   "henderson2018deeprl",
+   "1709.06560",
+   "Accepted to the Thirthy-Second AAAI Conference On Artificial Intelligence (AAAI), 2018"
+  ],
+  [
+   "dacrema2021troubling",
+   "1911.07698",
+   "Source code and full results available at: https://github.com/MaurizioFD/RecSys2019_DeepLearning_Evaluation"
+  ]
+ ],
+ "s2_error": [
+  [
+   "fu2026evopilot",
+   "unreachable"
+  ],
+  [
+   "chandran2026autoresearch",
+   "unreachable"
+  ],
+  [
+   "pilot2026",
+   "unreachable"
+  ],
+  [
+   "jiang2026abagent",
+   "unreachable"
+  ],
+  [
+   "zhang2026dmrl",
+   "unreachable"
+  ],
+  [
+   "wang2026pear",
+   "unreachable"
+  ],
+  [
+   "hu2026winnerscurse",
+   "unreachable"
+  ],
+  [
+   "ferreira2026hpo",
+   "unreachable"
+  ],
+  [
+   "rodrigues2026llmhpo",
+   "unreachable"
+  ],
+  [
+   "luo2025pitfalls",
+   "unreachable"
+  ],
+  [
+   "zhang2026autoreseval",
+   "unreachable"
+  ],
+  [
+   "berman2026winners",
+   "unreachable"
+  ],
+  [
+   "srikanth2026aide2",
+   "unreachable"
+  ],
+  [
+   "wang2026serm",
+   "unreachable"
+  ],
+  [
+   "wu2025growthhacker",
+   "unreachable"
+  ],
+  [
+   "nasir2023llmatic",
+   "unreachable"
+  ],
+  [
+   "zheng2023gpt4nas",
+   "unreachable"
+  ],
+  [
+   "yu2023gptnas",
+   "unreachable"
+  ],
+  [
+   "real2020automlzero",
+   "unreachable"
+  ],
+  [
+   "ye2024reevo",
+   "unreachable"
+  ],
+  [
+   "ma2023eureka",
+   "unreachable"
+  ],
+  [
+   "shojaee2024llmsr",
+   "unreachable"
+  ],
+  [
+   "yuksekgonul2024textgrad",
+   "unreachable"
+  ],
+  [
+   "khattab2023dspy",
+   "unreachable"
+  ],
+  [
+   "beel2025aiscientist",
+   "unreachable"
+  ],
+  [
+   "chen2022automlrecsurvey",
+   "unreachable"
+  ],
+  [
+   "li2011replay",
+   "unreachable"
+  ],
+  [
+   "rendle2009bpr",
+   "unreachable"
+  ],
+  [
+   "li2019randomnas",
+   "unreachable"
+  ],
+  [
+   "yu2020searchphase",
+   "unreachable"
   ]
  ]
 }

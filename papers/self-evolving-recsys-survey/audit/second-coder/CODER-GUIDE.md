@@ -1,5 +1,7 @@
 # Coding guide for the second coder
 
+> Historical note (added after coding): "Table 3 or Figure 3" below are the audit table and figure as numbered in the draft of the time (now Table 6 and Figure 3). the opening sentence dates from the first batch of ten papers and was not updated. The guide as committed with the second batch (all 27 papers) refined the c2, c4, c8 and c9 values and added the incident column, so the codes cover eight scored criteria plus the incident flag; the change is released as `guide-batch1-to-batch2.diff`. The text below is otherwise as sent.
+
 You will code 10 self-evolving recommender papers on eight criteria, from the full text only. The aim is to measure
 how far two readers agree, so please work independently: do not open `audit.csv`, `evidence-part*.md`, the
 paper's Table 3 or Figure 3 until you have returned the sheet, and do not discuss individual papers with the first

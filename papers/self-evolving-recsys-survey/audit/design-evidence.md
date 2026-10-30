@@ -40,7 +40,7 @@ Source: full arXiv HTML text, fetched 2026-10-22, plus `audit/evidence-part1.md`
 - **object**: L2
 - **proposer**: llm
 - **proposer_note**: LLM planner turns user-simulator critiques + diagnosis-tool reports + retrieved arXiv papers into a development report; GPT-5 coder edits the whole pipeline codebase; parent sampled from archive
-- **meta**: Y: the Model Diagnosis Tool (feedback/probe code) co-evolves with the codebase each iteration; evolving the user simulator is an optional variant (Sec 4.3.4), not the default
+- **meta**: Y ⟨superseded: released `meta` is N, with the evaluator marked as evolving (design.csv); this line is the first extraction⟩: the Model Diagnosis Tool (feedback/probe code) co-evolves with the codebase each iteration; evolving the user simulator is an optional variant (Sec 4.3.4), not the default
 - **signal_chain**: offline* (validation score, Eq. 1); efficient variant: proxy* (zero-cost proxies). Simulator and diagnosis feedback steer edits but do not gate them
 - **memory**: evolutionary archive/population of codebases, feedback reports and DIAG versions
 - **acceptance**: every successfully executing codebase is added to the archive; parents sampled from the archive; final codebase = argmax of validation score (no explicit keep-if-better gate stated)
@@ -418,7 +418,7 @@ Evidence:
 - *baseline_type*: "These shares are typically hand-set and seldom revised" (Sec 5.1)
 - *kept_edits*: "R3 aggregates several decision cycles and is the deployed configuration" (Table 1 caption)
 
-Note: c9 coded P (audit.csv: na). Under the new definition, na needs both no touchable offline data/eval code and no stated constraints. CORAL states a budget projection, bounded-change limits and feasibility checks.
+Note: c9 coded P (na at first coding; the released audit.csv now has P). Under the new definition, na needs both no touchable offline data/eval code and no stated constraints. CORAL states a budget projection, bounded-change limits and feasibility checks.
 
 ## AgenticRecTune (`wu2026agenticrectune`, arXiv 2604.26969)
 
@@ -450,14 +450,14 @@ Evidence:
 - *acceptance*: "Each experiment was run as a standard launch period to ensure statistical significance (evaluated at a p-value < 0.05)." (Sec 5.1)
 - *kept_edits*: "Table 1 shows that diversity metric increases by 3.43% and engagement Metric 1 & 2 also increase." (Sec 5.2.3)
 
-Note: c9 coded P (audit.csv: na). The Critic, bounded value ranges and mandatory user review are stated constraints.
+Note: c9 coded P (na at first coding; the released audit.csv now has P). The Critic, bounded value ranges and mandatory user review are stated constraints.
 
 ## Sortify (`cheng2026sortify`, arXiv 2603.27765)
 
 - **object**: L1
 - **proposer**: llm+space
 - **proposer_note**: Optuna TPE (5,000 trials/round) searches the 7-dim sorting-formula weights on an offline Influence-Share objective; LMS + LLM meta-controller adjust transfer intercepts and penalty multipliers (framework knobs), not the weights
-- **meta**: Y (objective level, judgment call): the inner search's objective (offline->online transfer calibration, constraint penalty weights) is recalibrated each round by LMS + LLM
+- **meta**: Y ⟨superseded: released `meta` is N, with the evaluator marked as evolving (design.csv); this line is the first extraction⟩ (objective level, judgment call): the inner search's objective (offline->online transfer calibration, constraint penalty weights) is recalibrated each round by LMS + LLM
 - **signal_chain**: proxy*>online>online (best Optuna trial on offline proxy published each ~4 h round; per-round A/B feeds calibration; human-frozen round re-tested in a 7-day A/B)
 - **memory**: Memory DB (7 SQLite tables: episodes with offline/online pairs, prior relations, update histories, penalty weights)
 - **acceptance**: inside the loop: best Optuna trial on the penalized proxy objective is published every round (no reject step); outer loop: humans froze R7 (only round with GMV and Ads Revenue both positive), ran a 7-day A/B and approved rollout
@@ -485,7 +485,7 @@ Evidence:
 - *c4_note*: "R7 metrics were collected during a low-traffic early morning window (∼12K impressions)" (Sec 4.3.1)
 - *kept_edits*: "This configuration exhibits a "high Click, low GMV/Order" structure" (Sec 4.8.3, Table 9)
 
-Note: c9 coded P (audit.csv: na). There is offline data: the proxy objective is computed on logged data. The read-only sandbox and the clamps are stated constraints. audit.csv llm_named = Y is generous: only Codex CLI and reference prices are given.
+Note: c9 coded P (na at first coding; the released audit.csv now has P). There is offline data: the proxy objective is computed on logged data. The read-only sandbox and the clamps are stated constraints. audit.csv llm_named = Y is generous: only Codex CLI and reference prices are given.
 
 ## GEARS (`yun2026gears`, arXiv 2602.18640)
 
@@ -518,7 +518,7 @@ Evidence:
 - *kept_edits*: "users who are very active benefit more from the first treatment" ... "less active users prefer the second treatment" (Sec 6.1)
 - *llm*: "All experiments use Claude Sonnet 4.6 (Anthropic, 2025c) as the backbone LLM." (Sec 5.1)
 
-Note: c9 coded P (audit.csv: na). The agent works on tabular experiment records (offline data), and deterministic hooks are stated constraints. The 'loop' is a single guided selection pass per experiment, not an iterated evolution.
+Note: c9 coded P (na at first coding; the released audit.csv now has P). The agent works on tabular experiment records (offline data), and deterministic hooks are stated constraints. The 'loop' is a single guided selection pass per experiment, not an iterated evolution. Kept in the core set as a borderline case and counted as online-selecting because its deciding estimates come from a completed randomised experiment (paper, note to the design table); without it the online-selecting stratum is nine loops, none correcting and one confirming afresh.
 
 
 Extracted 2026-10-22 from the arXiv HTML full text of each paper, including appendices, together with the existing evidence in `audit/evidence-part1.md`, `audit/evidence-part2.md` and `review/sweep-2026-10-22.md` §(b).
@@ -809,7 +809,7 @@ See Q4 for "5.8×" and "220+".
 - **headline:** Abstract: "a 1.82× Recall@6 lift and a 2.1× coherence lift over hand-tuned baselines".
 - **c9_isolation = P.** The evaluator is immutable and the agent's write scope is limited. Access to held-out data is not stated.
 - **c9_incident = Y.** The catcher was human QA.
-  - §III-E: "maximizing codebook size trivially improves weighted coherence … but the resulting hierarchy was unusable".
+  - §III-E: "the agent discovered that maximizing codebook size trivially improves weighted coherence … but the resulting hierarchy was unusable".
   - §IV-E: "human QA between runs diagnosed metric fixation early on".
   - The index-coverage change is framed by the authors as a coverage–recall trade-off. Treating it as a confound is our inference.
 - **c4:** §V-E: one model re-evaluated "on 11 distinct customer-purchase dates". There are no repeated sessions.

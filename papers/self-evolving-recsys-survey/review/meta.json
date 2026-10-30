@@ -9382,5 +9382,3484 @@
    }
   },
   "crossref": null
+ },
+ "fu2026evopilot": {
+  "eprint": "2609.21257",
+  "arxiv": {
+   "version": "2609.21257v1",
+   "title": "Verify, Don't Trust: Agentic Model Development for Video Discovery Retrieval at Scale",
+   "authors": [
+    "Hao Fu",
+    "Baiting Zhu",
+    "Minglei Chen",
+    "Yinjie Huang",
+    "Shuai Ding"
+   ],
+   "published": "2026-09-18T03:04:28Z",
+   "updated": "2026-09-18T03:04:28Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "9 pages, 1 figure, 8 tables. ACM sigconf format; submitted to the KDD 2027 Applied Data Science Track",
+   "abstract": "Large language model (LLM) agents can propose, implement, and evaluate model changes. Autoresearch loops demonstrate this capability through minutes-scale iterations on a self-contained program. Online autoresearch instead spans asynchronous systems, hours-long variants, and weeks-long campaigns that can influence a product. A completed run can still support an invalid conclusion when a code change is a no-op, data windows leak, evaluator semantics drift, or the two arms traverse different serving funnels. We present EvoPilot, a human-gated method for long-horizon online autoresearch. Role-specific agents execute each round through a versioned domain skill and typed adapter. Durable records preserve experiments and failures; deterministic checks enforce recorded lessons. We study a 37-day campaign for the retrieval system that powers Video Deep Dive (VDD), an online experience for discovering follow-on videos after a user opens a seed video. The campaign covered seven directions and used an hourly refreshed index of hundreds of millions of videos. Earlier manual experiments had not established a benefit from an interaction head. A primitive autoresearch attempt revisited the direction but incorrectly attributed an offline hit-rate decline of 22 percentage points to the head. We then introduced EvoPilot. Its human-gated verification traced the drop to a pre-existing evaluation defect that produced output depths of 3,000 and 600. After repair, a matched comparison measured an offline improvement of 3.20 percentage points. Post-study replay and mutation tests rejected invalid comparisons while admitting valid counterparts. Durable state recovered an interrupted round, and artifact reuse avoided approximately five GPU-hours. Separately, a seven-day randomized online evaluation estimated a 0.66% relative increase in the VDD slice of Good Search Result Rate for Retention (GSRR)."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "chandran2026autoresearch": {
+  "eprint": "2609.30541",
+  "arxiv": {
+   "version": "2609.30541v1",
+   "title": "AutoResearch at Production Scale: Failure Modes and a Multi-Agent Framework",
+   "authors": [
+    "Aparajith Chandran",
+    "Juwon Kim",
+    "Saurav Jha",
+    "Pablo Castells",
+    "Florian Hottier"
+   ],
+   "published": "2026-09-24T20:49:53Z",
+   "updated": "2026-09-24T20:49:53Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "10 pages, 3 figures. Accepted at IEEE ICDM 2026 (Applied Track)",
+   "abstract": "Optimizing embedding systems for production recommendation pipelines demands systematic exploration that consumes disproportionate engineering effort at scale. We apply Andrej Karpathy's AutoResearch paradigm -- a large language model that iteratively edits a training script and retains modifications that improve a held-out scalar metric -- to automate this exploration. We report on twelve weeks of running this paradigm at production scale, where iterations consume hours of multi-GPU compute, evaluation involves competing criteria, and campaigns span weeks across many training jobs. Across two independently developed representation-learning systems for a book recommendation pipeline, we ran 220+ experiments and observed five recurring failure modes absent from the original setting: infrastructure fragility, agent memory decay, search-direction stagnation, iteration-cost asymmetry, and metric fixation. We contribute a three-principle scaffolding design -- prevent, persist, redirect -- that maps each failure mode to a structural remedy and whose instantiation scales with iteration cost. The framework produced a 1.82x Recall@6 lift and a 2.1x coherence lift over hand-tuned baselines, and the agent autonomously designed a text-only fallback that expanded catalog coverage by 5.8x. The two systems span nearly three orders of magnitude in per-iteration cost yet exhibit the same failure modes, suggesting these are structural properties of production-scale autonomous research rather than artifacts of either application."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "pilot2026": {
+  "eprint": "2608.18637",
+  "arxiv": {
+   "version": "2608.18637v2",
+   "title": "PILOT Technical Report",
+   "authors": [
+    "Jiuning Lin",
+    "Ruiquan Lan",
+    "Xiaodong Zhu",
+    "Bin Zhang",
+    "Chengyu Lai",
+    "Chuxin Chen",
+    "Dimin Wang",
+    "Han Zhu",
+    "Hongtao Cheng",
+    "Jialin Zhu",
+    "Lingqing Zhang",
+    "Shuai Zhong",
+    "Tao Wang",
+    "Weipeng Huang",
+    "Yinjiang Cai",
+    "Yinnan Song",
+    "Yuan Liu",
+    "Zhibo Xiao",
+    "Zhixin Ma",
+    "Zihong Huang"
+   ],
+   "published": "2026-08-19T07:35:10Z",
+   "updated": "2026-08-20T02:56:10Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Technical Report, 42 pages, 10 figures",
+   "abstract": "Existing agentic approaches for recommendation system optimization remain fundamentally reactive: they adjust parameters in response to observed metric changes but lack the ability to proactively design controlled experiments, personalize strategies at the user-segment level, or accumulate reusable experimental methodology across tasks. We present PILOT (Proactive Insight Learner for Online Tree-Experiments), an LLM-agent framework that organizes three roles within a constrained control loop where deterministic services enforce all safety, statistical, and permission boundaries: (1) an Experiment Manager that drives the full experiment lifecycle -- task intake, observation governance, anomaly recovery, and postmortem -- by selecting only from a rule-generated legal-command envelope; (2) a Search Planner that proposes candidate decision trees for user-segment-level personalization, invoked only when the Manager requests planning; and (3) a Memory Curator that asynchronously distills experiment outcomes into strategy-level domain knowledge and provenance-tracked methodology, failure-isolated from the main loop. The Manager makes the agent proactive, the Planner enables population-level personalization beyond global tuning, and the Curator turns every completed task into a learning opportunity for the next. Deployed on Taobao's platform with 5 experimental buckets, PILOT is compared against ROAM(Reactive Optimization with Agent-driven Moves), a free-exploration agent without lifecycle governance or structured hypothesis testing. PILOT achieves up to +1.40% IPV, +1.60% Core IPV, +0.96% transaction count, and +1.50% transaction amount, improving over ROAM's best results (+1.00% IPV, +0.90% Core IPV, +0.60% transaction count, +1.13% transaction amount) while raising search efficiency from 53.3% to 93.3% (+40 pp), with no human intervention throughout the experimental cycle."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "jiang2026abagent": {
+  "eprint": "2608.04625",
+  "arxiv": {
+   "version": "2608.04625v1",
+   "title": "A/B Agent: A Self-Evolving Agent for Strategy Iteration in Industrial A/B Testing",
+   "authors": [
+    "Zhuohang Jiang",
+    "Yuxin Chen",
+    "Yongsen Pan",
+    "Zheng Hu",
+    "Wenqi Fan",
+    "Qing Li",
+    "Hongyang Wang",
+    "Jun Wang",
+    "Wenwu Ou"
+   ],
+   "published": "2026-08-05T09:28:43Z",
+   "updated": "2026-08-05T09:28:43Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "Industrial recommendation strategy iteration heavily relies on large-scale A/B experimentation. Traditional tuning requires experts to repeatedly design strategies, configure experiments, analyze results, and adjust parameters, making the process labor-intensive and time-consuming. Meanwhile, valuable knowledge from historical experiments is often fragmented, making systematic reuse difficult through manual expert effort alone. Existing RAG agents partially alleviate this burden by retrieving prior strategies, but typically organize experience in a flat manner, overlooking the hierarchical relationships among business scenarios, recommendation stages, optimization objectives, and experimental contexts. This often results in mismatched retrieval and limited cross-scenario transfer, while preventing agents from continuously refining strategies and parameters through sequential A/B feedback. % To address these limitations, we propose A/B Agent, a closed-loop A/B agent for industrial recommendation strategy optimization. The framework comprises three tightly coupled core components: Historical Strategy Knowledge Organization, Autonomous Target-Aware Strategy Generation, and Experiment-Guided Strategy Self-Evolution. It organizes historical strategies into a hierarchical experience tree, retrieves transferable evidence through multi-path Tree-RAG to generate executable strategies, and continuously analyzes online A/B feedback to guide autonomous tuning and update the experience tree for self-evolution. Extensive offline and online evaluations demonstrate its effectiveness, including a 4.829% improvement in GMV in a real-world short-video e-commerce recommendation system while maintaining positive gains across all guardrail metrics."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "zhang2026dmrl": {
+  "eprint": "2609.02170",
+  "arxiv": {
+   "version": "2609.02170v1",
+   "title": "DMRL: Document-Mediated Reinforcement Learning for Skill Optimization in Advertising Recommendation",
+   "authors": [
+    "Wei Zhang",
+    "Hongji Li",
+    "Song Sun",
+    "Peng Yu",
+    "Xue Yang",
+    "Lei Zhao",
+    "Peng Jiang"
+   ],
+   "published": "2026-09-02T06:32:48Z",
+   "updated": "2026-09-02T06:32:48Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "Advertising recommendation requires continuously tuning complex system parameters while balancing commercial returns and user experience. Recent work has introduced large language models (LLMs) with skill documents to assist this labor-intensive process, but skill optimization remains largely prompt-driven, lacking a principled mechanism to attribute rewards to specific document edits. To address this limitation, we propose Document-Mediated Reinforcement Learning (DMRL), a skill self-evolution framework that models skill document optimization as a sequence of structured editing actions. In DMRL, an upper-level agent performs controlled document edits, while a frozen lower-level task agent evaluates their effects through A/B testing. To address credit assignment and long-term outcomes, we introduce two key components: (1) Dual-Relative Policy Optimization (DRPO), a post-training policy optimization method for robust and risk-aware advantage estimation; and (2) Long-term Reward Predictor (LRP), which estimates long-term outcomes by modeling population heterogeneity with disentangled representation learning and cross-attention transfer. DMRL was deployed on a large-scale short-video ads platform and extensive empirical evaluation shows that DMRL outperforms state-of-the-art baselines across key advertising metrics"
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "yao2026feedbackcontract": {
+  "eprint": "2610.28798",
+  "arxiv": {
+   "version": "2610.28798v1",
+   "title": "An Explicit Feedback Contract for Iterative ML-Agent Harnesses",
+   "authors": [
+    "Kehui Yao",
+    "Chuanbo Hu",
+    "Jiao Chen",
+    "Ramin Giahi",
+    "Reza Yousefi Maragheh",
+    "Lalitesh Morishetti",
+    "Ziwei Hong",
+    "Yiyun Su",
+    "Jianpeng Xu",
+    "Evren Korpeoglu",
+    "Kannan Achan"
+   ],
+   "published": "2026-10-20T18:24:29Z",
+   "updated": "2026-10-20T18:24:29Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "11 pages, 2 figures",
+   "abstract": "Iterative ML agents develop models by editing code, running experiments, reading a validation score, and choosing what to try next. In current harnesses this loop is served by an exact validation score returned after every attempt, which leaves the validation split open to adaptive selection. In this work, we introduce an explicit feedback contract for ML-agent harnesses, which specifies what an agent may observe, when iteration should stop, and when the test split may be touched. The contract releases a validation score only when a submission clears a noise threshold computed from the paired standard error, so no margin has to be tuned. We ran experiments on click-through-rate prediction, learning to rank, and a control task with no signal to find. The control is the sharpest case, because the true gain there is zero by construction: an agent reading exact scores ended by reporting a gain of 0.0157, while under the contract it reported 0.0033. On both real tasks the contract narrows the validation-test gap, and test performance is slightly higher rather than lower. The largest difference is in when the agents stop. Exact feedback used its entire budget of thirty submissions on two of the three tasks, including the one where nothing can be learned, while the contract halted after four to twelve. A run that exhausts its budget is usually read as diligence. It is better read as a symptom: when the feedback channel is unbounded, noise keeps supplying improvements to chase."
+  },
+  "s2": {
+   "paperId": "333b10318e0c50e484a4802695bf6c690b8d37d8",
+   "externalIds": {
+    "ArXiv": "2610.28798",
+    "CorpusId": 293844774
+   },
+   "publicationVenue": null,
+   "title": "An Explicit Feedback Contract for Iterative ML-Agent Harnesses",
+   "venue": "",
+   "year": 2026,
+   "publicationDate": "2026-10-20",
+   "journal": null,
+   "authors": [
+    {
+     "authorId": "2370932120",
+     "name": "Ke-Hui Yao"
+    },
+    {
+     "authorId": "120583544",
+     "name": "Chuan-Bo Hu"
+    },
+    {
+     "authorId": "2157074190",
+     "name": "Jiao Chen"
+    },
+    {
+     "authorId": "101497149",
+     "name": "Ramin Giahi"
+    },
+    {
+     "authorId": "91010985",
+     "name": "Reza Yousefi Maragheh"
+    },
+    {
+     "authorId": "117576986",
+     "name": "Lalitesh Morishetti"
+    },
+    {
+     "authorId": "2390518386",
+     "name": "Zi-Wei Hong"
+    },
+    {
+     "authorId": "2427047604",
+     "name": "Yi-Yun Su"
+    },
+    {
+     "authorId": "2139102391",
+     "name": "Jian-Peng Xu"
+    },
+    {
+     "authorId": "81014296",
+     "name": "Evren Korpeoglu"
+    },
+    {
+     "authorId": "2120209935",
+     "name": "Kannan Achan"
+    }
+   ]
+  }
+ },
+ "wang2026pear": {
+  "eprint": "2609.35031",
+  "arxiv": {
+   "version": "2609.35031v1",
+   "title": "PEAR: Progressive Evidence-Based AutoResearch for Industrial Search Systems",
+   "authors": [
+    "Yifan Wang",
+    "Shipeng Zhu",
+    "Fei Xiong",
+    "Yuqin Yang",
+    "Yonghui Huang",
+    "Kunyao Wu",
+    "Yue Wang",
+    "Weichao Meng",
+    "Yu Gong"
+   ],
+   "published": "2026-09-28T12:30:00Z",
+   "updated": "2026-09-28T12:30:00Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "20 pages, 2 figures, 6 tables",
+   "abstract": "AutoResearch improves systems through iterative experimentation: agents propose candidate modifications, evaluate them, and use the results to guide subsequent exploration. Applying this paradigm to industrial search presents two challenges. (1) Common AutoResearch approaches follow a keep-if-better rule, retaining the highest-scoring candidate for subsequent experiments. Under non-stationary traffic, transient gains may be mistaken for persistent improvements, impairing reliable accumulation of search knowledge. (2) Candidate modifications can be evaluated at multiple fidelity levels, from low-cost proxies to online validation, differing in cost, objective alignment, and statistical reliability. Existing methods rely on individual signals or task-specific procedures, lacking a unified basis for using evidence across levels to guide search. We introduce Progressive Evidence-Based AutoResearch (PEAR) with two complementary components. Evidence-driven AutoResearch maintains an independent, hypothesis-guided research state for each strategy task within a predefined objective and intervention scope. Each state evolves through a Plan-Execute-Evaluate-Update transition that links experimentation to context-aware evidence interpretation and hypothesis revision. Confidence-Gated Verifier Ladder organizes evaluation into four levels of increasing fidelity: Offline Replay, Shadow-Traffic Evaluation, Rapid Online Evaluation, and Decision-Grade Online Evaluation. A unified confidence-based gate promotes candidates only when evidence supports a statistically significant positive effect, enabling broad low-cost exploration while reserving costly online experiments for promoted candidates. In a real-world industrial search system, strategies optimized with PEAR significantly increased Main Order/DAU by 2.7336% and 3.2957% relative to their respective baselines in two A/B experiments."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "hu2026winnerscurse": {
+  "eprint": "2610.09239",
+  "arxiv": {
+   "version": "2610.09239v1",
+   "title": "The Winner's Curse in LLM Self-Improvement Loops: Selection Noise, Lock-in, and Acceptance Rules",
+   "authors": [
+    "Litao Hu",
+    "Yutong Tang"
+   ],
+   "published": "2026-10-07T00:05:23Z",
+   "updated": "2026-10-07T00:05:23Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "34 pages, 4 figures, 18 tables; code and saved experimental records included as ancillary files",
+   "abstract": "Self-improving LLM systems propose changes to themselves and keep those that score better on a small evaluation set. We treat this keep-if-better step as selection under measurement noise, model the correlated errors of the candidates in a single decision, and study empirically what happens when the evaluation set is reused. In runs where Qwen models rewrite their own instructions and every candidate is also scored on 600 held-out items, most proposals after the first are harmful, and the model gives the size of the winner's curse of a generation's best candidate. With a prior from a separate pilot, it matches the average overstatement of first-generation commits in native loops, though not setting by setting. In a pre-registered study, the final selection-set score of greedy loops exceeded held-out accuracy by 13 to 20 points with 16 selection items and by 1 to 5 points with 256. Held-out gains grew with the selection set on TREC but not on GSM8K, and the tested acceptance rules did not beat greedy acceptance over whole runs. Gains measured on the selection set also exceeded held-out gains when a current model refined a competent instruction, and in the validation scores of GEPA and MIPROv2. Scoring the starting and the current instruction on 64 items never used for selection removes the average bias of a loop's reported gain, but single estimates remain off by about 6 points. Self-improvement studies should report held-out gains with their uncertainty."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "bertran2026whatfits": {
+  "eprint": "2606.11045",
+  "arxiv": {
+   "version": "2606.11045v1",
+   "title": "What Fits (Into Few Tokens) Doesn't Overfit: Compression and Generalization in ML Research Agents",
+   "authors": [
+    "Martin Andres Bertran",
+    "Aaron Roth",
+    "Zhiwei Steven Wu"
+   ],
+   "published": "2026-06-09T16:12:55Z",
+   "updated": "2026-06-09T16:12:55Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "Reusing a held-out benchmark adaptively should, in principle, invite overfitting. Yet benchmark-driven machine learning (ML) has produced surprisingly little overfitting in practice. An attractive hypothesis is that successful ML strategies are highly compressible. We study this in the setting of LLM-driven research agents, where the hypothesis becomes directly testable via two complementary information bottlenecks. In \\emph{output compression}, an exploration agent adaptively searches for high-performance models using a validation set, and we test whether a fresh ``reproducer agent'' can reproduce its performance given only an extremely short prompt and the training data. In \\emph{input compression}, the explorer receives only one-bit feedback indicating whether each submitted model improves on the running best. Across 8 datasets spanning tabular classification, vision, language modeling, diffusion modeling, and reward modeling, we find that these bottlenecks have little effect on performance: short prompts and compressible feedback are sufficient to reproduce and find high-performance models. The hypothesis is falsifiable: when we deliberately induce validation-set overfitting, the results fail to reproduce with short prompts. Taken together, our results support a description-length explanation for the lack of overfitting in benchmark-driven ML: successful strategies occupy a low-complexity region of strategy space."
+  },
+  "s2": {
+   "paperId": "5d3f3b2952214abf27947ca280e8bbf0cd20a53e",
+   "externalIds": {
+    "ArXiv": "2606.11045",
+    "DBLP": "journals/corr/abs-2606-11045",
+    "DOI": "10.48550/arXiv.2606.11045",
+    "CorpusId": 289131923
+   },
+   "publicationVenue": {
+    "id": "1901e811-ee72-4b20-8f7e-de08cd395a10",
+    "name": "arXiv.org",
+    "alternate_names": [
+     "ArXiv"
+    ],
+    "issn": "2331-8422",
+    "url": "https://arxiv.org"
+   },
+   "title": "What Fits (Into Few Tokens) Doesn't Overfit: Compression and Generalization in ML Research Agents",
+   "venue": "arXiv.org",
+   "year": 2026,
+   "publicationDate": "2026-06-09",
+   "journal": {
+    "name": "ArXiv",
+    "volume": "abs/2606.11045"
+   },
+   "authors": [
+    {
+     "authorId": "37335063",
+     "name": "Mart\u00edn Bertr\u00e1n"
+    },
+    {
+     "authorId": "2272478086",
+     "name": "Aaron Roth"
+    },
+    {
+     "authorId": "2238047775",
+     "name": "Z. Wu"
+    }
+   ]
+  }
+ },
+ "ferreira2026hpo": {
+  "eprint": "2603.24647",
+  "arxiv": {
+   "version": "2603.24647v5",
+   "title": "Can LLMs Beat Classical Hyperparameter Optimization Algorithms? A Study on autoresearch",
+   "authors": [
+    "Fabio Ferreira",
+    "Lucca Wobbe",
+    "Arjun Krishnakumar",
+    "Frank Hutter",
+    "Arber Zela"
+   ],
+   "published": "2026-03-25T17:29:40Z",
+   "updated": "2026-04-17T18:50:51Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "The autoresearch repository enables an LLM agent to optimize hyperparameters by editing training code directly. We use it as a testbed to compare classical HPO algorithms against LLM-based methods on tuning the hyperparameters of a small language model under a fixed compute budget. When defining a fixed search space over autoresearch, classical methods such as CMA-ES and TPE consistently outperform LLM-based agents, where avoiding out-of-memory failures matters more than search diversity. Allowing the LLM to directly edit source code narrows the gap to the classical methods but does not close it, even with frontier models available at the time of writing such as Claude Opus 4.6 and Gemini 3.1 Pro Preview. We observe that LLMs struggle to track optimization state across trials. In contrast, classical methods lack the domain knowledge of LLMs. To combine the strengths of both, we introduce Centaur, a hybrid that shares CMA-ES's interpretable internal state, including mean vector, step-size, and covariance matrix, with an LLM. Centaur achieves the best result in our experiments, and a 0.8B LLM already suffices to outperform all classical and pure LLM methods. Unconstrained code editing requires larger models to be competitive with classical methods. We further analyze search diversity, model scaling from 0.8B to frontier models, and ablate the fraction of LLM-proposed trials in Centaur. All in all, our results suggest that LLMs are most effective as a complement to classical optimizers, not as a replacement. Code is available at https://github.com/ferreirafabio/autoresearch-automl & interactive demo at https://ferreirafabio.github.io/autoresearch-automl."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "rodrigues2026llmhpo": {
+  "eprint": "2606.21641",
+  "arxiv": {
+   "version": "2606.21641v2",
+   "title": "When Is an LLM Worth It for Hyperparameter Optimization? A Budget-Matched Study on Tabular Data Finds the Warm-Start Is a Default Configuration, Not the Model",
+   "authors": [
+    "Carson Rodrigues",
+    "Oysturn Vas",
+    "Isaiah Abner DCosta",
+    "Nithish Kumar Prabhakaran"
+   ],
+   "published": "2026-06-19T17:52:36Z",
+   "updated": "2026-06-26T10:02:21Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "10 pages, 3 figures",
+   "abstract": "Large language models (LLMs) have been proposed as hyperparameter-optimization (HPO) advisors that \"warm-start\" search from prior knowledge, proposing strong configurations in very few evaluations. We test that claim under a budget-matched, multi-seed protocol on eight PMLB tabular benchmarks, comparing an LLM advisor (LLM-OptFlow) against four classical baselines (random search, Optuna-TPE, Gaussian-process Bayesian optimization, and successive halving) over one shared search space, with paired tests and bootstrap 95% CIs across 8 x 5 = 40 (task, seed) units. The finding is cautionary. The advisor's strong first point is not an LLM output at all: like prior LLM-HPO systems the loop is seeded with a fixed default configuration, evaluated before any model call, which alone reaches 88.7% mean best-CV, identical to within 0.01 pp across all seven advisor models tested. The LLM's own proposals add only +0.40 pp of cross-validation accuracy over that seed and nothing on held-out test (LLM-Default = -0.01 pp, p = 0.92). When the same seed is granted to classical search, the apparent lead collapses: against seeded random search it leads by +0.20 pp at 2 evaluations, is tied by 5, and is behind by 12 (-0.37 pp). Without the seed, classical search ties the advisor by 12 evaluations and beats it by 40 (+0.6 to +0.8 pp, p <= 1e-4). Two LLM-specific behaviors survive: a single-task exploration failure (vehicle), and a rule-based confidence filter that removes ~33% of wasted compute without changing accuracy. The recommendation is deflationary: on tabular HPO, seed classical search with a sensible default; an LLM advisor adds no measurable generalization benefit and is overtaken within a handful of evaluations. We release the harness and a script that reproduces every statistic."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "luo2025pitfalls": {
+  "eprint": "2509.08713",
+  "arxiv": {
+   "version": "2509.08713v2",
+   "title": "The More You Automate, the Less You See: Hidden Pitfalls of AI Scientist Systems",
+   "authors": [
+    "Ziming Luo",
+    "Atoosa Kasirzadeh",
+    "Nihar B. Shah"
+   ],
+   "published": "2025-09-10T16:04:24Z",
+   "updated": "2025-12-20T05:26:07Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "NeurIPS 2025 AI4Science (Spotlight)",
+   "abstract": "AI scientist systems, capable of autonomously executing the full research workflow from hypothesis generation and experimentation to paper writing, hold significant potential for accelerating scientific discovery. However, the internal workflow of these systems have not been closely examined. This lack of scrutiny poses a risk of introducing flaws that could undermine the integrity, reliability, and trustworthiness of their research outputs. In this paper, we identify four potential failure modes in contemporary AI scientist systems: inappropriate benchmark selection, data leakage, metric misuse, and post-hoc selection bias. To examine these risks, we design controlled experiments that isolate each failure mode while addressing challenges unique to evaluating AI scientist systems. Our assessment of two prominent open-source AI scientist systems reveals the presence of several failures, across a spectrum of severity, which can be easily overlooked in practice. Finally, we demonstrate that access to trace logs and code from the full automated workflow enables far more effective detection of such failures than examining the final paper alone. We thus recommend journals and conferences evaluating AI-generated research to mandate submission of these artifacts alongside the paper to ensure transparency, accountability, and reproducibility."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "zhang2026autoreseval": {
+  "eprint": "2610.11877",
+  "arxiv": {
+   "version": "2610.11877v1",
+   "title": "How Is Automated Research Evaluated? A Survey of Benchmarks and Evaluation Practices",
+   "authors": [
+    "Liulei Zhang",
+    "Dejing Zhou",
+    "Chuyue Huang",
+    "Guanhua Chen",
+    "Yutong Yao",
+    "Lidia S. Chao",
+    "Chi Man Vong",
+    "Derek F. Wong"
+   ],
+   "published": "2026-10-08T12:50:23Z",
+   "updated": "2026-10-08T12:50:23Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Accepted to Findings of AACL-IJCNLP 2026",
+   "abstract": "Automated research systems support literature synthesis, ideation, experiments, writing, and peer review, but their evaluation is dispersed across tasks, benchmarks, and studies that are difficult to compare directly. We review this literature from the perspective of evaluation design and evidence, covering six targets: literature synthesis, research ideation, executable workflows, scholarly writing and communication, automatic peer review, and end-to-end research. We compare task construction, evidence sources, evaluators, and scoring procedures to explain the capabilities assessed by different designs. Our synthesis highlights three recurring lessons: output checks, process checks, and human studies provide complementary information; evaluator calibration is specific to the property being assessed; and resource budgets and attempt selection are integral to interpreting performance comparisons. We identify diagnostic evaluation designs and documented gaps in supporting evidence, and translate these comparisons into reporting and audit recommendations for specific evaluation settings. The survey helps readers navigate existing evaluations, select appropriate benchmarks, and design subsequent studies."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "berman2026winners": {
+  "eprint": "2605.18887",
+  "arxiv": {
+   "version": "2605.18887v1",
+   "title": "Valuing Winners: When and How to Correct for Selection Bias in Randomized Experiments",
+   "authors": [
+    "Ron Berman",
+    "Walter W. Zhang",
+    "Hangcheng Zhao"
+   ],
+   "published": "2026-05-16T19:34:49Z",
+   "updated": "2026-05-16T19:34:49Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "68 pages",
+   "abstract": "Decision-makers often deploy the best-performing treatment from a randomized experiment, creating a winner's curse: selection favors treatments whose observed outcomes are high partly because of statistical noise, so the na\u00efve estimate of the winner is upward biased. We distinguish two forms of winner's curse, bias relative to the true best treatment (global) and bias relative to the selected treatment's true mean (selective), and link them to regret from deploying a suboptimal treatment. This framework defines seven decision-relevant evaluation targets: mean bias, mean squared error, and confidence interval coverage for the global and selective winner's curse, and mean regret. We then show that methods that perform well on one target can perform poorly on others, so corrections should be matched to the manager's objective. Across simulations with varying effect sizes, multiple-arm settings, and data calibrated to an online A/B testing platform, no method dominates uniformly: the plug-in estimator performs best when treatment differences are large, cross-fitting performs best when treatments are similar, and resampling methods often achieve low mean squared error for moderate differences. We also introduce an adaptive empirical likelihood procedure that delivers asymptotically valid confidence intervals across settings without the tuning sensitivity of resampling-based methods."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "zhang2026dream": {
+  "eprint": "2608.09408",
+  "arxiv": {
+   "version": "2608.09408v3",
+   "title": "DREAM Technical Report",
+   "authors": [
+    "Bin Zhang",
+    "Bowen Zheng",
+    "Chao Yi",
+    "Chengyu Lai",
+    "Dian Chen",
+    "Dimin Wang",
+    "Gaoyang Guo",
+    "Jialin Zhu",
+    "Jian Wu",
+    "Jing Yu",
+    "Jiuning Lin",
+    "Lingqing Zhang",
+    "Lingyun Zheng",
+    "Mao Zhang",
+    "Mingming Pan",
+    "Ruiquan Lan",
+    "Shuai Zhong",
+    "Wen Chen",
+    "Wendong Zhang",
+    "Xiaodong Zhu",
+    "Xuan Chen",
+    "Xunke Xi",
+    "Yifan Lu",
+    "Yiheng Wang",
+    "Yue Zeng",
+    "Yujie Luo",
+    "Yuning Jiang",
+    "Zhe Hu",
+    "Zhibo Xiao",
+    "Zihong Huang",
+    "Binbin Cao",
+    "Bo Zheng",
+    "Danning Wang",
+    "Dixuan Wang",
+    "Ge Fan",
+    "Haixia Wu",
+    "Han Zhu",
+    "Hao Fang",
+    "Haoming Chen",
+    "Huiping Chu",
+    "Jian Wang",
+    "Jianjun Wu",
+    "Jiawei Wu",
+    "Jiaxin Yu",
+    "Jingwen Liu",
+    "Jinzhe Shan",
+    "Kai Meng",
+    "Kai Zhang",
+    "Keqin Xu",
+    "Kewei Zhu",
+    "Lang Tian",
+    "Leihui Chen",
+    "Li Chen",
+    "Licheng Xu",
+    "Lide Xiao",
+    "Ruitong Zhang",
+    "Shiyao Peng",
+    "Silu Zhou",
+    "Tao Wang",
+    "Wei Shi",
+    "Wenjun Yang",
+    "Xiang Chen",
+    "Xiang Gao",
+    "Xiao Ren",
+    "Xu Liu",
+    "Xuwen Wang",
+    "Yang Li",
+    "Yeqiu Yang",
+    "Yi Hu",
+    "Yichen Yuan",
+    "Yinnan Song",
+    "Yipeng Yu",
+    "Yuan Liu",
+    "Yunqi Gao",
+    "Zhiliang Huang",
+    "Zhujin Gao",
+    "Zongyuan Wu"
+   ],
+   "published": "2026-08-10T10:35:32Z",
+   "updated": "2026-08-13T13:55:36Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Technical Report",
+   "abstract": "Industrial recommender systems commonly use cascaded retrieval, ranking, and re-ranking pipelines. Although efficient, these pipelines fragment information and objectives across modules, rely on rigid rules, and have limited awareness of real-time intent, leaving session-level shifts among browsing, comparison, and purchase insufficiently addressed. We present DREAM (Developing Recommender Engine with Agentic Methods), an autonomous optimization control architecture that adds a perception-aware, orchestrable, and auditable policy layer atop existing pipelines without replacing them. DREAM has two core components. First, a three-tier Intent Engine fuses on-device signals into structured L0/L1/L2 intent representations; its edge-cloud trigger chain reduces reporting volume to approximately 8.7%. Second, a Meta Engine uses a MetaModel for layered M1-to-M2-to-M3 reasoning: intent summarization, strategy planning informed by Strategy Memory, and parameter translation. It dispatches the resulting parameters through a unified outlet with safety guardrails. A Reward Dual Loop continuously optimizes both components by combining offline simulation for strategy-space exploration with online feedback for outcome calibration, forming a cycle of generation, execution, evaluation, and experience accumulation. Large-scale A/B tests on Taobao's homepage feed show that re-ranking control alone improves IPV by 2.06%, Core IPV by 2.39%, and GMV by 0.88%. Extending control to fine ranking raises these gains to 2.71%, 3.06%, and 1.31%, respectively, while consistently improving PV by more than 1%. These gains require neither replacement of pipeline models nor compromise of serving stability, supporting agentic meta-control as a viable paradigm for industrial recommendation."
+  },
+  "s2": {
+   "paperId": "44d87e5c72b5d1206e207adbda4b871c95665ad1",
+   "externalIds": {
+    "ArXiv": "2608.09408",
+    "CorpusId": 290990999
+   },
+   "publicationVenue": null,
+   "title": "DREAM Technical Report",
+   "venue": "",
+   "year": 2026,
+   "publicationDate": "2026-08-10",
+   "journal": null,
+   "authors": [
+    {
+     "authorId": "2315291036",
+     "name": "Bin Zhang"
+    },
+    {
+     "authorId": "2459307999",
+     "name": "Bo-Wen Zheng"
+    },
+    {
+     "authorId": "2346112231",
+     "name": "Chao Yi"
+    },
+    {
+     "authorId": "2303832959",
+     "name": "Chengyu Lai"
+    },
+    {
+     "authorId": "2346289329",
+     "name": "Dian Chen"
+    },
+    {
+     "authorId": "2294509970",
+     "name": "Di-Min Wang"
+    },
+    {
+     "authorId": "2346111794",
+     "name": "Gao-Yang Guo"
+    },
+    {
+     "authorId": "2374075126",
+     "name": "Jialin Zhu"
+    },
+    {
+     "authorId": "2346280602",
+     "name": "Jian Wu"
+    },
+    {
+     "authorId": "2374175849",
+     "name": "Jing Yu"
+    },
+    {
+     "authorId": "2429643674",
+     "name": "Jiuning Lin"
+    },
+    {
+     "authorId": "2453834794",
+     "name": "Ling-Qin Zhang"
+    },
+    {
+     "authorId": "2459572472",
+     "name": "Ling Zheng"
+    },
+    {
+     "authorId": "2346495594",
+     "name": "Mao Zhang"
+    },
+    {
+     "authorId": "2354370690",
+     "name": "Ming-Ming Pan"
+    },
+    {
+     "authorId": "2456701558",
+     "name": "Ruiquan Lan"
+    },
+    {
+     "authorId": "2378217298",
+     "name": "Shuai Zhong"
+    },
+    {
+     "authorId": "2314949019",
+     "name": "Wen Chen"
+    },
+    {
+     "authorId": "2456843537",
+     "name": "Wendong Zhang"
+    },
+    {
+     "authorId": "2456317770",
+     "name": "Xiaodong Zhu"
+    },
+    {
+     "authorId": "2454210846",
+     "name": "Xuan Chen"
+    },
+    {
+     "authorId": "2352144986",
+     "name": "Xun Xi"
+    },
+    {
+     "authorId": "2267032392",
+     "name": "Yifan Lu"
+    },
+    {
+     "authorId": "2448947078",
+     "name": "Yiheng Wang"
+    },
+    {
+     "authorId": "2224462057",
+     "name": "Yue Zeng"
+    },
+    {
+     "authorId": "2373931739",
+     "name": "Yu-Kai Luo"
+    },
+    {
+     "authorId": "2260839743",
+     "name": "Yu-Ning Jiang"
+    },
+    {
+     "authorId": "2456614405",
+     "name": "Zhe Hu"
+    },
+    {
+     "authorId": "1630464060",
+     "name": "Zhibo Xiao"
+    },
+    {
+     "authorId": "3379930",
+     "name": "Zi-Hong Huang"
+    },
+    {
+     "authorId": "2365546938",
+     "name": "Binbin Cao"
+    },
+    {
+     "authorId": "2247922277",
+     "name": "Bo Zheng"
+    },
+    {
+     "authorId": "2453826748",
+     "name": "Dan-Ning Wang"
+    },
+    {
+     "authorId": "2374275163",
+     "name": "Di-Xuan Wang"
+    },
+    {
+     "authorId": "2057841513",
+     "name": "Ge Fan"
+    },
+    {
+     "authorId": "1916775806",
+     "name": "Haixia Wu"
+    },
+    {
+     "authorId": "2154088540",
+     "name": "Han Zhu"
+    },
+    {
+     "authorId": "2385493120",
+     "name": "Hao Fang"
+    },
+    {
+     "authorId": "49178412",
+     "name": "Haomin Chen"
+    },
+    {
+     "authorId": "2401445537",
+     "name": "Huiping Chu"
+    },
+    {
+     "authorId": "2269851587",
+     "name": "Jian Wang"
+    },
+    {
+     "authorId": "2462908628",
+     "name": "Jian-Jun Wu"
+    },
+    {
+     "authorId": "2355346664",
+     "name": "Jia-Wei Wu"
+    },
+    {
+     "authorId": "2454213495",
+     "name": "Jia-Xin Yu"
+    },
+    {
+     "authorId": "2335148283",
+     "name": "Jingwen Liu"
+    },
+    {
+     "authorId": "2400550493",
+     "name": "Jinzhe Shan"
+    },
+    {
+     "authorId": "2412722480",
+     "name": "Kai Meng"
+    },
+    {
+     "authorId": "2343705733",
+     "name": "Kai Zhang"
+    },
+    {
+     "authorId": "2456315855",
+     "name": "Ke Xu"
+    },
+    {
+     "authorId": "2282298612",
+     "name": "Ke Zhu"
+    },
+    {
+     "authorId": "2047434821",
+     "name": "Lang Tian"
+    },
+    {
+     "authorId": "2455453059",
+     "name": "Lei-Ying Chen"
+    },
+    {
+     "authorId": "2455488678",
+     "name": "Li Chen"
+    },
+    {
+     "authorId": "47775940",
+     "name": "Li-Cheng Xu"
+    },
+    {
+     "authorId": "2212682709",
+     "name": "Lide Xiao"
+    },
+    {
+     "authorId": "2110035651",
+     "name": "Rui-Tong Zhang"
+    },
+    {
+     "authorId": "2449795966",
+     "name": "Shi Peng"
+    },
+    {
+     "authorId": "2400641664",
+     "name": "Si-Lu Zhou"
+    },
+    {
+     "authorId": "2334694490",
+     "name": "Tao Wang"
+    },
+    {
+     "authorId": "2153422753",
+     "name": "Wei Shi"
+    },
+    {
+     "authorId": "2375288024",
+     "name": "Wen-Jun Yang"
+    },
+    {
+     "authorId": "2485881730",
+     "name": "Xiang Chen"
+    },
+    {
+     "authorId": "2335696113",
+     "name": "Xiang Gao"
+    },
+    {
+     "authorId": "2451026239",
+     "name": "Xiaoyan Ren"
+    },
+    {
+     "authorId": "2290239365",
+     "name": "Xu Liu"
+    },
+    {
+     "authorId": "2462995512",
+     "name": "Xu-Wen Wang"
+    },
+    {
+     "authorId": "2374401377",
+     "name": "Yang Li"
+    },
+    {
+     "authorId": "2362433608",
+     "name": "Yeqiu Yang"
+    },
+    {
+     "authorId": "2483086649",
+     "name": "Yi Hu"
+    },
+    {
+     "authorId": "2454251051",
+     "name": "Yi-Chen Yuan"
+    },
+    {
+     "authorId": "2374412821",
+     "name": "Yin-Nan Song"
+    },
+    {
+     "authorId": "2380750547",
+     "name": "Yipeng Yu"
+    },
+    {
+     "authorId": "2458152648",
+     "name": "Yuan Liu"
+    },
+    {
+     "authorId": "2445881860",
+     "name": "Yun-Fei Gao"
+    },
+    {
+     "authorId": "2470802540",
+     "name": "Zhi-Liang Huang"
+    },
+    {
+     "authorId": "2196760222",
+     "name": "Zhujin Gao"
+    },
+    {
+     "authorId": "2136409365",
+     "name": "Zong-Hong Wu"
+    }
+   ]
+  }
+ },
+ "kernelevolve2025": {
+  "eprint": "2512.23236",
+  "arxiv": {
+   "version": "2512.23236v4",
+   "title": "KernelEvolve: Scaling Agentic Kernel Coding for Heterogeneous AI Accelerators at Meta",
+   "authors": [
+    "Gang Liao",
+    "Hongsen Qin",
+    "Ying Wang",
+    "Alicia Golden",
+    "Michael Kuchnik",
+    "Yavuz Yetim",
+    "Jia Jiunn Ang",
+    "Chunli Fu",
+    "Yihan He",
+    "Samuel Hsia",
+    "Zewei Jiang",
+    "Dianshi Li",
+    "Uladzimir Pashkevich",
+    "Varna Puvvada",
+    "Feng Shi",
+    "Matt Steiner",
+    "Ruichao Xiao",
+    "Liyuan Li",
+    "Nathan Yan",
+    "Xiayu Yu",
+    "Zhou Fang",
+    "Roman Levenstein",
+    "Kunming Ho",
+    "Haishan Zhu",
+    "Alec Hammond",
+    "Richard Li",
+    "Ajit Mathews",
+    "Kaustubh Gondkar",
+    "Abdul Zainul-Abedin",
+    "Ketan Singh",
+    "Hongtao Yu",
+    "Wenyuan Chi",
+    "Barney Huang",
+    "Sean Zhang",
+    "Noah Weller",
+    "Zach Marine",
+    "Wyatt Cook",
+    "Carole-Jean Wu",
+    "Gaoxiang Liu"
+   ],
+   "published": "2025-12-29T06:31:55Z",
+   "updated": "2026-07-06T22:18:07Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "Making deep learning recommendation model (DLRM) training and inference fast and efficient is important. However, this presents three key system challenges - model architecture diversity, kernel primitive diversity, and hardware generation and architecture heterogeneity. This paper presents KernelEvolve-an agentic kernel coding framework-to tackle heterogeneity at-scale for DLRM. KernelEvolve is designed to take kernel specifications as input and automate the process of kernel generation and optimization for recommendation model across heterogeneous hardware architectures. KernelEvolve does so by operating at multiple programming abstractions, from Triton and CuTe DSL to low-level hardware agnostic languages, spanning the full hardware-software optimization stack. The kernel optimization process is described as graph-based search with selection policy, universal operator, fitness function, and termination rule, dynamically adapts to runtime execution context through retrieval-augmented prompt synthesis. We designed, implemented, and deployed KernelEvolve to optimize a wide variety of production recommendation models across generations of NVIDIA and AMD GPUs, as well as Meta's AI accelerators. We validate KernelEvolve on the publicly-available KernelBench suite, achieving 100% pass rate on all 250 problems across three difficulty levels, and 160 PyTorch ATen operators across three heterogeneous hardware platforms, demonstrating 100% correctness. KernelEvolve reduces development time from weeks to hours and achieves substantial performance improvements over PyTorch baselines across diverse production use cases and for heterogeneous AI systems at-scale. Beyond performance efficiency improvements, KernelEvolve significantly mitigates the programmability barrier for new AI hardware by enabling automated kernel generation for in-house developed AI hardware."
+  },
+  "s2": {
+   "paperId": "8e746d38a6991b4aecae7f1ab8dcf253f8957519",
+   "externalIds": {
+    "ArXiv": "2512.23236",
+    "CorpusId": 290930063
+   },
+   "publicationVenue": null,
+   "title": "KernelEvolve: Scaling Agentic Kernel Coding for Heterogeneous AI Accelerators at Meta",
+   "venue": "",
+   "year": 2025,
+   "publicationDate": "2025-12-29",
+   "journal": null,
+   "authors": [
+    {
+     "authorId": "2290910878",
+     "name": "Gang Liao"
+    },
+    {
+     "authorId": "2409953043",
+     "name": "Hongsen Qin"
+    },
+    {
+     "authorId": "2446383894",
+     "name": "Ying Wang"
+    },
+    {
+     "authorId": "2253623020",
+     "name": "Alicia Golden"
+    },
+    {
+     "authorId": "2328091773",
+     "name": "Michael Kuchnik"
+    },
+    {
+     "authorId": "3295306",
+     "name": "Yavuz Yetim"
+    },
+    {
+     "authorId": "2455609490",
+     "name": "Jia Jiunn Ang"
+    },
+    {
+     "authorId": "2455620150",
+     "name": "Chunli Fu"
+    },
+    {
+     "authorId": "2246840782",
+     "name": "Yi-Han He"
+    },
+    {
+     "authorId": "1481699378",
+     "name": "Samuel Hsia"
+    },
+    {
+     "authorId": "2408741773",
+     "name": "Zewei Jiang"
+    },
+    {
+     "authorId": "2442559805",
+     "name": "Dian Li"
+    },
+    {
+     "authorId": "2325093295",
+     "name": "Uladzimir Pashkevich"
+    },
+    {
+     "authorId": "2101378926",
+     "name": "Varna Puvvada"
+    },
+    {
+     "authorId": "103055041",
+     "name": "F. Shi"
+    },
+    {
+     "authorId": "2349711775",
+     "name": "Matt Steiner"
+    },
+    {
+     "authorId": "2392013707",
+     "name": "Rui Xiao"
+    },
+    {
+     "authorId": "2445725265",
+     "name": "Li-Yuan Li"
+    },
+    {
+     "authorId": "2330191899",
+     "name": "Na Yan"
+    },
+    {
+     "authorId": "2455654796",
+     "name": "Xiayu Yu"
+    },
+    {
+     "authorId": "2409175357",
+     "name": "Zhou Fang"
+    },
+    {
+     "authorId": "46211183",
+     "name": "Roman Levenstein"
+    },
+    {
+     "authorId": "2408732532",
+     "name": "Kunming Ho"
+    },
+    {
+     "authorId": "2115314082",
+     "name": "Haishan Zhu"
+    },
+    {
+     "authorId": "37708532",
+     "name": "A. Hammond"
+    },
+    {
+     "authorId": "2218620681",
+     "name": "Richard Li"
+    },
+    {
+     "authorId": "2297956471",
+     "name": "Ajit Mathews"
+    },
+    {
+     "authorId": "2220160569",
+     "name": "Kaustubh Gondkar"
+    },
+    {
+     "authorId": "2079787140",
+     "name": "A. Zainul-Abedin"
+    },
+    {
+     "authorId": "2362756841",
+     "name": "Ketan Singh"
+    },
+    {
+     "authorId": "2454297181",
+     "name": "Hongtao Yu"
+    },
+    {
+     "authorId": "2408664700",
+     "name": "Wenyuan Chi"
+    },
+    {
+     "authorId": "2455965850",
+     "name": "Barney Huang"
+    },
+    {
+     "authorId": "2348569559",
+     "name": "Sean Zhang"
+    },
+    {
+     "authorId": "2456181293",
+     "name": "N. Weller"
+    },
+    {
+     "authorId": "2456190134",
+     "name": "Zach Marine"
+    },
+    {
+     "authorId": "2408663035",
+     "name": "Wyatt Cook"
+    },
+    {
+     "authorId": "2354511253",
+     "name": "Carole-Jean Wu"
+    },
+    {
+     "authorId": "2347553343",
+     "name": "Gaoxiang Liu"
+    }
+   ]
+  }
+ },
+ "srikanth2026aide2": {
+  "eprint": "2609.26457",
+  "arxiv": {
+   "version": "2609.26457v1",
+   "title": "Recursive self-improvement of AI research agents",
+   "authors": [
+    "Dhruv Srikanth",
+    "Bingchen Zhao",
+    "Dixing Xu",
+    "Yuxiang Wu",
+    "Zhengyao Jiang"
+   ],
+   "published": "2026-09-22T14:12:13Z",
+   "updated": "2026-09-22T14:12:13Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "28 pages, 10 figures, 3 tables",
+   "abstract": "AI agents are beginning to automate research and development across the AI stack, from improving training efficiency to optimizing inference. A natural next step is to improve the research efficiency of the agents themselves. When an AI research agent's own code is the object of optimization, each accepted rewrite becomes the agent that the next round edits. We refer to this loop as recursive self-improvement. Its significance lies in a long-standing trend, in which increased cumulative spending on R&D yields diminishing returns. Sustained self-improvement offers a way to counter this trend. We present AIDE^2, a system that implements this loop for a frontier AI research agent. It proposes changes to its own code, benchmarks modified versions of itself on a suite of AI R&D tasks, and keeps the changes that perform best on hidden evaluations. In an autonomous 8-day run, AIDE^2 discovered seven successive improvements, ranging from a new search policy to memory mechanisms that compress and manage the agent's growing context. These gains generalize to four held-out benchmarks spanning machine learning engineering, heuristic algorithm engineering, and physics-based weather forecasting, the last of which is out of distribution from the selection tasks. On all four, the strongest discovered agent matches or exceeds a human-engineered production research agent that ranks among the strongest on FML-Bench. On a separate held-out task family, the discovered agents also exhibit reduced reward hacking, a property the loop never explicitly optimized for: the rate falls from 55% to 32% during the run, 7 percentage points below the human-engineered agent. Together, these results show that an AI research agent can improve its own research efficiency through recursive self-improvement, and that these gains transfer to tasks and domains the loop never encountered."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "wang2026serm": {
+  "eprint": "2601.09515",
+  "arxiv": {
+   "version": "2601.09515v3",
+   "title": "SERM: Self-Evolving Relevance Model with Agent-Driven Learning from Massive Query Streams",
+   "authors": [
+    "Chenglong Wang",
+    "Canjia Li",
+    "Xingzhao Zhu",
+    "Yifu Huo",
+    "Huiyu Wang",
+    "Weixiong Lin",
+    "Yun Yang",
+    "Qiaozhi He",
+    "Tianhua Zhou",
+    "Xiaojia Chang",
+    "Jingbo Zhu",
+    "Tong Xiao"
+   ],
+   "published": "2026-01-14T14:31:16Z",
+   "updated": "2026-07-25T15:57:13Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Accepted by Findings of ACL 2026",
+   "abstract": "Due to the dynamically evolving nature of real-world query streams, relevance models struggle to generalize to practical search scenarios. A sophisticated solution is self-evolution techniques. However, in large-scale industrial settings with massive query streams, this technique faces two challenges: (1) informative samples are often sparse and difficult to identify, and (2) pseudo-labels generated by the current model could be unreliable. To address these challenges, in this work, we propose a Self-Evolving Relevance Model approach (SERM), which comprises two complementary multi-agent modules: a multi-agent sample miner, designed to detect distributional shifts and identify informative training samples, and a multi-agent relevance annotator, which provides reliable labels through a two-level agreement framework. We evaluate SERM in a large-scale industrial setting, which serves billions of user requests daily. Experimental results demonstrate that SERM can achieve significant performance gains through iterative self-evolution, as validated by extensive offline multilingual evaluations and online testing."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "wu2025growthhacker": {
+  "eprint": "2511.00802",
+  "arxiv": {
+   "version": "2511.00802v2",
+   "title": "GrowthHacker: Automated Off-Policy Evaluation Optimization Using Code-Modifying LLM Agents",
+   "authors": [
+    "Jie JW Wu",
+    "Ayanda Patrick Herlihy",
+    "Ahmad Saleem Mirza",
+    "Ali Afoud",
+    "Fatemeh Fard"
+   ],
+   "published": "2025-11-02T04:47:17Z",
+   "updated": "2026-06-17T02:55:02Z",
+   "journal_ref": null,
+   "doi": "10.1145/3815588",
+   "comment": "Accepted for publication in ACM Transactions on Software Engineering and Methodology (TOSEM), 2026",
+   "abstract": "With data-driven development now widely adopted, online A/B testing is an established method for measuring the effects of new technologies. However, deploying online experiments demands resources for design, implementation, and deployment, and may negatively impact users (e.g., unsafe or unethical outcomes) while requiring weeks of data collection. To address this, the growing research area of off-policy evaluation (OPE), or offline A/B testing, assesses new technologies offline using previously collected logged data. OPE is also a fundamental problem in reinforcement learning and is important where online testing is expensive or risky, such as healthcare, recommender systems, education, and robotics. Despite advances in code-generation large language models (LLMs) and agentic workflows, little is known about whether and how LLMs and LLM-based agents can automatically optimize OPE implementations. We propose GrowthHacker, a benchmark that evaluates baseline LLMs and LLM-based agents on large-scale public datasets. GrowthHacker autonomously and iteratively modifies code, runs OPE, and uses the metrics to guide subsequent optimization. We evaluate methods on Open Bandit Pipeline (OBP) and Scope-RL, and develop a two_agent framework that addresses limitations of existing frameworks while reducing complexity. Across both libraries, two_agent shows the highest reliability (98.1%-100% success rate) and positive-outcome rate (78%), with a median improvement of 4.4% among positive outcomes; CrewAI achieves the highest average improvement (37.9%) and is the only framework with zero extreme-value failures. AutoGen and Default each reach 65% positive-outcome rates. These results establish the feasibility of using LLM-based agents as automated \"growth hackers\" to continuously improve OPE systems, with implications for scaling data-driven decision-making where manual optimization is expensive."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "chen2023evoprompting": {
+  "eprint": "2302.14838",
+  "arxiv": {
+   "version": "2302.14838v3",
+   "title": "EvoPrompting: Language Models for Code-Level Neural Architecture Search",
+   "authors": [
+    "Angelica Chen",
+    "David M. Dohan",
+    "David R. So"
+   ],
+   "published": "2023-02-28T18:37:25Z",
+   "updated": "2023-11-16T18:02:19Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "NeurIPS 2023",
+   "abstract": "Given the recent impressive accomplishments of language models (LMs) for code generation, we explore the use of LMs as adaptive mutation and crossover operators for an evolutionary neural architecture search (NAS) algorithm. While NAS still proves too difficult a task for LMs to succeed at solely through prompting, we find that the combination of evolutionary prompt engineering with soft prompt-tuning, a method we term EvoPrompting, consistently finds diverse and high performing models. We first demonstrate that EvoPrompting is effective on the computationally efficient MNIST-1D dataset, where EvoPrompting produces convolutional architecture variants that outperform both those designed by human experts and naive few-shot prompting in terms of accuracy and model size. We then apply our method to searching for graph neural networks on the CLRS Algorithmic Reasoning Benchmark, where EvoPrompting is able to design novel architectures that outperform current state-of-the-art models on 21 out of 30 algorithmic reasoning tasks while maintaining similar model size. EvoPrompting is successful at designing accurate and efficient neural network architectures across a variety of machine learning tasks, while also being general enough for easy adaptation to other tasks beyond neural network design."
+  },
+  "s2": {
+   "paperId": "411b16add23976ffcdf6422f932453f6ebcca119",
+   "externalIds": {
+    "DBLP": "conf/nips/ChenDS23",
+    "ArXiv": "2302.14838",
+    "DOI": "10.48550/arXiv.2302.14838",
+    "CorpusId": 257232765
+   },
+   "publicationVenue": {
+    "id": "d9720b90-d60b-48bc-9df8-87a30b9a60dd",
+    "name": "Neural Information Processing Systems",
+    "type": "conference",
+    "alternate_names": [
+     "Neural Inf Process Syst",
+     "NeurIPS",
+     "NIPS"
+    ],
+    "url": "http://neurips.cc/"
+   },
+   "title": "EvoPrompting: Language Models for Code-Level Neural Architecture Search",
+   "venue": "Neural Information Processing Systems",
+   "year": 2023,
+   "publicationDate": "2023-02-28",
+   "journal": {
+    "name": "ArXiv",
+    "volume": "abs/2302.14838"
+   },
+   "authors": [
+    {
+     "authorId": "13336152",
+     "name": "Angelica Chen"
+    },
+    {
+     "authorId": "35363891",
+     "name": "David Dohan"
+    },
+    {
+     "authorId": "48165870",
+     "name": "David R. So"
+    }
+   ]
+  }
+ },
+ "nasir2023llmatic": {
+  "eprint": "2306.01102",
+  "arxiv": {
+   "version": "2306.01102v8",
+   "title": "LLMatic: Neural Architecture Search via Large Language Models and Quality Diversity Optimization",
+   "authors": [
+    "Muhammad U. Nasir",
+    "Sam Earle",
+    "Christopher Cleghorn",
+    "Steven James",
+    "Julian Togelius"
+   ],
+   "published": "2023-06-01T19:33:21Z",
+   "updated": "2024-04-12T08:17:54Z",
+   "journal_ref": null,
+   "doi": "10.1145/3638529.3654017",
+   "comment": "Accepted to The Genetic and Evolutionary Computation Conference 2024",
+   "abstract": "Large Language Models (LLMs) have emerged as powerful tools capable of accomplishing a broad spectrum of tasks. Their abilities span numerous areas, and one area where they have made a significant impact is in the domain of code generation. Here, we propose using the coding abilities of LLMs to introduce meaningful variations to code defining neural networks. Meanwhile, Quality-Diversity (QD) algorithms are known to discover diverse and robust solutions. By merging the code-generating abilities of LLMs with the diversity and robustness of QD solutions, we introduce \\texttt{LLMatic}, a Neural Architecture Search (NAS) algorithm. While LLMs struggle to conduct NAS directly through prompts, \\texttt{LLMatic} uses a procedural approach, leveraging QD for prompts and network architecture to create diverse and high-performing networks. We test \\texttt{LLMatic} on the CIFAR-10 and NAS-bench-201 benchmarks, demonstrating that it can produce competitive networks while evaluating just $2,000$ candidates, even without prior knowledge of the benchmark domain or exposure to any previous top-performing models for the benchmark. The open-sourced code is available in \\url{https://github.com/umair-nasir14/LLMatic}."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "zheng2023gpt4nas": {
+  "eprint": "2304.10970",
+  "arxiv": {
+   "version": "2304.10970v4",
+   "title": "Can GPT-4 Perform Neural Architecture Search?",
+   "authors": [
+    "Mingkai Zheng",
+    "Xiu Su",
+    "Shan You",
+    "Fei Wang",
+    "Chen Qian",
+    "Chang Xu",
+    "Samuel Albanie"
+   ],
+   "published": "2023-04-21T14:06:44Z",
+   "updated": "2023-08-02T03:59:34Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "We investigate the potential of GPT-4~\\cite{gpt4} to perform Neural Architecture Search (NAS) -- the task of designing effective neural architectures. Our proposed approach, \\textbf{G}PT-4 \\textbf{E}nhanced \\textbf{N}eural arch\\textbf{I}tect\\textbf{U}re \\textbf{S}earch (GENIUS), leverages the generative capabilities of GPT-4 as a black-box optimiser to quickly navigate the architecture search space, pinpoint promising candidates, and iteratively refine these candidates to improve performance. We assess GENIUS across several benchmarks, comparing it with existing state-of-the-art NAS techniques to illustrate its effectiveness. Rather than targeting state-of-the-art performance, our objective is to highlight GPT-4's potential to assist research on a challenging technical problem through a simple prompting scheme that requires relatively limited domain expertise\\footnote{Code available at \\href{https://github.com/mingkai-zheng/GENIUS}{https://github.com/mingkai-zheng/GENIUS}.}. More broadly, we believe our preliminary results point to future research that harnesses general purpose language models for diverse optimisation tasks. We also highlight important limitations to our study, and note implications for AI safety."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "yu2023gptnas": {
+  "eprint": "2305.05351",
+  "arxiv": {
+   "version": "2305.05351v4",
+   "title": "GPT-NAS: Evolutionary Neural Architecture Search with the Generative Pre-Trained Model",
+   "authors": [
+    "Caiyang Yu",
+    "Xianggen Liu",
+    "Yifan Wang",
+    "Yun Liu",
+    "Wentao Feng",
+    "Deng Xiong",
+    "Chenwei Tang",
+    "Jiancheng Lv"
+   ],
+   "published": "2023-05-09T11:29:42Z",
+   "updated": "2025-02-15T04:09:35Z",
+   "journal_ref": null,
+   "doi": "10.26599/BDMA.2024.9020036",
+   "comment": null,
+   "abstract": "Neural Architecture Search (NAS) has emerged as one of the effective methods to design the optimal neural network architecture automatically. Although neural architectures have achieved human-level performances in several tasks, few of them are obtained from the NAS method. The main reason is the huge search space of neural architectures, making NAS algorithms inefficient. This work presents a novel architecture search algorithm, called GPT-NAS, that optimizes neural architectures by Generative Pre-Trained (GPT) model with an evolutionary algorithm (EA) as the search strategy. In GPT-NAS, we assume that a generative model pre-trained on a large-scale corpus could learn the fundamental law of building neural architectures. Therefore, GPT-NAS leverages the GPT model to propose reasonable architecture components given the basic one and then utilizes EAs to search for the optimal solution. Such an approach can largely reduce the search space by introducing prior knowledge in the search process. Extensive experimental results show that our GPT-NAS method significantly outperforms seven manually designed neural architectures and thirteen architectures provided by competing NAS methods. In addition, our experiments also indicate that the proposed algorithm improves the performance of finely tuned neural architectures by up to about 12% compared to those without GPT, further demonstrating its effectiveness in searching neural architectures."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "real2020automlzero": {
+  "eprint": "2003.03384",
+  "arxiv": {
+   "version": "2003.03384v2",
+   "title": "AutoML-Zero: Evolving Machine Learning Algorithms From Scratch",
+   "authors": [
+    "Esteban Real",
+    "Chen Liang",
+    "David R. So",
+    "Quoc V. Le"
+   ],
+   "published": "2020-03-06T19:00:04Z",
+   "updated": "2020-06-30T04:32:44Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Accepted for publication at the 37th International Conference on Machine Learning (ICML 2020). Near camera-ready version",
+   "abstract": "Machine learning research has advanced in multiple aspects, including model structures and learning methods. The effort to automate such research, known as AutoML, has also made significant progress. However, this progress has largely focused on the architecture of neural networks, where it has relied on sophisticated expert-designed layers as building blocks---or similarly restrictive search spaces. Our goal is to show that AutoML can go further: it is possible today to automatically discover complete machine learning algorithms just using basic mathematical operations as building blocks. We demonstrate this by introducing a novel framework that significantly reduces human bias through a generic search space. Despite the vastness of this space, evolutionary search can still discover two-layer neural networks trained by backpropagation. These simple neural networks can then be surpassed by evolving directly on tasks of interest, e.g. CIFAR-10 variants, where modern techniques emerge in the top algorithms, such as bilinear interactions, normalized gradients, and weight averaging. Moreover, evolution adapts algorithms to different task types: e.g., dropout-like techniques appear when little data is available. We believe these preliminary successes in discovering machine learning algorithms from scratch indicate a promising new direction for the field."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "ye2024reevo": {
+  "eprint": "2402.01145",
+  "arxiv": {
+   "version": "2402.01145v3",
+   "title": "ReEvo: Large Language Models as Hyper-Heuristics with Reflective Evolution",
+   "authors": [
+    "Haoran Ye",
+    "Jiarui Wang",
+    "Zhiguang Cao",
+    "Federico Berto",
+    "Chuanbo Hua",
+    "Haeyeon Kim",
+    "Jinkyoo Park",
+    "Guojie Song"
+   ],
+   "published": "2024-02-02T05:04:51Z",
+   "updated": "2024-10-14T13:50:46Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Accepted at NeurIPS 2024",
+   "abstract": "The omnipresence of NP-hard combinatorial optimization problems (COPs) compels domain experts to engage in trial-and-error heuristic design. The long-standing endeavor of design automation has gained new momentum with the rise of large language models (LLMs). This paper introduces Language Hyper-Heuristics (LHHs), an emerging variant of Hyper-Heuristics that leverages LLMs for heuristic generation, featuring minimal manual intervention and open-ended heuristic spaces. To empower LHHs, we present Reflective Evolution (ReEvo), a novel integration of evolutionary search for efficiently exploring the heuristic space, and LLM reflections to provide verbal gradients within the space. Across five heterogeneous algorithmic types, six different COPs, and both white-box and black-box views of COPs, ReEvo yields state-of-the-art and competitive meta-heuristics, evolutionary algorithms, heuristics, and neural solvers, while being more sample-efficient than prior LHHs."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "ma2023eureka": {
+  "eprint": "2310.12931",
+  "arxiv": {
+   "version": "2310.12931v2",
+   "title": "Eureka: Human-Level Reward Design via Coding Large Language Models",
+   "authors": [
+    "Yecheng Jason Ma",
+    "William Liang",
+    "Guanzhi Wang",
+    "De-An Huang",
+    "Osbert Bastani",
+    "Dinesh Jayaraman",
+    "Yuke Zhu",
+    "Linxi Fan",
+    "Anima Anandkumar"
+   ],
+   "published": "2023-10-19T17:31:01Z",
+   "updated": "2024-04-30T21:35:53Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "ICLR 2024. Project website and open-source code: https://eureka-research.github.io/",
+   "abstract": "Large Language Models (LLMs) have excelled as high-level semantic planners for sequential decision-making tasks. However, harnessing them to learn complex low-level manipulation tasks, such as dexterous pen spinning, remains an open problem. We bridge this fundamental gap and present Eureka, a human-level reward design algorithm powered by LLMs. Eureka exploits the remarkable zero-shot generation, code-writing, and in-context improvement capabilities of state-of-the-art LLMs, such as GPT-4, to perform evolutionary optimization over reward code. The resulting rewards can then be used to acquire complex skills via reinforcement learning. Without any task-specific prompting or pre-defined reward templates, Eureka generates reward functions that outperform expert human-engineered rewards. In a diverse suite of 29 open-source RL environments that include 10 distinct robot morphologies, Eureka outperforms human experts on 83% of the tasks, leading to an average normalized improvement of 52%. The generality of Eureka also enables a new gradient-free in-context learning approach to reinforcement learning from human feedback (RLHF), readily incorporating human inputs to improve the quality and the safety of the generated rewards without model updating. Finally, using Eureka rewards in a curriculum learning setting, we demonstrate for the first time, a simulated Shadow Hand capable of performing pen spinning tricks, adeptly manipulating a pen in circles at rapid speed."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "shojaee2024llmsr": {
+  "eprint": "2404.18400",
+  "arxiv": {
+   "version": "2404.18400v3",
+   "title": "LLM-SR: Scientific Equation Discovery via Programming with Large Language Models",
+   "authors": [
+    "Parshin Shojaee",
+    "Kazem Meidani",
+    "Shashank Gupta",
+    "Amir Barati Farimani",
+    "Chandan K Reddy"
+   ],
+   "published": "2024-04-29T03:30:06Z",
+   "updated": "2025-03-20T16:37:17Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "ICLR 2025 Oral",
+   "abstract": "Mathematical equations have been unreasonably effective in describing complex natural phenomena across various scientific disciplines. However, discovering such insightful equations from data presents significant challenges due to the necessity of navigating extremely large combinatorial hypothesis spaces. Current methods of equation discovery, commonly known as symbolic regression techniques, largely focus on extracting equations from data alone, often neglecting the domain-specific prior knowledge that scientists typically depend on. They also employ limited representations such as expression trees, constraining the search space and expressiveness of equations. To bridge this gap, we introduce LLM-SR, a novel approach that leverages the extensive scientific knowledge and robust code generation capabilities of Large Language Models (LLMs) to discover scientific equations from data. Specifically, LLM-SR treats equations as programs with mathematical operators and combines LLMs' scientific priors with evolutionary search over equation programs. The LLM iteratively proposes new equation skeleton hypotheses, drawing from its domain knowledge, which are then optimized against data to estimate parameters. We evaluate LLM-SR on four benchmark problems across diverse scientific domains (e.g., physics, biology), which we carefully designed to simulate the discovery process and prevent LLM recitation. Our results demonstrate that LLM-SR discovers physically accurate equations that significantly outperform state-of-the-art symbolic regression baselines, particularly in out-of-domain test settings. We also show that LLM-SR's incorporation of scientific priors enables more efficient equation space exploration than the baselines. Code and data are available: https://github.com/deep-symbolic-mathematics/LLM-SR"
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "yang2023opro": {
+  "eprint": "2309.03409",
+  "arxiv": {
+   "version": "2309.03409v3",
+   "title": "Large Language Models as Optimizers",
+   "authors": [
+    "Chengrun Yang",
+    "Xuezhi Wang",
+    "Yifeng Lu",
+    "Hanxiao Liu",
+    "Quoc V. Le",
+    "Denny Zhou",
+    "Xinyun Chen"
+   ],
+   "published": "2023-09-07T00:07:15Z",
+   "updated": "2024-04-15T07:50:32Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "ICLR 2024; 42 pages, 26 figures, 15 tables. Code at https://github.com/google-deepmind/opro",
+   "abstract": "Optimization is ubiquitous. While derivative-based algorithms have been powerful tools for various problems, the absence of gradient imposes challenges on many real-world applications. In this work, we propose Optimization by PROmpting (OPRO), a simple and effective approach to leverage large language models (LLMs) as optimizers, where the optimization task is described in natural language. In each optimization step, the LLM generates new solutions from the prompt that contains previously generated solutions with their values, then the new solutions are evaluated and added to the prompt for the next optimization step. We first showcase OPRO on linear regression and traveling salesman problems, then move on to our main application in prompt optimization, where the goal is to find instructions that maximize the task accuracy. With a variety of LLMs, we demonstrate that the best prompts optimized by OPRO outperform human-designed prompts by up to 8% on GSM8K, and by up to 50% on Big-Bench Hard tasks. Code at https://github.com/google-deepmind/opro."
+  },
+  "s2": {
+   "paperId": "f8a2dca1e8fe56e698984c077f7ff58d8ca867e9",
+   "externalIds": {
+    "ArXiv": "2309.03409",
+    "DBLP": "journals/corr/abs-2309-03409",
+    "DOI": "10.48550/arXiv.2309.03409",
+    "CorpusId": 261582296
+   },
+   "publicationVenue": {
+    "id": "939c6e1d-0d17-4d6e-8a82-66d960df0e40",
+    "name": "International Conference on Learning Representations",
+    "type": "conference",
+    "alternate_names": [
+     "Int Conf Learn Represent",
+     "ICLR"
+    ],
+    "url": "https://iclr.cc/"
+   },
+   "title": "Large Language Models as Optimizers",
+   "venue": "International Conference on Learning Representations",
+   "year": 2023,
+   "publicationDate": "2023-09-07",
+   "journal": {
+    "name": "ArXiv",
+    "volume": "abs/2309.03409"
+   },
+   "authors": [
+    {
+     "authorId": "2238207777",
+     "name": "Chengrun Yang"
+    },
+    {
+     "authorId": "2275277634",
+     "name": "Xue-Zhi Wang"
+    },
+    {
+     "authorId": "2141538599",
+     "name": "Yifeng Lu"
+    },
+    {
+     "authorId": "2391802",
+     "name": "Hanxiao Liu"
+    },
+    {
+     "authorId": "2827616",
+     "name": "Quoc V. Le"
+    },
+    {
+     "authorId": "65855107",
+     "name": "Denny Zhou"
+    },
+    {
+     "authorId": "2238263119",
+     "name": "Xin-Yun Chen"
+    }
+   ]
+  }
+ },
+ "yuksekgonul2024textgrad": {
+  "eprint": "2406.07496",
+  "arxiv": {
+   "version": "2406.07496v1",
+   "title": "TextGrad: Automatic \"Differentiation\" via Text",
+   "authors": [
+    "Mert Yuksekgonul",
+    "Federico Bianchi",
+    "Joseph Boen",
+    "Sheng Liu",
+    "Zhi Huang",
+    "Carlos Guestrin",
+    "James Zou"
+   ],
+   "published": "2024-06-11T17:32:21Z",
+   "updated": "2024-06-11T17:32:21Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "41 pages, 6 figures",
+   "abstract": "AI is undergoing a paradigm shift, with breakthroughs achieved by systems orchestrating multiple large language models (LLMs) and other complex components. As a result, developing principled and automated optimization methods for compound AI systems is one of the most important new challenges. Neural networks faced a similar challenge in its early days until backpropagation and automatic differentiation transformed the field by making optimization turn-key. Inspired by this, we introduce TextGrad, a powerful framework performing automatic ``differentiation'' via text. TextGrad backpropagates textual feedback provided by LLMs to improve individual components of a compound AI system. In our framework, LLMs provide rich, general, natural language suggestions to optimize variables in computation graphs, ranging from code snippets to molecular structures. TextGrad follows PyTorch's syntax and abstraction and is flexible and easy-to-use. It works out-of-the-box for a variety of tasks, where the users only provide the objective function without tuning components or prompts of the framework. We showcase TextGrad's effectiveness and generality across a diverse range of applications, from question answering and molecule optimization to radiotherapy treatment planning. Without modifying the framework, TextGrad improves the zero-shot accuracy of GPT-4o in Google-Proof Question Answering from $51\\%$ to $55\\%$, yields $20\\%$ relative performance gain in optimizing LeetCode-Hard coding problem solutions, improves prompts for reasoning, designs new druglike small molecules with desirable in silico binding, and designs radiation oncology treatment plans with high specificity. TextGrad lays a foundation to accelerate the development of the next-generation of AI systems."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "khattab2023dspy": {
+  "eprint": "2310.03714",
+  "arxiv": {
+   "version": "2310.03714v1",
+   "title": "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines",
+   "authors": [
+    "Omar Khattab",
+    "Arnav Singhvi",
+    "Paridhi Maheshwari",
+    "Zhiyuan Zhang",
+    "Keshav Santhanam",
+    "Sri Vardhamanan",
+    "Saiful Haq",
+    "Ashutosh Sharma",
+    "Thomas T. Joshi",
+    "Hanna Moazam",
+    "Heather Miller",
+    "Matei Zaharia",
+    "Christopher Potts"
+   ],
+   "published": "2023-10-05T17:37:25Z",
+   "updated": "2023-10-05T17:37:25Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "The ML community is rapidly exploring techniques for prompting language models (LMs) and for stacking them into pipelines that solve complex tasks. Unfortunately, existing LM pipelines are typically implemented using hard-coded \"prompt templates\", i.e. lengthy strings discovered via trial and error. Toward a more systematic approach for developing and optimizing LM pipelines, we introduce DSPy, a programming model that abstracts LM pipelines as text transformation graphs, i.e. imperative computational graphs where LMs are invoked through declarative modules. DSPy modules are parameterized, meaning they can learn (by creating and collecting demonstrations) how to apply compositions of prompting, finetuning, augmentation, and reasoning techniques. We design a compiler that will optimize any DSPy pipeline to maximize a given metric. We conduct two case studies, showing that succinct DSPy programs can express and optimize sophisticated LM pipelines that reason about math word problems, tackle multi-hop retrieval, answer complex questions, and control agent loops. Within minutes of compiling, a few lines of DSPy allow GPT-3.5 and llama2-13b-chat to self-bootstrap pipelines that outperform standard few-shot prompting (generally by over 25% and 65%, respectively) and pipelines with expert-created demonstrations (by up to 5-46% and 16-40%, respectively). On top of that, DSPy programs compiled to open and relatively small LMs like 770M-parameter T5 and llama2-13b-chat are competitive with approaches that rely on expert-written prompt chains for proprietary GPT-3.5. DSPy is available at https://github.com/stanfordnlp/dspy"
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "guo2023evoprompt": {
+  "eprint": "2309.08532",
+  "arxiv": {
+   "version": "2309.08532v3",
+   "title": "EvoPrompt: Connecting LLMs with Evolutionary Algorithms Yields Powerful Prompt Optimizers",
+   "authors": [
+    "Qingyan Guo",
+    "Rui Wang",
+    "Junliang Guo",
+    "Bei Li",
+    "Kaitao Song",
+    "Xu Tan",
+    "Guoqing Liu",
+    "Jiang Bian",
+    "Yujiu Yang"
+   ],
+   "published": "2023-09-15T16:50:09Z",
+   "updated": "2025-05-01T11:56:52Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "International Conference on Learning Representations (ICLR) 2024",
+   "abstract": "Large Language Models (LLMs) excel in various tasks, but they rely on carefully crafted prompts that often demand substantial human effort. To automate this process, in this paper, we propose a novel framework for discrete prompt optimization, called EvoPrompt, which borrows the idea of evolutionary algorithms (EAs) as they exhibit good performance and fast convergence. To enable EAs to work on discrete prompts, which are natural language expressions that need to be coherent and human-readable, we connect LLMs with EAs. This approach allows us to simultaneously leverage the powerful language processing capabilities of LLMs and the efficient optimization performance of EAs. Specifically, abstaining from any gradients or parameters, EvoPrompt starts from a population of prompts and iteratively generates new prompts with LLMs based on the evolutionary operators, improving the population based on the development set. We optimize prompts for both closed- and open-source LLMs including GPT-3.5 and Alpaca, on 31 datasets covering language understanding, generation tasks, as well as BIG-Bench Hard (BBH) tasks. EvoPrompt significantly outperforms human-engineered prompts and existing methods for automatic prompt generation (e.g., up to 25% on BBH). Furthermore, EvoPrompt demonstrates that connecting LLMs with EAs creates synergies, which could inspire further research on the combination of LLMs and conventional algorithms."
+  },
+  "s2": {
+   "paperId": "a9c75cf664f675a1b4034b0256ec3c5168e293df",
+   "externalIds": {
+    "ArXiv": "2309.08532",
+    "CorpusId": 262012566
+   },
+   "publicationVenue": null,
+   "title": "EvoPrompt: Connecting LLMs with Evolutionary Algorithms Yields Powerful Prompt Optimizers",
+   "venue": "",
+   "year": 2023,
+   "publicationDate": "2023-09-15",
+   "journal": null,
+   "authors": [
+    {
+     "authorId": "2658956",
+     "name": "Qingyan Guo"
+    },
+    {
+     "authorId": "2151038979",
+     "name": "Rui Wang"
+    },
+    {
+     "authorId": "13838086",
+     "name": "Junliang Guo"
+    },
+    {
+     "authorId": "2242562942",
+     "name": "Bei Li"
+    },
+    {
+     "authorId": "50982078",
+     "name": "Kai-Tao Song"
+    },
+    {
+     "authorId": "48391466",
+     "name": "Xu Tan"
+    },
+    {
+     "authorId": "2242776123",
+     "name": "Guoqing Liu"
+    },
+    {
+     "authorId": "2192822005",
+     "name": "Jiang Bian"
+    },
+    {
+     "authorId": "3001727",
+     "name": "Yujiu Yang"
+    }
+   ]
+  }
+ },
+ "chen2024scienceagentbench": {
+  "eprint": "2410.05080",
+  "arxiv": {
+   "version": "2410.05080v3",
+   "title": "ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery",
+   "authors": [
+    "Ziru Chen",
+    "Shijie Chen",
+    "Yuting Ning",
+    "Qianheng Zhang",
+    "Boshi Wang",
+    "Botao Yu",
+    "Yifei Li",
+    "Zeyi Liao",
+    "Chen Wei",
+    "Zitong Lu",
+    "Vishal Dey",
+    "Mingyi Xue",
+    "Frazier N. Baker",
+    "Benjamin Burns",
+    "Daniel Adu-Ampratwum",
+    "Xuhui Huang",
+    "Xia Ning",
+    "Song Gao",
+    "Yu Su",
+    "Huan Sun"
+   ],
+   "published": "2024-10-07T14:33:50Z",
+   "updated": "2025-03-31T14:39:44Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "ICLR 2025. 60 pages",
+   "abstract": "The advancements of large language models (LLMs) have piqued growing interest in developing LLM-based language agents to automate scientific discovery end-to-end, which has sparked both excitement and skepticism about their true capabilities. In this work, we call for rigorous assessment of agents on individual tasks in a scientific workflow before making bold claims on end-to-end automation. To this end, we present ScienceAgentBench, a new benchmark for evaluating language agents for data-driven scientific discovery. To ensure the scientific authenticity and real-world relevance of our benchmark, we extract 102 tasks from 44 peer-reviewed publications in four disciplines and engage nine subject matter experts to validate them. We unify the target output for every task to a self-contained Python program file and employ an array of evaluation metrics to examine the generated programs, execution results, and costs. Each task goes through multiple rounds of manual validation by annotators and subject matter experts to ensure its annotation quality and scientific plausibility. We also propose two effective strategies to mitigate data contamination concerns. Using ScienceAgentBench, we evaluate five open-weight and proprietary LLMs, each with three frameworks: direct prompting, OpenHands CodeAct, and self-debug. Given three attempts for each task, the best-performing agent can only solve 32.4% of the tasks independently and 34.3% with expert-provided knowledge. In addition, we evaluate OpenAI o1-preview with direct prompting and self-debug, which can boost the performance to 42.2%, demonstrating the effectiveness of increasing inference-time compute but with more than 10 times the cost of other LLMs. Still, our results underscore the limitations of current language agents in generating code for data-driven discovery, let alone end-to-end automation for scientific research."
+  },
+  "s2": {
+   "paperId": "45b7c7448768b51b6dbd9b76495c9cd9d110bd91",
+   "externalIds": {
+    "DBLP": "journals/corr/abs-2410-05080",
+    "ArXiv": "2410.05080",
+    "DOI": "10.48550/arXiv.2410.05080",
+    "CorpusId": 273186311
+   },
+   "publicationVenue": {
+    "id": "1901e811-ee72-4b20-8f7e-de08cd395a10",
+    "name": "arXiv.org",
+    "alternate_names": [
+     "ArXiv"
+    ],
+    "issn": "2331-8422",
+    "url": "https://arxiv.org"
+   },
+   "title": "ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery",
+   "venue": "arXiv.org",
+   "year": 2024,
+   "publicationDate": "2024-10-07",
+   "journal": {
+    "name": "ArXiv",
+    "volume": "abs/2410.05080"
+   },
+   "authors": [
+    {
+     "authorId": "11832104",
+     "name": "Ziru Chen"
+    },
+    {
+     "authorId": "2115939351",
+     "name": "Shijie Chen"
+    },
+    {
+     "authorId": "2266397759",
+     "name": "Yu-Ting Ning"
+    },
+    {
+     "authorId": "2261249755",
+     "name": "Qian-Heng Zhang"
+    },
+    {
+     "authorId": "7425689",
+     "name": "Boshi Wang"
+    },
+    {
+     "authorId": "2754371",
+     "name": "Botao Yu"
+    },
+    {
+     "authorId": "2324840035",
+     "name": "Yi-Fei Li"
+    },
+    {
+     "authorId": "2284224390",
+     "name": "Zeyi Liao"
+    },
+    {
+     "authorId": "2325857726",
+     "name": "Chen Wei"
+    },
+    {
+     "authorId": "1605906053",
+     "name": "Zi-Tong Lu"
+    },
+    {
+     "authorId": "2281742135",
+     "name": "Vishal Dey"
+    },
+    {
+     "authorId": "2125081864",
+     "name": "Ming-Yi Xue"
+    },
+    {
+     "authorId": "49780607",
+     "name": "Frazier N. Baker"
+    },
+    {
+     "authorId": "2302148833",
+     "name": "Benjamin Burns"
+    },
+    {
+     "authorId": "2348516502",
+     "name": "Daniel Adu-Ampratwum"
+    },
+    {
+     "authorId": "2325131030",
+     "name": "Xuhui Huang"
+    },
+    {
+     "authorId": "2281745183",
+     "name": "Xia Ning"
+    },
+    {
+     "authorId": "2265362739",
+     "name": "Song Gao"
+    },
+    {
+     "authorId": "1758652",
+     "name": "Yu Su"
+    },
+    {
+     "authorId": "2278123075",
+     "name": "Huan Sun"
+    }
+   ]
+  }
+ },
+ "starace2025paperbench": {
+  "eprint": "2504.01848",
+  "arxiv": {
+   "version": "2504.01848v3",
+   "title": "PaperBench: Evaluating AI's Ability to Replicate AI Research",
+   "authors": [
+    "Giulio Starace",
+    "Oliver Jaffe",
+    "Dane Sherburn",
+    "James Aung",
+    "Jun Shern Chan",
+    "Leon Maksin",
+    "Rachel Dias",
+    "Evan Mays",
+    "Benjamin Kinsella",
+    "Wyatt Thompson",
+    "Johannes Heidecke",
+    "Amelia Glaese",
+    "Tejal Patwardhan"
+   ],
+   "published": "2025-04-02T15:55:24Z",
+   "updated": "2025-04-07T12:15:49Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "30 pages, 14 figures",
+   "abstract": "We introduce PaperBench, a benchmark evaluating the ability of AI agents to replicate state-of-the-art AI research. Agents must replicate 20 ICML 2024 Spotlight and Oral papers from scratch, including understanding paper contributions, developing a codebase, and successfully executing experiments. For objective evaluation, we develop rubrics that hierarchically decompose each replication task into smaller sub-tasks with clear grading criteria. In total, PaperBench contains 8,316 individually gradable tasks. Rubrics are co-developed with the author(s) of each ICML paper for accuracy and realism. To enable scalable evaluation, we also develop an LLM-based judge to automatically grade replication attempts against rubrics, and assess our judge's performance by creating a separate benchmark for judges. We evaluate several frontier models on PaperBench, finding that the best-performing tested agent, Claude 3.5 Sonnet (New) with open-source scaffolding, achieves an average replication score of 21.0%. Finally, we recruit top ML PhDs to attempt a subset of PaperBench, finding that models do not yet outperform the human baseline. We open-source our code (https://github.com/openai/preparedness) to facilitate future research in understanding the AI engineering capabilities of AI agents."
+  },
+  "s2": {
+   "paperId": "52be71605c60d326381a4ddfa1fb476912709504",
+   "externalIds": {
+    "DBLP": "conf/icml/StaraceJSACMDMK25",
+    "ArXiv": "2504.01848",
+    "DOI": "10.48550/arXiv.2504.01848",
+    "CorpusId": 277501993
+   },
+   "publicationVenue": {
+    "id": "fc0a208c-acb7-47dc-a0d4-af8190e21d29",
+    "name": "International Conference on Machine Learning",
+    "type": "conference",
+    "alternate_names": [
+     "ICML",
+     "Int Conf Mach Learn"
+    ],
+    "url": "https://icml.cc/"
+   },
+   "title": "PaperBench: Evaluating AI's Ability to Replicate AI Research",
+   "venue": "International Conference on Machine Learning",
+   "year": 2025,
+   "publicationDate": "2025-04-02",
+   "journal": {
+    "name": "ArXiv",
+    "volume": "abs/2504.01848"
+   },
+   "authors": [
+    {
+     "authorId": "2168285763",
+     "name": "Giulio Starace"
+    },
+    {
+     "authorId": "2325151487",
+     "name": "Oliver Jaffe"
+    },
+    {
+     "authorId": "2231409794",
+     "name": "Dane Sherburn"
+    },
+    {
+     "authorId": "2325157923",
+     "name": "James Aung"
+    },
+    {
+     "authorId": "2325723546",
+     "name": "Jun Shern Chan"
+    },
+    {
+     "authorId": "2325157894",
+     "name": "Leon Maksin"
+    },
+    {
+     "authorId": "2328288671",
+     "name": "Rachel Dias"
+    },
+    {
+     "authorId": "2325158061",
+     "name": "E. Mays"
+    },
+    {
+     "authorId": "48208664",
+     "name": "Benjamin Kinsella"
+    },
+    {
+     "authorId": "2353389208",
+     "name": "Wyatt Thompson"
+    },
+    {
+     "authorId": "2151087994",
+     "name": "Johannes Heidecke"
+    },
+    {
+     "authorId": "2355867602",
+     "name": "Amelia Glaese"
+    },
+    {
+     "authorId": "90169542",
+     "name": "Tejal Patwardhan"
+    }
+   ]
+  }
+ },
+ "jing2024dsbench": {
+  "eprint": "2409.07703",
+  "arxiv": {
+   "version": "2409.07703v3",
+   "title": "DSBench: How Far Are Data Science Agents from Becoming Data Science Experts?",
+   "authors": [
+    "Liqiang Jing",
+    "Zhehui Huang",
+    "Xiaoyang Wang",
+    "Wenlin Yao",
+    "Wenhao Yu",
+    "Kaixin Ma",
+    "Hongming Zhang",
+    "Xinya Du",
+    "Dong Yu"
+   ],
+   "published": "2024-09-12T02:08:00Z",
+   "updated": "2025-04-11T14:12:58Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "Large Language Models (LLMs) and Large Vision-Language Models (LVLMs) have demonstrated impressive language/vision reasoning abilities, igniting the recent trend of building agents for targeted applications such as shopping assistants or AI software engineers. Recently, many data science benchmarks have been proposed to investigate their performance in the data science domain. However, existing data science benchmarks still fall short when compared to real-world data science applications due to their simplified settings. To bridge this gap, we introduce DSBench, a comprehensive benchmark designed to evaluate data science agents with realistic tasks. This benchmark includes 466 data analysis tasks and 74 data modeling tasks, sourced from Eloquence and Kaggle competitions. DSBench offers a realistic setting by encompassing long contexts, multimodal task backgrounds, reasoning with large data files and multi-table structures, and performing end-to-end data modeling tasks. Our evaluation of state-of-the-art LLMs, LVLMs, and agents shows that they struggle with most tasks, with the best agent solving only 34.12% of data analysis tasks and achieving a 34.74% Relative Performance Gap (RPG). These findings underscore the need for further advancements in developing more practical, intelligent, and autonomous data science agents."
+  },
+  "s2": {
+   "paperId": "395c978221a21ee47c84a40a2ef11fb4d012fca1",
+   "externalIds": {
+    "ArXiv": "2409.07703",
+    "CorpusId": 272599760
+   },
+   "publicationVenue": null,
+   "title": "DSBench: How Far Are Data Science Agents from Becoming Data Science Experts?",
+   "venue": "",
+   "year": 2024,
+   "publicationDate": "2024-09-12",
+   "journal": null,
+   "authors": [
+    {
+     "authorId": "2257043219",
+     "name": "Liqiang Jing"
+    },
+    {
+     "authorId": "2320838217",
+     "name": "Zhehui Huang"
+    },
+    {
+     "authorId": "2250363276",
+     "name": "Xiao-Yang Wang"
+    },
+    {
+     "authorId": "2087264100",
+     "name": "Wenlin Yao"
+    },
+    {
+     "authorId": "2265843326",
+     "name": "Wen-Hao Yu"
+    },
+    {
+     "authorId": "2311458574",
+     "name": "Kai-Xin Ma"
+    },
+    {
+     "authorId": "2254831297",
+     "name": "Hong-Ming Zhang"
+    },
+    {
+     "authorId": "2265463653",
+     "name": "Xinya Du"
+    },
+    {
+     "authorId": "2261392681",
+     "name": "Dong Yu"
+    }
+   ]
+  }
+ },
+ "qiang2025mledojo": {
+  "eprint": "2505.07782",
+  "arxiv": {
+   "version": "2505.07782v1",
+   "title": "MLE-Dojo: Interactive Environments for Empowering LLM Agents in Machine Learning Engineering",
+   "authors": [
+    "Rushi Qiang",
+    "Yuchen Zhuang",
+    "Yinghao Li",
+    "Dingu Sagar V K",
+    "Rongzhi Zhang",
+    "Changhao Li",
+    "Ian Shu-Hei Wong",
+    "Sherry Yang",
+    "Percy Liang",
+    "Chao Zhang",
+    "Bo Dai"
+   ],
+   "published": "2025-05-12T17:35:43Z",
+   "updated": "2025-05-12T17:35:43Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "We introduce MLE-Dojo, a Gym-style framework for systematically reinforcement learning, evaluating, and improving autonomous large language model (LLM) agents in iterative machine learning engineering (MLE) workflows. Unlike existing benchmarks that primarily rely on static datasets or single-attempt evaluations, MLE-Dojo provides an interactive environment enabling agents to iteratively experiment, debug, and refine solutions through structured feedback loops. Built upon 200+ real-world Kaggle challenges, MLE-Dojo covers diverse, open-ended MLE tasks carefully curated to reflect realistic engineering scenarios such as data processing, architecture search, hyperparameter tuning, and code debugging. Its fully executable environment supports comprehensive agent training via both supervised fine-tuning and reinforcement learning, facilitating iterative experimentation, realistic data sampling, and real-time outcome verification. Extensive evaluations of eight frontier LLMs reveal that while current models achieve meaningful iterative improvements, they still exhibit significant limitations in autonomously generating long-horizon solutions and efficiently resolving complex errors. Furthermore, MLE-Dojo's flexible and extensible architecture seamlessly integrates diverse data sources, tools, and evaluation protocols, uniquely enabling model-based agent tuning and promoting interoperability, scalability, and reproducibility. We open-source our framework and benchmarks to foster community-driven innovation towards next-generation MLE agents."
+  },
+  "s2": {
+   "paperId": "13b3a820b0d8cf00d20ce647761e736db5c9876c",
+   "externalIds": {
+    "DBLP": "journals/corr/abs-2505-07782",
+    "ArXiv": "2505.07782",
+    "DOI": "10.48550/arXiv.2505.07782",
+    "CorpusId": 278535217
+   },
+   "publicationVenue": {
+    "id": "d9720b90-d60b-48bc-9df8-87a30b9a60dd",
+    "name": "Neural Information Processing Systems",
+    "type": "conference",
+    "alternate_names": [
+     "Neural Inf Process Syst",
+     "NeurIPS",
+     "NIPS"
+    ],
+    "url": "http://neurips.cc/"
+   },
+   "title": "MLE-Dojo: Interactive Environments for Empowering LLM Agents in Machine Learning Engineering",
+   "venue": "Neural Information Processing Systems",
+   "year": 2025,
+   "publicationDate": "2025-05-12",
+   "journal": {
+    "name": "ArXiv",
+    "volume": "abs/2505.07782"
+   },
+   "authors": [
+    {
+     "authorId": "2291135314",
+     "name": "Ru-Shi Qiang"
+    },
+    {
+     "authorId": "8103389",
+     "name": "Yu-Chen Zhuang"
+    },
+    {
+     "authorId": "1527089853",
+     "name": "Yinghao Li"
+    },
+    {
+     "authorId": "2360703052",
+     "name": "K. DinguSagarV"
+    },
+    {
+     "authorId": "2288852433",
+     "name": "Rong-Zhi Zhang"
+    },
+    {
+     "authorId": "2328373494",
+     "name": "Chang-Hao Li"
+    },
+    {
+     "authorId": "2310643946",
+     "name": "I. Wong"
+    },
+    {
+     "authorId": "2360956137",
+     "name": "Sherry Yang"
+    },
+    {
+     "authorId": "2325905225",
+     "name": "Percy Liang"
+    },
+    {
+     "authorId": "2361242361",
+     "name": "Chao Zhang"
+    },
+    {
+     "authorId": "2263684187",
+     "name": "Bo Dai"
+    }
+   ]
+  }
+ },
+ "chen2025mlrbench": {
+  "eprint": "2505.19955",
+  "arxiv": {
+   "version": "2505.19955v3",
+   "title": "MLR-Bench: Evaluating AI Agents on Open-Ended Machine Learning Research",
+   "authors": [
+    "Hui Chen",
+    "Miao Xiong",
+    "Yujie Lu",
+    "Wei Han",
+    "Ailin Deng",
+    "Yufei He",
+    "Jiaying Wu",
+    "Yibo Li",
+    "Yue Liu",
+    "Bryan Hooi"
+   ],
+   "published": "2025-05-26T13:18:37Z",
+   "updated": "2025-10-22T13:33:52Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "49 pages, 9 figures. Accepted by NeurIPS 2025 D&B Track",
+   "abstract": "Recent advancements in AI agents have demonstrated their growing potential to drive and support scientific discovery. In this work, we introduce MLR-Bench, a comprehensive benchmark for evaluating AI agents on open-ended machine learning research. MLR-Bench includes three key components: (1) 201 research tasks sourced from NeurIPS, ICLR, and ICML workshops covering diverse ML topics; (2) MLR-Judge, an automated evaluation framework combining LLM-based reviewers with carefully designed review rubrics to assess research quality; and (3) MLR-Agent, a modular agent scaffold capable of completing research tasks through four stages: idea generation, proposal formulation, experimentation, and paper writing. Our framework supports both stepwise assessment across these distinct research stages, and end-to-end evaluation of the final research paper. We then use MLR-Bench to evaluate six frontier LLMs and an advanced coding agent, finding that while LLMs are effective at generating coherent ideas and well-structured papers, current coding agents frequently (e.g., in 80% of the cases) produce fabricated or invalidated experimental results--posing a major barrier to scientific reliability. We validate MLR-Judge through human evaluation, showing high agreement with expert reviewers, supporting its potential as a scalable tool for research evaluation. We open-source MLR-Bench to help the community benchmark, diagnose, and improve AI research agents toward trustworthy and transparent scientific discovery."
+  },
+  "s2": {
+   "paperId": "0071fc8401253dfbe33c36f68c1ca7b80ab13a56",
+   "externalIds": {
+    "ArXiv": "2505.19955",
+    "DBLP": "journals/corr/abs-2505-19955",
+    "DOI": "10.48550/arXiv.2505.19955",
+    "CorpusId": 278911978
+   },
+   "publicationVenue": {
+    "id": "d9720b90-d60b-48bc-9df8-87a30b9a60dd",
+    "name": "Neural Information Processing Systems",
+    "type": "conference",
+    "alternate_names": [
+     "Neural Inf Process Syst",
+     "NeurIPS",
+     "NIPS"
+    ],
+    "url": "http://neurips.cc/"
+   },
+   "title": "MLR-Bench: Evaluating AI Agents on Open-Ended Machine Learning Research",
+   "venue": "Neural Information Processing Systems",
+   "year": 2025,
+   "publicationDate": "2025-05-26",
+   "journal": {
+    "name": "ArXiv",
+    "volume": "abs/2505.19955"
+   },
+   "authors": [
+    {
+     "authorId": "2264590815",
+     "name": "Hui Chen"
+    },
+    {
+     "authorId": "38827926",
+     "name": "Miao Xiong"
+    },
+    {
+     "authorId": "2257339858",
+     "name": "Yu-Jie Lu"
+    },
+    {
+     "authorId": "2114925665",
+     "name": "Wei Han"
+    },
+    {
+     "authorId": "2213986487",
+     "name": "Ailin Deng"
+    },
+    {
+     "authorId": "2285087612",
+     "name": "Yu-Fei He"
+    },
+    {
+     "authorId": "2352996558",
+     "name": "Jia-Ying Wu"
+    },
+    {
+     "authorId": "2363587275",
+     "name": "Yi-Bo Li"
+    },
+    {
+     "authorId": "2355208614",
+     "name": "Yue Liu"
+    },
+    {
+     "authorId": "2319222667",
+     "name": "Bryan Hooi"
+    }
+   ]
+  }
+ },
+ "kon2025expbench": {
+  "eprint": "2505.24785",
+  "arxiv": {
+   "version": "2505.24785v2",
+   "title": "EXP-Bench: Can AI Conduct AI Research Experiments?",
+   "authors": [
+    "Patrick Tser Jern Kon",
+    "Jiachen Liu",
+    "Xinyi Zhu",
+    "Qiuyi Ding",
+    "Jingjia Peng",
+    "Jiarong Xing",
+    "Yibo Huang",
+    "Yiming Qiu",
+    "Jayanth Srinivasa",
+    "Myungjin Lee",
+    "Mosharaf Chowdhury",
+    "Matei Zaharia",
+    "Ang Chen"
+   ],
+   "published": "2025-05-30T16:46:29Z",
+   "updated": "2025-06-02T01:59:50Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "45 pages, 13 figures",
+   "abstract": "Automating AI research holds immense potential for accelerating scientific progress, yet current AI agents struggle with the complexities of rigorous, end-to-end experimentation. We introduce EXP-Bench, a novel benchmark designed to systematically evaluate AI agents on complete research experiments sourced from influential AI publications. Given a research question and incomplete starter code, EXP-Bench challenges AI agents to formulate hypotheses, design and implement experimental procedures, execute them, and analyze results. To enable the creation of such intricate and authentic tasks with high-fidelity, we design a semi-autonomous pipeline to extract and structure crucial experimental details from these research papers and their associated open-source code. With the pipeline, EXP-Bench curated 461 AI research tasks from 51 top-tier AI research papers. Evaluations of leading LLM-based agents, such as OpenHands and IterativeAgent on EXP-Bench demonstrate partial capabilities: while scores on individual experimental aspects such as design or implementation correctness occasionally reach 20-35%, the success rate for complete, executable experiments was a mere 0.5%. By identifying these bottlenecks and providing realistic step-by-step experiment procedures, EXP-Bench serves as a vital tool for future AI agents to improve their ability to conduct AI research experiments. EXP-Bench is open-sourced at https://github.com/Just-Curieous/Curie/tree/main/benchmark/exp_bench."
+  },
+  "s2": {
+   "paperId": "dbb844e79c0d00c8a2ec2f786457616c1ff7c91d",
+   "externalIds": {
+    "ArXiv": "2505.24785",
+    "DBLP": "journals/corr/abs-2505-24785",
+    "DOI": "10.48550/arXiv.2505.24785",
+    "CorpusId": 279070803
+   },
+   "publicationVenue": {
+    "id": "1901e811-ee72-4b20-8f7e-de08cd395a10",
+    "name": "arXiv.org",
+    "alternate_names": [
+     "ArXiv"
+    ],
+    "issn": "2331-8422",
+    "url": "https://arxiv.org"
+   },
+   "title": "EXP-Bench: Can AI Conduct AI Research Experiments?",
+   "venue": "arXiv.org",
+   "year": 2025,
+   "publicationDate": "2025-05-30",
+   "journal": {
+    "name": "ArXiv",
+    "volume": "abs/2505.24785"
+   },
+   "authors": [
+    {
+     "authorId": "2189564472",
+     "name": "Patrick Tser Jern Kon"
+    },
+    {
+     "authorId": "2257350256",
+     "name": "Jiachen Liu"
+    },
+    {
+     "authorId": "2303473700",
+     "name": "Xinyi Zhu"
+    },
+    {
+     "authorId": "2346984790",
+     "name": "Qiu-Yi Ding"
+    },
+    {
+     "authorId": "2364817902",
+     "name": "Jingjia Peng"
+    },
+    {
+     "authorId": "40862349",
+     "name": "Jia-Rong Xing"
+    },
+    {
+     "authorId": "2266709696",
+     "name": "Yi-Bo Huang"
+    },
+    {
+     "authorId": "2006641393",
+     "name": "Yi-Ming Qiu"
+    },
+    {
+     "authorId": "2089885442",
+     "name": "Jayanth Srinivasa"
+    },
+    {
+     "authorId": "2298316696",
+     "name": "Myungjin Lee"
+    },
+    {
+     "authorId": "2271369030",
+     "name": "Mosharaf Chowdhury"
+    },
+    {
+     "authorId": "2253469012",
+     "name": "Matei Zaharia"
+    },
+    {
+     "authorId": "2346897773",
+     "name": "Ang Chen"
+    }
+   ]
+  }
+ },
+ "beel2025aiscientist": {
+  "eprint": "2502.14297",
+  "arxiv": {
+   "version": "2502.14297v3",
+   "title": "Evaluating Sakana's AI Scientist: Bold Claims, Mixed Results, and a Promising Future?",
+   "authors": [
+    "Joeran Beel",
+    "Min-Yen Kan",
+    "Moritz Baumgart"
+   ],
+   "published": "2025-02-20T06:22:03Z",
+   "updated": "2025-10-15T18:03:49Z",
+   "journal_ref": "SIGIR Forum 2025",
+   "doi": "10.1145/3769733.376974",
+   "comment": "20 pages",
+   "abstract": "A major step toward Artificial General Intelligence (AGI) and Super Intelligence is AI's ability to autonomously conduct research - what we term Artificial Research Intelligence (ARI). If machines could generate hypotheses, conduct experiments, and write research papers without human intervention, it would transform science. Sakana recently introduced the 'AI Scientist', claiming to conduct research autonomously, i.e. they imply to have achieved what we term Artificial Research Intelligence (ARI). The AI Scientist gained much attention, but a thorough independent evaluation has yet to be conducted. Our evaluation of the AI Scientist reveals critical shortcomings. The system's literature reviews produced poor novelty assessments, often misclassifying established concepts (e.g., micro-batching for stochastic gradient descent) as novel. It also struggles with experiment execution: 42% of experiments failed due to coding errors, while others produced flawed or misleading results. Code modifications were minimal, averaging 8% more characters per iteration, suggesting limited adaptability. Generated manuscripts were poorly substantiated, with a median of five citations, most outdated (only five of 34 from 2020 or later). Structural errors were frequent, including missing figures, repeated sections, and placeholder text like 'Conclusions Here'. Some papers contained hallucinated numerical results. Despite these flaws, the AI Scientist represents a leap forward in research automation. It generates full research manuscripts with minimal human input, challenging expectations of AI-driven science. Many reviewers might struggle to distinguish its work from human researchers. While its quality resembles a rushed undergraduate paper, its speed and cost efficiency are unprecedented, producing a full paper for USD 6 to 15 with 3.5 hours of human involvement, far outpacing traditional researchers."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "lyu2022optembed": {
+  "eprint": "2208.04482",
+  "arxiv": {
+   "version": "2208.04482v2",
+   "title": "OptEmbed: Learning Optimal Embedding Table for Click-through Rate Prediction",
+   "authors": [
+    "Fuyuan Lyu",
+    "Xing Tang",
+    "Hong Zhu",
+    "Huifeng Guo",
+    "Yingxue Zhang",
+    "Ruiming Tang",
+    "Xue Liu"
+   ],
+   "published": "2022-08-09T01:09:52Z",
+   "updated": "2022-09-06T15:26:55Z",
+   "journal_ref": null,
+   "doi": "10.1145/3511808.3557411",
+   "comment": "Accepted by CIKM 2022 Research Track",
+   "abstract": "Learning embedding table plays a fundamental role in Click-through rate(CTR) prediction from the view of the model performance and memory usage. The embedding table is a two-dimensional tensor, with its axes indicating the number of feature values and the embedding dimension, respectively. To learn an efficient and effective embedding table, recent works either assign various embedding dimensions for feature fields and reduce the number of embeddings respectively or mask the embedding table parameters. However, all these existing works cannot get an optimal embedding table. On the one hand, various embedding dimensions still require a large amount of memory due to the vast number of features in the dataset. On the other hand, decreasing the number of embeddings usually suffers from performance degradation, which is intolerable in CTR prediction. Finally, pruning embedding parameters will lead to a sparse embedding table, which is hard to be deployed. To this end, we propose an optimal embedding table learning framework OptEmbed, which provides a practical and general method to find an optimal embedding table for various base CTR models. Specifically, we propose pruning the redundant embeddings regarding corresponding features' importance by learnable pruning thresholds. Furthermore, we consider assigning various embedding dimensions as one single candidate architecture. To efficiently search the optimal embedding dimensions, we design a uniform embedding dimension sampling scheme to equally train all candidate architectures, meaning architecture-related parameters and learnable thresholds are trained simultaneously in one supernet. We then propose an evolution search method based on the supernet to find the optimal embedding dimensions for each field. Experiments on public datasets show that OptEmbed can learn a compact embedding table which can further improve the model performance."
+  },
+  "s2": {
+   "paperId": "5bbf810d9c515df27abb8fe1960e2c209b824151",
+   "externalIds": {
+    "ArXiv": "2208.04482",
+    "DBLP": "conf/cikm/Lyu0ZG0TL22",
+    "DOI": "10.1145/3511808.3557411",
+    "CorpusId": 251442607
+   },
+   "publicationVenue": {
+    "id": "7431ff67-91dc-41fa-b322-1b1ca657025f",
+    "name": "International Conference on Information and Knowledge Management",
+    "type": "conference",
+    "alternate_names": [
+     "Conference on Information and Knowledge Management",
+     "Conf Inf Knowl Manag",
+     "Int Conf Inf Knowl Manag",
+     "CIKM"
+    ],
+    "url": "http://www.cikm.org/"
+   },
+   "title": "OptEmbed: Learning Optimal Embedding Table for Click-through Rate Prediction",
+   "venue": "International Conference on Information and Knowledge Management",
+   "year": 2022,
+   "publicationDate": "2022-08-09",
+   "journal": {
+    "name": "Proceedings of the 31st ACM International Conference on Information & Knowledge Management"
+   },
+   "authors": [
+    {
+     "authorId": "1704274486",
+     "name": "Fuyuan Lyu"
+    },
+    {
+     "authorId": "2109888596",
+     "name": "Xing Tang"
+    },
+    {
+     "authorId": "2149669410",
+     "name": "Hong Zhu"
+    },
+    {
+     "authorId": "3339005",
+     "name": "Hui-Feng Guo"
+    },
+    {
+     "authorId": "2135319291",
+     "name": "Yingxue Zhang"
+    },
+    {
+     "authorId": "2824766",
+     "name": "Rui-Ming Tang"
+    },
+    {
+     "authorId": "2151060489",
+     "name": "Xue Liu"
+    }
+   ]
+  }
+ },
+ "chen2022automlrecsurvey": {
+  "eprint": "2204.01390",
+  "arxiv": {
+   "version": "2204.01390v2",
+   "title": "A Comprehensive Survey on Automated Machine Learning for Recommendations",
+   "authors": [
+    "Bo Chen",
+    "Xiangyu Zhao",
+    "Yejing Wang",
+    "Wenqi Fan",
+    "Huifeng Guo",
+    "Ruiming Tang"
+   ],
+   "published": "2022-04-04T11:17:43Z",
+   "updated": "2023-02-16T12:04:38Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "Deep recommender systems (DRS) are critical for current commercial online service providers, which address the issue of information overload by recommending items that are tailored to the user's interests and preferences. They have unprecedented feature representations effectiveness and the capacity of modeling the non-linear relationships between users and items. Despite their advancements, DRS models, like other deep learning models, employ sophisticated neural network architectures and other vital components that are typically designed and tuned by human experts. This article will give a comprehensive summary of automated machine learning (AutoML) for developing DRS models. We first provide an overview of AutoML for DRS models and the related techniques. Then we discuss the state-of-the-art AutoML approaches that automate the feature selection, feature embeddings, feature interactions, and model training in DRS. We point out that the existing AutoML-based recommender systems are developing to a multi-component joint search with abstract search space and efficient search algorithm. Finally, we discuss appealing research directions and summarize the survey."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "johari2015alwaysvalid": {
+  "eprint": "1512.04922",
+  "arxiv": {
+   "version": "1512.04922v3",
+   "title": "Always Valid Inference: Bringing Sequential Analysis to A/B Testing",
+   "authors": [
+    "Ramesh Johari",
+    "Leo Pekelis",
+    "David J. Walsh"
+   ],
+   "published": "2015-12-15T20:33:31Z",
+   "updated": "2019-07-16T19:42:42Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "A/B tests are typically analyzed via frequentist p-values and confidence intervals; but these inferences are wholly unreliable if users endogenously choose samples sizes by *continuously monitoring* their tests. We define *always valid* p-values and confidence intervals that let users try to take advantage of data as fast as it becomes available, providing valid statistical inference whenever they make their decision. Always valid inference can be interpreted as a natural interface for a sequential hypothesis test, which empowers users to implement a modified test tailored to them. In particular, we show in an appropriate sense that the measures we develop tradeoff sample size and power efficiently, despite a lack of prior knowledge of the user's relative preference between these two goals. We also use always valid p-values to obtain multiple hypothesis testing control in the sequential context. Our methodology has been implemented in a large scale commercial A/B testing platform to analyze hundreds of thousands of experiments to date."
+  },
+  "s2": {
+   "paperId": "ff51ed3ad05067844da8d108a666bbdd4e900501",
+   "externalIds": {
+    "MAG": "2293233856",
+    "ArXiv": "1512.04922",
+    "CorpusId": 88514266
+   },
+   "publicationVenue": null,
+   "title": "Always Valid Inference: Bringing Sequential Analysis to A/B Testing",
+   "venue": "",
+   "year": 2015,
+   "publicationDate": "2015-12-15",
+   "journal": {
+    "name": "arXiv: Statistics Theory",
+    "volume": ""
+   },
+   "authors": [
+    {
+     "authorId": "1790944",
+     "name": "Ramesh Johari"
+    },
+    {
+     "authorId": "2494406",
+     "name": "L. Pekelis"
+    },
+    {
+     "authorId": "2060616046",
+     "name": "David Walsh"
+    }
+   ]
+  }
+ },
+ "li2011replay": {
+  "eprint": "1003.5956",
+  "arxiv": {
+   "version": "1003.5956v2",
+   "title": "Unbiased Offline Evaluation of Contextual-bandit-based News Article Recommendation Algorithms",
+   "authors": [
+    "Lihong Li",
+    "Wei Chu",
+    "John Langford",
+    "Xuanhui Wang"
+   ],
+   "published": "2010-03-31T01:20:07Z",
+   "updated": "2012-03-01T23:33:07Z",
+   "journal_ref": null,
+   "doi": "10.1145/1935826.1935878",
+   "comment": "10 pages, 7 figures, revised from the published version at the WSDM 2011 conference",
+   "abstract": "Contextual bandit algorithms have become popular for online recommendation systems such as Digg, Yahoo! Buzz, and news recommendation in general. \\emph{Offline} evaluation of the effectiveness of new algorithms in these applications is critical for protecting online user experiences but very challenging due to their \"partial-label\" nature. Common practice is to create a simulator which simulates the online environment for the problem at hand and then run an algorithm against this simulator. However, creating simulator itself is often difficult and modeling bias is usually unavoidably introduced. In this paper, we introduce a \\emph{replay} methodology for contextual bandit algorithm evaluation. Different from simulator-based approaches, our method is completely data-driven and very easy to adapt to different applications. More importantly, our method can provide provably unbiased evaluations. Our empirical results on a large-scale news article recommendation dataset collected from Yahoo! Front Page conform well with our theoretical results. Furthermore, comparisons between our offline replay and online bucket evaluation of several contextual bandit algorithms show accuracy and effectiveness of our offline evaluation method."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "dudik2011doublyrobust": {
+  "eprint": "1103.4601",
+  "arxiv": {
+   "version": "1103.4601v2",
+   "title": "Doubly Robust Policy Evaluation and Learning",
+   "authors": [
+    "Miroslav Dudik",
+    "John Langford",
+    "Lihong Li"
+   ],
+   "published": "2011-03-23T19:37:45Z",
+   "updated": "2011-05-06T02:38:18Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Published at ICML 2011, 8 pages, 6 figures",
+   "abstract": "We study decision making in environments where the reward is only partially observed, but can be modeled as a function of an action and an observed context. This setting, known as contextual bandits, encompasses a wide variety of applications including health-care policy and Internet advertising. A central task is evaluation of a new policy given historic data consisting of contexts, actions and received rewards. The key challenge is that the past data typically does not faithfully represent proportions of actions taken by a new policy. Previous approaches rely either on models of rewards or models of the past policy. The former are plagued by a large bias whereas the latter have a large variance. In this work, we leverage the strength and overcome the weaknesses of the two approaches by applying the doubly robust technique to the problems of policy evaluation and optimization. We prove that this approach yields accurate value estimates when we have either a good (but not necessarily consistent) model of rewards or a good (but not necessarily consistent) model of past policy. Extensive empirical comparison demonstrates that the doubly robust approach uniformly improves over existing techniques, achieving both lower variance in value estimation and better policies. As such, we expect the doubly robust approach to become common practice."
+  },
+  "s2": {
+   "paperId": "5ccf7658018981bf492d0c8d66277d22ebaac815",
+   "externalIds": {
+    "DBLP": "conf/icml/DudikLL11",
+    "ArXiv": "1103.4601",
+    "MAG": "1809653203",
+    "CorpusId": 7806620
+   },
+   "publicationVenue": {
+    "id": "fc0a208c-acb7-47dc-a0d4-af8190e21d29",
+    "name": "International Conference on Machine Learning",
+    "type": "conference",
+    "alternate_names": [
+     "ICML",
+     "Int Conf Mach Learn"
+    ],
+    "url": "https://icml.cc/"
+   },
+   "title": "Doubly Robust Policy Evaluation and Learning",
+   "venue": "International Conference on Machine Learning",
+   "year": 2011,
+   "publicationDate": "2011-03-23",
+   "journal": {
+    "pages": "1097-1104"
+   },
+   "authors": [
+    {
+     "authorId": "144652072",
+     "name": "Miroslav Dud\u00edk"
+    },
+    {
+     "authorId": "144162125",
+     "name": "John Langford"
+    },
+    {
+     "authorId": "47681372",
+     "name": "Lihong Li"
+    }
+   ]
+  }
+ },
+ "wu2023llmrecsurvey": {
+  "eprint": "2305.19860",
+  "arxiv": {
+   "version": "2305.19860v5",
+   "title": "A Survey on Large Language Models for Recommendation",
+   "authors": [
+    "Likang Wu",
+    "Zhi Zheng",
+    "Zhaopeng Qiu",
+    "Hao Wang",
+    "Hongchao Gu",
+    "Tingjia Shen",
+    "Chuan Qin",
+    "Chen Zhu",
+    "Hengshu Zhu",
+    "Qi Liu",
+    "Hui Xiong",
+    "Enhong Chen"
+   ],
+   "published": "2023-05-31T13:51:26Z",
+   "updated": "2024-06-18T08:07:01Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "34 pages, 7 figures, 2 tables",
+   "abstract": "Large Language Models (LLMs) have emerged as powerful tools in the field of Natural Language Processing (NLP) and have recently gained significant attention in the domain of Recommendation Systems (RS). These models, trained on massive amounts of data using self-supervised learning, have demonstrated remarkable success in learning universal representations and have the potential to enhance various aspects of recommendation systems by some effective transfer techniques such as fine-tuning and prompt tuning, and so on. The crucial aspect of harnessing the power of language models in enhancing recommendation quality is the utilization of their high-quality representations of textual features and their extensive coverage of external knowledge to establish correlations between items and users. To provide a comprehensive understanding of the existing LLM-based recommendation systems, this survey presents a taxonomy that categorizes these models into two major paradigms, respectively Discriminative LLM for Recommendation (DLLM4Rec) and Generative LLM for Recommendation (GLLM4Rec), with the latter being systematically sorted out for the first time. Furthermore, we systematically review and analyze existing LLM-based recommendation systems within each paradigm, providing insights into their methodologies, techniques, and performance. Additionally, we identify key challenges and several valuable findings to provide researchers and practitioners with inspiration. We have also created a GitHub repository to index relevant papers on LLMs for recommendation, https://github.com/WLiK/LLM4Rec."
+  },
+  "s2": {
+   "paperId": "b486982fa7c68a8a08df1111ba9607119419c488",
+   "externalIds": {
+    "DBLP": "journals/corr/abs-2305-19860",
+    "ArXiv": "2305.19860",
+    "DOI": "10.1007/s11280-024-01291-2",
+    "CorpusId": 258987581
+   },
+   "publicationVenue": {
+    "id": "9cf86359-a093-42b4-8bc0-6fd56465c360",
+    "name": "World wide web (Bussum)",
+    "type": "journal",
+    "alternate_names": [
+     "World Wide Web",
+     "World wide web (bussum"
+    ],
+    "issn": "1386-145X",
+    "url": "https://link.springer.com/journal/11280"
+   },
+   "title": "A survey on large language models for recommendation",
+   "venue": "World wide web (Bussum)",
+   "year": 2023,
+   "publicationDate": "2023-05-31",
+   "journal": {
+    "name": "World Wide Web",
+    "volume": "27"
+   },
+   "authors": [
+    {
+     "authorId": "12892739",
+     "name": "Li-Kang Wu"
+    },
+    {
+     "authorId": "2115548818",
+     "name": "Zhilan Zheng"
+    },
+    {
+     "authorId": "2382872",
+     "name": "Zhaopeng Qiu"
+    },
+    {
+     "authorId": "2144219662",
+     "name": "Hao Wang"
+    },
+    {
+     "authorId": "2218562902",
+     "name": "Hongchao Gu"
+    },
+    {
+     "authorId": "2218610917",
+     "name": "Tingjia Shen"
+    },
+    {
+     "authorId": "2084610514",
+     "name": "Chuan Qin"
+    },
+    {
+     "authorId": "2118043140",
+     "name": "Chen Zhu"
+    },
+    {
+     "authorId": "1968806",
+     "name": "Heng-Shu Zhu"
+    },
+    {
+     "authorId": "50384136",
+     "name": "Qi Liu"
+    },
+    {
+     "authorId": "2093122576",
+     "name": "Hui Xiong"
+    },
+    {
+     "authorId": "2173129111",
+     "name": "En-Hong Chen"
+    }
+   ]
+  }
+ },
+ "lin2023recsysllmsurvey": {
+  "eprint": "2306.05817",
+  "arxiv": {
+   "version": "2306.05817v6",
+   "title": "How Can Recommender Systems Benefit from Large Language Models: A Survey",
+   "authors": [
+    "Jianghao Lin",
+    "Xinyi Dai",
+    "Yunjia Xi",
+    "Weiwen Liu",
+    "Bo Chen",
+    "Hao Zhang",
+    "Yong Liu",
+    "Chuhan Wu",
+    "Xiangyang Li",
+    "Chenxu Zhu",
+    "Huifeng Guo",
+    "Yong Yu",
+    "Ruiming Tang",
+    "Weinan Zhang"
+   ],
+   "published": "2023-06-09T11:31:50Z",
+   "updated": "2024-07-09T13:17:52Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Accepted by ACM Transactions on Information Systems (TOIS); Look-up table in appendix",
+   "abstract": "With the rapid development of online services, recommender systems (RS) have become increasingly indispensable for mitigating information overload. Despite remarkable progress, conventional recommendation models (CRM) still have some limitations, e.g., lacking open-world knowledge, and difficulties in comprehending users' underlying preferences and motivations. Meanwhile, large language models (LLM) have shown impressive general intelligence and human-like capabilities, which mainly stem from their extensive open-world knowledge, reasoning ability, as well as their comprehension of human culture and society. Consequently, the emergence of LLM is inspiring the design of recommender systems and pointing out a promising research direction, i.e., whether we can incorporate LLM and benefit from their knowledge and capabilities to compensate for the limitations of CRM. In this paper, we conduct a comprehensive survey on this research direction from the perspective of the whole pipeline in real-world recommender systems. Specifically, we summarize existing works from two orthogonal aspects: where and how to adapt LLM to RS. For the WHERE question, we discuss the roles that LLM could play in different stages of the recommendation pipeline, i.e., feature engineering, feature encoder, scoring/ranking function, user interaction, and pipeline controller. For the HOW question, we investigate the training and inference strategies, resulting in two fine-grained taxonomy criteria, i.e., whether to tune LLM or not, and whether to involve conventional recommendation models for inference. Then, we highlight key challenges in adapting LLM to RS from three aspects, i.e., efficiency, effectiveness, and ethics. Finally, we summarize the survey and discuss the future prospects. We actively maintain a GitHub repository for papers and other related resources: https://github.com/CHIANGEL/Awesome-LLM-for-RecSys/."
+  },
+  "s2": {
+   "paperId": "bac54736112098616f0e1c90435888ef3e119d32",
+   "externalIds": {
+    "DBLP": "journals/tois/LinDXLCZLWLZGYTZ25",
+    "ArXiv": "2306.05817",
+    "DOI": "10.1145/3678004",
+    "CorpusId": 259129651
+   },
+   "publicationVenue": null,
+   "title": "How Can Recommender Systems Benefit from Large Language Models: A Survey",
+   "venue": "ACM Trans. Inf. Syst.",
+   "year": 2023,
+   "publicationDate": "2023-06-09",
+   "journal": {
+    "name": "ACM Transactions on Information Systems",
+    "pages": "1 - 47",
+    "volume": "43"
+   },
+   "authors": [
+    {
+     "authorId": "2144908858",
+     "name": "Jianghao Lin"
+    },
+    {
+     "authorId": "2105646417",
+     "name": "Xin-Yi Dai"
+    },
+    {
+     "authorId": "2056826850",
+     "name": "Yun-Jia Xi"
+    },
+    {
+     "authorId": "2130051800",
+     "name": "Wei-Wen Liu"
+    },
+    {
+     "authorId": "92633145",
+     "name": "Bo Chen"
+    },
+    {
+     "authorId": "2298987734",
+     "name": "Hao Zhang"
+    },
+    {
+     "authorId": "2209633655",
+     "name": "Yong Liu"
+    },
+    {
+     "authorId": "2276003321",
+     "name": "Chu-Han Wu"
+    },
+    {
+     "authorId": "2181637944",
+     "name": "Xiangyang Li"
+    },
+    {
+     "authorId": "2115802321",
+     "name": "Chenxu Zhu"
+    },
+    {
+     "authorId": "3339005",
+     "name": "Hui-Feng Guo"
+    },
+    {
+     "authorId": "2156098229",
+     "name": "Yong Yu"
+    },
+    {
+     "authorId": "2824766",
+     "name": "Rui-Ming Tang"
+    },
+    {
+     "authorId": "2108309275",
+     "name": "Wei-Nan Zhang"
+    }
+   ]
+  }
+ },
+ "hidasi2016gru4rec": {
+  "eprint": "1511.06939",
+  "arxiv": {
+   "version": "1511.06939v4",
+   "title": "Session-based Recommendations with Recurrent Neural Networks",
+   "authors": [
+    "Bal\u00e1zs Hidasi",
+    "Alexandros Karatzoglou",
+    "Linas Baltrunas",
+    "Domonkos Tikk"
+   ],
+   "published": "2015-11-21T23:42:59Z",
+   "updated": "2016-03-29T14:52:58Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Camera ready version (17th February, 2016) Affiliation update (29th March, 2016)",
+   "abstract": "We apply recurrent neural networks (RNN) on a new domain, namely recommender systems. Real-life recommender systems often face the problem of having to base recommendations only on short session-based data (e.g. a small sportsware website) instead of long user histories (as in the case of Netflix). In this situation the frequently praised matrix factorization approaches are not accurate. This problem is usually overcome in practice by resorting to item-to-item recommendations, i.e. recommending similar items. We argue that by modeling the whole session, more accurate recommendations can be provided. We therefore propose an RNN-based approach for session-based recommendations. Our approach also considers practical aspects of the task and introduces several modifications to classic RNNs such as a ranking loss function that make it more viable for this specific problem. Experimental results on two data-sets show marked improvements over widely used approaches."
+  },
+  "s2": {
+   "paperId": "e0021d61c2ab1334bc725852edd44597f4c65dff",
+   "externalIds": {
+    "ArXiv": "1511.06939",
+    "MAG": "2262817822",
+    "DBLP": "journals/corr/HidasiKBT15",
+    "CorpusId": 260446846
+   },
+   "publicationVenue": {
+    "id": "939c6e1d-0d17-4d6e-8a82-66d960df0e40",
+    "name": "International Conference on Learning Representations",
+    "type": "conference",
+    "alternate_names": [
+     "Int Conf Learn Represent",
+     "ICLR"
+    ],
+    "url": "https://iclr.cc/"
+   },
+   "title": "Session-based Recommendations with Recurrent Neural Networks",
+   "venue": "International Conference on Learning Representations",
+   "year": 2015,
+   "publicationDate": "2015-11-21",
+   "journal": {
+    "name": "CoRR",
+    "volume": "abs/1511.06939"
+   },
+   "authors": [
+    {
+     "authorId": "2507883",
+     "name": "Bal\u00e1zs Hidasi"
+    },
+    {
+     "authorId": "1713164",
+     "name": "Alexandros Karatzoglou"
+    },
+    {
+     "authorId": "2666397",
+     "name": "L. Baltrunas"
+    },
+    {
+     "authorId": "1754164",
+     "name": "D. Tikk"
+    }
+   ]
+  }
+ },
+ "rendle2009bpr": {
+  "eprint": "1205.2618",
+  "arxiv": {
+   "version": "1205.2618v1",
+   "title": "BPR: Bayesian Personalized Ranking from Implicit Feedback",
+   "authors": [
+    "Steffen Rendle",
+    "Christoph Freudenthaler",
+    "Zeno Gantner",
+    "Lars Schmidt-Thieme"
+   ],
+   "published": "2012-05-09T18:25:09Z",
+   "updated": "2012-05-09T18:25:09Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Appears in Proceedings of the Twenty-Fifth Conference on Uncertainty in Artificial Intelligence (UAI2009)",
+   "abstract": "Item recommendation is the task of predicting a personalized ranking on a set of items (e.g. websites, movies, products). In this paper, we investigate the most common scenario with implicit feedback (e.g. clicks, purchases). There are many methods for item recommendation from implicit feedback like matrix factorization (MF) or adaptive knearest-neighbor (kNN). Even though these methods are designed for the item prediction task of personalized ranking, none of them is directly optimized for ranking. In this paper we present a generic optimization criterion BPR-Opt for personalized ranking that is the maximum posterior estimator derived from a Bayesian analysis of the problem. We also provide a generic learning algorithm for optimizing models with respect to BPR-Opt. The learning method is based on stochastic gradient descent with bootstrap sampling. We show how to apply our method to two state-of-the-art recommender models: matrix factorization and adaptive kNN. Our experiments indicate that for the task of personalized ranking our optimization method outperforms the standard learning techniques for MF and kNN. The results show the importance of optimizing models for the right criterion."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "li2019randomnas": {
+  "eprint": "1902.07638",
+  "arxiv": {
+   "version": "1902.07638v3",
+   "title": "Random Search and Reproducibility for Neural Architecture Search",
+   "authors": [
+    "Liam Li",
+    "Ameet Talwalkar"
+   ],
+   "published": "2019-02-20T16:49:07Z",
+   "updated": "2019-07-30T20:07:41Z",
+   "journal_ref": "Conference on Uncertainty in Artificial Intelligence (UAI), 2019",
+   "doi": null,
+   "comment": "V2 Changelog: - Modified footnote 2 for ENAS. - Expanded broad reproducibility study for random search with WS for CNN to 6 sets of random seeds v3 Changelog: - Added journal reference - Updated acknowledgements",
+   "abstract": "Neural architecture search (NAS) is a promising research direction that has the potential to replace expert-designed networks with learned, task-specific architectures. In this work, in order to help ground the empirical results in this field, we propose new NAS baselines that build off the following observations: (i) NAS is a specialized hyperparameter optimization problem; and (ii) random search is a competitive baseline for hyperparameter optimization. Leveraging these observations, we evaluate both random search with early-stopping and a novel random search with weight-sharing algorithm on two standard NAS benchmarks---PTB and CIFAR-10. Our results show that random search with early-stopping is a competitive NAS baseline, e.g., it performs at least as well as ENAS, a leading NAS method, on both benchmarks. Additionally, random search with weight-sharing outperforms random search with early-stopping, achieving a state-of-the-art NAS result on PTB and a highly competitive result on CIFAR-10. Finally, we explore the existing reproducibility issues of published NAS results. We note the lack of source material needed to exactly reproduce these results, and further discuss the robustness of published results given the various sources of variability in NAS experimental setups. Relatedly, we provide all information (code, random seeds, documentation) needed to exactly reproduce our results, and report our random search with weight-sharing results for each benchmark on multiple runs."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "yu2020searchphase": {
+  "eprint": "1902.08142",
+  "arxiv": {
+   "version": "1902.08142v3",
+   "title": "Evaluating the Search Phase of Neural Architecture Search",
+   "authors": [
+    "Kaicheng Yu",
+    "Christian Sciuto",
+    "Martin Jaggi",
+    "Claudiu Musat",
+    "Mathieu Salzmann"
+   ],
+   "published": "2019-02-21T17:11:56Z",
+   "updated": "2019-11-22T17:07:59Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "We find that random policy in NAS works amazingly well and propose an evaluation framework to have a fair comparison. Adding additional results on standard CNN search space used for weight sharing and NASBench-101. 8 pages",
+   "abstract": "Neural Architecture Search (NAS) aims to facilitate the design of deep networks for new tasks. Existing techniques rely on two stages: searching over the architecture space and validating the best architecture. NAS algorithms are currently compared solely based on their results on the downstream task. While intuitive, this fails to explicitly evaluate the effectiveness of their search strategies. In this paper, we propose to evaluate the NAS search phase. To this end, we compare the quality of the solutions obtained by NAS search policies with that of random architecture selection. We find that: (i) On average, the state-of-the-art NAS algorithms perform similarly to the random policy; (ii) the widely-used weight sharing strategy degrades the ranking of the NAS candidates to the point of not reflecting their true performance, thus reducing the effectiveness of the search process. We believe that our evaluation framework will be key to designing NAS strategies that consistently discover architectures superior to random ones."
+  },
+  "s2": {
+   "error": "unreachable"
+  }
+ },
+ "yang2020nashard": {
+  "eprint": "1912.12522",
+  "arxiv": {
+   "version": "1912.12522v3",
+   "title": "NAS evaluation is frustratingly hard",
+   "authors": [
+    "Antoine Yang",
+    "Pedro M. Esperan\u00e7a",
+    "Fabio M. Carlucci"
+   ],
+   "published": "2019-12-28T21:24:12Z",
+   "updated": "2020-02-13T22:10:12Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Published as a conference paper at ICLR2020; 13 pages; 10 figures",
+   "abstract": "Neural Architecture Search (NAS) is an exciting new field which promises to be as much as a game-changer as Convolutional Neural Networks were in 2012. Despite many great works leading to substantial improvements on a variety of tasks, comparison between different methods is still very much an open issue. While most algorithms are tested on the same datasets, there is no shared experimental protocol followed by all. As such, and due to the under-use of ablation studies, there is a lack of clarity regarding why certain methods are more effective than others. Our first contribution is a benchmark of $8$ NAS methods on $5$ datasets. To overcome the hurdle of comparing methods with different search spaces, we propose using a method's relative improvement over the randomly sampled average architecture, which effectively removes advantages arising from expertly engineered search spaces or training protocols. Surprisingly, we find that many NAS techniques struggle to significantly beat the average architecture baseline. We perform further experiments with the commonly used DARTS search space in order to understand the contribution of each component in the NAS pipeline. These experiments highlight that: (i) the use of tricks in the evaluation protocol has a predominant impact on the reported performance of architectures; (ii) the cell-based search space has a very narrow accuracy range, such that the seed has a considerable impact on architecture rankings; (iii) the hand-designed macro-structure (cells) is more important than the searched micro-structure (operations); and (iv) the depth-gap is a real phenomenon, evidenced by the change in rankings between $8$ and $20$ cell architectures. To conclude, we suggest best practices, that we hope will prove useful for the community and help mitigate current NAS pitfalls. The code used is available at https://github.com/antoyang/NAS-Benchmark."
+  },
+  "s2": {
+   "paperId": "645a24296f96f325f4a6fd324cef85661a8987da",
+   "externalIds": {
+    "DBLP": "journals/corr/abs-1912-12522",
+    "MAG": "2994731810",
+    "ArXiv": "1912.12522",
+    "CorpusId": 209516112
+   },
+   "publicationVenue": {
+    "id": "939c6e1d-0d17-4d6e-8a82-66d960df0e40",
+    "name": "International Conference on Learning Representations",
+    "type": "conference",
+    "alternate_names": [
+     "Int Conf Learn Represent",
+     "ICLR"
+    ],
+    "url": "https://iclr.cc/"
+   },
+   "title": "NAS evaluation is frustratingly hard",
+   "venue": "International Conference on Learning Representations",
+   "year": 2019,
+   "publicationDate": "2019-12-28",
+   "journal": {
+    "name": "ArXiv",
+    "volume": "abs/1912.12522"
+   },
+   "authors": [
+    {
+     "authorId": "2064599701",
+     "name": "Antoine Yang"
+    },
+    {
+     "authorId": "27245978",
+     "name": "P. Esperan\u00e7a"
+    },
+    {
+     "authorId": "2264326",
+     "name": "Fabio Maria Carlucci"
+    }
+   ]
+  }
+ },
+ "lindauer2020bestpractices": {
+  "eprint": "1909.02453",
+  "arxiv": {
+   "version": "1909.02453v3",
+   "title": "Best Practices for Scientific Research on Neural Architecture Search",
+   "authors": [
+    "Marius Lindauer",
+    "Frank Hutter"
+   ],
+   "published": "2019-09-05T14:39:27Z",
+   "updated": "2020-11-03T08:52:42Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "Finding a well-performing architecture is often tedious for both DL practitioners and researchers, leading to tremendous interest in the automation of this task by means of neural architecture search (NAS). Although the community has made major strides in developing better NAS methods, the quality of scientific empirical evaluations in the young field of NAS is still lacking behind that of other areas of machine learning. To address this issue, we describe a set of possible issues and ways to avoid them, leading to the NAS best practices checklist available at http://automl.org/nas_checklist.pdf."
+  },
+  "s2": {
+   "paperId": "78dbb9334215194020437c2c2cfdfce478f30060",
+   "externalIds": {
+    "DBLP": "journals/corr/abs-1909-02453",
+    "ArXiv": "1909.02453",
+    "MAG": "2972268045",
+    "CorpusId": 202540141
+   },
+   "publicationVenue": {
+    "id": "1901e811-ee72-4b20-8f7e-de08cd395a10",
+    "name": "arXiv.org",
+    "alternate_names": [
+     "ArXiv"
+    ],
+    "issn": "2331-8422",
+    "url": "https://arxiv.org"
+   },
+   "title": "Best Practices for Scientific Research on Neural Architecture Search",
+   "venue": "arXiv.org",
+   "year": 2019,
+   "publicationDate": "2019-09-05",
+   "journal": {
+    "name": "ArXiv",
+    "volume": "abs/1909.02453"
+   },
+   "authors": [
+    {
+     "authorId": "145963266",
+     "name": "M. Lindauer"
+    },
+    {
+     "authorId": "144661829",
+     "name": "F. Hutter"
+    }
+   ]
+  }
+ },
+ "ying2019nasbench101": {
+  "eprint": "1902.09635",
+  "arxiv": {
+   "version": "1902.09635v2",
+   "title": "NAS-Bench-101: Towards Reproducible Neural Architecture Search",
+   "authors": [
+    "Chris Ying",
+    "Aaron Klein",
+    "Esteban Real",
+    "Eric Christiansen",
+    "Kevin Murphy",
+    "Frank Hutter"
+   ],
+   "published": "2019-02-25T21:56:54Z",
+   "updated": "2019-05-14T05:33:47Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Published in the Proceedings of the 36th International Conference on Machine Learning",
+   "abstract": "Recent advances in neural architecture search (NAS) demand tremendous computational resources, which makes it difficult to reproduce experiments and imposes a barrier-to-entry to researchers without access to large-scale computation. We aim to ameliorate these problems by introducing NAS-Bench-101, the first public architecture dataset for NAS research. To build NAS-Bench-101, we carefully constructed a compact, yet expressive, search space, exploiting graph isomorphisms to identify 423k unique convolutional architectures. We trained and evaluated all of these architectures multiple times on CIFAR-10 and compiled the results into a large dataset of over 5 million trained models. This allows researchers to evaluate the quality of a diverse range of models in milliseconds by querying the pre-computed dataset. We demonstrate its utility by analyzing the dataset as a whole and by benchmarking a range of architecture optimization algorithms."
+  },
+  "s2": {
+   "paperId": "6e4fd9b4b2b673c981cda528d8039a221ad35225",
+   "externalIds": {
+    "MAG": "2951245151",
+    "ArXiv": "1902.09635",
+    "DBLP": "conf/icml/YingKCR0H19",
+    "CorpusId": 67856022
+   },
+   "publicationVenue": {
+    "id": "fc0a208c-acb7-47dc-a0d4-af8190e21d29",
+    "name": "International Conference on Machine Learning",
+    "type": "conference",
+    "alternate_names": [
+     "ICML",
+     "Int Conf Mach Learn"
+    ],
+    "url": "https://icml.cc/"
+   },
+   "title": "NAS-Bench-101: Towards Reproducible Neural Architecture Search",
+   "venue": "International Conference on Machine Learning",
+   "year": 2019,
+   "publicationDate": "2019-02-25",
+   "journal": {
+    "pages": "7105-7114"
+   },
+   "authors": [
+    {
+     "authorId": "31939605",
+     "name": "Chris Ying"
+    },
+    {
+     "authorId": "145227684",
+     "name": "Aaron Klein"
+    },
+    {
+     "authorId": "2091292653",
+     "name": "Eric Christiansen"
+    },
+    {
+     "authorId": "2892780",
+     "name": "E. Real"
+    },
+    {
+     "authorId": "1702318",
+     "name": "Kevin P. Murphy"
+    },
+    {
+     "authorId": "144661829",
+     "name": "F. Hutter"
+    }
+   ]
+  }
+ },
+ "dong2020nasbench201": {
+  "eprint": "2001.00326",
+  "arxiv": {
+   "version": "2001.00326v2",
+   "title": "NAS-Bench-201: Extending the Scope of Reproducible Neural Architecture Search",
+   "authors": [
+    "Xuanyi Dong",
+    "Yi Yang"
+   ],
+   "published": "2020-01-02T05:28:26Z",
+   "updated": "2020-01-15T12:38:55Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Published at ICLR 2020 as a spotlight paper; 16 pages; 10 figures; 7 tables; Code is available at https://github.com/D-X-Y/AutoDL-Projects",
+   "abstract": "Neural architecture search (NAS) has achieved breakthrough success in a great number of applications in the past few years. It could be time to take a step back and analyze the good and bad aspects in the field of NAS. A variety of algorithms search architectures under different search space. These searched architectures are trained using different setups, e.g., hyper-parameters, data augmentation, regularization. This raises a comparability problem when comparing the performance of various NAS algorithms. NAS-Bench-101 has shown success to alleviate this problem. In this work, we propose an extension to NAS-Bench-101: NAS-Bench-201 with a different search space, results on multiple datasets, and more diagnostic information. NAS-Bench-201 has a fixed search space and provides a unified benchmark for almost any up-to-date NAS algorithms. The design of our search space is inspired from the one used in the most popular cell-based searching algorithms, where a cell is represented as a DAG. Each edge here is associated with an operation selected from a predefined operation set. For it to be applicable for all NAS algorithms, the search space defined in NAS-Bench-201 includes all possible architectures generated by 4 nodes and 5 associated operation options, which results in 15,625 candidates in total. The training log and the performance for each architecture candidate are provided for three datasets. This allows researchers to avoid unnecessary repetitive training for selected candidate and focus solely on the search algorithm itself. The training time saved for every candidate also largely improves the efficiency of many methods. We provide additional diagnostic information such as fine-grained loss and accuracy, which can give inspirations to new designs of NAS algorithms. In further support, we have analyzed it from many aspects and benchmarked 10 recent NAS algorithms."
+  },
+  "s2": {
+   "paperId": "69599593f93023e2f91ef6673ee9860f85777d98",
+   "externalIds": {
+    "MAG": "2998030011",
+    "DBLP": "journals/corr/abs-2001-00326",
+    "ArXiv": "2001.00326",
+    "CorpusId": 209531937
+   },
+   "publicationVenue": {
+    "id": "939c6e1d-0d17-4d6e-8a82-66d960df0e40",
+    "name": "International Conference on Learning Representations",
+    "type": "conference",
+    "alternate_names": [
+     "Int Conf Learn Represent",
+     "ICLR"
+    ],
+    "url": "https://iclr.cc/"
+   },
+   "title": "NAS-Bench-201: Extending the Scope of Reproducible Neural Architecture Search",
+   "venue": "International Conference on Learning Representations",
+   "year": 2020,
+   "publicationDate": "2020-01-02",
+   "journal": {
+    "name": "ArXiv",
+    "volume": "abs/2001.00326"
+   },
+   "authors": [
+    {
+     "authorId": "9929684",
+     "name": "Xuanyi Dong"
+    },
+    {
+     "authorId": "2048438762",
+     "name": "Yi Yang"
+    }
+   ]
+  }
+ },
+ "eggensperger2021hpobench": {
+  "eprint": "2109.06716",
+  "arxiv": {
+   "version": "2109.06716v3",
+   "title": "HPOBench: A Collection of Reproducible Multi-Fidelity Benchmark Problems for HPO",
+   "authors": [
+    "Katharina Eggensperger",
+    "Philipp M\u00fcller",
+    "Neeratyoy Mallik",
+    "Matthias Feurer",
+    "Ren\u00e9 Sass",
+    "Aaron Klein",
+    "Noor Awad",
+    "Marius Lindauer",
+    "Frank Hutter"
+   ],
+   "published": "2021-09-14T14:28:51Z",
+   "updated": "2022-10-06T15:12:56Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Published at NeurIPS Datasets and Benchmarks Track 2021. Updated version",
+   "abstract": "To achieve peak predictive performance, hyperparameter optimization (HPO) is a crucial component of machine learning and its applications. Over the last years, the number of efficient algorithms and tools for HPO grew substantially. At the same time, the community is still lacking realistic, diverse, computationally cheap, and standardized benchmarks. This is especially the case for multi-fidelity HPO methods. To close this gap, we propose HPOBench, which includes 7 existing and 5 new benchmark families, with a total of more than 100 multi-fidelity benchmark problems. HPOBench allows to run this extendable set of multi-fidelity HPO benchmarks in a reproducible way by isolating and packaging the individual benchmarks in containers. It also provides surrogate and tabular benchmarks for computationally affordable yet statistically sound evaluations. To demonstrate HPOBench's broad compatibility with various optimization tools, as well as its usefulness, we conduct an exemplary large-scale study evaluating 13 optimizers from 6 optimization tools. We provide HPOBench here: https://github.com/automl/HPOBench."
+  }
+ },
+ "recht2019imagenet": {
+  "eprint": "1902.10811",
+  "arxiv": {
+   "version": "1902.10811v2",
+   "title": "Do ImageNet Classifiers Generalize to ImageNet?",
+   "authors": [
+    "Benjamin Recht",
+    "Rebecca Roelofs",
+    "Ludwig Schmidt",
+    "Vaishaal Shankar"
+   ],
+   "published": "2019-02-13T20:35:44Z",
+   "updated": "2019-06-12T17:42:33Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "We build new test sets for the CIFAR-10 and ImageNet datasets. Both benchmarks have been the focus of intense research for almost a decade, raising the danger of overfitting to excessively re-used test sets. By closely following the original dataset creation processes, we test to what extent current classification models generalize to new data. We evaluate a broad range of models and find accuracy drops of 3% - 15% on CIFAR-10 and 11% - 14% on ImageNet. However, accuracy gains on the original test sets translate to larger gains on the new test sets. Our results suggest that the accuracy drops are not caused by adaptivity, but by the models' inability to generalize to slightly \"harder\" images than those found in the original test sets."
+  }
+ },
+ "mania2019similarity": {
+  "eprint": "1905.12580",
+  "arxiv": {
+   "version": "1905.12580v1",
+   "title": "Model Similarity Mitigates Test Set Overuse",
+   "authors": [
+    "Horia Mania",
+    "John Miller",
+    "Ludwig Schmidt",
+    "Moritz Hardt",
+    "Benjamin Recht"
+   ],
+   "published": "2019-05-29T16:54:37Z",
+   "updated": "2019-05-29T16:54:37Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "18 pages, 7 figures",
+   "abstract": "Excessive reuse of test data has become commonplace in today's machine learning workflows. Popular benchmarks, competitions, industrial scale tuning, among other applications, all involve test data reuse beyond guidance by statistical confidence bounds. Nonetheless, recent replication studies give evidence that popular benchmarks continue to support progress despite years of extensive reuse. We proffer a new explanation for the apparent longevity of test data: Many proposed models are similar in their predictions and we prove that this similarity mitigates overfitting. Specifically, we show empirically that models proposed for the ImageNet ILSVRC benchmark agree in their predictions well beyond what we can conclude from their accuracy levels alone. Likewise, models created by large scale hyperparameter search enjoy high levels of similarity. Motivated by these empirical observations, we give a non-asymptotic generalization bound that takes similarity into account, leading to meaningful confidence bounds in practical settings."
+  }
+ },
+ "manheim2018goodhart": {
+  "eprint": "1803.04585",
+  "arxiv": {
+   "version": "1803.04585v4",
+   "title": "Categorizing Variants of Goodhart's Law",
+   "authors": [
+    "David Manheim",
+    "Scott Garrabrant"
+   ],
+   "published": "2018-03-13T01:15:39Z",
+   "updated": "2019-02-24T08:12:46Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "10 pages",
+   "abstract": "There are several distinct failure modes for overoptimization of systems on the basis of metrics. This occurs when a metric which can be used to improve a system is used to an extent that further optimization is ineffective or harmful, and is sometimes termed Goodhart's Law. This class of failure is often poorly understood, partly because terminology for discussing them is ambiguous, and partly because discussion using this ambiguous terminology ignores distinctions between different failure modes of this general type. This paper expands on an earlier discussion by Garrabrant, which notes there are \"(at least) four different mechanisms\" that relate to Goodhart's Law. This paper is intended to explore these mechanisms further, and specify more clearly how they occur. This discussion should be helpful in better understanding these types of failures in economic regulation, in public policy, in machine learning, and in Artificial Intelligence alignment. The importance of Goodhart effects depends on the amount of power directed towards optimizing the proxy, and so the increased optimization power offered by artificial intelligence makes it especially critical for that field."
+  }
+ },
+ "skalse2022rewardhacking": {
+  "eprint": "2209.13085",
+  "arxiv": {
+   "version": "2209.13085v2",
+   "title": "Defining and Characterizing Reward Hacking",
+   "authors": [
+    "Joar Skalse",
+    "Nikolaus H. R. Howe",
+    "Dmitrii Krasheninnikov",
+    "David Krueger"
+   ],
+   "published": "2022-09-27T00:32:44Z",
+   "updated": "2025-03-05T21:08:30Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "23 pages; modified (fix typo in Figure 1, update link to code in Appendix, remove unrendered characters from arXiv abstract)",
+   "abstract": "We provide the first formal definition of reward hacking, a phenomenon where optimizing an imperfect proxy reward function leads to poor performance according to the true reward function. We say that a proxy is unhackable if increasing the expected proxy return can never decrease the expected true return. Intuitively, it might be possible to create an unhackable proxy by leaving some terms out of the reward function (making it \"narrower\") or overlooking fine-grained distinctions between roughly equivalent outcomes, but we show this is usually not the case. A key insight is that the linearity of reward (in state-action visit counts) makes unhackability a very strong condition. In particular, for the set of all stochastic policies, two reward functions can only be unhackable if one of them is constant. We thus turn our attention to deterministic policies and finite sets of stochastic policies, where non-trivial unhackable pairs always exist, and establish necessary and sufficient conditions for the existence of simplifications, an important special case of unhackability. Our results reveal a tension between using reward functions to specify narrow tasks and aligning AI systems with human values."
+  }
+ },
+ "gao2023overoptimization": {
+  "eprint": "2210.10760",
+  "arxiv": {
+   "version": "2210.10760v1",
+   "title": "Scaling Laws for Reward Model Overoptimization",
+   "authors": [
+    "Leo Gao",
+    "John Schulman",
+    "Jacob Hilton"
+   ],
+   "published": "2022-10-19T17:56:10Z",
+   "updated": "2022-10-19T17:56:10Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "In reinforcement learning from human feedback, it is common to optimize against a reward model trained to predict human preferences. Because the reward model is an imperfect proxy, optimizing its value too much can hinder ground truth performance, in accordance with Goodhart's law. This effect has been frequently observed, but not carefully measured due to the expense of collecting human preference data. In this work, we use a synthetic setup in which a fixed \"gold-standard\" reward model plays the role of humans, providing labels used to train a proxy reward model. We study how the gold reward model score changes as we optimize against the proxy reward model using either reinforcement learning or best-of-$n$ sampling. We find that this relationship follows a different functional form depending on the method of optimization, and that in both cases its coefficients scale smoothly with the number of reward model parameters. We also study the effect on this relationship of the size of the reward model dataset, the number of reward model and policy parameters, and the coefficient of the KL penalty added to the reward in the reinforcement learning setup. We explore the implications of these empirical results for theoretical considerations in AI alignment."
+  }
+ },
+ "zhong2026impossiblebench": {
+  "eprint": "2510.20270",
+  "arxiv": {
+   "version": "2510.20270v1",
+   "title": "ImpossibleBench: Measuring LLMs' Propensity of Exploiting Test Cases",
+   "authors": [
+    "Ziqian Zhong",
+    "Aditi Raghunathan",
+    "Nicholas Carlini"
+   ],
+   "published": "2025-10-23T06:58:32Z",
+   "updated": "2025-10-23T06:58:32Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "The tendency to find and exploit \"shortcuts\" to complete tasks poses significant risks for reliable assessment and deployment of large language models (LLMs). For example, an LLM agent with access to unit tests may delete failing tests rather than fix the underlying bug. Such behavior undermines both the validity of benchmark results and the reliability of real-world LLM coding assistant deployments. To quantify, study, and mitigate such behavior, we introduce ImpossibleBench, a benchmark framework that systematically measures LLM agents' propensity to exploit test cases. ImpossibleBench creates \"impossible\" variants of tasks from existing benchmarks like LiveCodeBench and SWE-bench by introducing direct conflicts between the natural-language specification and the unit tests. We measure an agent's \"cheating rate\" as its pass rate on these impossible tasks, where any pass necessarily implies a specification-violating shortcut. As a practical framework, ImpossibleBench is not just an evaluation but a versatile tool. We demonstrate its utility for: (1) studying model behaviors, revealing more fine-grained details of cheating behaviors from simple test modification to complex operator overloading; (2) context engineering, showing how prompt, test access and feedback loop affect cheating rates; and (3) developing monitoring tools, providing a testbed with verified deceptive solutions. We hope ImpossibleBench serves as a useful framework for building more robust and reliable LLM systems. Our implementation can be found at https://github.com/safety-research/impossiblebench."
+  }
+ },
+ "baker2025monitoring": {
+  "eprint": "2503.11926",
+  "arxiv": {
+   "version": "2503.11926v1",
+   "title": "Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation",
+   "authors": [
+    "Bowen Baker",
+    "Joost Huizinga",
+    "Leo Gao",
+    "Zehao Dou",
+    "Melody Y. Guan",
+    "Aleksander Madry",
+    "Wojciech Zaremba",
+    "Jakub Pachocki",
+    "David Farhi"
+   ],
+   "published": "2025-03-14T23:50:34Z",
+   "updated": "2025-03-14T23:50:34Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "Mitigating reward hacking--where AI systems misbehave due to flaws or misspecifications in their learning objectives--remains a key challenge in constructing capable and aligned models. We show that we can monitor a frontier reasoning model, such as OpenAI o3-mini, for reward hacking in agentic coding environments by using another LLM that observes the model's chain-of-thought (CoT) reasoning. CoT monitoring can be far more effective than monitoring agent actions and outputs alone, and we further found that a LLM weaker than o3-mini, namely GPT-4o, can effectively monitor a stronger model. Because CoT monitors can be effective at detecting exploits, it is natural to ask whether those exploits can be suppressed by incorporating a CoT monitor directly into the agent's training objective. While we show that integrating CoT monitors into the reinforcement learning reward can indeed produce more capable and more aligned agents in the low optimization regime, we find that with too much optimization, agents learn obfuscated reward hacking, hiding their intent within the CoT while still exhibiting a significant rate of reward hacking. Because it is difficult to tell when CoTs have become obfuscated, it may be necessary to pay a monitorability tax by not applying strong optimization pressures directly to the chain-of-thought, ensuring that CoTs remain monitorable and useful for detecting misaligned behavior."
+  }
+ },
+ "macdiarmid2025emergent": {
+  "eprint": "2511.18397",
+  "arxiv": {
+   "version": "2511.18397v1",
+   "title": "Natural Emergent Misalignment from Reward Hacking in Production RL",
+   "authors": [
+    "Monte MacDiarmid",
+    "Benjamin Wright",
+    "Jonathan Uesato",
+    "Joe Benton",
+    "Jon Kutasov",
+    "Sara Price",
+    "Naia Bouscal",
+    "Sam Bowman",
+    "Trenton Bricken",
+    "Alex Cloud",
+    "Carson Denison",
+    "Johannes Gasteiger",
+    "Ryan Greenblatt",
+    "Jan Leike",
+    "Jack Lindsey",
+    "Vlad Mikulik",
+    "Ethan Perez",
+    "Alex Rodrigues",
+    "Drake Thomas",
+    "Albert Webson",
+    "Daniel Ziegler",
+    "Evan Hubinger"
+   ],
+   "published": "2025-11-23T10:50:02Z",
+   "updated": "2025-11-23T10:50:02Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "We show that when large language models learn to reward hack on production RL environments, this can result in egregious emergent misalignment. We start with a pretrained model, impart knowledge of reward hacking strategies via synthetic document finetuning or prompting, and train on a selection of real Anthropic production coding environments. Unsurprisingly, the model learns to reward hack. Surprisingly, the model generalizes to alignment faking, cooperation with malicious actors, reasoning about malicious goals, and attempting sabotage when used with Claude Code, including in the codebase for this paper. Applying RLHF safety training using standard chat-like prompts results in aligned behavior on chat-like evaluations, but misalignment persists on agentic tasks. Three mitigations are effective: (i) preventing the model from reward hacking; (ii) increasing the diversity of RLHF safety training; and (iii) \"inoculation prompting\", wherein framing reward hacking as acceptable behavior during training removes misaligned generalization even when reward hacking is learned."
+  }
+ },
+ "kapoor2025agentsmatter": {
+  "eprint": "2407.01502",
+  "arxiv": {
+   "version": "2407.01502v1",
+   "title": "AI Agents That Matter",
+   "authors": [
+    "Sayash Kapoor",
+    "Benedikt Stroebl",
+    "Zachary S. Siegel",
+    "Nitya Nadgir",
+    "Arvind Narayanan"
+   ],
+   "published": "2024-07-01T17:48:14Z",
+   "updated": "2024-07-01T17:48:14Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "AI agents are an exciting new research direction, and agent development is driven by benchmarks. Our analysis of current agent benchmarks and evaluation practices reveals several shortcomings that hinder their usefulness in real-world applications. First, there is a narrow focus on accuracy without attention to other metrics. As a result, SOTA agents are needlessly complex and costly, and the community has reached mistaken conclusions about the sources of accuracy gains. Our focus on cost in addition to accuracy motivates the new goal of jointly optimizing the two metrics. We design and implement one such optimization, showing its potential to greatly reduce cost while maintaining accuracy. Second, the benchmarking needs of model and downstream developers have been conflated, making it hard to identify which agent would be best suited for a particular application. Third, many agent benchmarks have inadequate holdout sets, and sometimes none at all. This has led to agents that are fragile because they take shortcuts and overfit to the benchmark in various ways. We prescribe a principled framework for avoiding overfitting. Finally, there is a lack of standardization in evaluation practices, leading to a pervasive lack of reproducibility. We hope that the steps we introduce for addressing these shortcomings will spur the development of agents that are useful in the real world and not just accurate on benchmarks."
+  }
+ },
+ "zhu2025abc": {
+  "eprint": "2507.02825",
+  "arxiv": {
+   "version": "2507.02825v5",
+   "title": "Establishing Best Practices for Building Rigorous Agentic Benchmarks",
+   "authors": [
+    "Yuxuan Zhu",
+    "Tengjun Jin",
+    "Yada Pruksachatkun",
+    "Andy Zhang",
+    "Shu Liu",
+    "Sasha Cui",
+    "Sayash Kapoor",
+    "Shayne Longpre",
+    "Kevin Meng",
+    "Rebecca Weiss",
+    "Fazl Barez",
+    "Rahul Gupta",
+    "Jwala Dhamala",
+    "Jacob Merizian",
+    "Mario Giulianelli",
+    "Harry Coppock",
+    "Cozmin Ududec",
+    "Jasjeet Sekhon",
+    "Jacob Steinhardt",
+    "Antony Kellermann",
+    "Sarah Schwettmann",
+    "Matei Zaharia",
+    "Ion Stoica",
+    "Percy Liang",
+    "Daniel Kang"
+   ],
+   "published": "2025-07-03T17:35:31Z",
+   "updated": "2025-08-07T06:58:08Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "39 pages, 15 tables, 6 figures",
+   "abstract": "Benchmarks are essential for quantitatively tracking progress in AI. As AI agents become increasingly capable, researchers and practitioners have introduced agentic benchmarks to evaluate agents on complex, real-world tasks. These benchmarks typically measure agent capabilities by evaluating task outcomes via specific reward designs. However, we show that many agentic benchmarks have issues in task setup or reward design. For example, SWE-bench Verified uses insufficient test cases, while TAU-bench counts empty responses as successful. Such issues can lead to under- or overestimation of agents' performance by up to 100% in relative terms. To make agentic evaluation rigorous, we introduce the Agentic Benchmark Checklist (ABC), a set of guidelines that we synthesized from our benchmark-building experience, a survey of best practices, and previously reported issues. When applied to CVE-Bench, a benchmark with a particularly complex evaluation design, ABC reduces the performance overestimation by 33%."
+  }
+ },
+ "dodge2019showyourwork": {
+  "eprint": "1909.03004",
+  "arxiv": {
+   "version": "1909.03004v1",
+   "title": "Show Your Work: Improved Reporting of Experimental Results",
+   "authors": [
+    "Jesse Dodge",
+    "Suchin Gururangan",
+    "Dallas Card",
+    "Roy Schwartz",
+    "Noah A. Smith"
+   ],
+   "published": "2019-09-06T16:40:42Z",
+   "updated": "2019-09-06T16:40:42Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "Research in natural language processing proceeds, in part, by demonstrating that new models achieve superior performance (e.g., accuracy) on held-out test data, compared to previous results. In this paper, we demonstrate that test-set performance scores alone are insufficient for drawing accurate conclusions about which model performs best. We argue for reporting additional details, especially performance on validation data obtained during model development. We present a novel technique for doing so: expected validation performance of the best-found model as a function of computation budget (i.e., the number of hyperparameter search trials or the overall training time). Using our approach, we find multiple recent model comparisons where authors would have reached a different conclusion if they had used more (or less) computation. Our approach also allows us to estimate the amount of computation required to obtain a given accuracy; applying it to several recently published results yields massive variation across papers, from hours to weeks. We conclude with a set of best practices for reporting experimental results which allow for robust future comparisons, and provide code to allow researchers to use our technique."
+  }
+ },
+ "bouthillier2021variance": {
+  "eprint": "2103.03098",
+  "arxiv": {
+   "version": "2103.03098v1",
+   "title": "Accounting for Variance in Machine Learning Benchmarks",
+   "authors": [
+    "Xavier Bouthillier",
+    "Pierre Delaunay",
+    "Mirko Bronzi",
+    "Assya Trofimov",
+    "Brennan Nichyporuk",
+    "Justin Szeto",
+    "Naz Sepah",
+    "Edward Raff",
+    "Kanika Madan",
+    "Vikram Voleti",
+    "Samira Ebrahimi Kahou",
+    "Vincent Michalski",
+    "Dmitriy Serdyuk",
+    "Tal Arbel",
+    "Chris Pal",
+    "Ga\u00ebl Varoquaux",
+    "Pascal Vincent"
+   ],
+   "published": "2021-03-01T22:39:49Z",
+   "updated": "2021-03-01T22:39:49Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Submitted to MLSys2021",
+   "abstract": "Strong empirical evidence that one machine-learning algorithm A outperforms another one B ideally calls for multiple trials optimizing the learning pipeline over sources of variation such as data sampling, data augmentation, parameter initialization, and hyperparameters choices. This is prohibitively expensive, and corners are cut to reach conclusions. We model the whole benchmarking process, revealing that variance due to data sampling, parameter initialization and hyperparameter choice impact markedly the results. We analyze the predominant comparison methods used today in the light of this variance. We show a counter-intuitive result that adding more sources of variation to an imperfect estimator approaches better the ideal estimator at a 51 times reduction in compute cost. Building on these results, we study the error rate of detecting improvements, on five different deep-learning tasks/architectures. This study leads us to propose recommendations for performance comparisons."
+  }
+ },
+ "agarwal2021precipice": {
+  "eprint": "2108.13264",
+  "arxiv": {
+   "version": "2108.13264v4",
+   "title": "Deep Reinforcement Learning at the Edge of the Statistical Precipice",
+   "authors": [
+    "Rishabh Agarwal",
+    "Max Schwarzer",
+    "Pablo Samuel Castro",
+    "Aaron Courville",
+    "Marc G. Bellemare"
+   ],
+   "published": "2021-08-30T14:23:48Z",
+   "updated": "2022-01-05T18:45:18Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Outstanding Paper Award at NeurIPS 2021. Website: https://agarwl.github.io/rliable. 28 Pages, 33 Figures",
+   "abstract": "Deep reinforcement learning (RL) algorithms are predominantly evaluated by comparing their relative performance on a large suite of tasks. Most published results on deep RL benchmarks compare point estimates of aggregate performance such as mean and median scores across tasks, ignoring the statistical uncertainty implied by the use of a finite number of training runs. Beginning with the Arcade Learning Environment (ALE), the shift towards computationally-demanding benchmarks has led to the practice of evaluating only a small number of runs per task, exacerbating the statistical uncertainty in point estimates. In this paper, we argue that reliable evaluation in the few run deep RL regime cannot ignore the uncertainty in results without running the risk of slowing down progress in the field. We illustrate this point using a case study on the Atari 100k benchmark, where we find substantial discrepancies between conclusions drawn from point estimates alone versus a more thorough statistical analysis. With the aim of increasing the field's confidence in reported results with a handful of runs, we advocate for reporting interval estimates of aggregate performance and propose performance profiles to account for the variability in results, as well as present more robust and efficient aggregate metrics, such as interquartile mean scores, to achieve small uncertainty in results. Using such statistical tools, we scrutinize performance evaluations of existing algorithms on other widely used RL benchmarks including the ALE, Procgen, and the DeepMind Control Suite, again revealing discrepancies in prior comparisons. Our findings call for a change in how we evaluate performance in deep RL, for which we present a more rigorous evaluation methodology, accompanied with an open-source library rliable, to prevent unreliable results from stagnating the field."
+  }
+ },
+ "henderson2018deeprl": {
+  "eprint": "1709.06560",
+  "arxiv": {
+   "version": "1709.06560v3",
+   "title": "Deep Reinforcement Learning that Matters",
+   "authors": [
+    "Peter Henderson",
+    "Riashat Islam",
+    "Philip Bachman",
+    "Joelle Pineau",
+    "Doina Precup",
+    "David Meger"
+   ],
+   "published": "2017-09-19T06:09:47Z",
+   "updated": "2019-01-30T04:21:41Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": "Accepted to the Thirthy-Second AAAI Conference On Artificial Intelligence (AAAI), 2018",
+   "abstract": "In recent years, significant progress has been made in solving challenging problems across various domains using deep reinforcement learning (RL). Reproducing existing work and accurately judging the improvements offered by novel methods is vital to sustaining this progress. Unfortunately, reproducing results for state-of-the-art deep RL methods is seldom straightforward. In particular, non-determinism in standard benchmark environments, combined with variance intrinsic to the methods, can make reported results tough to interpret. Without significance metrics and tighter standardization of experimental reporting, it is difficult to determine whether improvements over the prior state-of-the-art are meaningful. In this paper, we investigate challenges posed by reproducibility, proper experimental techniques, and reporting procedures. We illustrate the variability in reported metrics and results when comparing against common baselines and suggest guidelines to make future results in deep RL more reproducible. We aim to spur discussion about how to ensure continued progress in the field by minimizing wasted effort stemming from results that are non-reproducible and easily misinterpreted."
+  }
+ },
+ "dacrema2021troubling": {
+  "eprint": "1911.07698",
+  "arxiv": {
+   "version": "1911.07698v3",
+   "title": "A Troubling Analysis of Reproducibility and Progress in Recommender Systems Research",
+   "authors": [
+    "Maurizio Ferrari Dacrema",
+    "Simone Boglio",
+    "Paolo Cremonesi",
+    "Dietmar Jannach"
+   ],
+   "published": "2019-11-18T15:27:09Z",
+   "updated": "2021-01-07T14:09:01Z",
+   "journal_ref": "ACM Transactions on Information Systems 39, 2, Article 20 (January 2021), 49 pages",
+   "doi": "10.1145/3434185",
+   "comment": "Source code and full results available at: https://github.com/MaurizioFD/RecSys2019_DeepLearning_Evaluation",
+   "abstract": "The design of algorithms that generate personalized ranked item lists is a central topic of research in the field of recommender systems. In the past few years, in particular, approaches based on deep learning (neural) techniques have become dominant in the literature. For all of them, substantial progress over the state-of-the-art is claimed. However, indications exist of certain problems in today's research practice, e.g., with respect to the choice and optimization of the baselines used for comparison, raising questions about the published claims. In order to obtain a better understanding of the actual progress, we have tried to reproduce recent results in the area of neural recommendation approaches based on collaborative filtering. The worrying outcome of the analysis of these recent works-all were published at prestigious scientific conferences between 2015 and 2018-is that 11 out of the 12 reproducible neural approaches can be outperformed by conceptually simple methods, e.g., based on the nearest-neighbor heuristics. None of the computationally complex neural methods was actually consistently better than already existing learning-based techniques, e.g., using matrix factorization or linear models. In our analysis, we discuss common issues in today's research practice, which, despite the many papers that are published on the topic, have apparently led the field to a certain level of stagnation."
+  }
+ },
+ "kapoor2023leakage": {
+  "eprint": "2207.07048",
+  "arxiv": {
+   "version": "2207.07048v1",
+   "title": "Leakage and the Reproducibility Crisis in ML-based Science",
+   "authors": [
+    "Sayash Kapoor",
+    "Arvind Narayanan"
+   ],
+   "published": "2022-07-14T16:44:59Z",
+   "updated": "2022-07-14T16:44:59Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "The use of machine learning (ML) methods for prediction and forecasting has become widespread across the quantitative sciences. However, there are many known methodological pitfalls, including data leakage, in ML-based science. In this paper, we systematically investigate reproducibility issues in ML-based science. We show that data leakage is indeed a widespread problem and has led to severe reproducibility failures. Specifically, through a survey of literature in research communities that adopted ML methods, we find 17 fields where errors have been found, collectively affecting 329 papers and in some cases leading to wildly overoptimistic conclusions. Based on our survey, we present a fine-grained taxonomy of 8 types of leakage that range from textbook errors to open research problems. We argue for fundamental methodological changes to ML-based science so that cases of leakage can be caught before publication. To that end, we propose model info sheets for reporting scientific claims based on ML models that would address all types of leakage identified in our survey. To investigate the impact of reproducibility errors and the efficacy of model info sheets, we undertake a reproducibility study in a field where complex ML models are believed to vastly outperform older statistical models such as Logistic Regression (LR): civil war prediction. We find that all papers claiming the superior performance of complex ML models compared to LR models fail to reproduce due to data leakage, and complex ML models don't perform substantively better than decades-old LR models. While none of these errors could have been caught by reading the papers, model info sheets would enable the detection of leakage in each case."
+  }
+ },
+ "kapoor2024reforms": {
+  "eprint": "2308.07832",
+  "arxiv": {
+   "version": "2308.07832v2",
+   "title": "REFORMS: Reporting Standards for Machine Learning Based Science",
+   "authors": [
+    "Sayash Kapoor",
+    "Emily Cantrell",
+    "Kenny Peng",
+    "Thanh Hien Pham",
+    "Christopher A. Bail",
+    "Odd Erik Gundersen",
+    "Jake M. Hofman",
+    "Jessica Hullman",
+    "Michael A. Lones",
+    "Momin M. Malik",
+    "Priyanka Nanayakkara",
+    "Russell A. Poldrack",
+    "Inioluwa Deborah Raji",
+    "Michael Roberts",
+    "Matthew J. Salganik",
+    "Marta Serra-Garcia",
+    "Brandon M. Stewart",
+    "Gilles Vandewiele",
+    "Arvind Narayanan"
+   ],
+   "published": "2023-08-15T15:21:36Z",
+   "updated": "2023-09-19T18:14:49Z",
+   "journal_ref": null,
+   "doi": null,
+   "comment": null,
+   "abstract": "Machine learning (ML) methods are proliferating in scientific research. However, the adoption of these methods has been accompanied by failures of validity, reproducibility, and generalizability. These failures can hinder scientific progress, lead to false consensus around invalid claims, and undermine the credibility of ML-based science. ML methods are often applied and fail in similar ways across disciplines. Motivated by this observation, our goal is to provide clear reporting standards for ML-based science. Drawing from an extensive review of past literature, we present the REFORMS checklist ($\\textbf{Re}$porting Standards $\\textbf{For}$ $\\textbf{M}$achine Learning Based $\\textbf{S}$cience). It consists of 32 questions and a paired set of guidelines. REFORMS was developed based on a consensus of 19 researchers across computer science, data science, mathematics, social sciences, and biomedical sciences. REFORMS can serve as a resource for researchers when designing and implementing a study, for referees when reviewing papers, and for journals when enforcing standards for transparency and reproducibility."
+  }
  }
 }

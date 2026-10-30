@@ -1,0 +1,20 @@
+key,system,ab_role,ab_rounds,ab_duration,ab_ci,ab_correction,ab_confirm
+ling2026recharness,RecHarness,confirm,1,Y,N,na,Y
+wang2026selfevolving,Google/YouTube,select,NS,NS,Y,N,N
+mu2026evorec,EvoRec,confirm,1,Y,Y,na,Y
+liu2026nova,NOVA,confirm,1,Y,Y,na,Y
+lao2026agentx,AgentX,select,100,Y,N,N,N
+yang2026agentxmodel,AgentX-Model,confirm,5,NS,N,na,Y
+zhang2026autolr,AutoLR,confirm,9,NS,N,na,Y
+azhar2026coral,CORAL,select,3,NS,Y,N,N
+wu2026agenticrectune,AgenticRecTune,select,NS,NS,Y,N,N
+cheng2026sortify,Sortify,both,7 (A) + 23 (B),Y,N,N,Y
+yun2026gears,GEARS,select,NS,NS,N,N,P
+pan2026recevolve,RecEvolve,confirm,1,NS,N,na,Y
+hu2026astar,Astar,confirm,1,Y,Y,na,Y
+yang2026sragent,SR-Agent,select,10,Y,N,N,P
+zhuang2026trajectories,Trajectories-to-Evidence,confirm,2,NS,N,na,Y
+fu2026evopilot,EvoPilot,confirm,1,Y,Y,na,Y
+pilot2026,PILOT,select,NS,Y,N,N,P
+jiang2026abagent,A/B Agent,select,5,NS,N,N,N
+zhang2026dmrl,DMRL,select,NS,Y,N,N,P

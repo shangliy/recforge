@@ -1,0 +1,293 @@
+[
+ {
+  "key": "wang2026selfevolving",
+  "crit": "c5",
+  "version": "2602.10226v3",
+  "quotes": [
+   {
+    "text": "The second stage is online A/B experimentation via the Slow Loop, showing that candidates reaching this stage significantly improve north star metrics.",
+    "loc": "§5.1 Experimental Setup"
+   }
+  ]
+ },
+ {
+  "key": "mu2026evorec",
+  "crit": "c5",
+  "version": "2606.28368v1",
+  "quotes": [
+   {
+    "text": "We deploy EvoRec-MGUI on the advertising recommendation platform of a leading e-commerce company in Southeast Asia for a 7-day online A/B test.",
+    "loc": "§3.5 Online A/B Test"
+   },
+   {
+    "text": "The control group uses the production model MGUI, and the experimental group replaces it with the EvoRec-optimized variant.",
+    "loc": "§3.5 Online A/B Test"
+   }
+  ]
+ },
+ {
+  "key": "yang2026agentxmodel",
+  "crit": "c5",
+  "version": "2609.30001v1",
+  "quotes": [
+   {
+    "text": "Table 6 summarizes the model changes and online A/B results documented in these five LRs.",
+    "loc": "§4.3.1 Performance Gains Across Evaluation Settings (Online business impact)"
+   },
+   {
+    "text": "We report online A/B results from the five latest Launch Reviews (LRs).",
+    "loc": "§4.1 Experimental Setting"
+   }
+  ]
+ },
+ {
+  "key": "cheng2026sortify",
+  "crit": "c5",
+  "version": "2603.27765v3",
+  "quotes": [
+   {
+    "text": "offline Igmv rose from +18.2% to +41.6%, yet the corresponding online GMV fluctuated from -3.6% to +9.2%, revealing a significant optimistic bias",
+    "loc": "§1 Introduction, 'Offline-Online Transfer Gap' paragraph"
+   },
+   {
+    "text": "Representative offline-online gap in Exp-401838.",
+    "loc": "Table 5 caption (§4.4)"
+   }
+  ]
+ },
+ {
+  "key": "wu2026coscientist",
+  "crit": "c8",
+  "version": "2603.22376v2",
+  "quotes": [
+   {
+    "text": "made it affordable to test the alternative hypothesis that the inherited learning rate was at fault, which V3.2 confirmed (+0.068% → +0.159%)",
+    "loc": "§4.3 Deployment Status and Lessons Learned (Lesson 2)"
+   }
+  ]
+ },
+ {
+  "key": "gao2026amle",
+  "crit": "c4",
+  "version": "2609.08248v1",
+  "quotes": [
+   {
+    "text": "triggers an automatic re-run when within-run variance exceeds a threshold",
+    "loc": "§4.4 Result Analysis"
+   },
+   {
+    "text": "the agent sometimes promoted a candidate based on a single seed when within-run variance warranted re-running; the auto re-run rule materially reduced this",
+    "loc": "§6.9 Failure Modes"
+   }
+  ]
+ },
+ {
+  "key": "yang2026sragent",
+  "crit": "c5",
+  "version": "2607.17719v2",
+  "quotes": [
+   {
+    "text": "Thus, bad-case retesting measures targeted effectiveness, whereas historical traffic replay measures generality and safety beyond the selected cases.",
+    "loc": "§3.5 Strategy Refinement Harness"
+   },
+   {
+    "text": "Candidates that pass both offline stages proceed to strategy-owner review and controlled online A/B testing.",
+    "loc": "§3.5 Strategy Refinement Harness"
+   }
+  ]
+ },
+ {
+  "key": "li2026evoskillrec",
+  "crit": "c6",
+  "version": "2609.34552v1",
+  "quotes": [
+   {
+    "text": "Table 1 compares EvoSkillRec with the best manual design, the NASRec search baseline, and the OpenEvolve code-evolution baseline across all three task families.",
+    "loc": "§5.2 RQ1: Effectiveness Across Recommendation Tasks"
+   },
+   {
+    "text": "Each baseline requests B = 250 standalone candidate-training slots on MovieLens CTR and MovieLens MDL, and B = 200 on the other four benchmarks.",
+    "loc": "App. D.5 (Configured candidate budgets; Table 17)"
+   }
+  ]
+ },
+ {
+  "key": "li2026evoskillrec",
+  "crit": "c9",
+  "version": "2609.34552v1",
+  "quotes": [
+   {
+    "text": "static analysis rejects non-importable code and any file, network, subprocess, or dynamic-evaluation capability",
+    "loc": "§4.2.2 Code-Space Evolution"
+   }
+  ]
+ },
+ {
+  "key": "chen2026rankevolve",
+  "crit": "c5",
+  "version": "2609.39551v1",
+  "quotes": [
+   {
+    "text": "the deployment's two exported recipes were replayed on four further sequential-recommendation datasets with no per-dataset re-tuning",
+    "loc": "§3.3 Reported endpoints and integrity boundary (Cross-dataset transfer)"
+   },
+   {
+    "text": "Cross-dataset transfer of the deployment's discovered recipes (NDCG@10, canonical full-test, one run per cell",
+    "loc": "Table 3 caption"
+   }
+  ]
+ },
+ {
+  "key": "peng2026population",
+  "crit": "c5",
+  "version": "2610.05950v1",
+  "quotes": [
+   {
+    "text": "The two recommendation datasets are excluded from source search, peer evaluation, and promotion.",
+    "loc": "§3.1 Joint discovery (Track A), 'Transfer beyond discovery instances'"
+   },
+   {
+    "text": "Peer evaluation identifies reusable designs; larger-scale evaluation checks whether their gains persist.",
+    "loc": "§5.1 Peer discoveries support direct reuse and inform promotion"
+   }
+  ]
+ },
+ {
+  "key": "peng2026population",
+  "crit": "c9",
+  "version": "2610.05950v1",
+  "quotes": [
+   {
+    "text": "Recommendation retraining uses a shared configuration calibrated and scored on each target's released test split, without candidate-specific redesign or tuning.",
+    "loc": "§3.1 Joint discovery (Track A), 'Transfer beyond discovery instances'"
+   }
+  ]
+ },
+ {
+  "key": "zhuang2026trajectories",
+  "crit": "c5",
+  "version": "2608.05235v1",
+  "quotes": [
+   {
+    "text": "Table 6 shows that memory reuse is conditional. Of the five Apply pairs, three are beneficial, one is neutral, and one is harmful.",
+    "loc": "Experiments > Memory-Conditioned Adaptation (Table 6); sections unnumbered"
+   }
+  ]
+ },
+ {
+  "key": "zhuang2026trajectories",
+  "crit": "c9",
+  "version": "2608.05235v1",
+  "quotes": [
+   {
+    "text": "Runs that fail an execution gate are retained as operational diagnostics but excluded from persistent claims.",
+    "loc": "Method > Experimental Claim Qualification"
+   },
+   {
+    "text": "Because generation and verification share the same model parameters, context isolation prevents direct rationale sharing but may leave correlated blind spots.",
+    "loc": "Experiments > Bounded Self-Verification"
+   }
+  ]
+ },
+ {
+  "key": "wu2026agentltv",
+  "crit": "c6",
+  "version": "2602.21634v1",
+  "quotes": [
+   {
+    "text": "To answer RQ2, we ablate the two main search modules.",
+    "loc": "§5.4 Ablation Study"
+   },
+   {
+    "text": "The ablation study of MCTS Module and EA Module.",
+    "loc": "Table 3 caption"
+   }
+  ]
+ },
+ {
+  "key": "nian2026semanticindex",
+  "crit": "c5",
+  "version": "2610.28568v1",
+  "quotes": [
+   {
+    "text": "Proxy and target Recall@100 have a strong positive rank correlation (Spearman ρ = 0.90).",
+    "loc": "§5.2 Proxy transfer depends on what is evolved"
+   },
+   {
+    "text": "All reported numbers are on the held-out test queries, which neither stage ever sees.",
+    "loc": "§4 Experimental Setup"
+   }
+  ]
+ },
+ {
+  "key": "nian2026semanticindex",
+  "crit": "c9",
+  "version": "2610.28568v1",
+  "quotes": [
+   {
+    "text": "Search uses only the original training relevance pairs, split as in Section 3, with no synthetic or test queries.",
+    "loc": "§4 Experimental Setup"
+   },
+   {
+    "text": "it cannot serve as the fitness function because it is too easy to hack.",
+    "loc": "§3 Proxy-guided evolutionary search (collision rate)"
+   }
+  ]
+ },
+ {
+  "key": "nian2026rankevolveir",
+  "crit": "c5",
+  "version": "2602.16932v1",
+  "quotes": [
+   {
+    "text": "macro-averaged over the 12 datasets used during evolution; unseen evaluation covers 16 held-out datasets (see Section 4.2).",
+    "loc": "Table 2 caption"
+   },
+   {
+    "text": "Significant over the respective seed (per-query paired t-test, p < 0.05).",
+    "loc": "Table 1 caption (PDF renders t and p in math italic)"
+   }
+  ]
+ },
+ {
+  "key": "fu2026evopilot",
+  "crit": "c9",
+  "version": "2609.21257v1",
+  "quotes": [
+   {
+    "text": "Each resumable experiment worker receives one approved specification and operates in an isolated environment through the domain skill and adapter.",
+    "loc": "§4.4 Agent topology and system boundary"
+   },
+   {
+    "text": "train/eval leakage to a date-order guard",
+    "loc": "§5.2 RQ1 (controls added after observed failures)"
+   }
+  ]
+ },
+ {
+  "key": "yao2026feedbackcontract",
+  "crit": "c5",
+  "version": "2610.28798v1",
+  "quotes": [
+   {
+    "text": "We report the stopping round, test performance of the precommitted model, and the validation-test gap, defined as validation minus test.",
+    "loc": "§5.1 Experimental Setup (Metrics)"
+   },
+   {
+    "text": "The validation-test gap narrows under the contract by roughly a tenth on both real datasets, and test performance is slightly higher rather than lower.",
+    "loc": "§5.2 Feedback interfaces compared"
+   }
+  ]
+ },
+ {
+  "key": "wang2026pear",
+  "crit": "c4",
+  "version": "2609.35031v1",
+  "quotes": [
+   {
+    "text": "The next experimental round separates these factors and replicates the coupled setting. Mixed directional effects across replications motivate further tests of capacity relaxation.",
+    "loc": "§6.2 RQ1: Evidence-Driven Hypothesis Revision (Table 2 discussion)"
+   }
+  ]
+ }
+]
